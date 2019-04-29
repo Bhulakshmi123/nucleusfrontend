@@ -1,0 +1,88 @@
+.my-container{
+    width: 100%;
+}
+.route-content{
+    padding-left: 351px;
+    padding-right: 100px;
+    padding-top: 128px;
+}
+.tab-heading{
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  padding:0 30px;
+}
+.my-card{
+    width: 100%;
+    padding:21px 30px;
+    margin-bottom:10px;
+}
+.my-card .company-title{
+  opacity: 0.9;
+  font-size: 20px;
+  font-weight: 500;
+  color: #262626;
+}
+.my-card .company-address span{
+    opacity: 0.7;
+    font-family: Heebo;
+    font-size: 15px;
+    font-weight: bold;
+    color: #262626;
+    padding:0 10px;
+}
+.my-card .person span{
+    opacity: 0.7;
+    font-size: 15px;
+    font-weight: bold;
+    color: #262626;
+    margin:0 10px;
+}
+.my-card .person-contact span{
+  opacity: 0.7;
+  font-size: 15px;
+  font-weight: bold;
+  color: #262626;
+  margin:0 10px;
+}
+.my-card .web{
+  width: 36px;
+  height: 18px;
+  border-radius: 3px;
+  background-color: #6b6b6b;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  text-align: center;
+  margin: 20px auto;
+}
+.my-card .equipment-count{
+  opacity: 0.9;
+  font-size: 30px;
+  text-align: center;
+  color: #262626;
+}
+.my-card .equipment{
+  opacity: 0.7;
+  font-size: 13px;
+  text-align: center;
+  color: #262626;
+  font-weight: bold;
+}
+.tab-link a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    display: inline-block;
+    margin:0 30px;
+    padding:5px 0;
+}
+.tab-link a.active{
+    border-bottom: 2px solid #fff;
+}
