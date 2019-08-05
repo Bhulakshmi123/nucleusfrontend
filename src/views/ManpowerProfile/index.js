@@ -5,7 +5,7 @@ import '../../assets/css/common.css';
 
 
 import './style.css';
-import SubSidebar from '../../components/SubSidebar';
+import SubSidebar from './SubSidebar';
 
 
 class ManpowerProfile extends Component{
