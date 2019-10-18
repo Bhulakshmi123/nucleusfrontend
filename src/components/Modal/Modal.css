@@ -4,15 +4,22 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
     margin: 100px auto 0;
     transition: all .8s;
-    width: 60%;
+    width: 50%;
+    border-radius: 5px;
 }
 
 .modal-header {
-    background: #263238;
-    height: 40px;
+    background: #1C72E5;
+    /* height: 40px; */
     line-height: 40px;
     padding: 5px 20px;
     text-align: right;
+    border-radius: 5px;
+    display: flex;
+}
+.modal-header:first-child {
+    text-align:center;
+    width: 100%;
 }
 
 .modal-header h3 {
@@ -28,21 +35,30 @@
 }
 
 .modal-footer {
-    background: #263238;
-    height: 35px;
-    padding: 15px;
+    /* background: #263238; */
+    /* height: 35px; */
+    padding: 1%;
 }
 
 .close-modal-btn {
     color: white;
     cursor: pointer;
     float: right;
-    font-size: 30px;
+    /* font-size: 30px; */
     margin: 0;
 }
-
+.modalName {
+    width:90%;
+    text-align:left;
+    color: white;
+}
+.modalClose {
+    width: 10%;
+    text-align: right;
+    color: white;
+}
 .close-modal-btn:hover {
-    color: black;
+    color:white;
 }
 
 .btn-cancel, .btn-continue {
@@ -71,10 +87,4 @@
     position: fixed;
     transition: all 1.3s;
     width: 100%;
-}
-
-.open-modal-btn {
-    margin: 15px;
-    padding: 10px;
-    font-weight: bold;
 }
