@@ -1,0 +1,14 @@
+@font-face {
+	font-family: GilroyBold;
+	src: url(../web-fonts/Gilroy-Bold.woff);
+}
+@font-face {
+	font-family: GilroyMedium;
+	src: url(../web-fonts/Gilroy-Medium.woff);
+}
+body{
+    font-family: GilroyBold !important;
+}
+.nbSpan {
+    margin-right:5px;
+}

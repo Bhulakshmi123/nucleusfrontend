@@ -1,0 +1,36 @@
+.articleHeader {
+    display: flex;
+    width: 90%;
+    margin:1% auto;
+}
+.headerTitle{
+    width: 90%;
+    /* background-color: red; */
+    padding-left: 2%;
+    font-size: 2rem;
+    color:black;
+}
+.headerTitle > p {
+    font-family: GilroyBold;
+    margin-top: 5px;
+    font-size: 4.0rem;
+}
+.headerButton {
+    width: 10%;
+    margin: auto;
+}
+.headerButton > button {
+    margin:auto;
+    width: 100%;
+    background-color: #124067;
+    color: white;
+    border:none;
+}
+.headerButton > button:hover {
+    margin:auto;
+    width: 100%;
+    background-color: white;
+    color:#124067;
+    border:none;
+    border: 2px solid #124067;
+}
