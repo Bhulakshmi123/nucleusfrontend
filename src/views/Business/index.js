@@ -11,6 +11,7 @@ class Business extends Component {
         <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
         <BusinessMCard data={demoJson}></BusinessMCard>
       </div>
+     
     );
   }
 }
