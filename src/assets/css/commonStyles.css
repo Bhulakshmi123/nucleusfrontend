@@ -9,6 +9,9 @@
 body{
     font-family: GilroyBold !important;
 }
+*{
+	font-family: GilroyBold;
+}
 .nbSpan {
     margin-right:5px;
 }
