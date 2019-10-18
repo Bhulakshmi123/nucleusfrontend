@@ -8,6 +8,7 @@ class Business extends Component {
       <div>
         Business
       </div>
+     
     );
   }
 }
