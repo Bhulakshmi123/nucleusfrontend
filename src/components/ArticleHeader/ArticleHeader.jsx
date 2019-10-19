@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import '../../assets/css/commonStyles.css'
-import './ArticleHeader.css'
-import Button from '../CustomButton/CustomButton'
-import Modal from '../Modal/Modal'
+import React, { Component } from 'react';
+import '../../assets/css/commonStyles.css';
+import './ArticleHeader.css';
+import Button from '../CustomButton/CustomButton';
+import Modal from '../Modal/Modal';
+import FileInput from '../FormFields/FileInput';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -40,4 +41,4 @@ class ArticleHeader extends Component {
         )
     }
 }
-export default ArticleHeader
+export default ArticleHeader;
