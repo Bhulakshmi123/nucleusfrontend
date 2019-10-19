@@ -10,9 +10,9 @@ const modal = (props) => {
                     opacity: props.show ? '1' : '0'
                 }}>
                 <div className="modal-header">
-                    <span class="modalName">Add Project</span>
+                    <span className="modalName">Add Project</span>
                     {/* <span className="close-modal-btn" onClick={props.close}>×</span> */}
-                    <span className="modalClose" onClick={props.close}><i class="fas fa-times-circle"></i></span>
+                    <span className="modalClose" onClick={props.close}><i className="fas fa-times-circle"></i></span>
                 </div>
                 <div className="modal-body">
                     <p>
@@ -20,8 +20,8 @@ const modal = (props) => {
                     </p>
                 </div>
                 <div className="modal-footer">
-                    <Button bsStyle="danger" fill pullLeft onClick={props.close}>Close</Button>
-                    <Button bsStyle="primary" fill pullRight>Submit</Button>
+                    {/* <Button bsStyle="danger" fill  onClick={props.close}><i className="fas fa-times-circle nbSpan"></i>Close</Button> */}
+                    <Button bsStyle="primary" fill pullRight ><i className="fas fa-plus-circle nbSpan"></i>Add Project</Button>
                     {/* <button className="btn-cancel" onClick={props.close}>CLOSE</button> */}
                     {/* <button className="btn-continue">CONTINUE</button> */}
                 </div>
