@@ -8,7 +8,7 @@ class Business extends Component {
   render() {
     return (
       <div>
-        <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
+        <ArticleHeader heading='Leads' buttonName='Add New' typeName="New" typeStatus="Active"></ArticleHeader>
         <BusinessMCard data={demoJson}></BusinessMCard>
       </div>
 

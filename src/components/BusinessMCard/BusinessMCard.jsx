@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import './BusinessMCard.css'
 import { getDateFormat_1 } from '../../commonFunctions/dates'
+import { matcherHint } from 'jest-matcher-utils';
 class BusinessMCard extends Component {
     nameFunction(props) {
         let html = [];
         let data = this.props.data;
+        
         for (let x in data) {
             html.push(<div className="dateStyles" key={x}>
                 <div>
@@ -30,6 +32,7 @@ class BusinessMCard extends Component {
                     </div>
                 </div>);
             }
+            html.push(<div className="divBreaker" key={Math.random()*Math.random()}></div>)
         }
         return html;
     }

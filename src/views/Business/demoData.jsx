@@ -59,6 +59,15 @@ let demoJson = {
     },
     1571471946077: {
         0: {
+            projectId: '108',
+            projectName: 'MSR International',
+            projectLocation: 'Hyderabad, India',
+            projectPointOfContact: 'Anthony Stark',
+            pocNo: 7894561235,
+            typeOfService: 'Web',
+            equipmentCount: 95
+        },
+        1: {
             projectId: '107',
             projectName: 'GMR International',
             projectLocation: 'Hyderabad, India',
