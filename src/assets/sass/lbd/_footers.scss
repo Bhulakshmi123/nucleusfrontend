@@ -1,6 +1,8 @@
 .footer{    
     background-color: $white-color;
     line-height: $line-height;
+    position: fixed;
+    bottom: 0;
     
     nav > ul{
         list-style: none;

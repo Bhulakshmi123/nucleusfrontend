@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-
 import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
-
 import logo from "assets/img/reactlogo.png";
 
 class Sidebar extends Component {
@@ -27,26 +25,14 @@ class Sidebar extends Component {
       backgroundImage: "url(" + this.props.image + ")"
     };
     return (
-      <div
-        id="sidebar"
-        className="sidebar"
-      >
-          
+      <div id="sidebar" className="sidebar" >
         <div className="logo">
-          <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
-            className="simple-text logo-mini"
-          >
+          <a href="https://www.creative-tim.com?ref=lbd-sidebar" className="simple-text logo-mini">
             <div className="logo-img">
               <img src={logo} alt="logo_image" />
             </div>
           </a>
-          <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
-            className="simple-text logo-normal"
-          >
-            Nucleus
-          </a>
+          <a href="https://www.creative-tim.com?ref=lbd-sidebar" className="simple-text logo-normal"> EH Nucleus</a>
         </div>
         <div className="sidebar-wrapper">
           <ul className="nav">

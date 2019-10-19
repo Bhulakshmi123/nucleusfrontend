@@ -1,0 +1,74 @@
+.businessCard {
+    width: 90%;
+    margin: auto;
+}
+.dateStyles {
+    width: 15%;
+    float: left;
+    
+}
+.dateStyles > div {
+    width: 90%;
+    padding:5%;
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 5px;
+
+}
+.project {
+    width:85%;
+    float: right;
+    /* margin: auto; */
+    display: flex;
+    margin-bottom: 1%;
+    padding: 2%;
+    color: white;
+    background-color: #123E63;
+    border-radius: 5px;
+}
+.projectDetails {
+    width: 50%;
+}
+.projectName {
+    font-size: 2rem;
+}
+.projectLocation, .projectpocNo {
+    font-size: 1.3rem;
+}
+.projectContactDetails {
+    width: 25%;
+}
+.projectPointOfContact {
+    font-size: 1.8rem;
+}
+.typeOfService {
+    width: 15%;
+}
+.typeOfService > div {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background-color:white;
+    color: #123E63;
+    text-transform: uppercase;
+    padding:5%;
+    font-size: 1.2rem;
+    margin-top: 10%;
+    border-radius: 5px;
+}
+.equipmentCount {
+    width: 10%;
+}
+.equipmentCount > div {
+    font-size: 3.5rem !important;
+    text-align:center;
+    margin-top: -5px;
+}
+.equipmentCount > p {
+    font-size: 1.1rem;
+    text-align:center;
+    padding: 0;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    font-family: GilroyBold;
+}

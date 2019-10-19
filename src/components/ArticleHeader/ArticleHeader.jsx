@@ -31,9 +31,7 @@ class ArticleHeader extends Component {
                         <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
-                <div>
-                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
-                </div>
+                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
             </div>
         )
     }

@@ -39,13 +39,13 @@ class Footer extends Component {
               </li>
             </ul>
           </nav>
-          <p className="copyright pull-right">
+          {/* <p className="copyright pull-right">
             &copy; {new Date().getFullYear()}{" "}
             <a href="http://www.creative-tim.com?ref=lbr-footer">
               Creative Tim
             </a>
             , made with love for a better web
-          </p>
+          </p> */}
         </Grid>
       </footer>
     );
