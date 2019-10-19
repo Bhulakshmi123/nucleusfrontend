@@ -32,7 +32,7 @@ class ArticleHeader extends Component {
                     </div>
                 </div>
                 <div>
-                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Maybe aircrafts fly very high because they don't want to be seen in plane sight?</Modal>
+                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
                 </div>
             </div>
         )
