@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-class FileInput extends Component {
-render(){
+import React from 'react';
+const FileInput = props => {
+
+
     return(
-        <div class="hello">Hello</div>
+        <div>
+            <input name="name" type="text" class="form-control" value={props.value} />
+        </div>
     );
-}
+
 }
 export default FileInput;

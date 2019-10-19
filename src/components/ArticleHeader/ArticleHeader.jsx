@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import '../../assets/css/commonStyles.css'
-import './ArticleHeader.css'
-import Button from '../CustomButton/CustomButton'
-import Modal from '../Modal/Modal'
+import React, { Component } from 'react';
+import '../../assets/css/commonStyles.css';
+import './ArticleHeader.css';
+import Button from '../CustomButton/CustomButton';
+import Modal from '../Modal/Modal';
+import FileInput from '../FormFields/FileInput';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -32,7 +33,16 @@ class ArticleHeader extends Component {
                     </div>
                 </div>
                 <div>
-                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
+                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}>
+                         <div class="row">
+                            <div class="">
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <FileInput/>
+                                </div>
+                            </div>
+                         </div>
+                    </Modal>
                 </div>
             </div>
         )
