@@ -32,20 +32,9 @@ class ArticleHeader extends Component {
                         <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
-                <div>
-                    <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}>
-                         <div class="row">
-                            <div class="">
-                                <div class="form-group col-md-6">
-                                    <label>Name</label>
-                                    <FileInput/>
-                                </div>
-                            </div>
-                         </div>
-                    </Modal>
-                </div>
+                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
             </div>
         )
     }
 }
-export default ArticleHeader
+export default ArticleHeader;

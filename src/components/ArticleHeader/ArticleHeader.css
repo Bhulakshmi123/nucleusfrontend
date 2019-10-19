@@ -4,7 +4,7 @@
     margin:0% auto;
 }
 .headerTitle{
-    width: 90%;
+    width: 80%;
     /* background-color: red; */
     /* padding-left: 2%; */
     font-size: 2rem;
@@ -16,19 +16,20 @@
     font-size: 4.0rem;
 }
 .headerButton {
-    width: 10%;
+    width: 20%;
     margin: auto;
 }
 .headerButton > button {
     margin:auto;
-    width: 100%;
+    /* width: 100%; */
     background-color: #124067;
     color: white;
     border:none;
+    float:right;
 }
 .headerButton > button:hover {
     margin:auto;
-    width: 100%;
+    /* width: 100%; */
     background-color: white;
     color:#124067;
     border:none;

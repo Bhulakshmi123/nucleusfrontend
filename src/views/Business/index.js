@@ -3,7 +3,7 @@ import '../../assets/css/commonStyles.css';
 import ArticleHeader from '../../components/ArticleHeader/ArticleHeader'
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard'
 import demoJson from './demoData'
-console.log(demoJson);
+// console.log(demoJson);
 class Business extends Component {
   render() {
     return (

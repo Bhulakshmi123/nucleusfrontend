@@ -6,6 +6,10 @@
     transition: all .8s;
     width: 40%;
     border-radius: 5px;
+    position: absolute;
+    top: 15vh;
+    margin: auto;
+    left: 25vw;
 }
 
 .modal-header {
@@ -76,6 +80,7 @@
 .close-modal-btn:hover {
     color: white;
 }
+<<<<<<< HEAD
 
 .btn-cancel,
 .btn-continue {
@@ -98,6 +103,8 @@
     float: right;
 }
 
+=======
+>>>>>>> 06d95cfe6b1bbdbfac40079abffd2261dfd11ff7
 .back-drop {
     background-color: rgba(48, 49, 48, 0.42);
     height: 100%;
@@ -105,6 +112,7 @@
     transition: all 1.3s;
     width: 100%;
 }
+<<<<<<< HEAD
 
 .form-modal {
     font-size: 17px !important;
@@ -153,3 +161,5 @@
     padding-left: 10px;
     margin-right: 10px;
 }
+=======
+>>>>>>> 06d95cfe6b1bbdbfac40079abffd2261dfd11ff7
