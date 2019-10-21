@@ -43,7 +43,6 @@ class ArticleHeader extends Component {
                     <div className="active">{this.props.typeStatus}</div>
                     <div className="searchBar"><input type="search" placeholder="Search Here"></input></div>
                 </div>
-                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
             </div>
         )
     }
