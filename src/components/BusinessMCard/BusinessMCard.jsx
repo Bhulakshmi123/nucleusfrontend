@@ -16,7 +16,7 @@ class BusinessMCard extends Component {
                 html.push(
                     <div key={data[x][y].projectId} className="project">
                         <Row className="rowWidth">
-                            <Col lg={6}>
+                            <Col lg={5}>
                                 <div className="projectName">{data[x][y].projectName}</div>
                                 <div className="projectLocation"><i className="fas fa-map-marked-alt nbSpan"></i>{data[x][y].projectLocation}</div>
                             </Col>
@@ -27,7 +27,7 @@ class BusinessMCard extends Component {
                             <Col lg={2}>
                                 <div className="typeOfService">{data[x][y].typeOfService}</div>
                             </Col>
-                            <Col lg={1}>
+                            <Col lg={2}>
                                 <div className="equipmentCount">{data[x][y].equipmentCount}</div>
                                 <p className="equipmentCountParagraph">Equipment</p>
                             </Col>

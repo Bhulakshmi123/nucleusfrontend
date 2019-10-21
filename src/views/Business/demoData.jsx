@@ -29,7 +29,7 @@ let demoJson = {
         },
         3: {
             projectId: '104',
-            projectName: 'Hyderabad Metro Rail Development Authority',
+            projectName: 'Hyderabad Metro Rail Development',
             projectLocation: 'Hyderabad, India',
             projectPointOfContact: 'Larsen Turbo',
             pocNo: 4561237890,
