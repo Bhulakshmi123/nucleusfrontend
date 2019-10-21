@@ -4,6 +4,8 @@ import './ArticleHeader.css';
 import Button from '../CustomButton/CustomButton';
 import Modal from '../Modal/Modal';
 import FileInput from '../FormFields/FileInput';
+// import Button from 'react-bootstrap/Button'
+// import SelectInput from '../FormFields/SelectInput';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -31,16 +33,17 @@ class ArticleHeader extends Component {
                         <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
-                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}>
+                <Modal className="modal"  minWidth="600px" minHeight="500px" show={this.state.isShowing} close={this.closeModalHandler}>
                     <div className="row">
                         <div className="col-md-6">
                             <FileInput name="Name"/>
+                            {/* <SelectInput/> */}
                         </div>
                     </div>
                 </Modal>
                 <div className="articleHeader2">
                     <div className="name">{this.props.typeName}</div>
-                    <div className="active">{this.props.typeStatus}</div>
+                    <div className="activeN">{this.props.typeStatus}</div>
                     <div className="searchBar"><input type="search" placeholder="Search Here"></input></div>
                 </div>
             </div>
