@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
 import { Modal, Button } from 'react-bootstrap';
-import TextInput from '../FormFields/TextInput'
+import TextInput from '../FormFields/TextInput';
+import SelectInput from '../FormFields/SelectInput';
+import FileInput from '../FormFields/FileInput';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -40,8 +41,22 @@ class ArticleHeader extends Component {
                         <Modal.Title>Add New Project</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-
-                        <TextInput></TextInput>
+                       <div class="row">
+                           <div class="col-md-6">
+                               <TextInput name="Hello"/>
+                           </div>
+                           <div class="col-md-6">
+                           <SelectInput></SelectInput>
+                           </div>
+                       </div>
+                       <div className="row">
+                           <div className="col-md-6">
+                           <FileInput></FileInput>
+                           </div>
+                       </div>
+                        
+                        
+                       
       
                     </Modal.Body>
                     <Modal.Footer>
