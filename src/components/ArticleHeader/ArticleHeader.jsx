@@ -34,7 +34,7 @@ class ArticleHeader extends Component {
                 <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}>
                     <div className="row">
                         <div className="col-md-6">
-                            <FileInput name="Name"/>
+                            <FileInput name="Name" />
                         </div>
                     </div>
                 </Modal>

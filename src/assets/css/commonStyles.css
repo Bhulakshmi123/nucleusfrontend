@@ -15,7 +15,11 @@ body {
 * {
     font-family: GilroyBold;
 }
-
+.stickyNavbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 .nbSpan {
     margin-right: 5px;
 }
