@@ -6,7 +6,7 @@ const FileInput = props => {
     return(
         <div className="form-modal">
             <label>{props.name}</label>
-            <input name="name" type="text" class="form-control" value={props.value} />
+            <input name="name" type="text" className="form-control" value={props.value} />
         </div>
     );
 

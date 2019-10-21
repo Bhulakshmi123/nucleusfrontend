@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
-import Button from '../CustomButton/CustomButton';
-import Modal from '../Modal/Modal';
-import FileInput from '../FormFields/FileInput';
-// import Button from 'react-bootstrap/Button'
-// import SelectInput from '../FormFields/SelectInput';
+import { Modal, Button } from 'react-bootstrap';
+import TextInput from '../FormFields/TextInput'
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -26,26 +23,30 @@ class ArticleHeader extends Component {
     render() {
         return (
             <div>
-                {this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null}
                 <div className="articleHeader">
                     <div className="headerTitle"><p>{this.props.heading}</p></div>
                     <div className="headerButton">
-                        <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
+                        <Button variant="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
-                <Modal className="modal"  minWidth="600px" minHeight="500px" show={this.state.isShowing} close={this.closeModalHandler}>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <FileInput name="Name"/>
-                            {/* <SelectInput/> */}
-                        </div>
-                    </div>
-                </Modal>
                 <div className="articleHeader2">
                     <div className="name">{this.props.typeName}</div>
                     <div className="activeN">{this.props.typeStatus}</div>
                     <div className="searchBar"><input type="search" placeholder="Search Here"></input></div>
                 </div>
+                <Modal show={this.state.isShowing} onHide={this.closeModalHandler}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add New Project</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <TextInput></TextInput>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="danger" onClick={this.closeModalHandler}>Close</Button>
+                        <Button variant="primary">Primary</Button>
+                        <Button variant="info">Info</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }
