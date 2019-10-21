@@ -3,10 +3,8 @@ import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
 class AdminNavbarLinks extends Component {
   render() {
-
     return (
-      <div>
-        
+      <div> 
         <Nav pullRight>
           <NavItem eventKey={1} href="#">
             Account
