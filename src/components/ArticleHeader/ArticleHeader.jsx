@@ -33,10 +33,10 @@ class ArticleHeader extends Component {
                 </div>
                 <div className="articleHeader2">
                     <div className="name">{this.props.typeName}</div>
-                    <div className="active">{this.props.typeStatus}</div>
+                    <div className="activeN">{this.props.typeStatus}</div>
                     <div className="searchBar"><input type="search" placeholder="Search Here"></input></div>
                 </div>
-                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}> Forms are Rendered</Modal>
+                <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler} maxWidth="400" minWidth="600px" minHeight="500px"> Forms are Rendered</Modal>
             </div>
         )
     }
