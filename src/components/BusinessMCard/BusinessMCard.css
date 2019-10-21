@@ -1,11 +1,7 @@
-.businessCard {
-    width: 90%;
-    margin: auto;
-}
+
 .dateStyles {
     width: 15%;
-    float: left;
-    
+    float: left;   
 }
 .dateStyles > div {
     width: 90%;
@@ -13,6 +9,7 @@
     text-align: center;
     background-color: lightgrey;
     border-radius: 5px;
+    color: #123E63;
 
 }
 .project {
@@ -30,7 +27,7 @@
     width: 50%;
 }
 .projectName {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 .projectLocation, .projectpocNo {
     font-size: 1.3rem;
@@ -39,13 +36,10 @@
     width: 25%;
 }
 .projectPointOfContact {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 .typeOfService {
-    width: 15%;
-}
-.typeOfService > div {
-    width: 50%;
+    width: 70%;
     margin: auto;
     text-align: center;
     background-color:white;
@@ -57,14 +51,11 @@
     border-radius: 5px;
 }
 .equipmentCount {
-    width: 10%;
-}
-.equipmentCount > div {
     font-size: 3.5rem !important;
     text-align:center;
     margin-top: -5px;
 }
-.equipmentCount > p {
+.equipmentCountParagraph {
     font-size: 1.1rem;
     text-align:center;
     padding: 0;
@@ -74,5 +65,8 @@
 }
 .divBreaker {
     width: 100%;
-    clear: p;
+    clear: both;
+}
+.rowWidth {
+    width: 100%;
 }

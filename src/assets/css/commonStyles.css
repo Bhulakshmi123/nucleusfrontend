@@ -8,17 +8,18 @@
     src: url(../web-fonts/Gilroy-Medium.woff);
 }
 
-body {
+body, .modal-title{
     font-family: GilroyBold !important;
-}
-
-* {
-    font-family: GilroyBold;
 }
 .stickyNavbar {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+.modal-header {
+    background-color: #0469D9;
+    color: white;
+    border-radius: 4px 4px 0px 0px;
 }
 .nbSpan {
     margin-right: 5px;

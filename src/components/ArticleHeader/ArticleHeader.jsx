@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
-import { Modal, Button } from 'react-bootstrap';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -25,7 +25,7 @@ class ArticleHeader extends Component {
                 <div className="articleHeader">
                     <div className="headerTitle"><p>{this.props.heading}</p></div>
                     <div className="headerButton">
-                        <Button variant="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
+                        <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
                 <div className="articleHeader2">
@@ -38,15 +38,11 @@ class ArticleHeader extends Component {
                         <Modal.Title>Add New Project</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <h4>Text in a modal</h4>
-                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                        <h4>Popover in a modal</h4>
-                        <hr />
+                        Hello, i'm Modal Body
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="danger" onClick={this.closeModalHandler}>Close</Button>
-                        <Button variant="primary">Primary</Button>
-                        <Button variant="info">Info</Button>
+                        <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
+                        <Button bsStyle="primary" onClick={this.closeModalHandler}>Add Project</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './BusinessMCard.css';
-import { Button } from 'react-bootstrap';
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-
-
 class BusinessMCard extends Component {
-    nameFunction(props) {
+    nameFunction = (props) => {
         let html = [];
         let data = this.props.data;
         for (let x in data) {
@@ -17,31 +15,33 @@ class BusinessMCard extends Component {
             for (let y in data[x]) {
                 html.push(
                     <div key={data[x][y].projectId} className="project">
-                        <div className="projectDetails">
-                            <div className="projectName">{data[x][y].projectName}</div>
-                            <div className="projectLocation"><i className="fas fa-map-marked-alt nbSpan"></i>{data[x][y].projectLocation}</div>
-                        </div>
-                        <div className="projectContactDetails">
-                            <div className="projectPointOfContact"><i className="fas fa-user-alt nbSpan"></i>{data[x][y].projectPointOfContact}</div>
-                            <div className="projectpocNo"><i className="fas fa-phone-square nbSpan"></i>{data[x][y].pocNo}</div>
-                        </div>
-                        <div className="typeOfService">
-                            <div>{data[x][y].typeOfService}</div>
-                        </div>
-                        <div className="equipmentCount">
-                            <div>{data[x][y].equipmentCount}</div>
-                            <p>Equipment</p>
-                        </div>
+                        <Row className="rowWidth">
+                            <Col lg={6}>
+                                <div className="projectName">{data[x][y].projectName}</div>
+                                <div className="projectLocation"><i className="fas fa-map-marked-alt nbSpan"></i>{data[x][y].projectLocation}</div>
+                            </Col>
+                            <Col lg={3}>
+                                <div className="projectPointOfContact"><i className="fas fa-user-alt nbSpan"></i>{data[x][y].projectPointOfContact}</div>
+                                <div className="projectpocNo"><i className="fas fa-phone-square nbSpan"></i>{data[x][y].pocNo}</div>
+                            </Col>
+                            <Col lg={2}>
+                                <div className="typeOfService">{data[x][y].typeOfService}</div>
+                            </Col>
+                            <Col lg={1}>
+                                <div className="equipmentCount">{data[x][y].equipmentCount}</div>
+                                <p className="equipmentCountParagraph">Equipment</p>
+                            </Col>
+                        </Row>
                     </div>
                 );
             }
-            html.push(<div className="divBreaker" key={Math.random() * Math.random()}></div>)
+            html.push(<Row className="divBreaker" key={Math.random() * Math.random()}></Row>)
         }
         return html;
     }
     render() {
         return (
-            <div className="businessCard">{this.nameFunction()}</div>
+            <Grid>{this.nameFunction()}</Grid>
         )
     }
 }
