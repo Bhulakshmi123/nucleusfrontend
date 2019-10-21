@@ -5,8 +5,6 @@
 }
 .headerTitle{
     width: 80%;
-    /* background-color: red; */
-    /* padding-left: 2%; */
     font-size: 2rem;
     color:black;
 }
@@ -21,19 +19,7 @@
 }
 .headerButton > button {
     margin:auto;
-    /* width: 100%; */
-    /* background-color: #124067; */
-    /* color: white; */
-    border:none;
     float:right;
-}
-.headerButton > button:hover {
-    margin:auto;
-    /* width: 100%; */
-    /* background-color: white;
-    color:#124067;
-    border:none;
-    border: 2px solid #124067; */
 }
 .articleHeader2 {
     width: 90%;
