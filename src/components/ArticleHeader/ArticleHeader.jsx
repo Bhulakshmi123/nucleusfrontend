@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
+import '../Modal/Modal.css';
 import { Modal, Button } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
+import InputName from '../FormFields/SelectInput';
 import FileInput from '../FormFields/FileInput';
+// import CalenderInput from '../FormFields/CalenderInput'
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -38,26 +41,23 @@ class ArticleHeader extends Component {
                 </div>
                 <Modal show={this.state.isShowing} onHide={this.closeModalHandler}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Add New Project</Modal.Title>
+                        <Modal.Title>Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                        <div class="row">
                            <div class="col-md-6">
-                               <TextInput name="Hello"/>
+                               <TextInput name="Price"/>
                            </div>
                            <div class="col-md-6">
-                           <SelectInput></SelectInput>
+                           <SelectInput name="Duration" />
                            </div>
                        </div>
                        <div className="row">
                            <div className="col-md-6">
                            <FileInput></FileInput>
+                           {/* <CalenderInput/> */}
                            </div>
                        </div>
-                        
-                        
-                       
-      
                     </Modal.Body>
                     <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>

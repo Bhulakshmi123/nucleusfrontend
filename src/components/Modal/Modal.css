@@ -1,0 +1,136 @@
+/* .modal-wrapper {
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    margin: auto;
+    transition: all .8s;
+    width: 40%;
+    border-radius: 5px;
+    position: absolute;
+    top: 15vh;
+    margin: auto;
+    left: 25vw;
+}
+
+.modal-header {
+    background: #1C72E5;
+    line-height: 40px;
+    padding: 5px 20px;
+    text-align: right;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+}
+
+.modal-header:first-child {
+    text-align: center;
+    width: 100%;
+}
+
+.modal-header h3 {
+    color: white;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-body {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.modal-footer {
+    border: none;
+    padding: 1%;
+}
+
+.modal-footer>button {
+    margin: auto !important;
+}
+
+.modal-footer>button:hover {
+    background-color: white !important;
+    color: #3472F7 !important;
+}
+
+.close-modal-btn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    margin: 0;
+}
+
+.modalName {
+    width: 90%;
+    text-align: left;
+    color: white;
+}
+
+.modalClose {
+    width: 10%;
+    text-align: right;
+    color: white;
+}
+
+.modalClose:hover {
+    color: orange;
+}
+
+.close-modal-btn:hover {
+    color: white;
+} */
+
+.back-drop {
+    background-color: rgba(48, 49, 48, 0.42);
+    height: 100%;
+    position: fixed;
+    transition: all 1.3s;
+    width: 100%;
+}
+
+.form-modal {
+    font-size: 17px !important;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #252525 !important;
+    font-family: 'Heebo', sans-serif !important;
+    height: 39px;
+}
+
+.form-modal .form-control {
+    border-radius: 3px;
+    border: solid 1px rgba(37, 37, 37, 0.3);
+}
+
+.form-modal input {
+    padding-left: 10px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-modal label {
+    font-size: 15px;
+    color: rgba(37, 37, 37, 0.7);
+    padding-left: 10px;
+    margin-right: 10px;
+}
