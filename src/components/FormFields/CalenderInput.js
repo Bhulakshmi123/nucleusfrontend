@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import DateTimeField from "react-bootstrap-datetimepicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 class CalenderInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: "1990-06-05",
-            format: "YYYY-MM-DD",
-            inputFormat: "DD/MM/YYYY",
-            mode: "date"
-        };
-    }
-
-    handleChange = (newDate) => {
-        console.log("newDate", newDate);
-        return this.setState({ date: newDate });
-    }
-
-    render() {
-        const { date, format, mode, inputFormat } = this.state;
-        return <DateTimeField
-        dateTime = { date }
-        format = { format }
-        viewMode = { mode }
-        inputFormat = { inputFormat }
-        onChange = { this.handleChange }
-        />;
-    }
+    state = {
+        startDate: new Date()
+      };
+     
+      handleChange = date => {
+        this.setState({
+          startDate: date
+        });
+      };
+     
+      render() {
+        return (
+        <div className="form-modal"  style={{width:"100%"}}>
+          <DatePicker className="form-control"
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+          />
+          </div>
+        );
+      }
 }
 export default CalenderInput;

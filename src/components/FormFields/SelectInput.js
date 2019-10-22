@@ -22,7 +22,7 @@ const options = [
 const { colors } = defaultTheme;
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
+  control: provided => ({ ...provided, minWidth: 219, margin: 8 }),
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 

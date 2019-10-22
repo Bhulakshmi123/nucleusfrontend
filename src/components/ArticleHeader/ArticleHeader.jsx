@@ -7,7 +7,7 @@ import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import InputName from '../FormFields/SelectInput';
 import FileInput from '../FormFields/FileInput';
-// import CalenderInput from '../FormFields/CalenderInput'
+import CalenderInput from '../FormFields/CalenderInput'
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -49,8 +49,7 @@ class ArticleHeader extends Component {
                        </div>
                        <div className="row">
                            <div className="col-md-6">
-                           <FileInput></FileInput>
-                           {/* <CalenderInput/> */}
+                           <CalenderInput/>
                            </div>
                        </div>
                     </Modal.Body>

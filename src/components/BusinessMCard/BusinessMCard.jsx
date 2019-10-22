@@ -18,18 +18,18 @@ class BusinessMCard extends Component {
                 html.push(
                     <div key={data[x][y].projectId} className="project">
                         <Row className="rowWidth">
-                            <Col lg={5}>
+                            <Col md={5}>
                                 <div className="projectName">{data[x][y].projectName}</div>
                                 <div className="projectLocation"><i className="fas fa-map-marked-alt nbSpan"></i>{data[x][y].projectLocation}</div>
                             </Col>
-                            <Col lg={3}>
+                            <Col md={3}>
                                 <div className="projectPointOfContact"><i className="fas fa-user-alt nbSpan"></i>{data[x][y].projectPointOfContact}</div>
                                 <div className="projectpocNo"><i className="fas fa-phone-square nbSpan"></i>{data[x][y].pocNo}</div>
                             </Col>
-                            <Col lg={2}>
+                            <Col md={2}>
                                 <div className="typeOfService">{data[x][y].typeOfService}</div>
                             </Col>
-                            <Col lg={2}>
+                            <Col md={2}>
                                 <div className="equipmentCount">{data[x][y].equipmentCount}</div>
                                 <p className="equipmentCountParagraph">Equipment</p>
                             </Col>
