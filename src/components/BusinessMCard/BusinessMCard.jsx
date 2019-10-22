@@ -44,27 +44,27 @@ class BusinessMCard extends Component {
     render() {
         if (this.props.qwerty === 'New') {
             return (
-                <Grid>{this.nameFunction()}</Grid>
+                <Grid className="customContainer">{this.nameFunction()}</Grid>
             )
         }
         if (this.props.qwerty === 'Active') {
             return (
-                <Grid>{this.nameFunction()}</Grid>
+                <Grid className="customContainer">{this.nameFunction()}</Grid>
             )
         }
         if (this.props.qwerty === 'Pending') {
             return (
-                <Grid>{this.nameFunction()}</Grid>
+                <Grid className="customContainer">{this.nameFunction()}</Grid>
             )
         }
         if (this.props.qwerty === 'Rejected') {
             return (
-                <Grid>{this.nameFunction()}</Grid>
+                <Grid className="customContainer">{this.nameFunction()}</Grid>
             )
         }
         else {
             return (
-                <Grid>{this.nameFunction()}</Grid>
+                <Grid className="customContainer">{this.nameFunction()}</Grid>
             )
         }
 
