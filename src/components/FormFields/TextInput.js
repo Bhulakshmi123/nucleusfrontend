@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FileInput = props => {
+const TextInput = props => {
     return(
         <div className="form-modal">
             <label>{props.name}</label>
@@ -9,4 +9,4 @@ const FileInput = props => {
     );
 
 }
-export default FileInput;
+export default TextInput;
