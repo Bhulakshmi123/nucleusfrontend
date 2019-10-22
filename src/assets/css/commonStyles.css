@@ -21,6 +21,30 @@ body, .modal-title{
     color: white;
     border-radius: 4px 4px 0px 0px;
 }
+.color > a {
+    color: black;
+    font-family: GilroyBold;
+}
 .nbSpan {
     margin-right: 5px;
+}
+
+.textCenter {
+    text-align: center;
+}
+.testRow > div {
+    margin: auto;
+    width: 40%;
+    display: flex;
+    /* padding: 1%; */
+}
+.navStyle {
+    width: 25%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1%;
+    margin: 2%;
+}
+.btn-modify {
+    
 }
