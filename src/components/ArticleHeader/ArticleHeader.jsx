@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
-import TabSystem from '../../components/TabSystem/TabSystem'
+
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -29,12 +29,6 @@ class ArticleHeader extends Component {
                         <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
                 </div>
-                {/* <div className="articleHeader2">
-                    <div className="name">{this.props.typeName}</div>
-                    <div className="activeN">{this.props.typeStatus}</div>
-                    <div className="searchBar"><input type="search" placeholder="Search Here"></input></div>
-                </div> */}
-                <TabSystem></TabSystem>
                 <Modal show={this.state.isShowing} onHide={this.closeModalHandler}>
                     <Modal.Header closeButton>
                         <Modal.Title>Add New Project</Modal.Title>

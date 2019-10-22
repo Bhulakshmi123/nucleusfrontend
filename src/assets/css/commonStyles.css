@@ -44,5 +44,7 @@ body, .modal-title{
     font-size: 1.5rem;
     padding: 1%;
     margin: 2%;
-    border: 1px solid red;
+}
+.btn-modify {
+    
 }
