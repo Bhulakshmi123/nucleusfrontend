@@ -22,7 +22,7 @@ const options = [
 const { colors } = defaultTheme;
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
+  control: provided => ({ ...provided, minWidth: 219, margin: 8 }),
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 
@@ -38,15 +38,18 @@ class SelectInput extends Component {
   render() {
     const { isOpen, value } = this.state;
     return (
+      <div>
+    <InputName name={this.props.name}/>
       <Dropdown
         isOpen={isOpen}
         onClose={this.toggleOpen}
         target={
           <Button
+          style={{width:'100%',height:'34px',padding: '6px 16px !important','margin-top':"-19px"}}
             onClick={this.toggleOpen}
             isSelected={isOpen}
           >
-            {value ? `State: ${value.label}` : 'Select a State'}
+            {value ? ` ${value.label}` : 'Select a State'}
           </Button>
         }
       >
@@ -66,6 +69,7 @@ class SelectInput extends Component {
           value={value}
         />
       </Dropdown>
+      </div>
     );
   }
 }
@@ -81,11 +85,19 @@ const Menu = props => {
         borderRadius: 4,
         boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
         marginTop: 8,
+        padding: '6px 16px !important',
         position: 'absolute',
         zIndex: 2,
       }}
       {...props}
     />
+  );
+};
+const InputName = props => {
+  return(
+      <div className="form-modal">
+          <label>{props.name}</label>
+      </div>
   );
 };
 const Blanket = props => (
