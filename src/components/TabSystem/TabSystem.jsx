@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css'
-import { Button, Grid, Row, Col, FormControl } from 'react-bootstrap';
+import { Grid, Row, Col} from 'react-bootstrap';
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard'
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData'
 class TabSystem extends Component {
@@ -15,19 +15,18 @@ class TabSystem extends Component {
         this.setState({ value: e.target.value });
         if (e.target.value === 'New') {
             this.setState({ dataset: newProjects })
-            console.log(this.state.dataset);
         }
         if (e.target.value === 'Active') {
             this.setState({ dataset: activeProjects })
-            console.log(this.state.dataset);
         }
         if (e.target.value === 'Pending') {
             this.setState({ dataset: pendingProjects })
-            console.log(this.state.dataset);
         }
         if (e.target.value === 'Rejected') {
             this.setState({ dataset: rejectedProjects })
-            console.log(this.state.dataset);
+        }
+        if (e.target.value === 'All') {
+            this.setState({ dataset: allProjects })
         }
         // return e.target.value;
     }
@@ -38,6 +37,9 @@ class TabSystem extends Component {
                     <Row>
                         <Col md={12} className="testRow">
                             <div>
+                                <div className="navStyle">
+                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-info" value="All" onClick={this.getLinkClicked}></input>
+                                </div>
                                 <div className="navStyle">
                                     <input type="button" className="btn-modify btn btn-sm btn-block btn-primary" value="New" onClick={this.getLinkClicked}></input>
                                 </div>

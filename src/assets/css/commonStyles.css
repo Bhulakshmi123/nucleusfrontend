@@ -32,9 +32,13 @@ body, .modal-title{
 .textCenter {
     text-align: center;
 }
+.testRow {
+    margin-top: -2%;
+    margin-bottom: 1%;
+}
 .testRow > div {
     margin: auto;
-    width: 40%;
+    width: 50%;
     display: flex;
     /* padding: 1%; */
 }
@@ -46,5 +50,8 @@ body, .modal-title{
     margin: 2%;
 }
 .btn-modify {
-    
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
 }

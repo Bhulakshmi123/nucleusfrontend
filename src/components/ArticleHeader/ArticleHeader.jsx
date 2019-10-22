@@ -36,11 +36,11 @@ class ArticleHeader extends Component {
                         <Modal.Title>Add New Project</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                       <div class="row">
-                           <div class="col-md-6">
+                       <div className="row">
+                           <div className="col-md-6">
                                <TextInput name="Hello"/>
                            </div>
-                           <div class="col-md-6">
+                           <div className="col-md-6">
                            <SelectInput></SelectInput>
                            </div>
                        </div>
@@ -49,10 +49,6 @@ class ArticleHeader extends Component {
                            <FileInput></FileInput>
                            </div>
                        </div>
-                        
-                        
-                       
-      
                     </Modal.Body>
                     <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
