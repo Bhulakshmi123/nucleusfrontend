@@ -38,19 +38,19 @@ class TabSystem extends Component {
                         <Col md={12} className="testRow">
                             <div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-info" value="All" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className="btn-modify btn btn-block btn-info" value="All" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-primary" value="New" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className="btn-modify btn btn-block btn-primary" value="New" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-success" value="Active" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className="btn-modify btn btn-block btn-success" value="Active" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-warning" value="Pending" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className="btn-modify btn btn-block btn-warning" value="Pending" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-sm btn-block btn-danger" value="Rejected" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className="btn-modify btn btn-block btn-danger" value="Rejected" onClick={this.getLinkClicked}></input>
                                 </div>
                             </div>
                         </Col>
