@@ -22,7 +22,7 @@ const options = [
 const { colors } = defaultTheme;
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
+  control: provided => ({ ...provided, minWidth: 219, margin: 8 }),
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 
@@ -39,36 +39,36 @@ class SelectInput extends Component {
     const { isOpen, value } = this.state;
     return (
       <div>
-        <InputName name={this.props.name} />
-        <Dropdown
-          isOpen={isOpen}
-          onClose={this.toggleOpen}
-          target={
-            <Button
-              style={{ width: '100%', height: '34px', padding: '6px 16px !important', 'marginTop': "-19px" }}
-              onClick={this.toggleOpen}
-              isSelected={isOpen}
-            >
-              {value ? ` ${value.label}` : 'Select a State'}
-            </Button>
-          }
-        >
-          <Select
-            autoFocus
-            backspaceRemovesValue={false}
-            components={{ DropdownIndicator, IndicatorSeparator: null }}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isClearable={false}
-            menuIsOpen
-            onChange={this.onSelectChange}
-            options={options}
-            placeholder="Search..."
-            styles={selectStyles}
-            tabSelectsValue={false}
-            value={value}
-          />
-        </Dropdown>
+    <InputName name={this.props.name}/>
+      <Dropdown
+        isOpen={isOpen}
+        onClose={this.toggleOpen}
+        target={
+          <Button
+          style={{width:'100%',height:'34px',padding: '6px 16px !important'}}
+            onClick={this.toggleOpen}
+            isSelected={isOpen}
+          >
+            {value ? ` ${value.label}` : 'Select Project'}
+          </Button>
+        }
+      >
+        <Select
+          autoFocus
+          backspaceRemovesValue={false}
+          components={{ DropdownIndicator, IndicatorSeparator: null }}
+          controlShouldRenderValue={false}
+          hideSelectedOptions={false}
+          isClearable={false}
+          menuIsOpen
+          onChange={this.onSelectChange}
+          options={options}
+          placeholder="Search..."
+          styles={selectStyles}
+          tabSelectsValue={false}
+          value={value}
+        />
+      </Dropdown>
       </div>
     );
   }
