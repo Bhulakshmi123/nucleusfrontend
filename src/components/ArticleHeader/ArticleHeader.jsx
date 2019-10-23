@@ -39,20 +39,20 @@ class ArticleHeader extends Component {
                         <Modal.Title>Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                       <div className="row">
-                           <div className="col-md-6">
-                               <TextInput name="Price"/>
-                           </div>
-                           <div className="col-md-6">
-                           <SelectInput name="Duration" />
-                           </div>
-                       </div>
-                       <div className="row">
-                           <div className="col-md-6">
-                           <FileInput></FileInput>
-                           {/* <CalenderInput/> */}
-                           </div>
-                       </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <TextInput name="Price" />
+                            </div>
+                            <div className="col-md-6">
+                                <SelectInput name="Duration" />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <FileInput></FileInput>
+                                {/* <CalenderInput/> */}
+                            </div>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>

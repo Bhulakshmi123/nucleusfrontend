@@ -80,3 +80,7 @@ body, .modal-title{
       color: white !important;
       border-radius: 3px;
   }
+  a {
+    color: #1DC7EA;
+    font-family: GilroyBold !important;
+}
