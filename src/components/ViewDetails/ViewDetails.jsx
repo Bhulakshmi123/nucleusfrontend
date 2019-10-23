@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import SideArticle from '../../components/SideArticle/SideArticle'
 class ViewDetails extends Component {
+    constructor(props) {
+        super(props)
+        let url = window.location.href.split('/')
+        this.state = {
+            unqId: url[url.length - 1]
+        };
+    }
     render() {
         return (
             <div>
-                <div>
-                    <h1>It Works</h1>
-                </div>
+                <SideArticle id={this.state.unqId}></SideArticle>
             </div>
         )
     }

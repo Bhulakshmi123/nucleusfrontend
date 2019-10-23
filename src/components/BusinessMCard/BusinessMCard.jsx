@@ -18,9 +18,9 @@ class BusinessMCard extends Component {
             )
             for (let y in data[x]) {
                 html.push(
-                    <div>
+                    <div key={data[x][y].projectId} >
                         <Link to={`/business/view/${data[x][y].projectId}`}>
-                            <div key={data[x][y].projectId} className="project">
+                            <div className="project">
                                 <Row className="rowWidth">
                                     <Col lg={5}>
                                         <div className="projectName">{data[x][y].projectName}</div>

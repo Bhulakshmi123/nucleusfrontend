@@ -1,0 +1,19 @@
+.Sidebar {
+    color: white;
+    background-color: #154C79;
+    height: 100vh;
+}
+.Sidebar > * {
+    font-family: GilroyBold;
+}
+.cardForm {
+    background-color: pink;
+    height: 100vh;
+}
+.cardForm2 {
+    background-color: chartreuse;
+    height: 100vh;
+}
+.modifiedContainer {
+    width: 100%;
+}
