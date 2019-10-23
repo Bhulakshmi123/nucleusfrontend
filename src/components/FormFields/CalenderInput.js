@@ -15,13 +15,23 @@ class CalenderInput extends Component {
      
       render() {
         return (
-        <div className="form-modal"  style={{width:"100%"}}>
-          <DatePicker className="form-control"
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-          />
+          <div>
+            <CalName name={this.props.name}/>
+            <div className="form-modal"  style={{width:"100%"}}>
+              <DatePicker className="form-control"
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+              />
+            </div>
           </div>
         );
       }
 }
+const CalName = props => {
+  return(
+      <div className="form-modal">
+          <label>{props.name}</label>
+      </div>
+  );
+};
 export default CalenderInput;

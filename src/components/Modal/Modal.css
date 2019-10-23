@@ -97,7 +97,7 @@
     text-align: left;
     color: #252525 !important;
     font-family: 'Heebo', sans-serif !important;
-    height: 39px;
+    /* height: 39px; */
 }
 
 .form-modal .form-control {
@@ -140,4 +140,17 @@
     padding: 0;
     border: 0;
     width: 100% !important;
+}
+
+input[name="pe_shift"],
+input[name="e_pe_shift"] {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    position: relative;
+    top: 8px;
+}
+
+.custom-modal {
+    width: 90%;
 }

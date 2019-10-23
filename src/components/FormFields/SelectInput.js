@@ -45,11 +45,11 @@ class SelectInput extends Component {
         onClose={this.toggleOpen}
         target={
           <Button
-          style={{width:'100%',height:'34px',padding: '6px 16px !important','margin-top':"-19px"}}
+          style={{width:'100%',height:'34px',padding: '6px 16px !important'}}
             onClick={this.toggleOpen}
             isSelected={isOpen}
           >
-            {value ? ` ${value.label}` : 'Select a State'}
+            {value ? ` ${value.label}` : 'Select Project'}
           </Button>
         }
       >
