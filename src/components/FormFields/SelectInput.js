@@ -10,13 +10,13 @@ import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 
 const options = [
-  {value: '1', label: 'Item 1'},
-  {value: '2', label: 'Item 2'},
-  {value: '3', label: 'Item 3'},
-  {value: '4', label: 'Item 4'},
-  {value: '5', label: 'Item 5'},
-  {value: '6', label: 'Item 6'},
-  {value: '7', label: 'Item 7'},
+  { value: '1', label: 'Item 1' },
+  { value: '2', label: 'Item 2' },
+  { value: '3', label: 'Item 3' },
+  { value: '4', label: 'Item 4' },
+  { value: '5', label: 'Item 5' },
+  { value: '6', label: 'Item 6' },
+  { value: '7', label: 'Item 7' },
 ]
 
 const { colors } = defaultTheme;
@@ -96,10 +96,10 @@ const Menu = props => {
   );
 };
 const InputName = props => {
-  return(
-      <div className="form-modal">
-          <label>{props.name}</label>
-      </div>
+  return (
+    <div className="form-modal">
+      <label>{props.name}</label>
+    </div>
   );
 };
 const Placeholder = props => {
