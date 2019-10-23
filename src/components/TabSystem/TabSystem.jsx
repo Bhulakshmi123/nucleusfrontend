@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css'
-import { Grid, Row, Col} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard'
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData'
 class TabSystem extends Component {
@@ -14,7 +14,7 @@ class TabSystem extends Component {
     getLinkClicked = (e) => {
         this.setState({ value: e.target.value });
         if (e.target.value === 'New') {
-            this.setState({ dataset: newProjects })
+            this.setState({ dataset: newProjects})
         }
         if (e.target.value === 'Active') {
             this.setState({ dataset: activeProjects })
@@ -28,7 +28,7 @@ class TabSystem extends Component {
         if (e.target.value === 'All') {
             this.setState({ dataset: allProjects })
         }
-        // return e.target.value;
+        return e.target.value;
     }
     render() {
         return (
@@ -38,19 +38,19 @@ class TabSystem extends Component {
                         <Col md={12} className="testRow">
                             <div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-block btn-info" value="All" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className= {`btn-modify btn btn-block  ${this.state.value === 'All' ? 'addActive':' '}`} value="All" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-block btn-primary" value="New" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'New' ? 'addActive':' '}`} value="New" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-block btn-success" value="Active" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Active' ? 'addActive':' '}`} value="Active" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-block btn-warning" value="Pending" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Pending' ? 'addActive':' '}`} value="Pending" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className="btn-modify btn btn-block btn-danger" value="Rejected" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Rejected' ? 'addActive':' '}`} value="Rejected" onClick={this.getLinkClicked}></input>
                                 </div>
                             </div>
                         </Col>

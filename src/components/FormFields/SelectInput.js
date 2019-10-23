@@ -10,13 +10,13 @@ import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 
 const options = [
-  {value: '1', label: 'Item 1'},
-  {value: '2', label: 'Item 2'},
-  {value: '3', label: 'Item 3'},
-  {value: '4', label: 'Item 4'},
-  {value: '5', label: 'Item 5'},
-  {value: '6', label: 'Item 6'},
-  {value: '7', label: 'Item 7'},
+  { value: '1', label: 'Item 1' },
+  { value: '2', label: 'Item 2' },
+  { value: '3', label: 'Item 3' },
+  { value: '4', label: 'Item 4' },
+  { value: '5', label: 'Item 5' },
+  { value: '6', label: 'Item 6' },
+  { value: '7', label: 'Item 7' },
 ]
 
 const { colors } = defaultTheme;
@@ -39,36 +39,36 @@ class SelectInput extends Component {
     const { isOpen, value } = this.state;
     return (
       <div>
-    <InputName name={this.props.name}/>
-      <Dropdown
-        isOpen={isOpen}
-        onClose={this.toggleOpen}
-        target={
-          <Button
-          style={{width:'100%',height:'34px',padding: '6px 16px !important','margin-top':"-19px"}}
-            onClick={this.toggleOpen}
-            isSelected={isOpen}
-          >
-            {value ? ` ${value.label}` : 'Select a State'}
-          </Button>
-        }
-      >
-        <Select
-          autoFocus
-          backspaceRemovesValue={false}
-          components={{ DropdownIndicator, IndicatorSeparator: null }}
-          controlShouldRenderValue={false}
-          hideSelectedOptions={false}
-          isClearable={false}
-          menuIsOpen
-          onChange={this.onSelectChange}
-          options={options}
-          placeholder="Search..."
-          styles={selectStyles}
-          tabSelectsValue={false}
-          value={value}
-        />
-      </Dropdown>
+        <InputName name={this.props.name} />
+        <Dropdown
+          isOpen={isOpen}
+          onClose={this.toggleOpen}
+          target={
+            <Button
+              style={{ width: '100%', height: '34px', padding: '6px 16px !important', 'marginTop': "-19px" }}
+              onClick={this.toggleOpen}
+              isSelected={isOpen}
+            >
+              {value ? ` ${value.label}` : 'Select a State'}
+            </Button>
+          }
+        >
+          <Select
+            autoFocus
+            backspaceRemovesValue={false}
+            components={{ DropdownIndicator, IndicatorSeparator: null }}
+            controlShouldRenderValue={false}
+            hideSelectedOptions={false}
+            isClearable={false}
+            menuIsOpen
+            onChange={this.onSelectChange}
+            options={options}
+            placeholder="Search..."
+            styles={selectStyles}
+            tabSelectsValue={false}
+            value={value}
+          />
+        </Dropdown>
       </div>
     );
   }
@@ -94,10 +94,10 @@ const Menu = props => {
   );
 };
 const InputName = props => {
-  return(
-      <div className="form-modal">
-          <label>{props.name}</label>
-      </div>
+  return (
+    <div className="form-modal">
+      <label>{props.name}</label>
+    </div>
   );
 };
 const Blanket = props => (

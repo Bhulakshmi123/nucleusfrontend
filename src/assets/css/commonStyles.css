@@ -54,6 +54,8 @@ body, .modal-title{
     border-left: 0px;
     border-right: 0px;
     border-radius: 0px;
+    border-bottom-color: #123F65;
+    color: #123F65;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -72,4 +74,9 @@ body, .modal-title{
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+  }
+  .addActive{
+      background-color: #123F65 !important;
+      color: white !important;
+      border-radius: 3px;
   }
