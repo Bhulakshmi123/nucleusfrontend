@@ -8,6 +8,7 @@ import SelectInput from '../FormFields/SelectInput';
 import InputName from '../FormFields/SelectInput';
 import FileInput from '../FormFields/FileInput';
 import CalenderInput from '../FormFields/CalenderInput'
+import AddFields from '../FormFields/AddFields';
 class ArticleHeader extends Component {
     constructor() {
         super();
@@ -25,6 +26,11 @@ class ArticleHeader extends Component {
             isShowing: false
         });
     }
+    openInputHandler = () => {
+        this.setState({
+            fieldsShow:true
+        })
+    }
     render() {
         return (
             <div>
@@ -40,32 +46,48 @@ class ArticleHeader extends Component {
                     </Modal.Header>
                     <Modal.Body>
                        <div className="row">
-                           <div className="col-md-6">
-                               <TextInput name="Price"/>
+                           <div className="col-md-3">
+                               <TextInput name="Phone No.*" placeholder="Phone No."/>
                            </div>
-                           <div className="col-md-6">
-                               <SelectInput name="Duration" />
+                           <div className="col-md-3">
+                                <CalenderInput name="Lead Date*" placeholder="Lead Date"/>
                            </div>
-                       </div>
-                       <div className="row">
-                           <div className="col-md-6">
-                                <CalenderInput name="Start Date"/>
+                           <div className="col-md-3">
+                               <TextInput name="Renter Name*"  placeholder="Renter Name"/>
                            </div>
-                           <div className="col-md-6">
-                                <SelectInput name="Transportation" />   
+                           <div className="col-md-3">
+                               <TextInput name="Renter Email"  placeholder="Renter Email"/>
                            </div>
                        </div>
-                       <div className="row">
-                           <div className="col-md-6">
-                               <div className="col-md-3">
-                                    
-                               </div>
+                       <div className="row martp">
+                           <div className="col-md-3 form-modal">
+                                <label>Lead Executive</label>
+                                <p className="renter_nm">ANVESH REDDY</p>
+                           </div>
+                           <div className="col-md-3">
+                               <TextInput name="Alternate Phone no." placeholder="Alternate Phone no."/>
+                           </div>
+                           <div className="col-md-3">
+                               <TextInput name="Company Name" placeholder="Company Name"/>
+                           </div>
+                           <div className="col-md-3">
+                               <TextInput name="Designation" placeholder="Designation"/>
                            </div>
                        </div>
+                       <div className="row martp">
+                           <div className="col-md-3">
+                             <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                           </div>
+                           <div className="col-md-3">
+                             <SelectInput name="Lead Source"  placeholder="Lead Source"/>  
+                           </div>
+                       </div>
+                       <AddFields show={this.state.fieldsShow}/>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
-                        <Button bsStyle="primary" onClick={this.closeModalHandler}>Add Project</Button>
+                        <Button bsStyle="primary" onClick={this.openInputHandler}>Add New</Button>
+                        
                     </Modal.Footer>
                 </Modal>
             </div>
