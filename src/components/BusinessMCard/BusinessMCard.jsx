@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-import { Route, Link, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, Link} from 'react-router-dom'
 import Business from '../../views/Business/index'
 class BusinessMCard extends Component {
     nameFunction = (props) => {

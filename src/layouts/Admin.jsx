@@ -86,7 +86,7 @@ class Admin extends Component {
       this.setState({ fixedClasses: "dropdown" });
     }
   };
-  
+
   componentDidUpdate(e) {
     if (
       window.innerWidth < 993 &&
@@ -105,7 +105,7 @@ class Admin extends Component {
     return (
       <div className="wrapper">
         <Sidebar {...this.props} routes={routes}
-        color={this.state.color}/>
+          color={this.state.color} />
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}
