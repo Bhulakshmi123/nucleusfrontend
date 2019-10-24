@@ -2,18 +2,71 @@
     color: white;
     background-color: #154C79;
     height: 100vh;
+    padding: 0;
+    overflow: auto;
 }
 .Sidebar > * {
     font-family: GilroyBold;
 }
 .cardForm {
-    background-color: pink;
+    background-color: lightgrey;
     height: 100vh;
 }
 .cardForm2 {
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
     height: 100vh;
 }
 .modifiedContainer {
     width: 100%;
+}
+.eqParent {
+    display: flex;
+    padding: 3% 5%;
+    /* border-bottom: 1px solid rgba(255,255,255,0.2); */
+}
+.eqParent:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.eqChild1 {
+    width: 80%;
+}
+.eqChild2 {
+    width: 20%;
+}
+.eqChild2 > div {
+    width: 100%;
+    text-align: center;
+    border: 2px solid white;
+    padding: 5%;
+    margin-top: 3%;
+}
+.eqChild11 {
+    font-size: 1.5rem;
+}
+.eqChild12 {
+    font-size: 1.0rem;
+    font-family: GilroyMedium;
+}
+.viewHeadingTitle {
+    padding: 1% 5%;
+    margin-bottom: -3%;
+    font-size: 1.4rem;
+    font-family: GilroyBold;
+    opacity: 0.8;
+}
+.viewHeading {
+    padding: 5%;
+    font-family: GilroyBold;
+    margin: 0;
+    font-size: 2.4rem;
+}
+.SearchComponent {
+    width: 90%;
+    margin: 5% auto;
+}
+hr.borderEffect {
+    margin: 0px;
+    width: 95%;
+    margin: auto;
+    border: 1px solid rgba(255,255,255,0.1) !important;
 }
