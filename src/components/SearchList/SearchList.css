@@ -1,0 +1,22 @@
+.searchGrand {
+    display: flex;
+    width: 100%;
+}
+.searchFath::placeholder {
+    color: white;
+}
+.searchFath {
+    padding: 3% !important;
+    width: 85% !important;
+    border: none !important;
+    background-color:rgba(255,255,255,0.2);
+    border-radius: 5px 0px 0px 5px;
+}
+.searchChil {
+    width: 15% !important;
+    text-align: center;
+    padding: 3% !important;
+    border: none !important;
+    background-color:rgba(255,255,255,0.2);
+    border-radius: 0px 5px 5px 0px;
+}

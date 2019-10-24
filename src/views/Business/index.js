@@ -5,7 +5,7 @@ import TabSystem from '../../components/TabSystem/TabSystem'
 import ViewDetails from '../../components/ViewDetails/ViewDetails'
 class Business extends Component {
   render() {
-    if (window.location.href == "http://localhost:3000/business") {
+    if (window.location.href === "http://localhost:3000/business") {
       return (
         <div>
           <ArticleHeader heading='Leads' buttonName='Add New' typeName="New" typeStatus="Active"></ArticleHeader>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SearchList from '../../components/SearchList/SearchList'
 import { Row, Col, Grid } from 'react-bootstrap'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
@@ -11,9 +12,19 @@ class SideArticle extends Component {
         let html = []
         console.log('IDData', idData.clientEquipmentDetails)
         for (let x in idData.clientEquipmentDetails) {
-            console.log(idData.clientEquipmentDetails[x]);
             html.push(
-                    <div className="retro">Hello</div>
+                <div key={idData.clientEquipmentDetails[x].equipmentId}>
+                    <div className="eqParent">
+                        <div className="eqChild1">
+                            <div className="eqChild11">{idData.clientEquipmentDetails[x].equipmentName}</div>
+                            <div className="eqChild12">{idData.clientEquipmentDetails[x].equipmentMake}</div>
+                        </div>
+                        <div className="eqChild2">
+                            <div>{idData.clientEquipmentDetails[x].equipmentCount}</div>
+                        </div>
+                    </div>
+                    <hr class="borderEffect"></hr>
+                </div>
             )
         }
 
@@ -26,8 +37,11 @@ class SideArticle extends Component {
                     <Row>
                         <Col lg={3} className="Sidebar">
                             <div className="SidebarLevel1">
-                                <h5>New Lead</h5>
-                                <h3>{this.getClientName()}</h3>
+                                <h5 className="viewHeadingTitle">New Lead</h5>
+                                <h3 className="viewHeading">{this.getClientName()}</h3>
+                                <div className="SearchComponent">
+                                    <SearchList></SearchList>
+                                </div>
                                 <div>{this.getEquipmentData()}</div>
                             </div>
                         </Col>
