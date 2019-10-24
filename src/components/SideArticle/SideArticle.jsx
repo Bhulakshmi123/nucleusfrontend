@@ -40,7 +40,7 @@ class SideArticle extends Component {
                                 <button className="btn-link backLink"><i className="far fa-arrow-alt-circle-left nbSpan"></i>back to Leads</button>
                                 <h5 className="viewHeadingTitle">New Lead</h5>
                                 <h3 className="viewHeading">{this.getClientName()}</h3>
-                                <Button bsStyle="primary" bsSize="small" className="btnLeft"><i class="far fa-edit nbSpan"></i>Edit</Button>
+                                <Button bsStyle="primary" bsSize="small" className="btnLeft"><i className="far fa-edit nbSpan"></i>Edit</Button>
                                 <div className="SearchComponent">
                                     <SearchList></SearchList>
                                 </div>
