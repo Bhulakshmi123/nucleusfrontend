@@ -152,5 +152,20 @@ input[name="e_pe_shift"] {
 }
 
 .custom-modal {
-    width: 90%;
+    width: 80%;
+}
+
+.renter_nm {
+    font-size: 18px;
+    color: #094b7d;
+    margin: 0;
+    padding-left: 11px;
+}
+
+.martp {
+    margin-top: 25px;
+}
+
+.red {
+    text-align: left !important;
 }

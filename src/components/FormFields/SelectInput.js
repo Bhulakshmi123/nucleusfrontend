@@ -45,11 +45,12 @@ class SelectInput extends Component {
         onClose={this.toggleOpen}
         target={
           <Button
+          className="red"
           style={{width:'100%',height:'34px',padding: '6px 16px !important'}}
             onClick={this.toggleOpen}
             isSelected={isOpen}
           >
-            {value ? ` ${value.label}` : 'Select Project'}
+            {value ? `${value.label}` : <Placeholder placeholder={this.props.placeholder}></Placeholder>}
           </Button>
         }
       >
@@ -87,6 +88,7 @@ const Menu = props => {
         marginTop: 8,
         padding: '6px 16px !important',
         position: 'absolute',
+        textAlign:'left',
         zIndex: 2,
       }}
       {...props}
@@ -98,6 +100,11 @@ const InputName = props => {
     <div className="form-modal">
       <label>{props.name}</label>
     </div>
+  );
+};
+const Placeholder = props => {
+  return(
+          <span>{props.placeholder}</span>
   );
 };
 const Blanket = props => (

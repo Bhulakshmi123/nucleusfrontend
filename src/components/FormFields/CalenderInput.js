@@ -21,6 +21,7 @@ class CalenderInput extends Component {
               <DatePicker className="form-control"
               selected={this.state.startDate}
               onChange={this.handleChange}
+              placeholder={this.props.placeholder}
               />
             </div>
           </div>
@@ -31,6 +32,7 @@ const CalName = props => {
   return(
       <div className="form-modal">
           <label>{props.name}</label>
+        <span>{props.placeholder}</span>
       </div>
   );
 };
