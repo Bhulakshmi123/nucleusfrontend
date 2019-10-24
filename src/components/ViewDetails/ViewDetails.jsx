@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import SideArticle from '../../components/SideArticle/SideArticle'
 class ViewDetails extends Component {
     constructor(props) {

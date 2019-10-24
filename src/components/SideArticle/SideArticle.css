@@ -22,7 +22,6 @@
 .eqParent {
     display: flex;
     padding: 3% 5%;
-    /* border-bottom: 1px solid rgba(255,255,255,0.2); */
 }
 .eqParent:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -69,4 +68,20 @@ hr.borderEffect {
     width: 95%;
     margin: auto;
     border: 1px solid rgba(255,255,255,0.1) !important;
+}
+.btnLeft {
+    margin-left: 5%;
+    color: white;
+    border: 2px solid white;
+    opacity: 1;
+}
+.backLink {
+    color: white;
+    margin-left: 5%;
+    margin-top: 5%;
+    text-decoration: underline;
+    padding: 0;
+}
+.backLink:hover {
+    color: white;
 }
