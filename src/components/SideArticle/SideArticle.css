@@ -104,3 +104,21 @@ hr.borderEffect {
 .backLink:hover {
     color: white;
 }
+.activeDiv {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.activeData {
+    /* background-color: red; */
+    height: 100vh;
+}
+.activeContainer {
+    width: 90%;
+    margin: auto;
+}
+.renterName {
+    margin-top: 5%;
+    opacity: 0.5;
+}
+a {
+    color: black;
+}
