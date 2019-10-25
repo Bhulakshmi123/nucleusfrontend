@@ -13,7 +13,8 @@ class ArticleHeader extends Component {
     constructor() {
         super();
         this.state = {
-            isShowing: false
+            isShowing: false,
+            isEquipmentinfo:false
         }
     }
     openModalHandler = () => {
@@ -28,7 +29,7 @@ class ArticleHeader extends Component {
     }
     openInputHandler = () => {
         this.setState({
-            fieldsShow:true
+            isEquipmentinfo:true
         })
     }
     render() {
@@ -82,12 +83,13 @@ class ArticleHeader extends Component {
                              <SelectInput name="Lead Source"  placeholder="Lead Source"/>  
                            </div>
                        </div>
-                       <AddFields show={this.state.fieldsShow}/>
+                       {
+                           this.state.isEquipmentinfo ? <AddFields /> : null
+                       }
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
-                        <Button bsStyle="primary" onClick={this.openInputHandler}>Add New</Button>
-                        
+                        {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
+                        <Button bsStyle="primary" onClick={this.openInputHandler} >Add New </Button>
                     </Modal.Footer>
                 </Modal>
             </div>

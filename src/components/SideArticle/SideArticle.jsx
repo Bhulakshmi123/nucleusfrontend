@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchList from '../../components/SearchList/SearchList'
-import { Row, Col, Grid, Button } from 'react-bootstrap'
+import { Row, Col, Grid } from 'react-bootstrap'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
 import MiddleArticle from '../../components/MiddleArticle/MiddleArticle'
@@ -33,7 +33,7 @@ class SideArticle extends Component {
                             <div>{idData.clientEquipmentDetails[x].equipmentCount}</div>
                         </div>
                     </div>
-                    <hr className="borderEffect"></hr>
+                    <hr class="borderEffect"></hr>
                 </div>
             )
         }
@@ -47,10 +47,8 @@ class SideArticle extends Component {
                     <Row>
                         <Col lg={3} className="Sidebar">
                             <div className="SidebarLevel1">
-                                <button className="btn-link backLink"><i className="far fa-arrow-alt-circle-left nbSpan"></i>back to Leads</button>
                                 <h5 className="viewHeadingTitle">New Lead</h5>
                                 <h3 className="viewHeading">{this.getClientName()}</h3>
-                                <Button bsStyle="primary" bsSize="small" className="btnLeft"><i className="far fa-edit nbSpan"></i>Edit</Button>
                                 <div className="SearchComponent">
                                     <SearchList></SearchList>
                                 </div>
