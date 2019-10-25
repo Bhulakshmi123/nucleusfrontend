@@ -83,14 +83,47 @@ class ArticleHeader extends Component {
                              <SelectInput name="Lead Source"  placeholder="Lead Source"/>  
                            </div>
                        </div>
+                       <div className="row">
+                           <div className="col-md-12">
+                                <Button className="AddBtn" bsStyle="primary" onClick={this.openInputHandler}>Add Equipment</Button>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <table className="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S. No.</th>
+                                            <th>Equipment Name</th>
+                                            <th>Make</th>
+                                            <th>Model</th>
+                                            <th>Year</th>
+                                            <th>edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    {/* <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Baby Roller</td>
+                                            <td>3DX</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><Button>Edit</Button></td>
+                                            <td><Button>Delete</Button></td>
+                                        </tr>
+                                    </tbody> */}
+                                </table> 
+                            </div>
+                        </div>
                        {
                            this.state.isEquipmentinfo ? <AddFields /> : null
                        }
                     </Modal.Body>
-                    <Modal.Footer>
-                        {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
+                    {/* <Modal.Footer>
+                        <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
                         <Button bsStyle="primary" onClick={this.openInputHandler} >Add New </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
             </div>
         )

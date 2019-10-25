@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button} from 'react-bootstrap';
+import { Button , Modal} from 'react-bootstrap';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import '../Modal/Modal.css';
@@ -14,102 +14,134 @@ const AddFields = props =>{
         <div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                    <SelectInput name="Equipment Type *" placeholder="Select Equipment Type"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                    <SelectInput name="Make" placeholder="Select Make"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Model" placeholder="Equipment Modal"/>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                    <SelectInput name="Minimum Year" placeholder="Select Minimum Year"></SelectInput>
                 </div>
             </div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Capacity" placeholder="Capacity of Equipment"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Job Location" placeholder="Location of Work"/>
                 </div>
                 <div className="col-md-3">
-                    <CalenderInput name="Company Name" placeholder="Company Name"/>
+                    <CalenderInput name="Expected Start Date*" placeholder="Expected Start Date"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="No. of months" placeholder="Duration of Work"/>
                 </div>
             </div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                    <SelectInput name="State" placeholder="Select State"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                    <SelectInput name="District / Known Area" placeholder="Select District or State"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Project Stage" placeholder="Stage of Project"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Operation hours per day" placeholder="Operation hours per day"/>
                 </div>
             </div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Operation days per month" placeholder="Operation days per month"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Qunatity" placeholder="Qunatity"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Operation hours per month" placeholder="Operation hours per month"/>
                 </div>
                 <div className="col-md-3">
-                    <TextInput name="Company Name" placeholder="Company Name"/>
+                    <TextInput name="Type of Work" placeholder="Type of Work"/>
                 </div>
             </div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <Checkbox name="Day"/>
-                    <Checkbox name="Night"/>
+                    <label>Shift Type</label>
+                    <div>
+                        <Checkbox name="Day"/>
+                        <Checkbox name="Night"/>
+                    </div>
                 </div>
                 <div className="col-md-3 form-modal">
-                    <Checkbox name="To"/>
-                    <Checkbox name="From"/>
+                    <label>Transportation</label>
+                    <div>
+                        <Checkbox name="To"/>
+                        <Checkbox name="From"/>
+                    </div>
                 </div>
                 <div className="col-md-3 radio-modal">
-                    <RadioInput name="Yes"/>
-                    <RadioInput name="No"/>
+                    <label>Accomodation</label>
+                    <div>
+                        <RadioInput name="Yes"/>
+                        <RadioInput name="No"/>
+                    </div>
                 </div>
                 <div className="col-md-3 radio-modal">
-                    <RadioInput name="Yes"/>
-                    <RadioInput name="No"/>
+                    <label>Food</label>
+                    <div>
+                        <RadioInput name="Yes"/>
+                        <RadioInput name="No"/>
+                    </div>
                 </div>
             </div>
             <div className="row martp">
                 <div className="col-md-3 radio-modal radio_left">
-                    <RadioInput name="Yes"/>
-                    <RadioInput name="No"/>
+                    <label>Operator Allowance</label>
+                    <div>
+                        <RadioInput name="Yes"/>
+                        <RadioInput name="No"/>
+                    </div>
                 </div>
                 <div className="col-md-3 radio-modal radio_left">
-                    <RadioInput name="Required"/>
-                    <RadioInput name="Not Required"/>
+                    <label>Vehicle Documents</label>
+                    <div>
+                        <RadioInput name="Required"/>
+                        <RadioInput name="Not Required"/>
+                    </div>
                 </div>
                 <div className="col-md-3 radio-modal">
-                    <RadioInput name="Required"/>
-                    <RadioInput name="Not Required"/>
+                    <label>Operator License</label>
+                    <div>
+                        <RadioInput name="Required"/>
+                        <RadioInput name="Not Required"/>
+                    </div>
                 </div>
                 <div className="col-md-3 radio-modal">
-                    <RadioInput name="Required"/>
-                    <RadioInput name="Not Required"/>
+                    <label>Safety Measures</label>
+                    <div>
+                        <RadioInput name="Required"/>
+                        <RadioInput name="Not Required"/>
+                    </div>
                 </div>
             </div>
-            <div className="col-md-12 martp row form-modal">
-                <TextArea name="Payment Terms" placeholder="Payment Terms"></TextArea>
+            <div className="martp row form-modal">
+                <div className="col-md-12">
+                    <TextArea name="Payment Terms" placeholder="Payment Terms"></TextArea>
+                </div>
             </div>
-            <div className="col-md-12 martp row form-modal">
-                <TextArea name="Remarks" placeholder="Any comments to go with the equipment"></TextArea>
+            <div className="martp row form-modal">
+                <div className="col-md-12">
+                    <TextArea name="Remarks" placeholder="Any comments to go with the equipment"></TextArea>
+                </div>
             </div>
+            <Modal.Footer>
+                        {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
+                        <Button bsStyle="primary">Add</Button>
+            </Modal.Footer>
         </div>
     );
 }
