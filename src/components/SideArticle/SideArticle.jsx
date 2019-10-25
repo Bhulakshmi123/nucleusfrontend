@@ -3,18 +3,28 @@ import SearchList from '../../components/SearchList/SearchList'
 import { Row, Col, Grid, Button } from 'react-bootstrap'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
+import MiddleArticle from '../../components/MiddleArticle/MiddleArticle'
 
 class SideArticle extends Component {
+    constructor(props) {
+        super();
+        this.state = {
+            selected: ''
+        }
+    }
+    getSelectedEquipment = (e) => {
+        this.setState({ selected: e.currentTarget.dataset.id });
+        console.log(e.currentTarget.dataset.id);
+    }
     getClientName = () => {
         return (idData.clientName)
     }
     getEquipmentData = () => {
         let html = []
-        console.log('IDData', idData.clientEquipmentDetails)
         for (let x in idData.clientEquipmentDetails) {
             html.push(
                 <div key={idData.clientEquipmentDetails[x].equipmentId}>
-                    <div className="eqParent">
+                    <div className="eqParent" onClick={this.getSelectedEquipment} data-id={idData.clientEquipmentDetails[x].equipmentId}>
                         <div className="eqChild1">
                             <div className="eqChild11">{idData.clientEquipmentDetails[x].equipmentName}</div>
                             <div className="eqChild12">{idData.clientEquipmentDetails[x].equipmentMake}</div>
@@ -47,7 +57,9 @@ class SideArticle extends Component {
                                 <div>{this.getEquipmentData()}</div>
                             </div>
                         </Col>
-                        <Col lg={5} className="cardForm"></Col>
+                        <Col lg={5} className="cardForm">
+                            <MiddleArticle formId={this.state.selected}></MiddleArticle>
+                        </Col>
                         <Col lg={4} className="cardForm2"></Col>
                     </Row>
                 </Grid>
