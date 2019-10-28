@@ -252,3 +252,14 @@ input[name="e_pe_shift"] {
 .radio_left {
     padding-left: 25px;
 }
+
+.AddBtn {
+    float: right;
+}
+
+.table>thead>tr>th {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    text-transform: capitalize;
+}
