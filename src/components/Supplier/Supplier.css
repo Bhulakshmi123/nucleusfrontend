@@ -1,0 +1,32 @@
+.cardPadding > hr {
+    margin: 2% 0;
+}
+.icon-fs {
+    font-size: 3.5rem;
+    opacity: 0.5;
+}
+.icon-fs2 {
+    font-size: 3rem;
+    margin-top: 10px;
+    /* opacity: 0.5; */
+    width: 100%;
+}
+.fontSize {
+    font-size: 1.1rem;
+}
+.lastIcon {
+    text-align: center !important;
+}
+.supplierClientName {
+    font-size: 1.7rem;
+    margin-top: 5px;
+}
+.supplierClientPhone {
+    font-size: 1.1rem;
+}
+.subCardHeading {
+    font-size: 1.2rem;
+}
+.subCardContext {
+    font-size: 1.1rem;
+}
