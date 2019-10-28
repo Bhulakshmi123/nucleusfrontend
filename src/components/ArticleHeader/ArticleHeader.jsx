@@ -9,14 +9,31 @@ import InputName from '../FormFields/SelectInput';
 import FileInput from '../FormFields/FileInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
+// import axios from 'axios';
+
 class ArticleHeader extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isShowing: false,
-            isEquipmentinfo:false
+            isEquipmentinfo:false,
+            fname: '',
         }
     }
+    handleChange = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        this.setState({
+             [e.target.name]: e.target.value
+             });
+      }
+
+      onSubmit = (e) => {
+        e.preventDefault();
+        const data = this.state
+        console.log("hi" ,data)
+      }
+
     openModalHandler = () => {
         this.setState({
             isShowing: true
@@ -33,6 +50,7 @@ class ArticleHeader extends Component {
         })
     }
     render() {
+        //const {fname} = this.state;
         return (
             <div>
                 <div className="articleHeader">
@@ -45,10 +63,17 @@ class ArticleHeader extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body >
+                        <form onSubmit={this.onSubmit}>
                        <div className="row">
                            <div className="col-md-3">
-                               <TextInput name="Phone No.*" placeholder="Phone No."/>
+                               <TextInput
+                                type="text"
+                                placeholder="Phone No."
+                                name="fname" 
+                                value={this.state.fname}
+                                onChange={this.handleChange}
+                                label="Phone No.*"/>
                            </div>
                            <div className="col-md-3">
                                 <CalenderInput name="Lead Date*" placeholder="Lead Date"/>
@@ -102,28 +127,34 @@ class ArticleHeader extends Component {
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    {/* <tbody>
+                                    <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Baby Roller</td>
-                                            <td>3DX</td>
+                                            <td>{this.state.fname}</td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td><Button>Edit</Button></td>
                                             <td><Button>Delete</Button></td>
                                         </tr>
-                                    </tbody> */}
+                                    </tbody>
                                 </table> 
                             </div>
                         </div>
                        {
                            this.state.isEquipmentinfo ? <AddFields /> : null
                        }
+                       <Button type="submit" bsStyle="danger">Submit</Button>
+                       </form>
+                       
                     </Modal.Body>
                     {/* <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
                         <Button bsStyle="primary" onClick={this.openInputHandler} >Add New </Button>
                     </Modal.Footer> */}
+                      <Modal.Footer>
+                       
+                    </Modal.Footer>
                 </Modal>
             </div>
         )
