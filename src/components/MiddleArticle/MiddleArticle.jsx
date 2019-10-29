@@ -8,4 +8,4 @@ class MiddleArticle extends Component {
         )
     }
 }
-export default MiddleArticle
+export default MiddleArticle;
