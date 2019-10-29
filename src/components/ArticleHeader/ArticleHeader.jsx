@@ -17,18 +17,26 @@ class ArticleHeader extends Component {
         this.state = {
             isShowing: false,
             isEquipmentinfo:false,
-            fname: '',
+            equipmentList : [],
+            equipmentCount : 0
         }
     }
     handleChange = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
-        this.setState({
-             [e.target.name]: e.target.value
-             });
+        let name = e.target.name;
+        let value = e.target.value;
+        console.log(name);
+        console.log(value);
+        let count = this.state.equipmentCount;
+        let equipmentList = this.state.equipmentList.slice();
+        let singleEquipment = equipmentList[count]
+        singleEquipment.name = value;
+        //this.setState(equipmentList);
+        console.log(this.state.equipmentList);
       }
 
       onSubmit = (e) => {
+
         e.preventDefault();
         const data = this.state
         console.log("hi" ,data)
@@ -76,13 +84,13 @@ class ArticleHeader extends Component {
                                 label="Phone No.*"/>
                            </div>
                            <div className="col-md-3">
-                                <CalenderInput name="Lead Date*" placeholder="Lead Date"/>
+                                <CalenderInput name="Lead Date*" label="Lead Date*" placeholder="Lead Date"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Renter Name*"  placeholder="Renter Name"/>
+                               <TextInput name="Renter Name*" label="Renter Name*"  placeholder="Renter Name"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Renter Email"  placeholder="Renter Email"/>
+                               <TextInput name="Renter Email" label="Renter Email"  placeholder="Renter Email"/>
                            </div>
                        </div>
                        <div className="row martp">
@@ -91,21 +99,21 @@ class ArticleHeader extends Component {
                                 <p className="renter_nm">ANVESH REDDY</p>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Alternate Phone no." placeholder="Alternate Phone no."/>
+                               <TextInput name="Alternate Phone no." label="Alternate Phone no." placeholder="Alternate Phone no."/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Company Name" placeholder="Company Name"/>
+                               <TextInput name="Company Name" label="Company Name" placeholder="Company Name"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Designation" placeholder="Designation"/>
+                               <TextInput name="Designation" label="Designation" placeholder="Designation"/>
                            </div>
                        </div>
                        <div className="row martp">
                            <div className="col-md-3">
-                             <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                             <SelectInput name="Lead Priority" label="Lead Priority" placeholder="Lead Priority"></SelectInput>
                            </div>
                            <div className="col-md-3">
-                             <SelectInput name="Lead Source"  placeholder="Lead Source"/>  
+                             <SelectInput name="Lead Source" label="Lead Source"  placeholder="Lead Source"/>  
                            </div>
                        </div>
                        <div className="row">
