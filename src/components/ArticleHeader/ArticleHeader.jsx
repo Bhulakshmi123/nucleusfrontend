@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
 import '../Modal/Modal.css';
-import { Modal, Button, Radio } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
-import InputName from '../FormFields/SelectInput';
-import FileInput from '../FormFields/FileInput';
+// import InputName from '../FormFields/SelectInput';
+// import FileInput from '../FormFields/FileInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 // import axios from 'axios';
@@ -43,19 +43,13 @@ class ArticleHeader extends Component {
       }
 
     openModalHandler = () => {
-        this.setState({
-            isShowing: true
-        });
+        this.setState({ isShowing: true });
     }
     closeModalHandler = () => {
-        this.setState({
-            isShowing: false
-        });
+        this.setState({ isShowing: false });
     }
     openInputHandler = () => {
-        this.setState({
-            isEquipmentinfo:true
-        })
+        this.setState({ isEquipmentinfo: true });
     }
     render() {
         //const {fname} = this.state;

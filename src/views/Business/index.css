@@ -1,0 +1,26 @@
+.NavStyles {
+    display: flex;
+    width:40%;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.NavStyles li {
+    list-style-type:none;
+    width: 100%;
+    text-align: center;
+}
+.NavStyles li a {
+    color: #13446D;
+    text-align:center;
+    display: block;
+    padding: 5%;
+}
+.activeLink {
+    color: #134460 !important;
+    /* background-color: #134460; */
+    border: 2px solid white ;
+    border-bottom-color: #13446D;
+    /* border-top-color: #13446D; */
+}

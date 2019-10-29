@@ -23,9 +23,9 @@ const dashboardRoutes = [
     component: Dashboard,
     layout: "/nucleus"
   },
-
+  
   {
-    path: "/business",
+    path: "/business/all",
     name: "Business",
     icon: "pe-7s-rocket",
     component: Business,
