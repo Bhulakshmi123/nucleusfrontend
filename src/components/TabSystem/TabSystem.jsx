@@ -14,7 +14,7 @@ class TabSystem extends Component {
     getLinkClicked = (e) => {
         this.setState({ value: e.target.value });
         if (e.target.value === 'New') {
-            this.setState({ dataset: newProjects})
+            this.setState({ dataset: newProjects })
         }
         if (e.target.value === 'Active') {
             this.setState({ dataset: activeProjects })
@@ -38,19 +38,19 @@ class TabSystem extends Component {
                         <Col md={12} className="testRow">
                             <div>
                                 <div className="navStyle">
-                                    <input type="button" className= {`btn-modify btn btn-block  ${this.state.value === 'All' ? 'addActive':' '}`} value="All" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className={`btn-modify btn btn-block  ${this.state.value === 'All' ? 'addActive' : ' '}`} value="All" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'New' ? 'addActive':' '}`} value="New" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className={`btn-modify btn btn-block ${this.state.value === 'New' ? 'addActive' : ' '}`} value="New" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Active' ? 'addActive':' '}`} value="Active" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className={`btn-modify btn btn-block ${this.state.value === 'Active' ? 'addActive' : ' '}`} value="Active" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Pending' ? 'addActive':' '}`} value="Pending" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className={`btn-modify btn btn-block ${this.state.value === 'Pending' ? 'addActive' : ' '}`} value="Pending" onClick={this.getLinkClicked}></input>
                                 </div>
                                 <div className="navStyle">
-                                    <input type="button" className= {`btn-modify btn btn-block ${this.state.value === 'Rejected' ? 'addActive':' '}`} value="Rejected" onClick={this.getLinkClicked}></input>
+                                    <input type="button" className={`btn-modify btn btn-block ${this.state.value === 'Rejected' ? 'addActive' : ' '}`} value="Rejected" onClick={this.getLinkClicked}></input>
                                 </div>
                             </div>
                         </Col>
