@@ -16,12 +16,7 @@ class ArticleHeader extends Component {
         super(props);
         this.state = {
             isShowing: false,
-<<<<<<< HEAD
             isEquipmentinfo: false
-=======
-            isEquipmentinfo:false,
-            fname: '',
->>>>>>> 89ade5f1bd2aca0d8e2a31e7c378697c5d663224
         }
     }
     handleChange = (e) => {

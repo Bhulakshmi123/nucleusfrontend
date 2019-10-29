@@ -2,12 +2,37 @@ import React, { Component } from 'react';
 import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-import { Route, Link} from 'react-router-dom'
-import Business from '../../views/Business/index'
+import { Route, Link } from 'react-router-dom';
+import Business from '../../views/Business/index';
+import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
 class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
-        let data = this.props.data;
+        let data;
+        console.log('props', this.props.match.path);
+        if (this.props.match.path === '/business/all') {
+            data = allProjects;
+        }
+        else {
+            if (this.props.match.path === '/business/new') {
+                data = newProjects;
+            }
+            else {
+                if (this.props.match.path === '/business/active') {
+                    data = activeProjects;
+                }
+                else {
+                    if (this.props.match.path === '/business/pending') {
+                        data = pendingProjects;
+                    }
+                    else {
+                        if (this.props.match.path === '/business/rejected') {
+                            data = rejectedProjects;
+                        }
+                    }
+                }
+            }
+        }
         for (let x in data) {
             html.push(
                 <div className="dateStyles" key={x}>
@@ -49,32 +74,9 @@ class BusinessMCard extends Component {
         return html;
     }
     render() {
-        if (this.props.qwerty === 'New') {
-            return (
-                <Grid className="customContainer">{this.nameFunction()}</Grid>
-            )
-        }
-        if (this.props.qwerty === 'Active') {
-            return (
-                <Grid className="customContainer">{this.nameFunction()}</Grid>
-            )
-        }
-        if (this.props.qwerty === 'Pending') {
-            return (
-                <Grid className="customContainer">{this.nameFunction()}</Grid>
-            )
-        }
-        if (this.props.qwerty === 'Rejected') {
-            return (
-                <Grid className="customContainer">{this.nameFunction()}</Grid>
-            )
-        }
-        else {
-            return (
-                <Grid className="customContainer">{this.nameFunction()}</Grid>
-            )
-        }
-
+        return (
+            <Grid className="customContainer">{this.nameFunction()}</Grid>
+        )
     }
 }
 export default BusinessMCard
