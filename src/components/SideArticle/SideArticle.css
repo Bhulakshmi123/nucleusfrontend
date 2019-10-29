@@ -122,3 +122,9 @@ hr.borderEffect {
 a {
     color: black;
 }
+.ActiveHeading {
+    margin-top: 5%;
+}
+.ActiveHeadingTitle  {
+    font-size: 3rem;
+}

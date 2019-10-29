@@ -2,37 +2,57 @@ import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
 import '../Modal/Modal.css';
-import { Modal, Button, Radio } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
-import InputName from '../FormFields/SelectInput';
-import FileInput from '../FormFields/FileInput';
+// import InputName from '../FormFields/SelectInput';
+// import FileInput from '../FormFields/FileInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
+// import axios from 'axios';
+
 class ArticleHeader extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isShowing: false,
-            isEquipmentinfo:false
+            isEquipmentinfo:false,
+            equipmentList : [],
+            equipmentCount : 0
         }
     }
+    handleChange = (e) => {
+        e.preventDefault();
+        let name = e.target.name;
+        let value = e.target.value;
+        console.log(name);
+        console.log(value);
+        let count = this.state.equipmentCount;
+        let equipmentList = this.state.equipmentList.slice();
+        let singleEquipment = equipmentList[count]
+        singleEquipment.name = value;
+        //this.setState(equipmentList);
+        console.log(this.state.equipmentList);
+      }
+
+      onSubmit = (e) => {
+
+        e.preventDefault();
+        const data = this.state
+        console.log("hi" ,data)
+      }
+
     openModalHandler = () => {
-        this.setState({
-            isShowing: true
-        });
+        this.setState({ isShowing: true });
     }
     closeModalHandler = () => {
-        this.setState({
-            isShowing: false
-        });
+        this.setState({ isShowing: false });
     }
     openInputHandler = () => {
-        this.setState({
-            isEquipmentinfo:true
-        })
+        this.setState({ isEquipmentinfo: true });
     }
     render() {
+        //const {fname} = this.state;
         return (
             <div>
                 <div className="articleHeader">
@@ -45,19 +65,26 @@ class ArticleHeader extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body >
+                        <form onSubmit={this.onSubmit}>
                        <div className="row">
                            <div className="col-md-3">
-                               <TextInput name="Phone No.*" placeholder="Phone No."/>
+                               <TextInput
+                                type="text"
+                                placeholder="Phone No."
+                                name="fname" 
+                                value={this.state.fname}
+                                onChange={this.handleChange}
+                                label="Phone No.*"/>
                            </div>
                            <div className="col-md-3">
-                                <CalenderInput name="Lead Date*" placeholder="Lead Date"/>
+                                <CalenderInput name="Lead Date*" label="Lead Date*" placeholder="Lead Date"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Renter Name*"  placeholder="Renter Name"/>
+                               <TextInput name="Renter Name*" label="Renter Name*"  placeholder="Renter Name"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Renter Email"  placeholder="Renter Email"/>
+                               <TextInput name="Renter Email" label="Renter Email"  placeholder="Renter Email"/>
                            </div>
                        </div>
                        <div className="row martp">
@@ -66,21 +93,21 @@ class ArticleHeader extends Component {
                                 <p className="renter_nm">ANVESH REDDY</p>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Alternate Phone no." placeholder="Alternate Phone no."/>
+                               <TextInput name="Alternate Phone no." label="Alternate Phone no." placeholder="Alternate Phone no."/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Company Name" placeholder="Company Name"/>
+                               <TextInput name="Company Name" label="Company Name" placeholder="Company Name"/>
                            </div>
                            <div className="col-md-3">
-                               <TextInput name="Designation" placeholder="Designation"/>
+                               <TextInput name="Designation" label="Designation" placeholder="Designation"/>
                            </div>
                        </div>
                        <div className="row martp">
                            <div className="col-md-3">
-                             <SelectInput name="Lead Priority" placeholder="Lead Priority"></SelectInput>
+                             <SelectInput name="Lead Priority" label="Lead Priority" placeholder="Lead Priority"></SelectInput>
                            </div>
                            <div className="col-md-3">
-                             <SelectInput name="Lead Source"  placeholder="Lead Source"/>  
+                             <SelectInput name="Lead Source" label="Lead Source"  placeholder="Lead Source"/>  
                            </div>
                        </div>
                        <div className="row">
@@ -102,28 +129,34 @@ class ArticleHeader extends Component {
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    {/* <tbody>
+                                    <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Baby Roller</td>
-                                            <td>3DX</td>
+                                            <td>{this.state.fname}</td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td><Button>Edit</Button></td>
                                             <td><Button>Delete</Button></td>
                                         </tr>
-                                    </tbody> */}
+                                    </tbody>
                                 </table> 
                             </div>
                         </div>
                        {
                            this.state.isEquipmentinfo ? <AddFields /> : null
                        }
+                       <Button type="submit" bsStyle="danger">Submit</Button>
+                       </form>
+                       
                     </Modal.Body>
                     {/* <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
                         <Button bsStyle="primary" onClick={this.openInputHandler} >Add New </Button>
                     </Modal.Footer> */}
+                      <Modal.Footer>
+                       
+                    </Modal.Footer>
                 </Modal>
             </div>
         )

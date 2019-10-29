@@ -5,12 +5,14 @@ import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
 import MiddleArticle from '../../components/MiddleArticle/MiddleArticle'
 import Renter from '../../components/Renter/Renter'
+import Supplier from '../../components/Supplier/Supplier'
 
 class SideArticle extends Component {
     constructor(props) {
         super();
         this.state = {
             selected: idData.clientEquipmentDetails[0].equipmentId,
+            selectedEquipment: idData.clientEquipmentDetails[0].equipmentName,
             active: false,
         }
     }
@@ -44,6 +46,8 @@ class SideArticle extends Component {
     render() {
         return (
             <div>
+                <div>
+                </div>
                 <Grid className="modifiedContainer">
                     <Row>
                         <Col lg={3} className="Sidebar">
@@ -60,20 +64,33 @@ class SideArticle extends Component {
                                 </div>
                             </div>
                         </Col>
-                        {/* <Col lg={5} className="cardForm">
-                            <MiddleArticle formId={this.state.selected}></MiddleArticle>
+                        <Col lg={5} className="cardForm">
+                            <MiddleArticle formId={this.state.selected}>
+                                
+                            </MiddleArticle>
                         </Col>
                         <Col lg={4} className="cardForm2">
                             <h1>Codename: Tanjiro Kamado</h1>
-                        </Col> */}
-                        <Col lg={9} className="activeData">
+                        </Col>
+                        {/* <Col lg={9} className="activeData">
                             <div className="activeContainer">
+                                <div>
+                                    <Row className="ActiveHeading">
+                                        <Col lg={4} className="ActiveHeadingTitle">{this.state.selectedEquipment}</Col>
+                                        <Col lg={1}><i className="fab fa-gg-circle icon-fs"></i></Col>
+                                        <Col lg={2}><Button bsStyle="primary" className="btn-modified" block>Suppliers List</Button></Col>
+                                        <Col lg={2}><Button bsStyle="danger" className="btn-modified" block><i className="fas fa-ban nbSpan"></i>Reject</Button></Col>
+                                        <Col lg={3}><Button bsStyle="info" block>Move to Projects</Button></Col>
+                                    </Row>
+                                </div>
                                 <div className="renterName">RENTER</div>
                                 <Renter ApprovalPrice="4,16,00,000" RenterApproved="#" QuotationLink="#" WorkOrderLink="#"></Renter>
-                                <Renter ApprovalPrice="1,45,00,000" RenterApproved="#" QuotationLink="#" WorkOrderLink="#"></Renter>
-                                <div className="renterName">SUPPLIER</div>
+                                <div className="renterName">FINALISED SUPPLIER</div>
+                                <Supplier></Supplier>
+                                <div className="renterName">SHORTLISTED SUPPLIER</div>
+                                <Supplier></Supplier>
                             </div>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Grid>
             </div>
