@@ -13,7 +13,7 @@ import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
-import Upgrade from "views/Upgrade.jsx";
+// import Upgrade from "views/Upgrade.jsx";
 
 const dashboardRoutes = [
   {
@@ -23,9 +23,9 @@ const dashboardRoutes = [
     component: Dashboard,
     layout: "/nucleus"
   },
-  
+
   {
-    path: "/business/all",
+    path: "/business",
     name: "Business",
     icon: "pe-7s-rocket",
     component: Business,

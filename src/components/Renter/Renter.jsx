@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Grid, Row, Col } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import './Renter.css'
 class Renter extends Component {
     constructor(props) {
@@ -26,8 +26,8 @@ class Renter extends Component {
                     </Col>
                     <Col lg={2}>
                         <a href="">
-                            <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected'?'red':''}`}></i>
-                            <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved'?'green':''}`}></i>
+                            <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected' ? 'red' : ''}`}></i>
+                            <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved' ? 'green' : ''}`}></i>
                             <div className="smFont">{this.changeContent()}</div>
                         </a>
                     </Col>
