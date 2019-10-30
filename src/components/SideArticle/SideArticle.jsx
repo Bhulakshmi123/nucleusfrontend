@@ -24,7 +24,7 @@ class SideArticle extends Component {
         return (idData.clientName)
     }
     getEquipmentData = () => {
-        let html = []
+        let html = [];
         for (let x in idData.clientEquipmentDetails) {
             html.push(
                 <div key={idData.clientEquipmentDetails[x].equipmentId}>
@@ -65,9 +65,7 @@ class SideArticle extends Component {
                             </div>
                         </Col>
                         <Col lg={5} className="cardForm">
-                            <MiddleArticle formId={this.state.selected}>
-                                
-                            </MiddleArticle>
+                            <MiddleArticle formId={this.state.selected}></MiddleArticle>
                         </Col>
                         <Col lg={4} className="cardForm2">
                             <h1>Codename: Tanjiro Kamado</h1>

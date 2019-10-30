@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput';
 import RadioInput from '../FormFields/RadioInput';
 import TextArea from '../FormFields/TextArea';
-import { Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import '../Modal/Modal.css';
 class MiddleArticle extends Component {
     render() {
@@ -13,45 +13,45 @@ class MiddleArticle extends Component {
                 <h5>{this.props.formId}</h5>
                 <div className="row">
                     <div className="col-md-6 form-modal">
-                        <TextInput type="text"  label="Price"/>
+                        <TextInput type="text" label="Price" />
                     </div>
                     <div className="col-md-6 form-modal">
-                        <SelectInput name="Lead Source" label="Duration" />  
+                        <SelectInput name="Lead Source" label="Duration" />
                     </div>
                 </div>
                 <div className="row martp">
                     <div className="col-md-6 form-modal">
-                    <CalenderInput name="Lead Date*" label="Start Date"/>
+                        <CalenderInput name="Lead Date*" label="Start Date" />
                     </div>
                     <div className="col-md-6 form-modal">
-                    <SelectInput name="Lead Source" label="Transportation" />  
+                        <SelectInput name="Lead Source" label="Transportation" />
                     </div>
                 </div>
                 <div className="row martp">
                     <div className="col-md-6">
-                    <RadioInput name="Single" label="Single"/>
-                    <RadioInput name="Double" label="Double"/>
+                        <RadioInput name="Single" label="Single" />
+                        <RadioInput name="Double" label="Double" />
                     </div>
                     <div className="col-md-6 form-modal">
-                    <TextInput type="text" label="Shift 1 Work Duration"/>
+                        <TextInput type="text" label="Shift 1 Work Duration" />
                     </div>
                 </div>
                 <div className="row martp">
                     <div className="col-md-6 form-modal">
-                    <TextInput type="text" label="Operator Batha"/>
+                        <TextInput type="text" label="Operator Batha" />
                     </div>
                     <div className="col-md-6 form-modal">
-                    <SelectInput name="Lead Source" label="Operator Food"/>  
-                    </div>
-                </div>
-                <div className="row martp">
-                    <div className="col-md-12 form-modal">
-                    <TextArea name="Payment Terms" label="Payment Terms" ></TextArea>
+                        <SelectInput name="Lead Source" label="Operator Food" />
                     </div>
                 </div>
                 <div className="row martp">
                     <div className="col-md-12 form-modal">
-                    <TextArea name="Payment Terms" label="Remarks"></TextArea>
+                        <TextArea name="Payment Terms" label="Payment Terms" ></TextArea>
+                    </div>
+                </div>
+                <div className="row martp">
+                    <div className="col-md-12 form-modal">
+                        <TextArea name="Payment Terms" label="Remarks"></TextArea>
                     </div>
                 </div>
                 <div className="row martp">

@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 import { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { jsx } from '@emotion/core';
@@ -48,7 +48,7 @@ class SelectInput extends Component {
           className="red"
           style={{width:'100%',height:'34px',padding: '6px 16px !important'}}
             onClick={this.toggleOpen}
-            isSelected={isOpen}
+            isselected={isOpen}
           >
              <img className="down_arrow" src={require('assets/img/downarrow.svg')}></img>
             {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
@@ -149,14 +149,14 @@ const DropdownIndicator = () => (
     </Svg>
   </div>
 );
-const ChevronDown = () => (
-  <Svg style={{ marginRight: -6 }}>
-    <path
-      d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </Svg>)
+// const ChevronDown = () => (
+//   <Svg style={{ marginRight: -6 }}>
+//     <path
+//       d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
+//       fill="currentColor"
+//       fillRule="evenodd"
+//     />
+//   </Svg>)
 export default SelectInput;
 
 

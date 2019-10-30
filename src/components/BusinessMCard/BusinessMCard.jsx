@@ -3,13 +3,12 @@ import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
 import { Route, Link } from 'react-router-dom';
-import Business from '../../views/Business/index';
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
 class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
         let data;
-        console.log('props', this.props.match.path);
+        console.log('props', this.props);
         if (this.props.match.path === '/business/all') {
             data = allProjects;
         }
@@ -65,7 +64,6 @@ class BusinessMCard extends Component {
                                 </Row>
                             </div>
                         </Link>
-                        <Route path="/business/view:id" component={Business} />
                     </div>
                 );
             }
