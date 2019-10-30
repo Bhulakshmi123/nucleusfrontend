@@ -22,7 +22,7 @@ const options = [
 const { colors } = defaultTheme;
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 219, margin: 8 }),
+  control: provided => ({ ...provided, minWidth: 180, margin: 8 }),
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 
@@ -50,7 +50,8 @@ class SelectInput extends Component {
             onClick={this.toggleOpen}
             isSelected={isOpen}
           >
-            {value ? `${value.label}` : <Placeholder placeholder={this.props.placeholder}></Placeholder>}
+             <img className="down_arrow" src={require('assets/img/downarrow.svg')}></img>
+            {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
           </Button>
         }
       >

@@ -2,7 +2,7 @@ import React from 'react';
 const RouteNotFound = () => {
     return (
         <div>
-            Route Not Found
+          <div>hi</div>
         </div>
     )
 }
