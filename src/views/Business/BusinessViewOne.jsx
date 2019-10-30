@@ -11,15 +11,15 @@ class BusinessViewOne extends Component {
                 <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
                 <Router>
                     <ul className="NavStyles">
-                        <li><NavLink activeClassName="activeLink" to="/business">All</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/all">All</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/new">New</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/active">Active</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/pending">Pending</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/rejected">Rejected</NavLink></li>
                     </ul>
                     <Switch>
-                        <Route path="/business/view" component={ViewDetails} />
-                        <Route exact path="/business" component={BusinessMCard} />
+                        <Route path="/business/view/:id" component={ViewDetails} />
+                        <Route exact path="/business/all" component={BusinessMCard} />
                         <Route path="/business/new" component={BusinessMCard} />
                         <Route path="/business/active" component={BusinessMCard} />
                         <Route path="/business/pending" component={BusinessMCard} />

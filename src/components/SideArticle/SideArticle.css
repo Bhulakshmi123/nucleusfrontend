@@ -11,12 +11,10 @@
 }
 
 .cardForm {
-    background-color: lightgrey;
     height: 100vh;
 }
 
 .cardForm2 {
-    /* background-color: chartreuse; */
     height: 100vh;
 }
 
@@ -27,7 +25,6 @@
 .eqParent {
     display: flex;
     padding: 3% 5%;
-    /* border-bottom: 1px solid rgba(255,255,255,0.2); */
 }
 
 .eqParent:hover {

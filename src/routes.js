@@ -25,7 +25,7 @@ const dashboardRoutes = [
   },
 
   {
-    path: "/business",
+    path: "/business/all",
     name: "Business",
     icon: "pe-7s-rocket",
     component: Business,

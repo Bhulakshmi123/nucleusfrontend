@@ -9,7 +9,7 @@ class Business extends Component {
     return (
       <React.Fragment>
           <Router>
-            <Route path="/business" component={BusinessViewOne}></Route>
+            <Route path="/business/all" component={BusinessViewOne}></Route>
           </Router>
       </React.Fragment>
     )
