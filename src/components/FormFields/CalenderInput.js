@@ -16,7 +16,7 @@ class CalenderInput extends Component {
       render() {
         return (
           <div>
-            <CalName name={this.props.name}/>
+            <CalName label={this.props.label}/>
             <div className="form-modal"  style={{width:"100%"}}>
               <DatePicker className="form-control"
               selected={this.state.startDate}
@@ -31,7 +31,7 @@ class CalenderInput extends Component {
 const CalName = props => {
   return(
       <div className="form-modal">
-          <label>{props.name}</label>
+          <label>{props.label}</label>
         <span>{props.placeholder}</span>
       </div>
   );

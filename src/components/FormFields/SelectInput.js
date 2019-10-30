@@ -39,7 +39,7 @@ class SelectInput extends Component {
     const { isOpen, value } = this.state;
     return (
       <div>
-    <InputName name={this.props.name}/>
+    <InputName label={this.props.label}/>
       <Dropdown
         isOpen={isOpen}
         onClose={this.toggleOpen}
@@ -98,7 +98,7 @@ const Menu = props => {
 const InputName = props => {
   return (
     <div className="form-modal">
-      <label>{props.name}</label>
+      <label>{props.label}</label>
     </div>
   );
 };

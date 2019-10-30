@@ -2,33 +2,44 @@
     padding: 2%;
     margin-top: 1%;
 }
-.codeRed{
+
+.codeRed {
     color: red;
-    font-size: 3rem;;
+    font-size: 3rem;
+    ;
 }
-.up, .down {
+
+.up,
+.down {
     color: lightgray;
     font-size: 3rem;
     margin: 0 5%;
 }
+
 .smFont {
     font-size: 1rem;
     font-family: GilroyMedium;
 }
+
 .handsUpDown {
     font-size: 3rem;
-    color: lightgray; 
+    color: lightgray;
     text-align: center;
 }
+
 .btn-top {
     margin-top: 4%;
 }
+
 .contentTop {
     margin-top: 4px;
 }
+
 .green {
     color: green;
 }
-.red {
+
+
+/* .red {
     color: red;
-}
+} */

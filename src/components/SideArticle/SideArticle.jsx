@@ -46,6 +46,8 @@ class SideArticle extends Component {
     render() {
         return (
             <div>
+                <div>
+                </div>
                 <Grid className="modifiedContainer">
                     <Row>
                         <Col lg={3} className="Sidebar">
@@ -62,13 +64,15 @@ class SideArticle extends Component {
                                 </div>
                             </div>
                         </Col>
-                        {/* <Col lg={5} className="cardForm">
-                            <MiddleArticle formId={this.state.selected}></MiddleArticle>
+                        <Col lg={5} className="cardForm">
+                            <MiddleArticle formId={this.state.selected}>
+                                
+                            </MiddleArticle>
                         </Col>
                         <Col lg={4} className="cardForm2">
                             <h1>Codename: Tanjiro Kamado</h1>
-                        </Col> */}
-                        <Col lg={9} className="activeData">
+                        </Col>
+                        {/* <Col lg={9} className="activeData">
                             <div className="activeContainer">
                                 <div>
                                     <Row className="ActiveHeading">
@@ -86,7 +90,7 @@ class SideArticle extends Component {
                                 <div className="renterName">SHORTLISTED SUPPLIER</div>
                                 <Supplier></Supplier>
                             </div>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Grid>
             </div>
