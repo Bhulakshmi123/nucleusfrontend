@@ -8,7 +8,6 @@ class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
         let data;
-        console.log('props', this.props);
         if (this.props.match.path === '/business/all') {
             data = allProjects;
         }

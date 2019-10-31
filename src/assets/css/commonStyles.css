@@ -100,3 +100,6 @@ body, .modal-title{
     padding: 10px 25px !important;
     border: none !important;
 }
+.nav-link-modified {
+    margin: 5px 0px 5px 15px !important;
+}
