@@ -192,6 +192,14 @@ input[name="e_pe_shift"] {
 
 .red {
     text-align: left !important;
+    border-width: 1px !important;
+    /* color: #d8d4d4 !important; */
+    font-weight: 100 !important;
+    border-color: #ccc !important;
+}
+
+.red:hover {
+    background-color: transparent !important;
 }
 
 .check {
@@ -262,4 +270,15 @@ input[name="e_pe_shift"] {
     font-size: 14px;
     color: #333;
     text-transform: capitalize;
+}
+
+.down_arrow {
+    width: 12px;
+    height: 12px;
+    float: right;
+    margin-top: 2px;
+}
+
+.place_stle {
+    color: #555;
 }
