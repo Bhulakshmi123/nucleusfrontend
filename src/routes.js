@@ -21,6 +21,7 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: "pe-7s-home",
     component: Dashboard,
+    compact:true,
     layout: "/nucleus"
   },
 
@@ -29,6 +30,7 @@ const dashboardRoutes = [
     name: "Business",
     icon: "pe-7s-rocket",
     component: Business,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -36,6 +38,7 @@ const dashboardRoutes = [
     name: "Projects",
     icon: "pe-7s-global",
     component: Projects,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -43,6 +46,7 @@ const dashboardRoutes = [
     name: "RMP Users",
     icon: "pe-7s-diamond",
     component: RMPUsers,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -50,6 +54,7 @@ const dashboardRoutes = [
     name: "Suppliers",
     icon: "pe-7s-users",
     component: Suppliers,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -57,6 +62,7 @@ const dashboardRoutes = [
     name: "Contractors",
     icon: "pe-7s-users",
     component: Contractors,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -64,6 +70,7 @@ const dashboardRoutes = [
     name: "Equipment",
     icon: "pe-7s-car",
     component: Equipment,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -71,6 +78,7 @@ const dashboardRoutes = [
     name: "ManPower",
     icon: "pe-7s-headphones",
     component: ManPower,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -78,6 +86,7 @@ const dashboardRoutes = [
     name: "Subscriptions",
     icon: "pe-7s-graph1",
     component: Subscriptions,
+    compact:true,
     layout: "/nucleus"
   },
 
@@ -86,6 +95,7 @@ const dashboardRoutes = [
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -93,6 +103,7 @@ const dashboardRoutes = [
     name: "Table List",
     icon: "pe-7s-note2",
     component: TableList,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -100,6 +111,7 @@ const dashboardRoutes = [
     name: "Typography",
     icon: "pe-7s-news-paper",
     component: Typography,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -107,6 +119,7 @@ const dashboardRoutes = [
     name: "Icons",
     icon: "pe-7s-science",
     component: Icons,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -114,6 +127,7 @@ const dashboardRoutes = [
     name: "Maps",
     icon: "pe-7s-map-marker",
     component: Maps,
+    compact:true,
     layout: "/nucleus"
   },
   {
@@ -121,6 +135,7 @@ const dashboardRoutes = [
     name: "Notifications",
     icon: "pe-7s-bell",
     component: Notifications,
+    compact:true,
     layout: "/nucleus"
   }
 ];
