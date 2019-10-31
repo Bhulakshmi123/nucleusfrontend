@@ -16,7 +16,7 @@ class MiddleArticle extends Component {
                         <TextInput type="text" label="Price" />
                     </div>
                     <div className="col-md-6 form-modal">
-                        <SelectInput name="Lead Source" label="Duration" />
+                        <SelectInput name="Lead Source" cStyle="widthtwo" label="Duration" />
                     </div>
                 </div>
                 <div className="row martp">
@@ -24,7 +24,7 @@ class MiddleArticle extends Component {
                         <CalenderInput name="Lead Date*" label="Start Date" />
                     </div>
                     <div className="col-md-6 form-modal">
-                        <SelectInput name="Lead Source" label="Transportation" />
+                        <SelectInput name="Lead Source" cStyle="widthtwo" label="Transportation" />
                     </div>
                 </div>
                 <div className="row martp">
@@ -41,7 +41,7 @@ class MiddleArticle extends Component {
                         <TextInput type="text" label="Operator Batha" />
                     </div>
                     <div className="col-md-6 form-modal">
-                        <SelectInput name="Lead Source" label="Operator Food" />
+                        <SelectInput name="Lead Source" cStyle="widthtwo" label="Operator Food" />
                     </div>
                 </div>
                 <div className="row martp">
