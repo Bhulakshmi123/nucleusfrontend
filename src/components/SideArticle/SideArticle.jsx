@@ -4,8 +4,8 @@ import { Row, Col, Grid, Button } from 'react-bootstrap'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
 import MiddleArticle from '../../components/MiddleArticle/MiddleArticle'
-import Renter from '../../components/Renter/Renter'
-import Supplier from '../../components/Supplier/Supplier'
+// import Renter from '../../components/Renter/Renter'
+// import Supplier from '../../components/Supplier/Supplier'
 
 class SideArticle extends Component {
     constructor(props) {

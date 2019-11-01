@@ -23,7 +23,7 @@ class CalenderInput extends Component {
               onChange={this.handleChange}
               placeholder={this.props.placeholder}
               ></DatePicker>
-              <img className="calender" src={require('assets/img/calendar.svg')}></img>
+              <img className="calender" src={require('assets/img/calendar.svg')} alt="Calender"></img>
             </div>
           </div>
         );

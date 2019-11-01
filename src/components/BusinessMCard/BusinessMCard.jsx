@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-import { Route, Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
+import ArticleHeader from '../ArticleHeader/ArticleHeader'
+
 class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
@@ -72,7 +74,19 @@ class BusinessMCard extends Component {
     }
     render() {
         return (
-            <Grid className="customContainer">{this.nameFunction()}</Grid>
+            <Grid className="customContainer">
+                <Row>
+                    <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
+                    <ul className="NavStyles">
+                        <li><NavLink activeClassName="activeLink" to="/business/all">All</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/new">New</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/active">Active</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/pending">Pending</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/rejected">Rejected</NavLink></li>
+                    </ul>
+                </Row>
+                {this.nameFunction()}
+            </Grid>
         )
     }
 }
