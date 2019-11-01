@@ -9,8 +9,9 @@ import '../Modal/Modal.css';
 class MiddleArticle extends Component {
     render() {
         return (
-            <div>
-                <h5>{this.props.formId}</h5>
+            <div className="innerDivCompact">
+                <h2><b>SELF LOADING CONCRETE MILLER</b></h2>
+                {/* <h3>{this.props.formId} </h3> */}
                 <div className="row">
                     <div className="col-md-6 form-modal">
                         <TextInput type="text" label="Price" />

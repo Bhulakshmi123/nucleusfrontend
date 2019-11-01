@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import SideArticle from '../../components/SideArticle/SideArticle'
+import React, { Component } from 'react';
+import SideArticle from '../../components/SideArticle/SideArticle';
 class ViewDetails extends Component {
     constructor(props) {
         super(props)
@@ -9,6 +9,9 @@ class ViewDetails extends Component {
         };
     }
     render() {
+        // console.log('Help',this.props);
+        // const {match:{params}, }=this.props;
+        // console.log('Help2',params);
         return (
             <div>
                 <SideArticle id={this.state.unqId}></SideArticle>
