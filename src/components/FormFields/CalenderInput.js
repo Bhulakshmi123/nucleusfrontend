@@ -17,13 +17,13 @@ class CalenderInput extends Component {
         return (
           <div>
             <CalName label={this.props.label}/>
-            <div className="form-modal "  style={{width:"100%"}}>
+            <div className="form-modal"  style={{width:"100%"}}>
               <DatePicker className="form-control"
               selected={this.state.startDate}
               onChange={this.handleChange}
               placeholder={this.props.placeholder}
               ></DatePicker>
-              <img className="calender" src={require('assets/img/calendar.svg')}></img>
+              <img className="calender" src={require('assets/img/calendar.svg')} alt="Calender"></img>
             </div>
           </div>
         );

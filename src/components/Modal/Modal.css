@@ -308,6 +308,9 @@ input[name="e_pe_shift"] {
     min-width: 154px;
 }
 
+
+/* calnder Styling */
+
 .react-datepicker {
     font-size: 1.3rem !important;
 }
@@ -327,4 +330,11 @@ input[name="e_pe_shift"] {
 .react-datepicker__day-name,
 .react-datepicker__day {
     margin: 0.5rem !important;
+}
+
+
+/* calnder Styling */
+
+.btn_left {
+    margin-left: 1px;
 }

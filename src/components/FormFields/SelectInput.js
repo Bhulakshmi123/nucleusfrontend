@@ -50,7 +50,7 @@ class SelectInput extends Component {
               onClick={this.toggleOpen}
               isselected={isOpen}
             >
-              <img className="down_arrow" src={require('assets/img/downarrow.svg')}></img>
+              <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
               {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
             </Button>
           }

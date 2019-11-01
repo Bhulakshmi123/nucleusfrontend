@@ -4,7 +4,7 @@ import './RouteNotFound.css';
 const RouteNotFound = () => {
     return (
         <React.Fragment>
-            <img className="ErrorStyles" src={Error404}></img>
+            <img className="ErrorStyles" src={Error404} alt="Error 404 Not Found"></img>
         </React.Fragment>
     )
 }

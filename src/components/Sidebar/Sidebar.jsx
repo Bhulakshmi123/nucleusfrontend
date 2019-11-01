@@ -22,15 +22,12 @@ class Sidebar extends Component {
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
   render() {
-    const sidebarBackground = {
-      backgroundImage: "url(" + this.props.image + ")"
-    };
     if (this.props.location.pathname.match(new RegExp("/", "g")).length >= 2) {
       return (
-        <div id="sidebar" className="sidebar minSidebar" >
-          <div className="logo sm-logo">
+        <div id="sidebar" className="sidebar minSidebar">
+          <div className="logo logo-img">
             <a href="https://www.equiphunt.com" className="simple-text logo-mini">
-              <div className="logo-img-sm">
+              <div className="logo-img">
                 <img src={logo} alt="logo_image" className="sm-img" />
               </div>
             </a>
@@ -56,7 +53,7 @@ class Sidebar extends Component {
     }
     else {
       return (
-        <div id="sidebar" className="sidebar" >
+        <div id="sidebar" className="sidebar">
           <div className="logo">
             <a href="https://www.equiphunt.com" className="simple-text logo-mini">
               <div className="logo-img">
@@ -72,7 +69,7 @@ class Sidebar extends Component {
                 if (!prop.redirect)
                   return (
                     <li className={prop.upgrade ? "active active-pro" : this.activeRoute(prop.path)} key={key}>
-                      <NavLink to={prop.path} className="nav-link" activeClassName="active">
+                      <NavLink to={prop.path} className="nav-link nav-link-modified " activeClassName="active">
                         <i className={prop.icon} />
                         <p>{prop.name}</p>
                       </NavLink>
