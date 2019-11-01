@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
 import { Link, NavLink } from 'react-router-dom';
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
-import ArticleHeader from '../ArticleHeader/ArticleHeader'
+import ArticleHeader from '../ArticleHeader/ArticleHeader';
 
 class BusinessMCard extends Component {
     nameFunction = (props) => {
@@ -44,7 +44,7 @@ class BusinessMCard extends Component {
             for (let y in data[x]) {
                 html.push(
                     <div key={data[x][y].projectId} >
-                        <Link to={`/business/view/${data[x][y].projectId}`}>
+                        <Link to={`${this.props.match.path}/view/${data[x][y].projectId}`}>
                             <div className="project">
                                 <Row className="rowWidth">
                                     <Col lg={5}>
