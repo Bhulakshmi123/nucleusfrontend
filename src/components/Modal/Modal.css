@@ -338,3 +338,16 @@ input[name="e_pe_shift"] {
 .btn_left {
     margin-left: 1px;
 }
+
+.stle_back {
+    background-color: transparent !important;
+}
+
+.calender {
+    z-index: 1;
+}
+
+.react-datepicker__input-container {
+    background: transparent;
+    z-index: 2;
+}

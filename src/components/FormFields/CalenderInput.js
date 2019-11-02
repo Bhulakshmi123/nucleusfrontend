@@ -18,7 +18,7 @@ class CalenderInput extends Component {
           <div>
             <CalName label={this.props.label}/>
             <div className="form-modal"  style={{width:"100%"}}>
-              <DatePicker className="form-control"
+              <DatePicker className="form-control stle_back"
               selected={this.state.startDate}
               onChange={this.handleChange}
               placeholder={this.props.placeholder}
