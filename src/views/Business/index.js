@@ -11,8 +11,10 @@ class Business extends Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <Route path="/business/all/view/:id" component={ViewDetails} />
-            <Route path="/business/all" component={BusinessMCard} />
+            <Route path="/business/new/view/:id" component={ViewDetails} />
+            <Route path="/business/active/view/:id" component={ViewDetails} />
+            <Route path="/business/pending/view/:id" component={ViewDetails} />
+            <Route path="/business/rejected/view/:id" component={ViewDetails} />
             <Route path="/business/new" component={BusinessMCard} />
             <Route path="/business/active" component={BusinessMCard} />
             <Route path="/business/pending" component={BusinessMCard} />
@@ -24,5 +26,4 @@ class Business extends Component {
     )
   }
 }
-
 export default Business;

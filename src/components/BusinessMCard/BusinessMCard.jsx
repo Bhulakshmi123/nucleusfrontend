@@ -10,25 +10,20 @@ class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
         let data;
-        if (this.props.match.path === '/business/all') {
-            data = allProjects;
+        if (this.props.match.path === '/business/new') {
+            data = newProjects;
         }
         else {
-            if (this.props.match.path === '/business/new') {
-                data = newProjects;
+            if (this.props.match.path === '/business/active') {
+                data = activeProjects;
             }
             else {
-                if (this.props.match.path === '/business/active') {
-                    data = activeProjects;
+                if (this.props.match.path === '/business/pending') {
+                    data = pendingProjects;
                 }
                 else {
-                    if (this.props.match.path === '/business/pending') {
-                        data = pendingProjects;
-                    }
-                    else {
-                        if (this.props.match.path === '/business/rejected') {
-                            data = rejectedProjects;
-                        }
+                    if (this.props.match.path === '/business/rejected') {
+                        data = rejectedProjects;
                     }
                 }
             }
@@ -78,7 +73,6 @@ class BusinessMCard extends Component {
                 <Row>
                     <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
                     <ul className="NavStyles">
-                        <li><NavLink activeClassName="activeLink" to="/business/all">All</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/new">New</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/active">Active</NavLink></li>
                         <li><NavLink activeClassName="activeLink" to="/business/pending">Pending</NavLink></li>

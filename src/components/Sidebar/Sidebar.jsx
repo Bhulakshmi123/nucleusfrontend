@@ -21,6 +21,7 @@ class Sidebar extends Component {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
+
   render() {
     if (this.props.location.pathname.match(new RegExp("/", "g")).length >= 2) {
       return (

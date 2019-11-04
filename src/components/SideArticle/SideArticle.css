@@ -30,6 +30,9 @@
     /* width: 100%; */
     /* overflow: auto; */
 }
+.modifiedContainer2 {
+    width: 100%;
+}
 
 .eqParent {
     display: flex;
@@ -118,6 +121,7 @@ hr.borderEffect {
 .activeData {
     /* background-color: red; */
     height: 100vh;
+    width: 100%;
 }
 
 .activeContainer {
@@ -142,7 +146,7 @@ a {
     font-size: 3rem;
 }
 .redFrot {
-    padding: 2%;
+    padding: 5%;
     margin-top: 1px;
     background-color: whitesmoke;
 }
@@ -154,4 +158,5 @@ a {
 }
 .redHeading > h3 {
     margin: 0px;
+    font-family: GilroyBold;
 }
