@@ -12,10 +12,12 @@
 
 .cardForm {
     height: 100vh;
+    overflow: auto;
 }
 
 .cardForm2 {
     height: 100vh;
+    overflow: auto;
 }
 
 .modifiedContainer {
