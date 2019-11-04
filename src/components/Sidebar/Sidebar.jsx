@@ -25,9 +25,9 @@ class Sidebar extends Component {
     if (this.props.location.pathname.match(new RegExp("/", "g")).length >= 2) {
       return (
         <div id="sidebar" className="sidebar minSidebar">
-          <div className="logo sm-logo">
+          <div className="logo logo-img">
             <a href="https://www.equiphunt.com" className="simple-text logo-mini">
-              <div className="logo-img-sm">
+              <div className="logo-img">
                 <img src={logo} alt="logo_image" className="sm-img" />
               </div>
             </a>

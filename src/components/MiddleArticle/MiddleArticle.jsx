@@ -55,7 +55,7 @@ class MiddleArticle extends Component {
                         <TextArea name="Payment Terms" label="Remarks"></TextArea>
                     </div>
                 </div>
-                <div className="row martp">
+                <div className="row martp btn_left">
                     <Button>Submit Details</Button>
                 </div>
             </div>
