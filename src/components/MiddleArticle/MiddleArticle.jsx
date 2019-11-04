@@ -30,6 +30,7 @@ class MiddleArticle extends Component {
                 </div>
                 <div className="row martp">
                     <div className="col-md-6">
+                        <label>Shift Type</label>
                         <RadioInput name="Single" label="Single" />
                         <RadioInput name="Double" label="Double" />
                     </div>

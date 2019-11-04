@@ -4,6 +4,7 @@
     height: 100vh;
     padding: 0;
     overflow: auto;
+    padding-bottom: 70px;
 }
 
 .Sidebar>* {
@@ -12,14 +13,20 @@
 
 .cardForm {
     height: 100vh;
+    overflow: auto;
+    padding-bottom: 70px;
 }
 
 .cardForm2 {
     height: 100vh;
+    overflow: auto;
+    padding-bottom: 70px;
 }
 
 .modifiedContainer {
-    width: 100%;
+    width: auto;
+    position: fixed;
+    /* overflow: auto; */
 }
 
 .eqParent {
@@ -101,27 +108,34 @@ hr.borderEffect {
 .backLink:hover {
     color: white;
 }
+
 .activeDiv {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
 .activeData {
     /* background-color: red; */
     height: 100vh;
 }
+
 .activeContainer {
     width: 90%;
     margin: auto;
 }
+
 .renterName {
     margin-top: 5%;
     opacity: 0.5;
 }
+
 a {
     color: black;
 }
+
 .ActiveHeading {
     margin-top: 5%;
 }
-.ActiveHeadingTitle  {
+
+.ActiveHeadingTitle {
     font-size: 3rem;
 }
