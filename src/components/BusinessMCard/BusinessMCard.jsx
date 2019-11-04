@@ -2,33 +2,28 @@ import React, { Component } from 'react';
 import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-import { Route, Link } from 'react-router-dom';
-import Business from '../../views/Business/index';
+import { Link, NavLink } from 'react-router-dom';
 import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
+import ArticleHeader from '../ArticleHeader/ArticleHeader';
+
 class BusinessMCard extends Component {
     nameFunction = (props) => {
         let html = [];
         let data;
-        console.log('props', this.props.match.path);
-        if (this.props.match.path === '/business/all') {
-            data = allProjects;
+        if (this.props.match.path === '/business/new') {
+            data = newProjects;
         }
         else {
-            if (this.props.match.path === '/business/new') {
-                data = newProjects;
+            if (this.props.match.path === '/business/active') {
+                data = activeProjects;
             }
             else {
-                if (this.props.match.path === '/business/active') {
-                    data = activeProjects;
+                if (this.props.match.path === '/business/pending') {
+                    data = pendingProjects;
                 }
                 else {
-                    if (this.props.match.path === '/business/pending') {
-                        data = pendingProjects;
-                    }
-                    else {
-                        if (this.props.match.path === '/business/rejected') {
-                            data = rejectedProjects;
-                        }
+                    if (this.props.match.path === '/business/rejected') {
+                        data = rejectedProjects;
                     }
                 }
             }
@@ -44,7 +39,7 @@ class BusinessMCard extends Component {
             for (let y in data[x]) {
                 html.push(
                     <div key={data[x][y].projectId} >
-                        <Link to={`/business/view/${data[x][y].projectId}`}>
+                        <Link to={`${this.props.match.path}/view/${data[x][y].projectId}`}>
                             <div className="project">
                                 <Row className="rowWidth">
                                     <Col lg={5}>
@@ -65,7 +60,6 @@ class BusinessMCard extends Component {
                                 </Row>
                             </div>
                         </Link>
-                        <Route path="/business/view:id" component={Business} />
                     </div>
                 );
             }
@@ -75,7 +69,18 @@ class BusinessMCard extends Component {
     }
     render() {
         return (
-            <Grid className="customContainer">{this.nameFunction()}</Grid>
+            <Grid className="customContainer">
+                <Row>
+                    <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
+                    <ul className="NavStyles">
+                        <li><NavLink activeClassName="activeLink" to="/business/new">New</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/active">Active</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/pending">Pending</NavLink></li>
+                        <li><NavLink activeClassName="activeLink" to="/business/rejected">Rejected</NavLink></li>
+                    </ul>
+                </Row>
+                {this.nameFunction()}
+            </Grid>
         )
     }
 }

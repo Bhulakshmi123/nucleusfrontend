@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import SideArticle from '../../components/SideArticle/SideArticle'
+import React, { Component } from 'react';
+import SideArticle from '../../components/SideArticle/SideArticle';
 class ViewDetails extends Component {
     constructor(props) {
         super(props)

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import SearchList from '../../components/SearchList/SearchList'
 import { Row, Col, Grid, Button } from 'react-bootstrap'
+import { Route, Link } from 'react-router-dom'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
-import MiddleArticle from '../../components/MiddleArticle/MiddleArticle'
-import Renter from '../../components/Renter/Renter'
-import Supplier from '../../components/Supplier/Supplier'
+import AddViewOne from '../AddViewOne/AddViewOne'
+import AddViewTwo from '../AddViewTwo/AddViewTwo'
 
 class SideArticle extends Component {
     constructor(props) {
@@ -18,13 +18,12 @@ class SideArticle extends Component {
     }
     getSelectedEquipment = (e) => {
         this.setState({ selected: e.currentTarget.dataset.id, active: !this.state.active });
-        console.log('this', this);
     }
     getClientName = () => {
         return (idData.clientName)
     }
     getEquipmentData = () => {
-        let html = []
+        let html = [];
         for (let x in idData.clientEquipmentDetails) {
             html.push(
                 <div key={idData.clientEquipmentDetails[x].equipmentId}>
@@ -44,56 +43,62 @@ class SideArticle extends Component {
         return html;
     }
     render() {
+        console.log('this', this);
         return (
-            <div>
-                <div>
-                </div>
-                <Grid className="modifiedContainer">
-                    <Row>
-                        <Col lg={3} className="Sidebar">
-                            <div className="SidebarLevel1">
-                                <button className="backLink btn-link"><i className="fas fa-arrow-circle-left nbSpan"></i>back to Leads</button>
-                                <h5 className="viewHeadingTitle">New Lead</h5>
-                                <h3 className="viewHeading">{this.getClientName()}</h3>
-                                <Button className="btnLeft" bsSize="small"><i className="fas fa-edit nbSpan"></i>Edit</Button>
-                                <div className="SearchComponent">
-                                    <SearchList></SearchList>
-                                </div>
-                                <div>
-                                    {this.getEquipmentData()}
-                                </div>
-                            </div>
-                        </Col>
-                        <Col lg={5} className="cardForm">
-                            <MiddleArticle formId={this.state.selected}>
-                                
-                            </MiddleArticle>
-                        </Col>
-                        <Col lg={4} className="cardForm2">
-                            <h1>Codename: Tanjiro Kamado</h1>
-                        </Col>
-                        {/* <Col lg={9} className="activeData">
-                            <div className="activeContainer">
-                                <div>
-                                    <Row className="ActiveHeading">
-                                        <Col lg={4} className="ActiveHeadingTitle">{this.state.selectedEquipment}</Col>
-                                        <Col lg={1}><i className="fab fa-gg-circle icon-fs"></i></Col>
-                                        <Col lg={2}><Button bsStyle="primary" className="btn-modified" block>Suppliers List</Button></Col>
-                                        <Col lg={2}><Button bsStyle="danger" className="btn-modified" block><i className="fas fa-ban nbSpan"></i>Reject</Button></Col>
-                                        <Col lg={3}><Button bsStyle="info" block>Move to Projects</Button></Col>
-                                    </Row>
-                                </div>
-                                <div className="renterName">RENTER</div>
-                                <Renter ApprovalPrice="4,16,00,000" RenterApproved="#" QuotationLink="#" WorkOrderLink="#"></Renter>
-                                <div className="renterName">FINALISED SUPPLIER</div>
-                                <Supplier></Supplier>
-                                <div className="renterName">SHORTLISTED SUPPLIER</div>
-                                <Supplier></Supplier>
-                            </div>
-                        </Col> */}
-                    </Row>
-                </Grid>
-            </div>
+            <React.Fragment>
+                <Route path="/business/new/view/:id" render={() => {
+                    return (
+                        <Grid className="modifiedContainer">
+                            <Row>
+                                <Col lg={3} className="Sidebar">
+                                    <div className="SidebarLevel1">
+                                        <Link className="backLink btn-link" to="/business/new"><i className="fas fa-arrow-circle-left nbSpan"></i>back to Leads</Link>
+                                        <h5 className="viewHeadingTitle">New Lead</h5>
+                                        <h3 className="viewHeading">{this.getClientName()}</h3>
+                                        <Button className="btnLeft" bsSize="small"><i className="fas fa-edit nbSpan"></i>Edit</Button>
+                                        <div className="SearchComponent">
+                                            <SearchList></SearchList>
+                                        </div>
+                                        <div>
+                                            {this.getEquipmentData()}
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col lg={9}>
+                                    <AddViewOne selectedEquipment={this.state.selected}></AddViewOne>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    )
+                }}>
+                </Route>
+
+                <Route path="/business/active/view/:id" render={() => {
+                    return (
+                        <Grid className="modifiedContainer2">
+                            <Row>
+                                <Col lg={3} className="Sidebar">
+                                    <div className="SidebarLevel1">
+                                        <Link className="backLink btn-link" to="/business/active"><i className="fas fa-arrow-circle-left nbSpan"></i>back to Leads</Link>
+                                        <h5 className="viewHeadingTitle">New Lead</h5>
+                                        <h3 className="viewHeading">{this.getClientName()}</h3>
+                                        <Button className="btnLeft" bsSize="small"><i className="fas fa-edit nbSpan"></i>Edit</Button>
+                                        <div className="SearchComponent">
+                                            <SearchList></SearchList>
+                                        </div>
+                                        <div>
+                                            {this.getEquipmentData()}
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col lg={9} className="business_active_tab">
+                                    <AddViewTwo selectedEquipment={this.state.selected}></AddViewTwo>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    )
+                }}></Route>
+            </React.Fragment>
         )
     }
 }

@@ -175,6 +175,14 @@ input[name="e_pe_shift"] {
     top: 3px;
 }
 
+.pe_shift {
+    width: 16px;
+    height: 16px;
+    margin-left: 0px;
+    position: relative;
+    top: 3px;
+}
+
 .custom-modal {
     width: 80%;
 }
@@ -192,6 +200,14 @@ input[name="e_pe_shift"] {
 
 .red {
     text-align: left !important;
+    border-width: 1px !important;
+    /* color: #d8d4d4 !important; */
+    font-weight: 100 !important;
+    border-color: #ccc !important;
+}
+
+.red:hover {
+    background-color: transparent !important;
 }
 
 .check {
@@ -262,4 +278,76 @@ input[name="e_pe_shift"] {
     font-size: 14px;
     color: #333;
     text-transform: capitalize;
+}
+
+.down_arrow {
+    width: 12px;
+    height: 12px;
+    float: right;
+    margin-top: 2px;
+}
+
+.calender {
+    width: 18px;
+    height: 18px;
+    float: right;
+    margin-top: 8px;
+    margin-left: -24px;
+    position: absolute;
+}
+
+.place_stle {
+    color: #555;
+}
+
+.widthone {
+    min-width: 196px;
+}
+
+.widthtwo {
+    min-width: 154px;
+}
+
+
+/* calnder Styling */
+
+.react-datepicker {
+    font-size: 1.3rem !important;
+}
+
+.react-datepicker__current-month {
+    font-size: 1.5rem !important;
+}
+
+.react-datepicker__header {
+    padding-top: 6px !important;
+}
+
+.react-datepicker__navigation {
+    top: 13px !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+    margin: 0.5rem !important;
+}
+
+
+/* calnder Styling */
+
+.btn_left {
+    margin-left: 1px;
+}
+
+.stle_back {
+    background-color: transparent !important;
+}
+
+.calender {
+    z-index: 1;
+}
+
+.react-datepicker__input-container {
+    background: transparent;
+    z-index: 2;
 }

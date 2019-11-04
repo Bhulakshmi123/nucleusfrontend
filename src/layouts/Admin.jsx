@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import AdminNavbar from "components/Navbars/AdminNavbar";
-// import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
 import image from "assets/img/sidebar-3.jpg";
+import '../assets/css/commonStyles.css'
 
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: image,
-      color: "black",
+      color: "white",
       hasImage: true,
       fixedClasses: "dropdown show-dropdown open"
     };
@@ -76,7 +76,7 @@ class Admin extends Component {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return "Default";
   };
 
   handleFixedClick = () => {
@@ -104,15 +104,10 @@ class Admin extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Sidebar {...this.props} routes={routes}
-          color={this.state.color} />
-        <div id="main-panel" className="main-panel" ref="mainPanel">
-          <AdminNavbar
-            {...this.props}
-            brandText={this.getBrandText(this.props.location.pathname)}
-          />
+        <Sidebar {...this.props} routes={routes} color={this.state.color} />
+        <div id="main-panel" className={this.props.location.pathname.match(new RegExp("/", "g")).length >= 2 ? "sm-main-panel main-panel" : "main-panel"} ref="mainPanel">
+          <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>
           <Switch>{this.getRoutes(routes)}</Switch>
-          {/* <Footer /> */}
         </div>
       </div>
     );

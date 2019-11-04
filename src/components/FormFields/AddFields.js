@@ -3,8 +3,8 @@ import { Button , Modal} from 'react-bootstrap';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import '../Modal/Modal.css';
-import InputName from './SelectInput';
-import FileInput from './FileInput';
+// import InputName from './SelectInput';
+// import FileInput from './FileInput';
 import RadioInput from './RadioInput';
 import Checkbox from './Checkbox';
 import TextArea from './TextArea';
@@ -14,16 +14,16 @@ const AddFields = props =>{
         <div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <SelectInput name="Equipment Type *" label="Equipment Type *" placeholder="Select Equipment Type"></SelectInput>
+                    <SelectInput name="Equipment Type *" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="Make" label="Make" placeholder="Select Make"></SelectInput>
+                    <SelectInput name="Make"cStyle="widthone" label="Make" placeholder="Select Make"></SelectInput>
                 </div>
                 <div className="col-md-3">
                     <TextInput name="Model" label="Model" placeholder="Equipment Modal"/>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="Minimum Year" label="Minimum Year" placeholder="Select Minimum Year"></SelectInput>
+                    <SelectInput name="Minimum Year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year"></SelectInput>
                 </div>
             </div>
             <div className="row martp">
@@ -42,10 +42,10 @@ const AddFields = props =>{
             </div>
             <div className="row martp">
                 <div className="col-md-3 form-modal">
-                    <SelectInput name="State" label="State" placeholder="Select State"></SelectInput>
+                    <SelectInput name="State" cStyle="widthone" label="State" placeholder="Select State"></SelectInput>
                 </div>
                 <div className="col-md-3">
-                    <SelectInput name="District / Known Area" label="District / Known Area" placeholder="Select District or State"></SelectInput>
+                    <SelectInput name="District / Known Area" cStyle="widthone" label="District / Known Area" placeholder="Select District or State"></SelectInput>
                 </div>
                 <div className="col-md-3">
                     <TextInput name="Project Stage" label="Project Stage" placeholder="Stage of Project"/>

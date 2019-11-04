@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 import { Component } from 'react';
+import '../Modal/Modal.css';
 import { Button } from 'react-bootstrap';
 import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
 
 import Select from 'react-select';
 import { defaultTheme } from 'react-select';
-
 const options = [
   { value: '1', label: 'Item 1' },
   { value: '2', label: 'Item 2' },
@@ -22,7 +22,7 @@ const options = [
 const { colors } = defaultTheme;
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 219, margin: 8 }),
+  control: provided => ({ ...provided, margin: 8 }),
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 
@@ -39,37 +39,39 @@ class SelectInput extends Component {
     const { isOpen, value } = this.state;
     return (
       <div>
-    <InputName label={this.props.label}/>
-      <Dropdown
-        isOpen={isOpen}
-        onClose={this.toggleOpen}
-        target={
-          <Button
-          className="red"
-          style={{width:'100%',height:'34px',padding: '6px 16px !important'}}
-            onClick={this.toggleOpen}
-            isSelected={isOpen}
-          >
-            {value ? `${value.label}` : <Placeholder placeholder={this.props.placeholder}></Placeholder>}
-          </Button>
-        }
-      >
-        <Select
-          autoFocus
-          backspaceRemovesValue={false}
-          components={{ DropdownIndicator, IndicatorSeparator: null }}
-          controlShouldRenderValue={false}
-          hideSelectedOptions={false}
-          isClearable={false}
-          menuIsOpen
-          onChange={this.onSelectChange}
-          options={options}
-          placeholder="Search..."
-          styles={selectStyles}
-          tabSelectsValue={false}
-          value={value}
-        />
-      </Dropdown>
+        <InputName label={this.props.label} />
+        <Dropdown
+          isOpen={isOpen}
+          onClose={this.toggleOpen}
+          target={
+            <Button
+              className="red"
+              style={{ width: '100%', height: '34px', padding: '6px 16px !important' }}
+              onClick={this.toggleOpen}
+              isselected={isOpen}
+            >
+              <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
+              {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
+            </Button>
+          }
+        >
+          <Select
+            autoFocus
+            backspaceRemovesValue={false}
+            className={this.props.cStyle}
+            components={{ DropdownIndicator, IndicatorSeparator: null }}
+            controlShouldRenderValue={false}
+            hideSelectedOptions={false}
+            isClearable={false}
+            menuIsOpen
+            onChange={this.onSelectChange}
+            options={options}
+            placeholder="Search..."
+            styles={selectStyles}
+            tabSelectsValue={false}
+            value={value}
+          />
+        </Dropdown>
       </div>
     );
   }
@@ -88,7 +90,7 @@ const Menu = props => {
         marginTop: 8,
         padding: '6px 16px !important',
         position: 'absolute',
-        textAlign:'left',
+        textAlign: 'left',
         zIndex: 2,
       }}
       {...props}
@@ -103,8 +105,8 @@ const InputName = props => {
   );
 };
 const Placeholder = props => {
-  return(
-          <span>{props.placeholder}</span>
+  return (
+    <span>{props.placeholder}</span>
   );
 };
 const Blanket = props => (
@@ -148,14 +150,14 @@ const DropdownIndicator = () => (
     </Svg>
   </div>
 );
-const ChevronDown = () => (
-  <Svg style={{ marginRight: -6 }}>
-    <path
-      d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </Svg>)
+// const ChevronDown = () => (
+//   <Svg style={{ marginRight: -6 }}>
+//     <path
+//       d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
+//       fill="currentColor"
+//       fillRule="evenodd"
+//     />
+//   </Svg>)
 export default SelectInput;
 
 

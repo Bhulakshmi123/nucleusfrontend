@@ -4,6 +4,7 @@
     height: 100vh;
     padding: 0;
     overflow: auto;
+    padding-bottom: 75px;
 }
 
 .Sidebar>* {
@@ -11,23 +12,33 @@
 }
 
 .cardForm {
-    background-color: lightgrey;
     height: 100vh;
+    overflow: auto;
+    padding-bottom: 70px;
+    padding-right: 1px;
 }
 
 .cardForm2 {
-    /* background-color: chartreuse; */
     height: 100vh;
+    overflow: auto;
+    padding-bottom: 70px;
 }
 
 .modifiedContainer {
-    width: 100%;
+    width: auto;
+    position: fixed;
+    /* width: 100%; */
+    /* overflow: auto; */
+}
+
+.modifiedContainer2 {
+    width: 95%;
+    position: fixed;
 }
 
 .eqParent {
     display: flex;
     padding: 3% 5%;
-    /* border-bottom: 1px solid rgba(255,255,255,0.2); */
 }
 
 .eqParent:hover {
@@ -98,33 +109,66 @@ hr.borderEffect {
     margin-left: 5%;
     margin-top: 5%;
     text-decoration: underline;
-    padding: 0;
+    display: block;
 }
 
 .backLink:hover {
     color: white;
 }
+
 .activeDiv {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
 .activeData {
     /* background-color: red; */
     height: 100vh;
+    width: 100%;
 }
+
 .activeContainer {
     width: 90%;
     margin: auto;
 }
+
 .renterName {
     margin-top: 5%;
     opacity: 0.5;
 }
+
 a {
     color: black;
 }
+
 .ActiveHeading {
     margin-top: 5%;
 }
-.ActiveHeadingTitle  {
+
+.ActiveHeadingTitle {
     font-size: 3rem;
+}
+
+.redFrot {
+    padding: 5%;
+    margin-top: 1px;
+    background-color: whitesmoke;
+}
+
+.redFrot>span {
+    font-family: GilroyMedium;
+}
+
+.topContainer {
+    margin: 2% 0;
+}
+
+.redHeading>h3 {
+    margin: 0px;
+    font-family: GilroyBold;
+}
+
+.business_active_tab {
+    overflow: auto;
+    height: 100vh;
+    padding-bottom: 75px;
 }
