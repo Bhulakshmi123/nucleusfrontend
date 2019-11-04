@@ -4,6 +4,7 @@
     height: 100vh;
     padding: 0;
     overflow: auto;
+    padding-bottom: 70px;
 }
 
 .Sidebar>* {
@@ -13,15 +14,21 @@
 .cardForm {
     height: 100vh;
     overflow: auto;
+    padding-bottom: 70px;
+    padding-right: 1px;
 }
 
 .cardForm2 {
     height: 100vh;
     overflow: auto;
+    padding-bottom: 70px;
 }
 
 .modifiedContainer {
-    width: 100%;
+    width: auto;
+    position: fixed;
+    /* width: 100%; */
+    /* overflow: auto; */
 }
 
 .eqParent {
@@ -97,33 +104,54 @@ hr.borderEffect {
     margin-left: 5%;
     margin-top: 5%;
     text-decoration: underline;
-    padding: 0;
+    display: block;
 }
 
 .backLink:hover {
     color: white;
 }
+
 .activeDiv {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
 .activeData {
     /* background-color: red; */
     height: 100vh;
 }
+
 .activeContainer {
     width: 90%;
     margin: auto;
 }
+
 .renterName {
     margin-top: 5%;
     opacity: 0.5;
 }
+
 a {
     color: black;
 }
+
 .ActiveHeading {
     margin-top: 5%;
 }
-.ActiveHeadingTitle  {
+
+.ActiveHeadingTitle {
     font-size: 3rem;
+}
+.redFrot {
+    padding: 2%;
+    margin-top: 1px;
+    background-color: whitesmoke;
+}
+.redFrot > span {
+    font-family: GilroyMedium;
+}
+.topContainer {
+    margin: 2%  0;
+}
+.redHeading > h3 {
+    margin: 0px;
 }
