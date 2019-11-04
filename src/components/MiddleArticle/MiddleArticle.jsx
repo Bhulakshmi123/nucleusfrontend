@@ -57,7 +57,7 @@ class MiddleArticle extends Component {
                     </div>
                 </div>
                 <div className="row martp btn_left">
-                    <Button>Submit Details</Button>
+                    <Button className="btn btn-primary">Submit Details</Button>
                 </div>
             </div>
         )
