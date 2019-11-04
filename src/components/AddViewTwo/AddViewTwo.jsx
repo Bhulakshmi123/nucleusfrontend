@@ -28,4 +28,4 @@ class AddViewTwo extends Component {
         )
     }
 }
-export default AddViewTwo
+export default AddViewTwo;

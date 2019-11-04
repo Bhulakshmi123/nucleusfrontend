@@ -12,7 +12,7 @@ class MiddleArticle extends Component {
         return (
             <React.Fragment>
                 {/* <h2><b>EQUIPMENT ID: {this.props.formId}</b></h2> */}
-                <div className="innerDivCompact card">
+                <div className="innerDivCompact card card_stle">
                     <div className="row">
                         <div className="col-md-6 form-modal">
                             <TextInput type="text" label="Price" />

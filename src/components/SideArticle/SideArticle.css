@@ -30,8 +30,10 @@
     /* width: 100%; */
     /* overflow: auto; */
 }
+
 .modifiedContainer2 {
-    width: 100%;
+    width: 95%;
+    position: fixed;
 }
 
 .eqParent {
@@ -163,4 +165,10 @@ a {
 .redHeading>h3 {
     margin: 0px;
     font-family: GilroyBold;
+}
+
+.business_active_tab {
+    overflow: auto;
+    height: 100vh;
+    padding-bottom: 75px;
 }
