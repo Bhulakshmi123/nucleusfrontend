@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import MiddleArticle from '../MiddleArticle/MiddleArticle';
 class AddViewOne extends Component {
     render() {
@@ -13,7 +14,7 @@ class AddViewOne extends Component {
                         <Button bsStyle="danger" className="btn-danger-overRide" block><i className="fas fa-trash-alt nbSpan"></i>Remove</Button>
                     </Col>
                     <Col lg={2}>
-                        <Button bsStyle="success" className="btn-success-overRide" block>Activate Lead</Button>
+                        <Link to='/business/active'><Button bsStyle="success" className="btn-success-overRide" block>Activate Lead</Button></Link>
                     </Col>
                 </Row>
                 <Row>

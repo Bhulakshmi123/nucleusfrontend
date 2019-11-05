@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import './Supplier.css'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 class Supplier extends Component {
     render() {
         return (
             <div className="card cardPadding">
                 <Row className="padCard">
-                    <Col lg={2} className="text-left">
-                        <div className="supplierClientName text-primary">Lorem Epsum</div>
+                    <Col lg={3} className="text-left">
+                        <div className="supplierClientName text-primary">Lorem Epsum Doloris</div>
                         <div className="supplierClientPhone">98482-58987</div>
                     </Col>
 
-                    <Col lg={10}>
+                    <Col lg={9}>
                         <Row>
                             <Col lg={1} className="text-center">
                                 <div><i className="fas fa-ellipsis-v icon-fs2"></i></div>
@@ -62,7 +62,7 @@ class Supplier extends Component {
                         <div className="subCardContext">Equipment Working Properly</div>
                     </Col>
                     <Col lg={2}>
-                        <button className="btn btn-primary btn-sm btn-block"><i className="fas fa-edit nbSpan"></i>Edit</button>
+                        <Button bsStyle="primary" className="btn-primary-overRide btn-right-overRide"><i className="fas fa-edit nbSpan"></i>Edit</Button>
                     </Col>
                 </Row>
             </div>

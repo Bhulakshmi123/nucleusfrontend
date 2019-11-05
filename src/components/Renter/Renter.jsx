@@ -5,7 +5,7 @@ class Renter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            renterStatus: "approved"
+            renterStatus: "rejected"
         }
     }
     changeContent = () => {
@@ -26,8 +26,8 @@ class Renter extends Component {
                     </Col>
                     <Col lg={2}>
                         <a href="">
-                            <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected' ? 'red' : ''}`}></i>
-                            <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved' ? 'green' : ''}`}></i>
+                            <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
+                            <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
                             <div className="smFont">{this.changeContent()}</div>
                         </a>
                     </Col>
@@ -44,7 +44,7 @@ class Renter extends Component {
                         </a>
                     </Col>
                     <Col lg={3}>
-                        <Button bsStyle="primary" bsSize="small" block className="btn-top"><i className="fas fa-edit nbSpan"></i>Edit Price</Button>
+                        <Button bsStyle="primary"  className="mt-2 btn-primary-overRide btn-right-overRide"><i className="fas fa-edit nbSpan"></i>Edit Price</Button>
                     </Col>
                 </Row >
             </div >

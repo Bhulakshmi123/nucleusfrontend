@@ -3,16 +3,18 @@
 }
 .icon-fs {
     font-size: 3.5rem;
-    opacity: 0.5;
+    opacity: 0.9;
+
 }
 .icon-fs2 {
     font-size: 3rem;
     margin-top: 10px;
-    /* opacity: 0.5; */
     width: 100%;
 }
 .fontSize {
     font-size: 1.1rem;
+    text-transform: uppercase;
+    text-decoration: underline;
 }
 .lastIcon {
     text-align: center !important;
@@ -22,11 +24,11 @@
     margin-top: 5px;
 }
 .supplierClientPhone {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 .subCardHeading {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .subCardContext {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }

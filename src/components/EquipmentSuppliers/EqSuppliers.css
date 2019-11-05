@@ -1,0 +1,9 @@
+.ActiveHeadingTitle > h3{
+    margin-top: 0px;
+}
+.Middlebar {
+    background-color: lightgray;
+}
+.MiddlebarInner  h3{
+    margin: 20px;
+}
