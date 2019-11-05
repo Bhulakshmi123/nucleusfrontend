@@ -351,3 +351,16 @@ input[name="e_pe_shift"] {
     background: transparent;
     z-index: 2;
 }
+
+.inpt_size {
+    width: 86px !important;
+    /* top: 386px !important; */
+}
+
+.time_pic {
+    margin-left: 40px;
+}
+
+.ant-time-picker-panel-placement-bottomLeft {
+    top: 386px !important;
+}
