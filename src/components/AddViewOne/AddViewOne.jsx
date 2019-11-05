@@ -21,7 +21,7 @@ class AddViewOne extends Component {
                         <MiddleArticle formId={this.props.selectedEquipment}></MiddleArticle>
                     </Col>
                     <Col lg={5} className="cardForm2">
-                        <div className="redFrot card">
+                        <div className="redFrot card card_stle">
                             What is Lorem Ipsum?
                                 <br></br>
                             <span>

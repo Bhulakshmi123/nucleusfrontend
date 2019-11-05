@@ -32,7 +32,6 @@ class ArticleHeader extends Component {
     }
 
     onSubmit = (e) => {
-
         e.preventDefault();
         const data = this.state
         console.log("hi", data)

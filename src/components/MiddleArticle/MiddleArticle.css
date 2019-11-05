@@ -1,5 +1,14 @@
 .innerDivCompact {
-    padding:5%;
+    padding: 5%;
     background-color: whitesmoke;
     margin-top: 1px;
+}
+
+.card_stle {
+    margin-bottom: 90px !important;
+}
+
+.card label {
+    text-transform: none !important;
+    font-weight: 700;
 }

@@ -4,7 +4,7 @@
     height: 100vh;
     padding: 0;
     overflow: auto;
-    padding-bottom: 70px;
+    padding-bottom: 75px;
 }
 
 .Sidebar>* {
@@ -30,8 +30,10 @@
     /* width: 100%; */
     /* overflow: auto; */
 }
+
 .modifiedContainer2 {
-    width: 100%;
+    width: 95%;
+    position: fixed;
 }
 
 .eqParent {
@@ -145,18 +147,28 @@ a {
 .ActiveHeadingTitle {
     font-size: 3rem;
 }
+
 .redFrot {
     padding: 5%;
     margin-top: 1px;
     background-color: whitesmoke;
 }
-.redFrot > span {
+
+.redFrot>span {
     font-family: GilroyMedium;
 }
+
 .topContainer {
-    margin: 2%  0;
+    margin: 2% 0;
 }
-.redHeading > h3 {
+
+.redHeading>h3 {
     margin: 0px;
     font-family: GilroyBold;
+}
+
+.business_active_tab {
+    overflow: auto;
+    height: 100vh;
+    padding-bottom: 75px;
 }
