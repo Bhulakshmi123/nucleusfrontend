@@ -3,6 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import Supplier from '../Supplier/Supplier';
+import AddViewModal from './AddViewModal';
 class AddViewTwo extends Component {
     render() {
         return (
@@ -11,7 +12,7 @@ class AddViewTwo extends Component {
                     <div>
                         <Row className="ActiveHeading">
                             <Col lg={4} className="ActiveHeadingTitle">[{this.props.supplierId}], [{this.props.selectedEquipment}]</Col>
-                            <Col lg={1}><i className="fab fa-gg-circle icon-fs"></i></Col>
+                            <Col lg={1}><AddViewModal/></Col>
                             <Col lg={2}>
                                 <Link to={`/business/eqsuppliers/${this.props.supplierId}/${this.props.selectedEquipment}`}>
                                     <Button bsStyle="primary" className="btn-primary-overRide" block>Suppliers List</Button>
