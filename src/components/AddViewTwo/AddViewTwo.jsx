@@ -9,12 +9,11 @@ class AddViewTwo extends Component {
                 <div className="activeContainer">
                     <div>
                         <Row className="ActiveHeading">
-                            {/* <Col lg={4} className="ActiveHeadingTitle">{this.state.selectedEquipment}</Col> */}
-                            <Col lg={4} className="ActiveHeadingTitle">{this.props.selectedEquipment}</Col>
+                            <Col lg={4} className="ActiveHeadingTitle">[{this.props.selectedEquipment}]</Col>
                             <Col lg={1}><i className="fab fa-gg-circle icon-fs"></i></Col>
-                            <Col lg={2}><Button bsStyle="primary" className="btn-modified" block>Suppliers List</Button></Col>
-                            <Col lg={2}><Button bsStyle="danger" className="btn-modified" block><i className="fas fa-ban nbSpan"></i>Reject</Button></Col>
-                            <Col lg={3}><Button bsStyle="info" block>Move to Projects</Button></Col>
+                            <Col lg={2}><Button bsStyle="primary" className="btn-primary-overRide btn-modified" block>Suppliers List</Button></Col>
+                            <Col lg={2}><Button bsStyle="danger" className=" btn-danger-overRide btn-modified" block><i className="fas fa-ban nbSpan"></i>Reject</Button></Col>
+                            <Col lg={3}><Button bsStyle="secondary" className="btn-info-overRide" block>Move to Projects</Button></Col>
                         </Row>
                     </div>
                     <div className="renterName">RENTER</div>

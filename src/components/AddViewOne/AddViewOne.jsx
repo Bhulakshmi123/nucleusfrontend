@@ -10,10 +10,10 @@ class AddViewOne extends Component {
                         <h3>Self Loading Concrete Miller [{this.props.selectedEquipment}]</h3>
                     </Col>
                     <Col lg={2}>
-                        <Button bsStyle="danger" block><i className="fas fa-trash-alt nbSpan"></i>Remove</Button>
+                        <Button bsStyle="danger" className="btn-danger-overRide" block><i className="fas fa-trash-alt nbSpan"></i>Remove</Button>
                     </Col>
                     <Col lg={2}>
-                        <Button bsStyle="success" block>Activate Lead</Button>
+                        <Button bsStyle="success" className="btn-success-overRide" block>Activate Lead</Button>
                     </Col>
                 </Row>
                 <Row>

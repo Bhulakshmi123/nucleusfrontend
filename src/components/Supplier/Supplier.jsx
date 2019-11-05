@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Supplier.css'
-import { Row, Col, Grid } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 class Supplier extends Component {
     render() {
         return (

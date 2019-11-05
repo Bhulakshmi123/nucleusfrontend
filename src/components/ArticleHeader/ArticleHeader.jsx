@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import './ArticleHeader.css';
 import '../Modal/Modal.css';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Grid, Col, Row } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
@@ -48,15 +48,25 @@ class ArticleHeader extends Component {
         this.setState({ isEquipmentinfo: true });
     }
     render() {
-       
+
         return (
-            <div>
-                <div className="articleHeader">
+            <React.Fragment>
+                {/* <div className="articleHeader">
                     <div className="headerTitle"><p>{this.props.heading}</p></div>
                     <div className="headerButton">
-                        <Button bsStyle="primary" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
+                        <Button bsStyle="primary" className="btn-primary-overRide" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
                     </div>
-                </div>
+                </div> */}
+                <Grid className="fluidContainer mt-2">
+                    <Row>
+                        <Col md={10}>
+                            <h2 className="headerTitle"><b>{this.props.heading}</b></h2>
+                        </Col>
+                        <Col md={2}>
+                            <Button bsStyle="primary" className="btn-primary-overRide btn-right-overRide" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
+                        </Col>
+                    </Row>
+                </Grid>
                 <Modal show={this.state.isShowing} onHide={this.closeModalHandler} dialogClassName="custom-modal">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
@@ -154,7 +164,7 @@ class ArticleHeader extends Component {
 
                     </Modal.Footer>
                 </Modal>
-            </div>
+            </React.Fragment>
         )
     }
 }
