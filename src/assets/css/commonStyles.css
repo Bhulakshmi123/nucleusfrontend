@@ -214,11 +214,15 @@ body>.navbar-collapse .logo {
 .fluidContainer {
     width: 100% !important;
 }
-
+.fluidContainer2 {
+    width: 90% !important;
+    margin: auto !important;
+}
 
 .btn-primary-overRide {
     color: white !important;
     background-color: #3472F7 !important;
+    border-color: #3472F7 !important;
 }
 .btn-primary-overRide:hover {
     color: #3472F7 !important;
@@ -227,27 +231,33 @@ body>.navbar-collapse .logo {
 .btn-danger-overRide {
     color: white !important;
     background-color: #FF4A55 !important;
+    border-color: #FF4A55 !important;
 }
 .btn-danger-overRide:hover {
     color: #FF4A55 !important;
     background-color: transparent !important;
 }
-.btn-info-overRide {
+.btn-dark-overRide {
     color: white !important;
-    background-color: #6c757d !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
 }
-.btn-info-overRide:hover {
-    color: #6c757d !important;
+.btn-dark-overRide:hover {
+    color: #343a40 !important;
     background-color: transparent !important;
 }
 .btn-success-overRide {
     color: white !important;
     background-color: #87CB16 !important;
+    border-color: #87CB16 !important;
 }
 .btn-success-overRide:hover {
     color: #87CB16 !important;
     background-color: transparent !important;
 }
+
+
+
 
 .btn-left-overRide {
     float: left !important;
@@ -255,6 +265,8 @@ body>.navbar-collapse .logo {
 .btn-right-overRide {
     float: right !important; 
 }
+
+
 
 
 .mt-5 {
@@ -273,6 +285,10 @@ body>.navbar-collapse .logo {
     margin-top: 1%;
 }
 
+
+
+
+
 .pd-5 {
     padding-top: 5%;
 }
@@ -288,4 +304,3 @@ body>.navbar-collapse .logo {
 .pd-1 {
     padding-top: 1%;
 }
-

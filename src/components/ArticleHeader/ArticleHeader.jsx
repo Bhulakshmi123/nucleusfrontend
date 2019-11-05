@@ -50,12 +50,6 @@ class ArticleHeader extends Component {
 
         return (
             <React.Fragment>
-                {/* <div className="articleHeader">
-                    <div className="headerTitle"><p>{this.props.heading}</p></div>
-                    <div className="headerButton">
-                        <Button bsStyle="primary" className="btn-primary-overRide" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
-                    </div>
-                </div> */}
                 <Grid className="fluidContainer mt-2">
                     <Row>
                         <Col md={10}>

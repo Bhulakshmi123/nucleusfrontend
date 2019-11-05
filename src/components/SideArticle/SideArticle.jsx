@@ -92,7 +92,7 @@ class SideArticle extends Component {
                                     </div>
                                 </Col>
                                 <Col lg={9} className="business_active_tab">
-                                    <AddViewTwo selectedEquipment={this.state.selected}></AddViewTwo>
+                                    <AddViewTwo selectedEquipment={this.state.selected} supplierId={this.props.id}></AddViewTwo>
                                 </Col>
                             </Row>
                         </Grid>
