@@ -3,7 +3,7 @@ import './BusinessMCard.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
 import { Link, NavLink } from 'react-router-dom';
-import { allProjects, newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
+import { newProjects, activeProjects, pendingProjects, rejectedProjects } from '../../views/Business/demoData';
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
 
 class BusinessMCard extends Component {
