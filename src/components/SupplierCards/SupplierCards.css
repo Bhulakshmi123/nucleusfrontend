@@ -1,0 +1,7 @@
+.cardParent {
+    display: flex;
+    padding: 2%;
+}
+.cardChild1  {
+    width: 25%;
+}

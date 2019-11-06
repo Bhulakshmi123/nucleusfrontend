@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import SearchList from '../SearchList/SearchList';
+import SupplierCards from '../SupplierCards/SupplierCards';
 import './EqSuppliers.css';
 class EqSuppliers extends Component {
     constructor(props) {
@@ -38,7 +41,7 @@ class EqSuppliers extends Component {
                                 </Row>
                             </Grid>
                             <Grid className="fluidContainer">
-                                <Row className="Middlebar mt-2">
+                                <Row className="Middlebar mt-2 mb-2">
                                     <Col md={1} className="MiddlebarInner">
                                         <h3>
                                             <i className="fas fa-arrow-left"></i>
@@ -50,6 +53,32 @@ class EqSuppliers extends Component {
                                         </h3>
                                     </Col>
                                 </Row>
+                            </Grid>
+                            <Grid className="fluidContainer2">
+                                <Row className="mb-2">
+                                    <Col md={8}>
+                                        <ul className="NavStyles">
+                                            <li><NavLink activeClassName="activeLink" to={`/business/eqsuppliers/${this.state.supId}/${this.state.eqId}`}>RMP Users</NavLink></li>
+                                            <li><NavLink activeClassName="activeLink" to="/business/rejected">Suppliers</NavLink></li>
+                                        </ul>
+                                    </Col>
+                                    <Col md={2}>
+                                        <Button bsStyle="primary" className="btn-primary-overRide" bsStyle="dark" block>Request Bids</Button>
+                                    </Col>
+                                    <Col md={2}>
+                                        <Button className="btn-dark-overRide" bsStyle="dark" block>SMS</Button>
+                                    </Col>
+                                </Row>
+                                <Row className="mb-1">
+                                    <Col md={1}><input type="checkbox"></input></Col>
+                                    <Col md={2}>Equipment Type</Col>
+                                    <Col md={2}>Location</Col>
+                                    <Col md={2}>Equipment Status</Col>
+                                    <Col md={5}>
+                                        <SearchList></SearchList>
+                                    </Col>
+                                </Row>
+                                <SupplierCards></SupplierCards>
                             </Grid>
                         </Col>
                     </Row>
