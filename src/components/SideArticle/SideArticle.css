@@ -76,6 +76,7 @@
     font-size: 1.4rem;
     font-family: GilroyBold;
     opacity: 0.8;
+    color: #fff !important;
 }
 
 .viewHeading {
@@ -83,6 +84,7 @@
     font-family: GilroyBold;
     margin: 0;
     font-size: 2.4rem;
+    color: #fff !important;
 }
 
 .SearchComponent {
