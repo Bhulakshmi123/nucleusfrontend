@@ -364,3 +364,7 @@ input[name="e_pe_shift"] {
 .ant-time-picker-panel-placement-bottomLeft {
     top: 386px !important;
 }
+
+.modal-title {
+    color: white;
+}
