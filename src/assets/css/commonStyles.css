@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: GilroyBold;
     src: url(../web-fonts/Gilroy-Bold.woff);
 }
@@ -47,7 +47,6 @@ body,
     margin: auto;
     width: 50%;
     display: flex;
-    /* padding: 1%; */
 }
 
 .navStyle {
@@ -170,9 +169,7 @@ body>.navbar-collapse .logo .simple-text {
 .sidebar:after,
 body>.navbar-collapse:after {
     background: none !important;
-    /* background-size: 150% 150%; */
     z-index: 3;
-    /* opacity: 1; */
 }
 
 .navbar-collapse:before {
@@ -211,9 +208,11 @@ body>.navbar-collapse .logo {
     padding: 20px 25px !important;
     border: none !important;
 }
+
 .fluidContainer {
     width: 100% !important;
 }
+
 .fluidContainer2 {
     width: 90% !important;
     margin: auto !important;
@@ -224,44 +223,49 @@ body>.navbar-collapse .logo {
     background-color: #3472F7 !important;
     border-color: #3472F7 !important;
 }
+
 .btn-primary-overRide:hover {
     color: #3472F7 !important;
     background-color: transparent !important;
 }
+
 .btn-danger-overRide {
     color: white !important;
     background-color: #FF4A55 !important;
     border-color: #FF4A55 !important;
 }
+
 .btn-danger-overRide:hover {
     color: #FF4A55 !important;
     background-color: transparent !important;
 }
+
 .btn-dark-overRide {
     color: white !important;
     background-color: #343a40 !important;
     border-color: #343a40 !important;
 }
+
 .btn-dark-overRide:hover {
     color: #343a40 !important;
     background-color: transparent !important;
 }
+
 .btn-success-overRide {
     color: white !important;
     background-color: #87CB16 !important;
     border-color: #87CB16 !important;
 }
+
 .btn-success-overRide:hover {
     color: #87CB16 !important;
     background-color: transparent !important;
-}
-
-
-
+} */
 
 .btn-left-overRide {
     float: left !important;
 }
+
 .btn-right-overRide {
-    float: right !important; 
+    float: right !important;
 }

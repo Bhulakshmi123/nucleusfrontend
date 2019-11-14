@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import '../Modal/Modal.css';
-<<<<<<< HEAD
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-=======
-import { Modal, Button, Grid, Col, Row } from 'react-bootstrap';
 import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
->>>>>>> caf4ab48c2adce18b1ba52b24bf99c94a3d6f0a0
 class ArticleHeader extends Component {
     constructor(props) {
         super(props);
