@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
     font-family: GilroyBold;
     src: url(../web-fonts/Gilroy-Bold.woff);
 }
@@ -260,7 +260,7 @@ body>.navbar-collapse .logo {
 .btn-success-overRide:hover {
     color: #87CB16 !important;
     background-color: transparent !important;
-} */
+}
 
 .btn-left-overRide {
     float: left !important;
