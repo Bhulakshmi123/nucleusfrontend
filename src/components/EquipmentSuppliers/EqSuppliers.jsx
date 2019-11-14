@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import SearchList from '../SearchList/SearchList';
 import SupplierCards from '../SupplierCards/SupplierCards';
@@ -16,7 +16,7 @@ class EqSuppliers extends Component {
     render() {
         return (
             <React.Fragment>
-                <Grid className="fluidContainer">
+                <Container className="fluidContainer">
                     <Row>
                         <Col md={3} className="Sidebar">
                             <div className="pd-5 Sidebar1">
@@ -26,7 +26,7 @@ class EqSuppliers extends Component {
                             </div>
                         </Col>
                         <Col md={9}>
-                            <Grid className="fluidContainer2">
+                            <Container className="fluidContainer2">
                                 <Row className="mt-5">
                                     <Col md={6} className="ActiveHeadingTitle">
                                         <h3><b>Single Lane Tipper Crane</b></h3>
@@ -39,8 +39,8 @@ class EqSuppliers extends Component {
                                         <Button className="btn-dark-overRide" bsStyle="dark" block>Move To Projects</Button>
                                     </Col>
                                 </Row>
-                            </Grid>
-                            <Grid className="fluidContainer">
+                            </Container>
+                            <Container className="fluidContainer">
                                 <Row className="Middlebar mt-2 mb-2">
                                     <Col md={1} className="MiddlebarInner">
                                         <h3>
@@ -53,8 +53,8 @@ class EqSuppliers extends Component {
                                         </h3>
                                     </Col>
                                 </Row>
-                            </Grid>
-                            <Grid className="fluidContainer2">
+                            </Container>
+                            <Container className="fluidContainer2">
                                 <Row className="mb-2">
                                     <Col md={8}>
                                         <ul className="NavStyles">
@@ -63,7 +63,7 @@ class EqSuppliers extends Component {
                                         </ul>
                                     </Col>
                                     <Col md={2}>
-                                        <Button bsStyle="primary" className="btn-primary-overRide" bsStyle="dark" block>Request Bids</Button>
+                                        {/* <Button bsStyle="primary" className="btn-primary-overRide" bsStyle="dark" block>Request Bids</Button> */}
                                     </Col>
                                     <Col md={2}>
                                         <Button className="btn-dark-overRide" bsStyle="dark" block>SMS</Button>
@@ -79,10 +79,10 @@ class EqSuppliers extends Component {
                                     </Col>
                                 </Row>
                                 <SupplierCards></SupplierCards>
-                            </Grid>
+                            </Container>
                         </Col>
                     </Row>
-                </Grid>
+                </Container>
             </React.Fragment>
         )
     }

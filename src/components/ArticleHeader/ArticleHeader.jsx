@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
-import './ArticleHeader.css';
 import '../Modal/Modal.css';
-import { Modal, Button, Grid, Col, Row } from 'react-bootstrap';
+import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
@@ -50,16 +49,18 @@ class ArticleHeader extends Component {
 
         return (
             <React.Fragment>
-                <Grid className="fluidContainer mt-2">
+                <Container className="mt-2">
                     <Row>
                         <Col md={10}>
-                            <h2 className="headerTitle"><b>{this.props.heading}</b></h2>
+                            <h1 className="mx-0 my-0 text-white text-left">{this.props.heading}</h1>
                         </Col>
-                        <Col md={2}>
-                            <Button bsStyle="primary" className="btn-primary-overRide btn-right-overRide" onClick={this.openModalHandler}><i className="fas fa-plus-circle nbSpan"></i>Add New</Button>
+                        <Col md={2} className="my-auto">
+                            <Button variant="light" size="sm" block onClick={this.openModalHandler}>
+                                <i className="fas fa-plus-circle nbSpan text-primary"></i>Add New
+                            </Button>
                         </Col>
                     </Row>
-                </Grid>
+                </Container>
                 <Modal show={this.state.isShowing} onHide={this.closeModalHandler} dialogClassName="custom-modal">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>

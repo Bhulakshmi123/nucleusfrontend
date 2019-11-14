@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Button, Row, Col } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Button, Row, Col } from 'react-bootstrap';
 import './Renter.css'
 class Renter extends Component {
     constructor(props) {
@@ -25,20 +25,20 @@ class Renter extends Component {
                         <div>Rs. {this.props.ApprovalPrice}</div>
                     </Col>
                     <Col lg={2}>
-                        <a href="">
+                        <a href="https://www.google.com">
                             <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
                             <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
                             <div className="smFont">{this.changeContent()}</div>
                         </a>
                     </Col>
                     <Col lg={2} className="text-center">
-                        <a href="" target="_blank">
+                        <a href="https://www.google.com" target="_blank">
                             <i className="far fa-file-pdf codeRed"></i>
                             <div className="smFont">Quotation</div>
                         </a>
                     </Col>
                     <Col lg={2} className="text-center">
-                        <a href="" target="_blank">
+                        <a href="https://www.google.com" target="_blank">
                             <i className="far fa-file-pdf codeRed"></i>
                             <div className="smFont">Work Order</div>
                         </a>
@@ -46,10 +46,10 @@ class Renter extends Component {
                     <Col lg={3}>
                         <Button bsStyle="primary"  className="mt-2 btn-primary-overRide btn-right-overRide"><i className="fas fa-edit nbSpan"></i>Edit Price</Button>
                     </Col>
-                </Row >
-            </div >
+                </Row>
+            </div>
         )
     }
 }
 
-export default Renter
+export default Renter;

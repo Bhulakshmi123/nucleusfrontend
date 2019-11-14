@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
+import logo from "assets/img/reactlogo.png";
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 
 class Header extends Component {
@@ -29,15 +30,16 @@ class Header extends Component {
   }
   render() {
     return (
-      <Navbar fluid className="stickyNavbar">
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#pablo">{this.props.brandText}</a>
-          </Navbar.Brand>
-          <Navbar.Toggle onClick={this.mobileSidebarToggle} />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <AdminNavbarLinks />
+      <Navbar fixed="top" className="stickyTopColor">
+        <Navbar.Brand href="#home">
+          <img alt="" src={logo} width="45" height="30" className="d-inline-block align-top"></img>
+          {' React Bootstrap'}
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">Mark Otto</a>
+          </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
     );

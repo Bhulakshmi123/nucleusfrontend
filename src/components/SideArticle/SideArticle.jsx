@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchList from '../../components/SearchList/SearchList'
-import { Row, Col, Grid, Button } from 'react-bootstrap'
+import { Row, Col, Container, Button } from 'react-bootstrap'
 import { Route, Link } from 'react-router-dom'
 import './SideArticle.css'
 import { idData } from '../../views/Business/idData'
@@ -48,7 +48,7 @@ class SideArticle extends Component {
             <React.Fragment>
                 <Route path="/business/new/view/:id" render={() => {
                     return (
-                        <Grid className="modifiedContainer">
+                        <Container className="modifiedContainer">
                             <Row>
                                 <Col lg={3} className="Sidebar">
                                     <div className="SidebarLevel1">
@@ -68,14 +68,14 @@ class SideArticle extends Component {
                                     <AddViewOne selectedEquipment={this.state.selected}></AddViewOne>
                                 </Col>
                             </Row>
-                        </Grid>
+                        </Container>
                     )
                 }}>
                 </Route>
 
                 <Route path="/business/active/view/:id" render={() => {
                     return (
-                        <Grid className="modifiedContainer2">
+                        <Container className="modifiedContainer2">
                             <Row>
                                 <Col lg={3} className="Sidebar">
                                     <div className="SidebarLevel1">
@@ -95,7 +95,7 @@ class SideArticle extends Component {
                                     <AddViewTwo selectedEquipment={this.state.selected} supplierId={this.props.id}></AddViewTwo>
                                 </Col>
                             </Row>
-                        </Grid>
+                        </Container>
                     )
                 }}></Route>
             </React.Fragment>

@@ -1,4 +1,4 @@
-
+/* 
 .dateStyles {
     width: 15%;
     float: left;   
@@ -72,4 +72,7 @@
 }
 .customContainer {
     width: 92%;
+} */
+.projectName {
+    font-size: 1.2rem;
 }

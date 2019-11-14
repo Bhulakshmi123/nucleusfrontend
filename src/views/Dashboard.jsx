@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
@@ -30,8 +30,9 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div className="content">
-        <Grid fluid>
+      <React.Fragment>
+        {/* <div className="content">
+        <Container fluid mt-5 pt-5>
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
@@ -154,8 +155,12 @@ class Dashboard extends Component {
               />
             </Col>
           </Row>
-        </Grid>
-      </div>
+        </Container>
+      </div> */}
+        <div className="mainContent">
+          <h1 className="text-white text-center mt-5">Dashboard</h1>
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -20,9 +20,9 @@ const dashboardRoutes = [{
     name: "Dashboard",
     icon: "pe-7s-home",
     component: Dashboard,
-    layout: "/nucleus"
+    layout: "/nucleus",
+    sideveiw:"normal"
 },
-
 {
     path: "/business/new",
     name: "Business",

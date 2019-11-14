@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Row, Col, Container, Navbar } from 'react-bootstrap';
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
 import image from "assets/img/sidebar-3.jpg";
-import '../assets/css/commonStyles.css'
+import Business from "views/Business";
+// import '../assets/css/commonStyles.css'
 
 class Admin extends Component {
   constructor(props) {
@@ -38,9 +40,7 @@ class Admin extends Component {
     this.state._notificationSystem.addNotification({
       title: <span data-notify="icon" className="pe-7s-gift" />,
       message: (
-        <div>
-          Nucleus
-        </div>
+        <div>Nucleus</div>
       ),
       level: level,
       position: position,
@@ -50,17 +50,7 @@ class Admin extends Component {
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/nucleus") {
-        return (
-          <Route
-            path={prop.path}
-            render={props => (
-              <prop.component
-                {...props}
-              />
-            )}
-            key={key}
-          />
-        );
+        return (<Route path={prop.path} render={props => (<prop.component {...props} />)} key={key} />);
       } else {
         return null;
       }
@@ -87,29 +77,37 @@ class Admin extends Component {
     }
   };
 
-  componentDidUpdate(e) {
-    if (
-      window.innerWidth < 993 &&
-      e.history.location.pathname !== e.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
-      document.documentElement.classList.toggle("nav-open");
-    }
-    if (e.history.action === "PUSH") {
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-      this.refs.mainPanel.scrollTop = 0;
-    }
-  }
+  // componentDidUpdate(e) {
+  //   if (
+  //     window.innerWidth < 993 &&
+  //     e.history.location.pathname !== e.location.pathname &&
+  //     document.documentElement.className.indexOf("nav-open") !== -1
+  //   ) {
+  //     document.documentElement.classList.toggle("nav-open");
+  //   }
+  //   if (e.history.action === "PUSH") {
+  //     document.documentElement.scrollTop = 0;
+  //     document.scrollingElement.scrollTop = 0;
+  //     this.refs.mainPanel.scrollTop = 0;
+  //   }
+  // }
   render() {
     return (
-      <div className="wrapper">
-        <Sidebar {...this.props} routes={routes} color={this.state.color} />
-        <div id="main-panel" className={this.props.location.pathname.match(new RegExp("/", "g")).length >= 2 ? "sm-main-panel main-panel" : "main-panel"} ref="mainPanel">
-          <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>
-          <Switch>{this.getRoutes(routes)}</Switch>
+      <React.Fragment>
+        <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>
+        <Container fluid className="mt-5 dataContainer">
+          <Row>
+            <Col md="auto" className="elementLeft">
+              <Sidebar {...this.props} routes={routes} color={this.state.color} />
+            </Col>
+            <Switch>{this.getRoutes(routes)}</Switch>
+          </Row>
+        </Container>
+        {/* <div className="wrapper">
+        <div id="main-panel" className={this.props.location.pathname.match(new RegExp("/", "g")).length >= 2 ? "sm-main-panel main-panel" : "main-panel"} ref="mainPanel">          
         </div>
-      </div>
+      </div> */}
+      </React.Fragment>
     );
   }
 }

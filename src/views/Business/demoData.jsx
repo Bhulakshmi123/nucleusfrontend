@@ -79,37 +79,96 @@ let allProjects = {
     }
 }
 
-let newProjects = {
-    1571293800000: {
-        0: {
-            projectId: '101',
-            projectName: 'Shapoorji Palloni Pvt Ltd',
-            projectLocation: 'Hyderabad, India',
-            projectPointOfContact: 'John Doe',
-            pocNo: 1234567890,
-            typeOfService: 'web',
-            equipmentCount: 10
-        },
-        1: {
-            projectId: '102',
-            projectName: 'KMC Constrctions Pvt Ltd',
-            projectLocation: 'Amaravati, India',
-            projectPointOfContact: 'Bruce Williams',
-            pocNo: 9876543210,
-            typeOfService: 'Mobile',
-            equipmentCount: 21
-        },
-        2: {
-            projectId: '103',
-            projectName: 'Hyperloop India Pvt Ltd',
-            projectLocation: 'Mumbai, Maharastra',
-            projectPointOfContact: 'Elon Musk',
-            pocNo: 7894561230,
-            typeOfService: 'Web',
-            equipmentCount: 100
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+let newProjects = [
+    [
+        [1571293800000],
+        [
+            {
+                projectId: '101',
+                projectName: 'Shapoorji Palloni Pvt Ltd',
+                projectLocation: 'Hyderabad, India',
+                projectPointOfContact: 'Edward Tony Stark',
+                pocNo: 1234567890,
+                typeOfService: 'web',
+                equipmentCount: 10
+            },
+            {
+                projectId: '102',
+                projectName: 'KMC Constrctions Pvt Ltd',
+                projectLocation: 'Amaravati, India',
+                projectPointOfContact: 'Bruce Williams',
+                pocNo: 9876543210,
+                typeOfService: 'Mobile',
+                equipmentCount: 21
+            },
+            {
+                projectId: '103',
+                projectName: 'Hyperloop India Pvt Ltd',
+                projectLocation: 'Mumbai, Maharastra',
+                projectPointOfContact: 'Elon Musk',
+                pocNo: 7894561230,
+                typeOfService: 'Web',
+                equipmentCount: 45
+            }
+        ]
+    ],
+    [
+        [1571293800000],
+        [
+            {
+                projectId: '101',
+                projectName: 'Shapoorji Palloni Pvt Ltd',
+                projectLocation: 'Hyderabad, India',
+                projectPointOfContact: 'Edward Tony Stark',
+                pocNo: 1234567890,
+                typeOfService: 'web',
+                equipmentCount: 10
+            },
+            {
+                projectId: '102',
+                projectName: 'KMC Constrctions Pvt Ltd',
+                projectLocation: 'Amaravati, India',
+                projectPointOfContact: 'Bruce Williams',
+                pocNo: 9876543210,
+                typeOfService: 'Mobile',
+                equipmentCount: 21
+            },
+            {
+                projectId: '103',
+                projectName: 'Hyperloop India Pvt Ltd',
+                projectLocation: 'Mumbai, Maharastra',
+                projectPointOfContact: 'Elon Musk',
+                pocNo: 7894561230,
+                typeOfService: 'Web',
+                equipmentCount: 45
+            }
+        ]
+    ]
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let activeProjects = {
     1571380200000: {

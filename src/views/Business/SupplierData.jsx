@@ -5,7 +5,9 @@ let supplierData = [
         equipmentName: 'Excavator',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 6
+        equipmentCount: 6,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: ' Giyu Tomioka',
@@ -13,7 +15,9 @@ let supplierData = [
         equipmentName: 'Tipper',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 12
+        equipmentCount: 12,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'Sanemi Shinazugawa',
@@ -21,7 +25,9 @@ let supplierData = [
         equipmentName: 'Hyderalic Crane',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 9
+        equipmentCount: 9,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'Muichiro Tokito',
@@ -29,7 +35,9 @@ let supplierData = [
         equipmentName: 'Crane Tower',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 8
+        equipmentCount: 8,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'Shinbou Kocho',
@@ -37,7 +45,9 @@ let supplierData = [
         equipmentName: 'BullDozer',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 2
+        equipmentCount: 2,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'Tengen Uzui',
@@ -45,7 +55,9 @@ let supplierData = [
         equipmentName: 'Hole Driller',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 4
+        equipmentCount: 4,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'KyoJuro Rengoku',
@@ -53,7 +65,9 @@ let supplierData = [
         equipmentName: 'BoreWell Truck',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 20
+        equipmentCount: 20,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     },
     {
         name: 'Obani Iguro',
@@ -61,7 +75,9 @@ let supplierData = [
         equipmentName: 'Granite Puller',
         equipmentModel: 'EH180001',
         location: 'Hyderabad,Telangana',
-        equipmentCount: 15
+        equipmentCount: 15,
+        projects:'project',
+        numof_equipment:"12 Equipment"
     }
 ]
 export {supplierData};

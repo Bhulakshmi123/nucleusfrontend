@@ -1,0 +1,115 @@
+.dataContainer {
+    position: fixed;
+}
+.elementLeft {
+    background-color: #081B2D;
+    height: 100vh;
+    padding: 0;
+    overflow: auto;
+}
+.elementRight {
+    background-color: #14446D;
+    height: 100vh;
+    overflow: auto;
+    width: calc(100% - 250px);
+}
+.stickyTopColor {
+    background-color: white;
+}
+.propStyle {
+    font-size: 1.5rem;
+    margin-right: 5%;
+}
+.sideBar {
+    background-color: #081B2D;
+    padding: 5% 0%;
+    width: 250px;
+}
+.sideBar ul li {
+    list-style-type: none;
+}
+.sideBar ul {
+ padding-left: 5%;
+}
+.nav-link {
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    padding-top: 5%;
+    transition: 0.2s;
+}
+.nav-link-active  {
+    background-color: whitesmoke;
+}
+.nav-link:hover, .nav-link-active {
+    color: #081B2D;
+    border-radius: 5px 0px 0px 5px;
+    padding-top: 5%;
+    background-color: whitesmoke;
+}
+
+.propText {
+    margin: 0px;
+    font-size: 0.95rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+.navWid1 {
+    display: block;
+    width: 20%;
+    text-align: center;
+}
+.navWid2 {
+    display: block;
+    width: 80%;
+}
+.mainContent {
+    width: calc(100% - 250px);
+    background-color: #14456E;
+}
+.container-medium {
+    width: 95% !important;
+    margin: auto !important;
+}
+.verticalNavLink {
+    width: 35%;
+    margin: auto;
+}
+.activeNavLink {
+    color: white;
+    border-bottom: 2px solid white;
+}
+.unActiveNavLink {
+    color: white;
+}
+.unActiveNavLink:hover {
+    color: white;
+    border-bottom: 2px solid white;
+}
+.opct-1 {opacity: 0.1;}
+.opct-2 {opacity: 0.2;}
+.opct-3 {opacity: 0.3;}
+.opct-4 {opacity: 0.4;}
+.opct-5 {opacity: 0.5;}
+.opct-6 {opacity: 0.6;}
+.opct-7 {opacity: 0.7;}
+.opct-8 {opacity: 0.8;}
+.opct-9 {opacity: 0.9;}
+.opct-10 {opacity: 1.0;}
+
+.mtn-1 {margin-top: -1%;}
+.mtn-2 {margin-top: -2%;}
+.mtn-3 {margin-top: -3%;}
+.mtn-4 {margin-top: -4%;}
+.mtn-5 {margin-top: -5%;}
+
+.bor-rad-1 {border-radius: 5px;}
+.bor-rad-2 {border-radius: 10px;}
+.bor-rad-3 {border-radius: 15px;}
+.bor-rad-4 {border-radius: 20px;}
+.bor-rad-5 {border-radius: 25px;}
+.bor-rad-6 {border-radius: 30px;}
+.bor-rad-7 {border-radius: 35px;}
+.bor-rad-8 {border-radius: 40px;}
+.bor-rad-9 {border-radius: 45px;}
+.bor-rad-10 {border-radius: 50px;}
