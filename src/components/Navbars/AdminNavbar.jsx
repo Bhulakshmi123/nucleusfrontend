@@ -33,8 +33,13 @@ class Header extends Component {
       <Navbar fixed="top" className="stickyTopColor">
         <Navbar.Brand href="#home">
           <img alt="" src={logo} width="45" height="30" className="d-inline-block align-top"></img>
-          {' React Bootstrap'}
+          React EH NUCLEUS
         </Navbar.Brand>
+        <Navbar.Collapse className="justify-content-end">
+        <Navbar.Text className="text-center">
+          <i class="fas fa-home mr-2"></i>{this.props.brandText}
+        </Navbar.Text>
+        </Navbar.Collapse>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

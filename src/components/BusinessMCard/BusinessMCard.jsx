@@ -85,19 +85,10 @@ class BusinessMCard extends Component {
         return (
             <React.Fragment>
                 {/* <div className="mt-5 testContainer">
-                <Row>
-                    <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
-                    <ul className="NavStyles">
-                        <li><NavLink activeClassName="activeLink" to="/business/new">New</NavLink></li>
-                        <li><NavLink activeClassName="activeLink" to="/business/active">Active</NavLink></li>
-                        <li><NavLink activeClassName="activeLink" to="/business/pending">Pending</NavLink></li>
-                        <li><NavLink activeClassName="activeLink" to="/business/rejected">Rejected</NavLink></li>
-                    </ul>
-                </Row>
                 {this.nameFunction()}
             </div> */}
                 <div className="mainContent">
-                    <Container fluid className="mt-5">
+                    <Container fluid className="mt-5 mb-5 pb-5">
                         <Row>
                             <Col md={12}>
                                 <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
@@ -109,19 +100,16 @@ class BusinessMCard extends Component {
                                 </Nav>
                             </Col>
                         </Row>
-                        {this.generateCard()}
                         {this.state.data.map((prop, key) => {
-                            console.log(prop);
                             return (
-                                <Container>
+                                <Container key={key} >
                                     <Row>
                                         <Col md={2} className="card text-center py-2 mb-auto">{getDateFormat_1(prop[0])}</Col>
                                         <Col md={10}>
                                             {
                                                 prop[1].map((prop, key) => {
-                                                    console.log('x', prop)
                                                     return (
-                                                        <Container fluid className="card p-3 mb-4">
+                                                        <Container fluid className="card p-3 mb-4" key={key}>
                                                             <Row>
                                                                 <Col md={5} className="my-auto text-dark">
                                                                     <div className="projectName">{prop.projectName}</div>
@@ -132,7 +120,7 @@ class BusinessMCard extends Component {
                                                                     <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.pocNo}</div>
                                                                 </Col>
                                                                 <Col md={2} className="my-auto">
-                                                                    <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">{prop.typeOfService}</div>
+                                                                    <div className="card text-center bg-secondary py-1 mx-4 text-white text-uppercase">{prop.typeOfService}</div>
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-dark text-center">
                                                                     <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
@@ -147,12 +135,6 @@ class BusinessMCard extends Component {
                                     </Row>
                                 </Container>
                             )
-                            {/* for (let x in prop) {
-                                console.log('Heroku', prop[x], x);
-                                for(let y in prop[x]) {
-                                    console.log('jlkas',prop[x][y],y)
-                                }
-                            } */}
                         })}
                     </Container>
                 </div>
@@ -161,4 +143,4 @@ class BusinessMCard extends Component {
         )
     }
 }
-export default BusinessMCard
+export default BusinessMCard;

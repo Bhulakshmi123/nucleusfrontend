@@ -81,13 +81,13 @@ class BusiAddnewmodal extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12">
-                            <Button className="AddBtn" bsStyle="primary" onClick={this.openInputHandler}>Add Equipment</Button>
+                        <div className="col-md-12 mb-4">
+                            <Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <table className="table table-hover">
+                            <table className="table table-hover text-center">
                                 <thead>
                                     <tr>
                                         <th>S. No.</th>
@@ -106,8 +106,8 @@ class BusiAddnewmodal extends Component {
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><Button>Edit</Button></td>
-                                        <td><Button>Delete</Button></td>
+                                        <td><Button variant="primary" size="sm" block>Edit</Button></td>
+                                        <td><Button variant="primary" size="sm" block>Delete</Button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -116,7 +116,7 @@ class BusiAddnewmodal extends Component {
                     {
                         this.state.isEquipmentinfo ? <AddFields /> : null
                     }
-                    <Button type="submit" bsStyle="danger">Submit</Button>
+                    <Button type="submit" variant="primary"  size="sm" >Submit</Button>
                 </form>
 
             </div>
