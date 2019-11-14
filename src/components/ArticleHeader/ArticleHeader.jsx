@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
 import '../Modal/Modal.css';
-<<<<<<< HEAD
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-=======
-import { Modal, Button, Grid, Col, Row } from 'react-bootstrap';
 import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
->>>>>>> caf4ab48c2adce18b1ba52b24bf99c94a3d6f0a0
 class ArticleHeader extends Component {
     constructor(props) {
         super(props);
@@ -53,22 +49,22 @@ class ArticleHeader extends Component {
             <React.Fragment>
                 <Container className="mt-2">
                     <Row>
-                        <Col md={10}>
+                        <Col md={10} className="px-0">
                             <h1 className="mx-0 my-0 text-white text-left">{this.props.heading}</h1>
                         </Col>
                         <Col md={2} className="my-auto">
                             <Button variant="light" size="sm" block onClick={this.openModalHandler}>
-                                <i className="fas fa-plus-circle nbSpan text-primary"></i>Add New
+                                <i className="fas fa-plus-circle mr-2 text-primary"></i>Add New
                             </Button>
                         </Col>
                     </Row>
                 </Container>
-                <Modal show={this.state.isShowing} onHide={this.closeModalHandler} dialogClassName="custom-modal">
+                <Modal show={this.state.isShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <BusiAddnewmodal />
+                        <BusiAddnewmodal/>
                     </Modal.Body>
                     {/* <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>

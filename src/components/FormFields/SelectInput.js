@@ -45,6 +45,7 @@ class SelectInput extends Component {
           onClose={this.toggleOpen}
           target={
             <Button
+              variant="light"
               className="red"
               style={{ width: '100%', height: '34px', padding: '6px 16px !important' }}
               onClick={this.toggleOpen}
@@ -106,7 +107,7 @@ const InputName = props => {
 };
 const Placeholder = props => {
   return (
-    <span>{props.placeholder}</span>
+    <span className="font-weight-lighter">{props.placeholder}</span>
   );
 };
 const Blanket = props => (

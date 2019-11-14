@@ -47,7 +47,9 @@
     padding-top: 5%;
     background-color: whitesmoke;
 }
-
+.table>thead>tr>th {
+    font-weight: 500 !important;
+}
 .propText {
     margin: 0px;
     font-size: 0.95rem;
@@ -66,6 +68,8 @@
 .mainContent {
     width: calc(100% - 250px);
     background-color: #14456E;
+    height: 100vh;
+    overflow: auto;
 }
 .container-medium {
     width: 95% !important;

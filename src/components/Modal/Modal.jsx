@@ -14,7 +14,7 @@ const modal = (props) => {
                 </div>
             </div>
             <div className="modal-footer">
-                <Button bsStyle="primary" fill pullRight ><i className="fas fa-plus-circle nbSpan"></i>Add Project</Button>
+                <Button variant="primary" fill pullRight ><i className="fas fa-plus-circle nbSpan"></i>Add Project</Button>
             </div>
         </div>
     )
