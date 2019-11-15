@@ -2,7 +2,7 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 import { Component } from 'react';
-import '../Modal/Modal.css';
+import '../../assets/css/form.css';
 import { Button } from 'react-bootstrap';
 import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
@@ -107,7 +107,7 @@ const InputName = props => {
 };
 const Placeholder = props => {
   return (
-    <span className="font-weight-lighter">{props.placeholder}</span>
+    <span className="select_palceholder">{props.placeholder}</span>
   );
 };
 const Blanket = props => (

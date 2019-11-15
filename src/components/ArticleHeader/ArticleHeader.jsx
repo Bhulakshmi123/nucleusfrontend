@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/css/commonStyles.css';
-import '../Modal/Modal.css';
+import '../../assets/css/form.css';
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
