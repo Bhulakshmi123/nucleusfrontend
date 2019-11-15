@@ -37,7 +37,7 @@ class Header extends Component {
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
         <Navbar.Text className="text-center">
-          <i class="fas fa-home mr-2"></i>{this.props.brandText}
+          <i className="fas fa-home mr-2"></i>{this.props.brandText}
         </Navbar.Text>
         </Navbar.Collapse>
         <Navbar.Toggle />
