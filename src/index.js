@@ -8,17 +8,24 @@ import "./assets/css/animate.min.css";
 import "./assets/css/pe-icon-7-stroke.css";
 import "./assets/css/rootStyles.css";
 import AdminLayout from "layouts/Admin.jsx";
+import { createStore } from 'redux';
+import allReducers from './reducers';
+import { Provider } from 'react-redux';
+const store = createStore(allReducers,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(
-	<BrowserRouter>
-		<Switch>
-			<Route path="/" render={(props) => {
-				return (
-					<AdminLayout {...props}></AdminLayout>
-				)
-			}}>
-			</Route>
-			<Redirect from="/" to="/dashboard" />
-		</Switch>
-	</BrowserRouter>,
+	<Provider store={store}>
+		<BrowserRouter>
+			<Switch>
+				<Route path="/" render={(props) => {
+					return (
+						<AdminLayout {...props}></AdminLayout>
+					)
+				}}>
+				</Route>
+				<Redirect from="/" to="/dashboard" />
+			</Switch>
+		</BrowserRouter>
+	</Provider>,
 	document.getElementById("root")
 );

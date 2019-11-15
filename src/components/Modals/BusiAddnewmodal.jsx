@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Grid, Col, Row } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
@@ -39,54 +39,50 @@ class BusiAddnewmodal extends Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <div className="row">
-                        <div className="col-md-3">
-                            <TextInput
-                                type="text"
-                                placeholder="Phone No."
-                                name="fname"
-                                label="Phone No.*" />
-                        </div>
-                        <div className="col-md-3">
+                    <Row>
+                        <Col md={3}>
+                            <TextInput type="text" placeholder="Phone No." name="fname" label="Phone No.*" />
+                        </Col>
+                        <Col md={3}>
                             <CalenderInput name="Lead Date*" label="Lead Date*" placeholder="Lead Date" />
-                        </div>
-                        <div className="col-md-3">
+                        </Col>
+                        <Col md={3}>
                             <TextInput name="Renter Name*" label="Renter Name*" placeholder="Renter Name" />
-                        </div>
-                        <div className="col-md-3">
+                        </Col>
+                        <Col md={3}>
                             <TextInput name="Renter Email" label="Renter Email" placeholder="Renter Email" />
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                     <div className="row martp">
                         <div className="col-md-3 form-modal">
                             <label>Lead Executive</label>
                             <p className="renter_nm">ANVESH REDDY</p>
                         </div>
-                        <div className="col-md-3">
+                        <Col md={3}>
                             <TextInput name="Alternate Phone no." label="Alternate Phone no." placeholder="Alternate Phone no." />
-                        </div>
-                        <div className="col-md-3">
+                        </Col>
+                        <Col md={3}>
                             <TextInput name="Company Name" label="Company Name" placeholder="Company Name" />
-                        </div>
-                        <div className="col-md-3">
+                        </Col>
+                        <Col md={3}>
                             <TextInput name="Designation" label="Designation" placeholder="Designation" />
-                        </div>
+                        </Col>
                     </div>
                     <div className="row martp">
-                        <div className="col-md-3">
+                        <Col md={3}>
                             <SelectInput name="Lead Priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput>
-                        </div>
-                        <div className="col-md-3">
+                        </Col>
+                        <Col md={3}>
                             <SelectInput name="Lead Source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" />
-                        </div>
+                        </Col>
                     </div>
-                    <div className="row">
+                    <Row>
                         <div className="col-md-12 mb-4">
                             <Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
+                    </Row>
+                    <Row>
+                        <Col md={12}>
                             <table className="table table-hover text-center">
                                 <thead>
                                     <tr>
@@ -111,12 +107,12 @@ class BusiAddnewmodal extends Component {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                     {
                         this.state.isEquipmentinfo ? <AddFields /> : null
                     }
-                    <Button type="submit" variant="primary"  size="sm" >Submit</Button>
+                    <Button type="submit" variant="primary" size="sm" >Submit</Button>
                 </form>
 
             </div>
