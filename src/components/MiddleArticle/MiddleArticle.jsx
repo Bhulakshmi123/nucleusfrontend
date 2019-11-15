@@ -6,7 +6,8 @@ import RadioInput from '../FormFields/RadioInput';
 import TextArea from '../FormFields/TextArea';
 import TimePickerinpt from '../FormFields/TimePickerinpt';
 import { Button } from 'react-bootstrap';
-import '../Modal/Modal.css';
+import '../../assets/css/form.css';
+// import '../Modal/Modal.css';
 import './MiddleArticle.css';
 class MiddleArticle extends Component {
     render() {

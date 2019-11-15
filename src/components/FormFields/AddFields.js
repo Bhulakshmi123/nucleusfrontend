@@ -2,7 +2,7 @@ import React from 'react';
 import { Button , Modal} from 'react-bootstrap';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
-import '../Modal/Modal.css';
+import '../../assets/css/form.css';
 // import InputName from './SelectInput';
 // import FileInput from './FileInput';
 import RadioInput from './RadioInput';
@@ -140,7 +140,7 @@ const AddFields = props =>{
             </div>
             <Modal.Footer>
                         {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
-                        <Button bsStyle="primary">Add</Button>
+                        <Button variant="primary" size="sm">Add</Button>
             </Modal.Footer>
         </div>
     );

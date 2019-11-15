@@ -116,7 +116,7 @@ class BusiAddnewmodal extends Component {
                     {
                         this.state.isEquipmentinfo ? <AddFields /> : null
                     }
-                    <Button type="submit" variant="primary"  size="sm" >Submit</Button>
+                    <Button type="submit" variant="primary" >Submit</Button>
                 </form>
 
             </div>
