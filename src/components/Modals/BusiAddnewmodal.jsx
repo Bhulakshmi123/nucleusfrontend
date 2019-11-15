@@ -89,9 +89,9 @@ class BusiAddnewmodal extends Component {
             isEquipmentinfo: false,
             equipmentList: [],
             equipmentCount: 0,
-            leadForm = {
-                
-            }
+            // leadForm = {
+
+            // }
         }
     }
     handleChange = (e) => {
