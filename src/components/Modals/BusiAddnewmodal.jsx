@@ -4,42 +4,11 @@ import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-class BusiAddnewmodal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEquipmentinfo: false,
-            equipmentList: [],
-            equipmentCount: 0
-        }
-    }
-    handleChange = (e) => {
-        e.preventDefault();
-        let name = e.target.name;
-        let value = e.target.value;
-        console.log(name);
-        console.log(value);
-        let count = this.state.equipmentCount;
-        let equipmentList = this.state.equipmentList.slice();
-        let singleEquipment = equipmentList[count]
-        singleEquipment.name = value;
-        //this.setState(equipmentList);
-        console.log(this.state.equipmentList);
-    }
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        const data = this.state
-        console.log("hi", data)
-    }
-    openInputHandler = () => {
-        this.setState({ isEquipmentinfo: true });
-    }
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <Row>
+const LeadForm = props => {
+    return (
+        <React.Fragment>
+        <Row>
                         <Col md={3}>
                             <TextInput type="text" placeholder="Phone No." name="fname" label="Phone No.*" />
                         </Col>
@@ -78,7 +47,7 @@ class BusiAddnewmodal extends Component {
                     </div>
                     <Row>
                         <div className="col-md-12 mb-4">
-                            <Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button>
+                            <Button className="float-right" variant="primary" size="sm" onClick={props.openInputHandler} >Add Equipment</Button>
                         </div>
                     </Row>
                     <Row>
@@ -109,8 +78,52 @@ class BusiAddnewmodal extends Component {
                             </table>
                         </Col>
                     </Row>
+                    </React.Fragment>
+    );
+}
+
+class BusiAddnewmodal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isEquipmentinfo: false,
+            equipmentList: [],
+            equipmentCount: 0,
+            leadForm = {
+                
+            }
+        }
+    }
+    handleChange = (e) => {
+        e.preventDefault();
+        let name = e.target.name;
+        let value = e.target.value;
+        console.log(name);
+        console.log(value);
+        let count = this.state.equipmentCount;
+        let equipmentList = this.state.equipmentList.slice();
+        let singleEquipment = equipmentList[count]
+        singleEquipment.name = value;
+        //this.setState(equipmentList);
+        console.log(this.state.equipmentList);
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const data = this.state
+        console.log("hi", data)
+    }
+    openInputHandler = () => {
+        this.setState({ isEquipmentinfo: true });
+    }
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.onSubmit}>
+                    <LeadForm openInputHandler={this.openInputHandler} />
                     {
-                        this.state.isEquipmentinfo ? <AddFields /> : null
+                        this.state.isEquipmentinfo ? 
+                        <AddFields /> : null
                     }
                     <Button type="submit" variant="primary" size="sm" >Submit</Button>
                 </form>
