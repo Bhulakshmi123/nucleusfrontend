@@ -135,8 +135,7 @@
     .form-modal label {
         font-size: 15px;
         color: rgba(37, 37, 37, 0.7);
-        padding-left: 10px;
-        margin-right: 10px;
+        margin-right: 20px;
     }
     
     .radio-modal {
@@ -185,25 +184,16 @@
     
     .custom-modal {
         width: 80%;
-    }
-    
-    .renter_nm {
-        font-size: 18px;
-        color: #094b7d;
-        margin: 0;
-        padding-left: 11px;
-    }
-    
-    .martp {
-        margin-top: 25px;
-    }
+    }    
     
     .red {
         text-align: left !important;
         border-width: 1px !important;
-        /* color: #d8d4d4 !important; */
         font-weight: 100 !important;
         border-color: #ccc !important;
+        font-family: 'Heebo', sans-serif !important;
+        font-size: 15px;
+        color: rgba(37, 37, 37, 0.6);
     }
     
     .red:hover {
@@ -265,16 +255,6 @@
         display: none;
     }
     
-    .radio_left {
-        padding-left: 25px;
-    }
-    
-    .table>thead>tr>th {
-        font-weight: bold;
-        font-size: 14px;
-        color: #333;
-        text-transform: capitalize;
-    }
     
     .down_arrow {
         width: 12px;
@@ -326,9 +306,6 @@
     } */
     /* calnder Styling */
     
-    .btn_left {
-        margin-left: 1px;
-    }
     
     .stle_back {
         background-color: transparent !important;
@@ -370,4 +347,12 @@
         color: rgba(37, 37, 37, 0.6);
         font-family: 'Heebo', sans-serif !important;
         vertical-align: super;
+    }
+    .table>thead>tr>th {
+        font-weight: 600 !important;
+        font-family: GilroyMedium;
+    }
+    .table>tbody>tr>td {
+        font-weight: 500 !important;
+        font-family: GilroyMedium;
     }

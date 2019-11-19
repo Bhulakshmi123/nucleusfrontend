@@ -1,4 +1,4 @@
-.NavStyles {
+/* .NavStyles {
     display: flex;
     width:40%;
     margin: auto;
@@ -16,7 +16,7 @@
     text-align:center;
     display: block;
     padding: 5%;
-}
+} */
 .activeLink {
     color: #134460 !important;
     /* background-color: #134460; */

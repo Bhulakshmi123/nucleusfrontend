@@ -44,13 +44,7 @@ class SelectInput extends Component {
           isOpen={isOpen}
           onClose={this.toggleOpen}
           target={
-            <Button
-              variant="light"
-              className="red"
-              style={{ width: '100%', height: '34px', padding: '6px 16px !important' }}
-              onClick={this.toggleOpen}
-              isselected={isOpen}
-            >
+            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen}>
               <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
               {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
             </Button>
@@ -89,10 +83,11 @@ const Menu = props => {
         borderRadius: 4,
         boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
         marginTop: 8,
-        padding: '6px 16px !important',
+        padding: '0',
         position: 'absolute',
         textAlign: 'left',
         zIndex: 2,
+        width: '100%'
       }}
       {...props}
     />
