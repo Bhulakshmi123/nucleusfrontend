@@ -5,9 +5,11 @@ class Subscriptions extends Component {
 
   render() {
     return (
-      <div>
-        Subscriptions
-      </div>
+      <React.Fragment>
+        <div className="mainContent">
+          <h1 className="text-white text-center mt-5">Subscriptions</h1>
+        </div>
+      </React.Fragment>
     );
   }
 }

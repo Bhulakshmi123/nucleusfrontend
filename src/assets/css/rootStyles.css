@@ -89,9 +89,7 @@
 .input-group-text {
     background-color: white !important;
 }
-.table>thead>tr>th {
-    font-weight: 400 !important;
-}
+
 .opct-1 {opacity: 0.1;}
 .opct-2 {opacity: 0.2;}
 .opct-3 {opacity: 0.3;}
