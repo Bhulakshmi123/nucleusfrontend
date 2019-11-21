@@ -63,11 +63,15 @@ class BusiAddnewmodal extends Component {
         
     onSubmit = (e) => {
         e.preventDefault();
-        const data = this.state
+        let data = this.state;
+        data = this.state.leadForm;
         console.log("hi", data)
     }
     openInputHandler = () => {
         this.setState({ isEquipmentinfo: true });
+    }
+    formInputHandler = () => {
+        this.setState({ phone_no: '' });
     }
 
     render() {
@@ -75,7 +79,7 @@ class BusiAddnewmodal extends Component {
             <React.Fragment>
                 <form onSubmit={this.onSubmit}>
                     <Row>
-                        <Col md={3}><TextInput type="text" placeholder="Phone No." name="phone_no" label="Phone No.*" /></Col>
+                        <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No."  label="Phone No.*" onChange={this.formInputHandler} /></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" /></Col>
                         <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" /></Col>
                         <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" /></Col>
