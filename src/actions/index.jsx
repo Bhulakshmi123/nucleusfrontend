@@ -10,3 +10,9 @@ export const decrement = (nr) => {
         payload:nr
     };
 };
+export const dataObject = (nr) => {
+    return {
+        type:'DATAOBJECT',
+        payload:nr
+    };
+}
