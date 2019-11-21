@@ -1,135 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Table } from 'react-bootstrap';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-
-const LeadForm = props => {
-    return (
-        <React.Fragment>
-            <Row>
-                <Col md={3}>
-                    <TextInput type="text" placeholder="Phone No." name="phoneno" label="Phone No.*" />
-                </Col>
-                <Col md={3}>
-                    <CalenderInput name="leaddate" label="Lead Date*" placeholder="Lead Date" />
-                </Col>
-                <Col md={3}>
-                    <TextInput name="rentername" label="Renter Name*" placeholder="Renter Name" />
-                </Col>
-                <Col md={3}>
-                    <TextInput name="renteremail" label="Renter Email" placeholder="Renter Email" />
-                </Col>
-            </Row>
-            <div className="row martp">
-                <div className="col-md-3 form-modal">
-                    <label>Lead Executive</label>
-                    <p className="renter_nm">ANVESH REDDY</p>
-                </div>
-                <Col md={3}>
-                    <TextInput name="alternatephone" label="Alternate Phone no." placeholder="Alternate Phone no." />
-                </Col>
-                <Col md={3}>
-                    <TextInput name="company_nm" label="Company Name" placeholder="Company Name" />
-                </Col>
-                <Col md={3}>
-                    <TextInput name="designation" label="Designation" placeholder="Designation" />
-                </Col>
-            </div>
-            <div className="row martp">
-                <Col md={3}>
-                    <SelectInput name="Lead Priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput>
-                </Col>
-                <Col md={3}>
-                    <SelectInput name="Lead Source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" />
-                </Col>
-            </div>
-            <Row>
-                <div className="col-md-12 mb-4">
-                    <Button className="float-right" variant="primary" size="sm" onClick={props.openInputHandler} >Add Equipment</Button>
-                </div>
-            </Row>
-            <Row>
-                <Col md={12}>
-                    <table className="table table-hover text-center">
-                        <thead>
-                            <tr>
-                                <th>S. No.</th>
-                                <th>Equipment Name</th>
-                                <th>Make</th>
-                                <th>Model</th>
-                                <th>Year</th>
-                                <th>edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><Button variant="primary" size="sm" block>Edit</Button></td>
-                                <td><Button variant="primary" size="sm" block>Delete</Button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Col>
-            </Row>
-        </React.Fragment>
-    );
-}
-
 class BusiAddnewmodal extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isEquipmentinfo: false,
             equipmentList: [],
-            equipmentCount: 0,
-            leadForm: {
-                phoneno: '',
-                leaddate: '',
-                rentername: '',
-                renteremail: '',
-                alternatephone: '',
-                company_nm: '',
-                designation: '',
-                equip_type: '',
-                make: '',
-                modal: '',
-                min_year: '',
-                capacity: '',
-                job_location: '',
-                expected_date: '',
-                no_month: '',
-                state: '',
-                area: '',
-                project_stage: '',
-                operation_hour_day: '',
-                operation_day_month: '',
-                quantity: '',
-                operation_hour_mnth: '',
-                type_of_work: '',
-            }
+            equipmentCount: 0
         }
     }
-    // handleChange = (e) => {
-    //     e.preventDefault();
-    //     let name = e.target.name;
-    //     let value = e.target.value;
-    //     console.log(name);
-    //     console.log(value);
-    //     let count = this.state.equipmentCount;
-    //     let equipmentList = this.state.equipmentList.slice();
-    //     let singleEquipment = equipmentList[count]
-    //     singleEquipment.name = value;
-    //     //this.setState(equipmentList);
-    //     console.log(this.state.equipmentList);
-    // }
-
     onSubmit = (e) => {
         e.preventDefault();
         const data = this.state
@@ -138,25 +21,66 @@ class BusiAddnewmodal extends Component {
     openInputHandler = () => {
         this.setState({ isEquipmentinfo: true });
     }
-    InputHandler = (e) => {
-        this.setState({
-            [e.target.name] : e.target.name
-        })
-    }
+
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <form onSubmit={this.onSubmit}>
-                    <LeadForm openInputHandler={this.openInputHandler} />
-                    {
-                        this.state.isEquipmentinfo ?
-                            <AddFields /> : null
-                    }
+                    <Row>
+                        <Col md={3}><TextInput type="text" placeholder="Phone No." name="fname" label="Phone No.*" /></Col>
+                        <Col md={3}><CalenderInput name="Lead Date*" label="Lead Date*" placeholder="Lead Date" /></Col>
+                        <Col md={3}><TextInput name="Renter Name*" label="Renter Name*" placeholder="Renter Name" /></Col>
+                        <Col md={3}><TextInput name="Renter Email" label="Renter Email" placeholder="Renter Email" /></Col>
+                    </Row>
+                    <Row className="mt-3">
+                        <Col md={3} className="form-modal">
+                            <label>Lead Executive</label>
+                            <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
+                        </Col>
+                        <Col md={3}><TextInput name="Alternate Phone no." label="Alternate Phone no." placeholder="Alternate Phone no." /></Col>
+                        <Col md={3}><TextInput name="Company Name" label="Company Name" placeholder="Company Name" /></Col>
+                        <Col md={3}><TextInput name="Designation" label="Designation" placeholder="Designation" /></Col>
+                    </Row>
+                    <Row className="mt-3">
+                        <Col md={3}><SelectInput name="Lead Priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput></Col>
+                        <Col md={3}><SelectInput name="Lead Source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" /></Col>
+                    </Row>
+                    <Row>
+                        <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                    </Row>
+                    <Row>
+                        <Col md={12}>
+                            <Table hover className="text-center">
+                                <thead>
+                                    <tr>
+                                        <th>S. No.</th>
+                                        <th>Equipment Name</th>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>Year</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="align-middle">01</td>
+                                        <td className="align-middle">Muzan Kibutsaji</td>
+                                        <td className="align-middle">Demon</td>
+                                        <td className="align-middle">Edo Period</td>
+                                        <td className="align-middle">5000</td>
+                                        <td><Button variant="outline-primary" size="sm" block>Edit</Button></td>
+                                        <td><Button variant="outline-primary" size="sm" block>Delete</Button></td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                    {this.state.isEquipmentinfo ? <AddFields /> : null}
                     <Button type="submit" variant="primary" size="sm" >Submit</Button>
                 </form>
-
-            </div>
-        );
+            </React.Fragment>
+        )
     }
 }
 export default BusiAddnewmodal;

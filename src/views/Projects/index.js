@@ -16,8 +16,8 @@
 // export default Projects;
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../actions/index';
-function Projects() {
+import { increment, decrement} from '../../actions/index';
+const Projects = () => {
   const counter = useSelector(state => state.counter);
   const isLogged = useSelector(state => state.isLogged);
   const dispatch = useDispatch();

@@ -55,15 +55,15 @@ class Sidebar extends Component {
     }
     else {
       return (
-        <div className="flex-column sideBar pt-5 pb-5 mb-4">
+        <div className="flex-column sideBar py-5 mb-4">
           <ul>
             {this.props.routes.map((prop, key) => {
               if (!prop.redirect)
                 return (
                   <li className={prop.upgrade ? "active active-pro" : this.activeRoute(prop.path)} key={key}>
-                    <NavLink to={prop.path} className="nav-link mt-2 mb-2" activeClassName="nav-link-active">
+                    <NavLink to={prop.path} className="nav-link my-2" activeClassName="nav-link-active">
                       <div className="navWid1"><i className={`propStyle ${prop.icon}`}></i></div>
-                      <div className="navWid2"><p className="propText">{prop.name}</p></div>
+                      <div className="navWid2 py-auto"><p className="propText">{prop.name}</p></div>
                     </NavLink>
                   </li>
                 );

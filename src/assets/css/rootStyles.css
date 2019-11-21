@@ -47,9 +47,6 @@
     padding-top: 5%;
     background-color: whitesmoke;
 }
-.table>thead>tr>th {
-    font-weight: 500 !important;
-}
 .propText {
     margin: 0px;
     font-size: 0.95rem;
@@ -58,12 +55,11 @@
 }
 .navWid1 {
     display: block;
-    width: 20%;
-    text-align: center;
+    width: 15%;
 }
 .navWid2 {
     display: block;
-    width: 80%;
+    width: 85%;
 }
 .mainContent {
     width: calc(100% - 250px);
@@ -90,6 +86,10 @@
     color: white;
     border-bottom: 2px solid white;
 }
+.input-group-text {
+    background-color: white !important;
+}
+
 .opct-1 {opacity: 0.1;}
 .opct-2 {opacity: 0.2;}
 .opct-3 {opacity: 0.3;}

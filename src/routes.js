@@ -13,7 +13,7 @@ import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
-// import Upgrade from "views/Upgrade.jsx";
+import Upgrade from "views/Upgrade.jsx";
 
 const dashboardRoutes = [{
     path: "/dashboard",
@@ -21,7 +21,7 @@ const dashboardRoutes = [{
     icon: "pe-7s-home",
     component: Dashboard,
     layout: "/nucleus",
-    sideveiw:"normal"
+    sideveiw: "normal"
 },
 {
     path: "/business/new",
@@ -67,7 +67,7 @@ const dashboardRoutes = [{
 },
 {
     path: "/man-power",
-    name: "ManPower",
+    name: "Man Power",
     icon: "pe-7s-headphones",
     component: ManPower,
     layout: "/nucleus"
@@ -79,7 +79,6 @@ const dashboardRoutes = [{
     component: Subscriptions,
     layout: "/nucleus"
 },
-
 {
     path: "/user",
     name: "User Profile",
@@ -120,6 +119,13 @@ const dashboardRoutes = [{
     name: "Notifications",
     icon: "pe-7s-bell",
     component: Notifications,
+    layout: "/nucleus"
+},
+{
+    path: "/upgrade",
+    name: "Upgrade",
+    icon: "pe-7s-bell",
+    component: Upgrade,
     layout: "/nucleus"
 }
 ];

@@ -5,9 +5,11 @@ class Equipment extends Component {
 
   render() {
     return (
-      <div>
-        Equipment
-      </div>
+      <React.Fragment>
+        <div className="mainContent">
+          <h1 className="text-white text-center mt-5">Equipment</h1>
+        </div>
+      </React.Fragment>
     );
   }
 }

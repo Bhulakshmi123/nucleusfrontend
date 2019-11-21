@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FileInput = props => {
-    return(
+    return (
         <div className="form-modal">
             <label>{props.name}</label>
             <input name="name" type="text" className="form-control" value={props.value} />

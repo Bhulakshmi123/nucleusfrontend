@@ -1,76 +1,72 @@
-/*!
+// import React, { Component } from "react";
+// import { Container, Row, Col } from "react-bootstrap";
+// import { iconsArray } from "variables/Variables.jsx";
 
-=========================================================
-* Light Bootstrap Dashboard React - v1.3.0
-=========================================================
+// class Icons extends Component {
+//   render() {
+//     return (
+//       <div className="content">
+//         <Container fluid>
+//           <Row>
+//             <Col md={12}>
+//               <div
+//                 title="202 Awesome Stroke Icons"
+//                 ctAllIcons
+//                 category={
+//                   <span>
+//                     Handcrafted by our friends from{" "}
+//                     <a
+//                       target="_blank"
+//                       rel="noopener noreferrer"
+//                       href="http://themes-pixeden.com/font-demos/7-stroke/index.html"
+//                     >
+//                       Pixeden
+//                     </a>
+//                   </span>
+//                 }
+//                 content={
+//                   <Row>
+//                     {iconsArray.map((prop, key) => {
+//                       return (
+//                         <Col
+//                           lg={2}
+//                           md={3}
+//                           sm={4}
+//                           xs={6}
+//                           className="font-icon-list"
+//                           key={key}
+//                         >
+//                           <div className="font-icon-detail">
+//                             <i className={prop} />
+//                             <input type="text" defaultValue={prop} />
+//                           </div>
+//                         </Col>
+//                       );
+//                     })}
+//                   </Row>
+//                 }
+//               ></div>
+//             </Col>
+//           </Row>
+//         </Container>
+//       </div>
+//     );
+//   }
+// }
 
-* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
+// export default Icons;
+import React, { Component } from 'react'
 
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-
-import Card from "components/Card/Card";
-import { iconsArray } from "variables/Variables.jsx";
-
-class Icons extends Component {
+export class Icons extends Component {
   render() {
     return (
-      <div className="content">
-        <Container fluid>
-          <Row>
-            <Col md={12}>
-              <Card
-                title="202 Awesome Stroke Icons"
-                ctAllIcons
-                category={
-                  <span>
-                    Handcrafted by our friends from{" "}
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="http://themes-pixeden.com/font-demos/7-stroke/index.html"
-                    >
-                      Pixeden
-                    </a>
-                  </span>
-                }
-                content={
-                  <Row>
-                    {iconsArray.map((prop, key) => {
-                      return (
-                        <Col
-                          lg={2}
-                          md={3}
-                          sm={4}
-                          xs={6}
-                          className="font-icon-list"
-                          key={key}
-                        >
-                          <div className="font-icon-detail">
-                            <i className={prop} />
-                            <input type="text" defaultValue={prop} />
-                          </div>
-                        </Col>
-                      );
-                    })}
-                  </Row>
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+      <React.Fragment>
+        <div className="mainContent">
+          <h1 className="text-white text-center mt-5">Icons</h1>
+        </div>
+      </React.Fragment>
+    )
   }
 }
 
-export default Icons;
+export default Icons
