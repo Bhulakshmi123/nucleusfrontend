@@ -5,9 +5,8 @@ import CalenderInput from '../FormFields/CalenderInput';
 import RadioInput from '../FormFields/RadioInput';
 import TextArea from '../FormFields/TextArea';
 import TimePickerinpt from '../FormFields/TimePickerinpt';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import '../../assets/css/form.css';
-// import '../Modal/Modal.css';
 import './MiddleArticle.css';
 class MiddleArticle extends Component {
     render() {
@@ -42,9 +41,9 @@ class MiddleArticle extends Component {
                         <div className="col-md-6 form-modal">
                             <label>Shift 1 Work Duration</label>
                             <div>
-                            {/* <TimePickerinpt placeholder="From"/><TimePickerinpt placeholder="To"/> */}
-                                <div className="col-md-3"><TimePickerinpt placeholder="From"/></div>
-                                <div className="col-md-3 time_pic"><TimePickerinpt placeholder="To"/></div>
+                                {/* <TimePickerinpt placeholder="From"/><TimePickerinpt placeholder="To"/> */}
+                                <div className="col-md-3"><TimePickerinpt placeholder="From" /></div>
+                                <div className="col-md-3 time_pic"><TimePickerinpt placeholder="To" /></div>
                             </div>
                         </div>
                     </div>
