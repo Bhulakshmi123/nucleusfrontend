@@ -15,7 +15,7 @@ const BusinessMCard = (props) => {
     }
     return (
         <React.Fragment>
-            {testfunction()};
+            {/* {testfunction()}; */}
             <div className="mainContent">
                 <Container fluid className="my-5 pb-5">
                     <Row>

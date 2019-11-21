@@ -13,28 +13,28 @@ const AddFields = props => {
     return (
         <React.Fragment>
             <Row>
-                <Col md={3} className="form-modal"><SelectInput name="Equipment Type *" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type"></SelectInput></Col>
-                <Col md={3}><SelectInput name="Make" cStyle="widthone" label="Make" placeholder="Select Make"></SelectInput></Col>
-                <Col md={3}><TextInput name="Model" label="Model" placeholder="Equipment Modal" /></Col>
-                <Col md={3}><SelectInput name="Minimum Year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year"></SelectInput></Col>
+                <Col md={3} className="form-modal"><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type"></SelectInput></Col>
+                <Col md={3}><SelectInput name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make"></SelectInput></Col>
+                <Col md={3}><TextInput name="equip_modal" label="Model" placeholder="Equipment Modal" /></Col>
+                <Col md={3}><SelectInput name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year"></SelectInput></Col>
             </Row>
             <Row className="mt-3">
-                <Col md={3} className="form-modal"><TextInput name="Capacity" label="Capacity" placeholder="Capacity of Equipment" /></Col>
-                <Col md={3}><TextInput name="Job Location" label="Job Location" placeholder="Location of Work" /></Col>
-                <Col md={3}><CalenderInput name="Expected Start Date*" label="Expected Start Date*" placeholder="Expected Start Date" /></Col>
-                <Col md={3}><TextInput name="No. of months" label="No. of months" placeholder="Duration of Work" /></Col>
+                <Col md={3} className="form-modal"><TextInput name="capacity" label="Capacity" placeholder="Capacity of Equipment" /></Col>
+                <Col md={3}><TextInput name="job_loc" label="Job Location" placeholder="Location of Work" /></Col>
+                <Col md={3}><CalenderInput name="extd_start_dte" label="Expected Start Date*" placeholder="Expected Start Date" /></Col>
+                <Col md={3}><TextInput name="no_month" label="No. of months" placeholder="Duration of Work" /></Col>
             </Row>
             <Row className="mt-3">
-                <Col md={3} className="form-modal"><SelectInput name="State" cStyle="widthone" label="State" placeholder="Select State"></SelectInput></Col>
-                <Col md={3}><SelectInput name="District / Known Area" cStyle="widthone" label="District / Known Area" placeholder="Select District or State"></SelectInput></Col>
-                <Col md={3}><TextInput name="Project Stage" label="Project Stage" placeholder="Stage of Project" /></Col>
-                <Col md={3}><TextInput name="Operation hours per day" label="Operation hours per day" placeholder="Operation hours per day" /></Col>
+                <Col md={3} className="form-modal"><SelectInput name="state" cStyle="widthone" label="State" placeholder="Select State"></SelectInput></Col>
+                <Col md={3}><SelectInput name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State"></SelectInput></Col>
+                <Col md={3}><TextInput name="project_nm" label="Project Stage" placeholder="Stage of Project" /></Col>
+                <Col md={3}><TextInput name="operation_hours" label="Operation hours per day" placeholder="Operation hours per day" /></Col>
             </Row>
             <Row className="mt-3">
-                <Col md={3} className="form-modal"><TextInput name="Operation days per month" label="Operation days per month" placeholder="Operation days per month" /></Col>
-                <Col md={3}><TextInput name="Qunatity" label="Qunatity" placeholder="Qunatity" /></Col>
-                <Col md={3}><TextInput name="Operation hours per month" label="Operation hours per month" placeholder="Operation hours per month" /></Col>
-                <Col md={3}><TextInput name="Type of Work" label="Type of Work" placeholder="Type of Work" /></Col>
+                <Col md={3} className="form-modal"><TextInput name="operation_d_m" label="Operation days per month" placeholder="Operation days per month" /></Col>
+                <Col md={3}><TextInput name="qunatity" label="Qunatity" placeholder="Qunatity" /></Col>
+                <Col md={3}><TextInput name="operation_h_m" label="Operation hours per month" placeholder="Operation hours per month" /></Col>
+                <Col md={3}><TextInput name="type_of_work" label="Type of Work" placeholder="Type of Work" /></Col>
             </Row>
             <Row className="mt-3">
                 <Col md={3} className="form-modal">

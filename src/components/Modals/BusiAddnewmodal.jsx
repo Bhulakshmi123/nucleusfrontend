@@ -10,9 +10,57 @@ class BusiAddnewmodal extends Component {
         this.state = {
             isEquipmentinfo: false,
             equipmentList: [],
-            equipmentCount: 0
+            equipmentCount: 0,
+            leadForm : {
+                phone_no:'',
+                // date_cal:'',
+                // renter_nm:'',
+                // renter_emil:'',
+                // alt_phoneno:'',
+                // com_name:'',
+                // designation:'',
+                // lead_priority:'',
+                // lead_source:'',
+                // equip_type:'',
+                // selct_make:'',
+                // equip_modal:'',
+                // min_year:'',
+                // capacity:'',
+                // job_loc:'',
+                // extd_start_dte:'',
+                // no_month:'',
+                // capacity:'',
+                // job_loc:'',
+                // extd_start_dte:'',
+                // no_month:'',
+                // state:'',
+                // district_nm:'',
+                // project_nm:'',
+                // operation_hours:'',
+                // operation_d_m:'',
+                // qunatity:'',
+                // operation_h_m:'',
+                // type_of_work:'',
+
+
+
+                          }
         }
     }
+    // handleChange = (e) => {
+    //             e.preventDefault();
+    //             let name = e.target.name;
+    //             let value = e.target.value;
+    //             console.log(name);
+    //             console.log(value);
+    //             let count = this.state.equipmentCount;
+    //             let equipmentList = this.state.equipmentList.slice();
+    //             let singleEquipment = equipmentList[count]
+    //             singleEquipment.name = value;
+    //             //this.setState(equipmentList);
+    //             console.log(this.state.equipmentList);
+    //         }
+        
     onSubmit = (e) => {
         e.preventDefault();
         const data = this.state
@@ -27,23 +75,23 @@ class BusiAddnewmodal extends Component {
             <React.Fragment>
                 <form onSubmit={this.onSubmit}>
                     <Row>
-                        <Col md={3}><TextInput type="text" placeholder="Phone No." name="fname" label="Phone No.*" /></Col>
-                        <Col md={3}><CalenderInput name="Lead Date*" label="Lead Date*" placeholder="Lead Date" /></Col>
-                        <Col md={3}><TextInput name="Renter Name*" label="Renter Name*" placeholder="Renter Name" /></Col>
-                        <Col md={3}><TextInput name="Renter Email" label="Renter Email" placeholder="Renter Email" /></Col>
+                        <Col md={3}><TextInput type="text" placeholder="Phone No." name="phone_no" label="Phone No.*" /></Col>
+                        <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" /></Col>
+                        <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" /></Col>
+                        <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" /></Col>
                     </Row>
                     <Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
-                        <Col md={3}><TextInput name="Alternate Phone no." label="Alternate Phone no." placeholder="Alternate Phone no." /></Col>
-                        <Col md={3}><TextInput name="Company Name" label="Company Name" placeholder="Company Name" /></Col>
-                        <Col md={3}><TextInput name="Designation" label="Designation" placeholder="Designation" /></Col>
+                        <Col md={3}><TextInput name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." /></Col>
+                        <Col md={3}><TextInput name="com_name" label="Company Name" placeholder="Company Name" /></Col>
+                        <Col md={3}><TextInput name="designation" label="Designation" placeholder="Designation" /></Col>
                     </Row>
                     <Row className="mt-3">
-                        <Col md={3}><SelectInput name="Lead Priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput></Col>
-                        <Col md={3}><SelectInput name="Lead Source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" /></Col>
+                        <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput></Col>
+                        <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" /></Col>
                     </Row>
                     <Row>
                         <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
