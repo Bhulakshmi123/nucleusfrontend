@@ -9,12 +9,9 @@ import "./assets/css/pe-icon-7-stroke.css";
 import "./assets/css/rootStyles.css";
 import AdminLayout from "layouts/Admin.jsx";
 import { createStore, applyMiddleware, compose } from 'redux';
-import allReducers from './reducers';
+import allReducers from './redux/reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose;
-// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(allReducers, composeEnhancer(applyMiddleware(thunk)),);
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 ReactDOM.render(
 	<Provider store={store}>

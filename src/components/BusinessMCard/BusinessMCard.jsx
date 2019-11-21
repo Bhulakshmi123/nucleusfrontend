@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import ArticleHeader from '../ArticleHeader/ArticleHeader';
-import './BusinessMCard.css';
+import React from 'react';
+import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { dataObject } from '../../actions';
+import { dataObject } from '../../redux/actions';
 const BusinessMCard = (props) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.dataPicker);
-    let filterData = props.match.path.split('/');
-    let dObject = filterData[filterData.length - 1] + 'Projects';
+    let dataFromUrl = props.match.path.split('/')[props.match.path.split('/').length - 1];
+    // onClick={() => dispatch(dataObject(dataFromUrl))}
+    const testfunction = () => {
+        console.log('Hello World');
+    }
     return (
         <React.Fragment>
+            {testfunction()};
             <div className="mainContent">
-                <Container fluid className="mt-5 mb-5 pb-5">
+                <Container fluid className="my-5 pb-5">
                     <Row>
                         <Col md={12}>
                             <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
                             <Nav className="justify-content-around verticalNavLink mb-4">
                                 <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/new">New</NavLink>
-                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/active" onClick={() => dispatch(dataObject(dObject))}>Active</NavLink>
+                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/active">Active</NavLink>
                                 <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/pending">Pending</NavLink>
                                 <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/rejected">Rejected</NavLink>
                             </Nav>
@@ -42,7 +45,7 @@ const BusinessMCard = (props) => {
                                                                 <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.projectLocation}</div>
                                                             </Col>
                                                             <Col md={3} className="my-auto text-dark">
-                                                                <div className="text-uppercase"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.projectPointOfContact}</div>
+                                                                <div className="text-capitalize"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.projectPointOfContact}</div>
                                                                 <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.pocNo}</div>
                                                             </Col>
                                                             <Col md={2} className="my-auto">

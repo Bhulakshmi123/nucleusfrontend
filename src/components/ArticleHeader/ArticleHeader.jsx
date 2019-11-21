@@ -7,7 +7,7 @@ import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
-class ArticleHeader extends Component {
+export class ArticleHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -64,7 +64,7 @@ class ArticleHeader extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <BusiAddnewmodal/>
+                        <BusiAddnewmodal />
                     </Modal.Body>
                     {/* <Modal.Footer>
                         <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
@@ -78,4 +78,3 @@ class ArticleHeader extends Component {
         )
     }
 }
-export default ArticleHeader;
