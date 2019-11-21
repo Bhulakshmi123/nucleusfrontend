@@ -1,4 +1,4 @@
-let allProjects = [
+let newProjects = [
     [
         [1571293800000],
         [
@@ -9,7 +9,7 @@ let allProjects = [
                 projectPointOfContact: 'John Doe Djkistra',
                 pocNo: 1234567890,
                 typeOfService: 'web',
-                equipmentCount: 10
+                equipmentCount: 'N10'
             },
             {
                 projectId: '102',
@@ -18,7 +18,7 @@ let allProjects = [
                 projectPointOfContact: 'Bruce Williams Bohr',
                 pocNo: 9876543210,
                 typeOfService: 'Mobile',
-                equipmentCount: 21
+                equipmentCount: 'N21'
             },
             {
                 projectId: '103',
@@ -27,7 +27,7 @@ let allProjects = [
                 projectPointOfContact: 'Elon Musk Macha',
                 pocNo: 7894561230,
                 typeOfService: 'Web',
-                equipmentCount: 95
+                equipmentCount: 'N11'
             },
             {
                 projectId: '104',
@@ -36,7 +36,7 @@ let allProjects = [
                 projectPointOfContact: 'Larsen Turbo Lucifer',
                 pocNo: 4561237890,
                 typeOfService: 'Web',
-                equipmentCount: 87
+                equipmentCount: 'N05'
             }
         ]
     ],
@@ -50,7 +50,7 @@ let allProjects = [
                 projectPointOfContact: 'Lorem Epsum Motorola',
                 pocNo: 1237894568,
                 typeOfService: 'Web',
-                equipmentCount: 52
+                equipmentCount: 'N33'
             },
             {
                 projectId: '106',
@@ -59,7 +59,7 @@ let allProjects = [
                 projectPointOfContact: 'Fadnavis Dev Summit',
                 pocNo: 1237895280,
                 typeOfService: 'Web',
-                equipmentCount: 98
+                equipmentCount: 'N99'
             }
         ]
     ],
@@ -73,7 +73,7 @@ let allProjects = [
                 projectPointOfContact: 'Cap America Steelwala',
                 pocNo: 7894561235,
                 typeOfService: 'Web',
-                equipmentCount: 95
+                equipmentCount: 'N89'
             },
             {
                 projectId: '107',
@@ -82,13 +82,13 @@ let allProjects = [
                 projectPointOfContact: 'Tony Stark IstriWala',
                 pocNo: 7894561235,
                 typeOfService: 'Web',
-                equipmentCount: 95
+                equipmentCount: 'N69'
             }
         ]
     ]
 ]
 
-let newProjects = [
+let allProjects = [
     [
         [1571293800000],
         [
@@ -99,7 +99,7 @@ let newProjects = [
                 projectPointOfContact: 'Edward Tony Stark',
                 pocNo: 1234567890,
                 typeOfService: 'web',
-                equipmentCount: 10
+                equipmentCount: 'O14'
             },
             {
                 projectId: '102',
@@ -108,7 +108,7 @@ let newProjects = [
                 projectPointOfContact: 'Bruce Williams',
                 pocNo: 9876543210,
                 typeOfService: 'Mobile',
-                equipmentCount: 21
+                equipmentCount: 'O21'
             },
             {
                 projectId: '103',
@@ -117,7 +117,7 @@ let newProjects = [
                 projectPointOfContact: 'Elon Musk',
                 pocNo: 7894561230,
                 typeOfService: 'Web',
-                equipmentCount: 45
+                equipmentCount: 'O45'
             }
         ]
     ]
@@ -134,7 +134,7 @@ let activeProjects = [
                 projectPointOfContact: 'Lorem Epsum',
                 pocNo: 1237894568,
                 typeOfService: 'Web',
-                equipmentCount: 52
+                equipmentCount: 'A12'
             },
             {
                 projectId: '106',
@@ -143,7 +143,7 @@ let activeProjects = [
                 projectPointOfContact: 'Fadnavis Dev',
                 pocNo: 1237895280,
                 typeOfService: 'Web',
-                equipmentCount: 98
+                equipmentCount: 'A16'
             }
         ]
     ]
@@ -160,7 +160,7 @@ let pendingProjects = [
                 projectPointOfContact: 'Anthony Stark',
                 pocNo: 7894561235,
                 typeOfService: 'Web',
-                equipmentCount: 95
+                equipmentCount: 'P45'
             },
             {
                 projectId: '107',
@@ -169,7 +169,7 @@ let pendingProjects = [
                 projectPointOfContact: 'Anthony Stark',
                 pocNo: 7894561235,
                 typeOfService: 'Web',
-                equipmentCount: 95
+                equipmentCount: 'P95'
             }
         ]
     ]
@@ -186,7 +186,7 @@ let rejectedProjects = [
                 projectPointOfContact: 'John Doe',
                 pocNo: 1234567890,
                 typeOfService: 'web',
-                equipmentCount: 10
+                equipmentCount: 'R10'
             },
             {
                 projectId: '102',
@@ -195,7 +195,7 @@ let rejectedProjects = [
                 projectPointOfContact: 'Bruce Williams',
                 pocNo: 9876543210,
                 typeOfService: 'Mobile',
-                equipmentCount: 21
+                equipmentCount: 'R21'
             }
         ]
     ]
