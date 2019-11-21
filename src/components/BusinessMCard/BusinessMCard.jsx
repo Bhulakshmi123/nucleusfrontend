@@ -8,24 +8,23 @@ import { dataObject } from '../../redux/actions';
 const BusinessMCard = (props) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.dataPicker);
-    let dataFromUrl = props.match.path.split('/')[props.match.path.split('/').length - 1];
-    // onClick={() => dispatch(dataObject(dataFromUrl))}
-    const testfunction = () => {
-        console.log('Hello World');
+    const dataFromUrl = () => {
+        let url = props.match.path.split('/')[props.match.path.split('/').length - 1];
+        dispatch(dataObject(url));
     }
     return (
         <React.Fragment>
-            {testfunction()};
+            {dataFromUrl()}
             <div className="mainContent">
                 <Container fluid className="my-5 pb-5">
                     <Row>
                         <Col md={12}>
                             <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
                             <Nav className="justify-content-around verticalNavLink mb-4">
-                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/new">New</NavLink>
-                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/active">Active</NavLink>
-                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/pending">Pending</NavLink>
-                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/rejected">Rejected</NavLink>
+                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/new" >New</NavLink>
+                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/active" >Active</NavLink>
+                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/pending" >Pending</NavLink>
+                                <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/rejected" >Rejected</NavLink>
                             </Nav>
                         </Col>
                     </Row>
