@@ -32,7 +32,7 @@ const AddFields = props => {
             </Row>
             <Row className="mt-3">
                 <Col md={3} className="form-modal"><TextInput name="operation_d_m" label="Operation days per month" placeholder="Operation days per month" /></Col>
-                <Col md={3}><TextInput name="qunatity" label="Qunatity" placeholder="Qunatity" /></Col>
+                <Col md={3}><TextInput name="qunatity" value={props.quantity} label="Qunatity" placeholder="Qunatity" onChange={props.inputChangeHandler} /></Col>
                 <Col md={3}><TextInput name="operation_h_m" label="Operation hours per month" placeholder="Operation hours per month" /></Col>
                 <Col md={3}><TextInput name="type_of_work" label="Type of Work" placeholder="Type of Work" /></Col>
             </Row>

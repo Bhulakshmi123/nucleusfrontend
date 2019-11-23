@@ -4,6 +4,9 @@ import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
+import { addLead } from '../../redux/actions/index';
+import { connect } from 'react-redux';
+
 class BusiAddnewmodal extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +41,7 @@ class BusiAddnewmodal extends Component {
                 // project_nm:'',
                 // operation_hours:'',
                 // operation_d_m:'',
-                // qunatity:'',
+                qunatity:'',
                 // operation_h_m:'',
                 // type_of_work:'',
 
@@ -66,6 +69,7 @@ class BusiAddnewmodal extends Component {
         let data = this.state;
         data = this.state.leadForm;
         console.log("hi", data)
+        this.props.addLead(data);
     }
     openInputHandler = () => {
         this.setState({ isEquipmentinfo: true });
@@ -74,12 +78,23 @@ class BusiAddnewmodal extends Component {
         this.setState({ phone_no: '' });
     }
 
+    inputChangeHandler = (e) => {
+        let leadForm = this.state.leadForm;
+        leadForm = {
+            ...leadForm,
+            [e.target.name]: e.target.value
+        }
+        this.setState({
+           leadForm: leadForm
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
                 <form onSubmit={this.onSubmit}>
                     <Row>
-                        <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No."  label="Phone No.*" onChange={this.formInputHandler} /></Col>
+                        <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No."  label="Phone No.*" onChange={this.inputChangeHandler} /></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" /></Col>
                         <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" /></Col>
                         <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" /></Col>
@@ -128,11 +143,18 @@ class BusiAddnewmodal extends Component {
                             </Table>
                         </Col>
                     </Row>
-                    {this.state.isEquipmentinfo ? <AddFields /> : null}
+                    {this.state.isEquipmentinfo ? <AddFields inputChangeHandler={this.inputChangeHandler} qunatity={this.state.leadForm.qunatity} /> : null}
                     <Button type="submit" variant="primary" size="sm" >Submit</Button>
                 </form>
             </React.Fragment>
         )
     }
 }
-export default BusiAddnewmodal;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addLead: leadForm => dispatch(addLead(leadForm))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(BusiAddnewmodal);
