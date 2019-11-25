@@ -44,7 +44,7 @@ class SelectInput extends Component {
           isOpen={isOpen}
           onClose={this.toggleOpen}
           target={
-            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen}>
+            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={value ? 1 : 0}>
               <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
               {value ? `${value.label}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
             </Button>

@@ -16,3 +16,19 @@ export const dataObject = (nr) => {
         payload: nr
     };
 }
+
+export const addLead = leadForm => {
+    return dispatch => {
+        dispatch({
+            type: "ADD_LEAD",
+            leadForm: leadForm
+        });
+    }
+}
+
+// export const formData = (nr) => {
+//     return {
+//         type:  "FORMOBJECT",
+//         payload: nr
+//     }
+// }
