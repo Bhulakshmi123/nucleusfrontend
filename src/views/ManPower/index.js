@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-
-
 class ManPower extends Component {
-
   render() {
     return (
       <React.Fragment>

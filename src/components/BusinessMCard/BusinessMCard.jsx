@@ -2,7 +2,7 @@ import React from 'react';
 import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { dataObject } from '../../redux/actions';
 const BusinessMCard = (props) => {
@@ -37,25 +37,27 @@ const BusinessMCard = (props) => {
                                         {
                                             prop[1].map((prop, key) => {
                                                 return (
-                                                    <Container fluid className="card p-3 mb-4" key={key}>
-                                                        <Row>
-                                                            <Col md={5} className="my-auto text-dark">
-                                                                <div className="projectName">{prop.projectName}</div>
-                                                                <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.projectLocation}</div>
-                                                            </Col>
-                                                            <Col md={3} className="my-auto text-dark">
-                                                                <div className="text-capitalize"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.projectPointOfContact}</div>
-                                                                <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.pocNo}</div>
-                                                            </Col>
-                                                            <Col md={2} className="my-auto">
-                                                                <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">{prop.typeOfService}</div>
-                                                            </Col>
-                                                            <Col md={2} className="my-auto text-dark text-center">
-                                                                <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
-                                                                <div className="mtn-5">Equipment</div>
-                                                            </Col>
-                                                        </Row>
-                                                    </Container>
+                                                    <Link to={`/business/new/view/${prop.projectId}`}>
+                                                        <Container fluid className="card p-3 mb-4" key={key}>
+                                                            <Row>
+                                                                <Col md={5} className="my-auto text-dark">
+                                                                    <div className="projectName">{prop.projectName}</div>
+                                                                    <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.projectLocation}</div>
+                                                                </Col>
+                                                                <Col md={3} className="my-auto text-dark">
+                                                                    <div className="text-capitalize"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.projectPointOfContact}</div>
+                                                                    <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.pocNo}</div>
+                                                                </Col>
+                                                                <Col md={2} className="my-auto">
+                                                                    <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">{prop.typeOfService}</div>
+                                                                </Col>
+                                                                <Col md={2} className="my-auto text-dark text-center">
+                                                                    <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
+                                                                    <div className="mtn-5">Equipment</div>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </Link>
                                                 )
                                             })
                                         }

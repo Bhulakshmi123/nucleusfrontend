@@ -12,7 +12,6 @@ class MiddleArticle extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* <h2><b>EQUIPMENT ID: {this.props.formId}</b></h2> */}
                 <div className="innerDivCompact card card_stle">
                     <div className="row">
                         <div className="col-md-6 form-modal">
@@ -65,8 +64,8 @@ class MiddleArticle extends Component {
                             <TextArea name="Payment Terms" label="Remarks"></TextArea>
                         </div>
                     </div>
-                    <div className="row martp btn_left">
-                        <Button bsStyle='primary'>Submit Details</Button>
+                    <div className="row mt-3">
+                        <Button variant='primary'>Submit Details</Button>
                     </div>
                 </div>
             </React.Fragment>
