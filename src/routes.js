@@ -26,7 +26,7 @@ const dashboardRoutes = [{
 {
     path: "/business/new",
     name: "Business",
-    icon: "pe-7s-rocket",
+    icon: "pe-7s-users",
     component: Business,
     layout: "/nucleus"
 },
@@ -89,14 +89,14 @@ const dashboardRoutes = [{
 {
     path: "/table",
     name: "Table List",
-    icon: "pe-7s-note2",
+    icon: "pe-7s-map-marker",
     component: TableList,
     layout: "/nucleus"
 },
 {
     path: "/typography",
     name: "Typography",
-    icon: "pe-7s-news-paper",
+    icon: "pe-7s-user",
     component: Typography,
     layout: "/nucleus"
 },

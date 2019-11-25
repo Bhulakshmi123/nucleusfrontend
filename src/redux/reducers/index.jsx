@@ -1,12 +1,13 @@
+import { combineReducers } from 'redux';
 import counterReducer from './counter';
 import loggedReducer from './isLogged';
 import dataPicker from './dataPicker';
-import { combineReducers } from 'redux';
 import leadReducer from './leadReducer';
-
+import sidebarView from './sidebarView';
 const allReducers = combineReducers({
     counter: counterReducer,
     isLogged: loggedReducer,
+    sidebarView: sidebarView,
     dataPicker: dataPicker,
     lead: leadReducer
 })

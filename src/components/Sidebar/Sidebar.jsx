@@ -1,68 +1,40 @@
-import React, { Component } from "react";
+import React from 'react';
 import { NavLink } from "react-router-dom";
-import { Navbar } from 'react-bootstrap';
-import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
-import logo from "assets/img/reactlogo.png";
-// import '../../assets/css/commonStyles.css'
-
-class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: window.innerWidth
-    };
-  }
-  activeRoute(routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
-  }
-  updateDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
-  }
-
-  render() {
-    if (this.props.location.pathname.match(new RegExp("/", "g")).length >= 3) {
-      return (
-        <div id="sidebar" className="sidebar minSidebar">
-          <div className="logo logo-img">
-            <a href="https://www.equiphunt.com" className="simple-text logo-mini">
-              <div className="logo-img">
-                <img src={logo} alt="logo_image" className="sm-img" />
-              </div>
-            </a>
-          </div>
-          <div className="sidebar-wrapper">
-            <ul className="nav">
-              {this.state.width <= 991 ? <AdminNavbarLinks /> : null}
-              {this.props.routes.map((prop, key) => {
-                if (!prop.redirect)
-                  return (
-                    <li className={prop.upgrade ? "active active-pro" : this.activeRoute(prop.path)} key={key}>
-                      <NavLink to={prop.path} className="nav-link small-nav-link" activeClassName="active">
-                        <div className="iStyle"><i className={prop.icon} /></div>
-                      </NavLink>
-                    </li>
-                  );
-                return null;
-              })}
-            </ul>
-          </div>
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="flex-column sideBar py-5 mb-4">
+import { useSelector } from 'react-redux';
+const Sidebar = (props) => {
+  const sidebarView = useSelector(state => state.sidebarView);
+  if (sidebarView) {
+    return (
+      <React.Fragment>
+        <div className="flex-column sideBar sideBarMini py-5 mb-4">
           <ul>
-            {this.props.routes.map((prop, key) => {
+            {props.routes.map((prop, key) => {
               if (!prop.redirect)
                 return (
-                  <li className={prop.upgrade ? "active active-pro" : this.activeRoute(prop.path)} key={key}>
+                  <li key={key}>
+                    <NavLink to={prop.path} className="nav-link my-2 text-center" activeClassName="nav-link-active">
+                      <div className="navWid1"><i className={`propStyle2 mt-2 ${prop.icon}`}></i></div>
+                    </NavLink>
+                  </li>
+                );
+              return null;
+            })}
+          </ul>
+        </div>
+      </React.Fragment>
+    )
+  }
+  else {
+    return (
+      <React.Fragment>
+        <div className="flex-column sideBar py-5 mb-4">
+          <ul>
+            {props.routes.map((prop, key) => {
+              if (!prop.redirect)
+                return (
+                  <li key={key}>
                     <NavLink to={prop.path} className="nav-link my-2" activeClassName="nav-link-active">
-                      <div className="navWid1"><i className={`propStyle ${prop.icon}`}></i></div>
+                      <div className="navWid1"><i className={`propStyle1 ${prop.icon}`}></i></div>
                       <div className="navWid2 py-auto"><p className="propText">{prop.name}</p></div>
                     </NavLink>
                   </li>
@@ -71,9 +43,8 @@ class Sidebar extends Component {
             })}
           </ul>
         </div>
-      );
-    }
+      </React.Fragment>
+    )
   }
 }
-
 export default Sidebar;

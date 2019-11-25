@@ -4,18 +4,21 @@ import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { getDateFormat_1 } from '../../commonFunctions/dates';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { dataObject } from '../../redux/actions';
+import { dataObject, sidebarViewAction } from '../../redux/actions';
 const BusinessMCard = (props) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.dataPicker);
+    const sidebarView = useSelector(state => state.sidebarView);
     const dataFromUrl = () => {
         let url = props.match.path.split('/')[props.match.path.split('/').length - 1];
         dispatch(dataObject(url));
+        dispatch(sidebarViewAction(false))
+
     }
     return (
         <React.Fragment>
             {dataFromUrl()}
-            <div className="mainContent">
+            <div className={sidebarView ? "mainContent mainContentMini" : "mainContent"}>
                 <Container fluid className="my-5 pb-5">
                     <Row>
                         <Col md={12}>
@@ -37,8 +40,8 @@ const BusinessMCard = (props) => {
                                         {
                                             prop[1].map((prop, key) => {
                                                 return (
-                                                    <Link to={`/business/new/view/${prop.projectId}`}>
-                                                        <Container fluid className="card p-3 mb-4" key={key}>
+                                                    <Link to={`/business/new/view/${prop.projectId}`} key={key}>
+                                                        <Container fluid className="card p-3 mb-4">
                                                             <Row>
                                                                 <Col md={5} className="my-auto text-dark">
                                                                     <div className="projectName">{prop.projectName}</div>

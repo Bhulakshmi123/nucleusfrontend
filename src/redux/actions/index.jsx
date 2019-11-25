@@ -16,7 +16,12 @@ export const dataObject = (nr) => {
         payload: nr
     };
 }
-
+export const sidebarViewAction = (nr) => {
+    return {
+        type: 'SIDEBARVIEWACTION',
+        payload: nr
+    };
+}
 export const addLead = leadForm => {
     return dispatch => {
         dispatch({
@@ -25,10 +30,3 @@ export const addLead = leadForm => {
         });
     }
 }
-
-// export const formData = (nr) => {
-//     return {
-//         type:  "FORMOBJECT",
-//         payload: nr
-//     }
-// }
