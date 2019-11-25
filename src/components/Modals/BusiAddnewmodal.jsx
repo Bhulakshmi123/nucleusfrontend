@@ -14,8 +14,8 @@ class BusiAddnewmodal extends Component {
             isEquipmentinfo: false,
             equipmentList: [],
             equipmentCount: 0,
-            leadForm : {
-                phone_no:'',
+            leadForm: {
+                phone_no: '',
                 // date_cal:'',
                 // renter_nm:'',
                 // renter_emil:'',
@@ -41,13 +41,13 @@ class BusiAddnewmodal extends Component {
                 // project_nm:'',
                 // operation_hours:'',
                 // operation_d_m:'',
-                qunatity:'',
+                qunatity: '',
                 // operation_h_m:'',
                 // type_of_work:'',
 
 
 
-                          }
+            }
         }
     }
     // handleChange = (e) => {
@@ -63,7 +63,7 @@ class BusiAddnewmodal extends Component {
     //             //this.setState(equipmentList);
     //             console.log(this.state.equipmentList);
     //         }
-        
+
     onSubmit = (e) => {
         e.preventDefault();
         let data = this.state;
@@ -85,7 +85,7 @@ class BusiAddnewmodal extends Component {
             [e.target.name]: e.target.value
         }
         this.setState({
-           leadForm: leadForm
+            leadForm: leadForm
         });
     }
 
@@ -94,7 +94,7 @@ class BusiAddnewmodal extends Component {
             <React.Fragment>
                 <form onSubmit={this.onSubmit}>
                     <Row>
-                        <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No."  label="Phone No.*" onChange={this.inputChangeHandler} /></Col>
+                        <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No." label="Phone No.*" onChange={this.inputChangeHandler} /></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" /></Col>
                         <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" /></Col>
                         <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" /></Col>
