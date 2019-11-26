@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement} from '../../redux/actions/index';
+import { increment, decrement } from '../../redux/actions/index';
 const Projects = () => {
   const counter = useSelector(state => state.counter);
   const isLogged = useSelector(state => state.isLogged);

@@ -14,7 +14,7 @@ const ViewDetails = () => {
                 <Container fluid className="p-0">
                     <Row>
                         <Col md={3} className="backgroundColor1 viewHeight px-0">
-                            <SideArticle className="testHeight"></SideArticle>
+                            <SideArticle></SideArticle>
                         </Col>
                         <Col md={9}></Col>
                     </Row>

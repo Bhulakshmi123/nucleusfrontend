@@ -1,15 +1,16 @@
 import React from 'react'
 import { idData } from '../../views/Business/idData';
 import { Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 const SideArticle = () => {
     const history = useHistory();
-    console.log('History',history);
+    const goBackHandler = () => history.goBack();
     return (
         <React.Fragment>
             <div className="mb-5 pb-5">
-                <div className="mt-5 px-4 mb-4">
-                    <h6 className="pl-1 text-white opct-5 mb-1">New Lead</h6>
+                <div className="mt-4 px-4 mb-4">
+                    <Button variant="link" size="sm" className="text-white mln-2" onClick={goBackHandler}><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Button>
+                    <h6 className="pl-1 text-white opct-5 mb-1 mt-3">New Lead</h6>
                     <h3 className="text-white pl-1">{idData[0]}</h3>
                     <Button variant="light" size="sm" className="px-3 ml-1 text-primary"><i className="far fa-edit mr-1"></i>Edit</Button>
                 </div>
