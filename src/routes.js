@@ -14,120 +14,127 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
-
+import Loginpage from "views/Loginpage.jsx";
 const dashboardRoutes = [{
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "pe-7s-home",
-    component: Dashboard,
-    layout: "/nucleus",
-    sideveiw: "normal"
-},
-{
-    path: "/business/new",
-    name: "Business",
-    icon: "pe-7s-users",
-    component: Business,
-    layout: "/nucleus"
-},
-{
-    path: "/projects",
-    name: "Projects",
-    icon: "pe-7s-global",
-    component: Projects,
-    layout: "/nucleus"
-},
-{
-    path: "/rmp-users",
-    name: "RMP Users",
-    icon: "pe-7s-diamond",
-    component: RMPUsers,
-    layout: "/nucleus"
-},
-{
-    path: "/suppliers",
-    name: "Suppliers",
-    icon: "pe-7s-users",
-    component: Suppliers,
-    layout: "/nucleus"
-},
-{
-    path: "/contractors",
-    name: "Contractors",
-    icon: "pe-7s-users",
-    component: Contractors,
-    layout: "/nucleus"
-},
-{
-    path: "/equipment",
-    name: "Equipment",
-    icon: "pe-7s-car",
-    component: Equipment,
-    layout: "/nucleus"
-},
-{
-    path: "/man-power",
-    name: "Man Power",
-    icon: "pe-7s-headphones",
-    component: ManPower,
-    layout: "/nucleus"
-},
-{
-    path: "/subscriptions",
-    name: "Subscriptions",
-    icon: "pe-7s-graph1",
-    component: Subscriptions,
-    layout: "/nucleus"
-},
-{
-    path: "/user",
-    name: "User Profile",
-    icon: "pe-7s-user",
-    component: UserProfile,
-    layout: "/nucleus"
-},
-{
-    path: "/table",
-    name: "Table List",
-    icon: "pe-7s-map-marker",
-    component: TableList,
-    layout: "/nucleus"
-},
-{
-    path: "/typography",
-    name: "Typography",
-    icon: "pe-7s-user",
-    component: Typography,
-    layout: "/nucleus"
-},
-{
-    path: "/icons",
-    name: "Icons",
-    icon: "pe-7s-science",
-    component: Icons,
-    layout: "/nucleus"
-},
-{
-    path: "/maps",
-    name: "Maps",
-    icon: "pe-7s-map-marker",
-    component: Maps,
-    layout: "/nucleus"
-},
-{
-    path: "/notifications",
-    name: "Notifications",
-    icon: "pe-7s-bell",
-    component: Notifications,
-    layout: "/nucleus"
-},
-{
-    path: "/upgrade",
-    name: "Upgrade",
-    icon: "pe-7s-bell",
-    component: Upgrade,
-    layout: "/nucleus"
-}
+        path: "/dashboard",
+        name: "Dashboard",
+        icon: "pe-7s-home",
+        component: Dashboard,
+        layout: "/nucleus",
+        sideveiw: "normal"
+    },
+    {
+        path: "/business/new",
+        name: "Business",
+        icon: "pe-7s-users",
+        component: Business,
+        layout: "/nucleus"
+    },
+    {
+        path: "/projects",
+        name: "Projects",
+        icon: "pe-7s-global",
+        component: Projects,
+        layout: "/nucleus"
+    },
+    {
+        path: "/rmp-users",
+        name: "RMP Users",
+        icon: "pe-7s-diamond",
+        component: RMPUsers,
+        layout: "/nucleus"
+    },
+    {
+        path: "/suppliers",
+        name: "Suppliers",
+        icon: "pe-7s-users",
+        component: Suppliers,
+        layout: "/nucleus"
+    },
+    {
+        path: "/contractors",
+        name: "Contractors",
+        icon: "pe-7s-users",
+        component: Contractors,
+        layout: "/nucleus"
+    },
+    {
+        path: "/equipment",
+        name: "Equipment",
+        icon: "pe-7s-car",
+        component: Equipment,
+        layout: "/nucleus"
+    },
+    {
+        path: "/man-power",
+        name: "Man Power",
+        icon: "pe-7s-headphones",
+        component: ManPower,
+        layout: "/nucleus"
+    },
+    {
+        path: "/subscriptions",
+        name: "Subscriptions",
+        icon: "pe-7s-graph1",
+        component: Subscriptions,
+        layout: "/nucleus"
+    },
+    {
+        path: "/user",
+        name: "User Profile",
+        icon: "pe-7s-user",
+        component: UserProfile,
+        layout: "/nucleus"
+    },
+    {
+        path: "/table",
+        name: "Table List",
+        icon: "pe-7s-map-marker",
+        component: TableList,
+        layout: "/nucleus"
+    },
+    {
+        path: "/typography",
+        name: "Typography",
+        icon: "pe-7s-user",
+        component: Typography,
+        layout: "/nucleus"
+    },
+    {
+        path: "/icons",
+        name: "Icons",
+        icon: "pe-7s-science",
+        component: Icons,
+        layout: "/nucleus"
+    },
+    {
+        path: "/maps",
+        name: "Maps",
+        icon: "pe-7s-map-marker",
+        component: Maps,
+        layout: "/nucleus"
+    },
+    {
+        path: "/notifications",
+        name: "Notifications",
+        icon: "pe-7s-bell",
+        component: Notifications,
+        layout: "/nucleus"
+    },
+    {
+        path: "/upgrade",
+        name: "Upgrade",
+        icon: "pe-7s-bell",
+        component: Upgrade,
+        layout: "/nucleus"
+    },
+    {
+        path: "/loginpage",
+        name: "Loginpage",
+        icon: "pe-7s-bell",
+        component: Loginpage,
+        layout: "/nucleus"
+    }
 ];
 
 export default dashboardRoutes;

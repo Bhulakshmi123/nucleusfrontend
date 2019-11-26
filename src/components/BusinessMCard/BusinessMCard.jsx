@@ -13,7 +13,6 @@ const BusinessMCard = (props) => {
         let url = props.match.path.split('/')[props.match.path.split('/').length - 1];
         dispatch(dataObject(url));
         dispatch(sidebarViewAction(false))
-
     }
     return (
         <React.Fragment>
