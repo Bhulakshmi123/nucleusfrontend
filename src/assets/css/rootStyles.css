@@ -109,7 +109,39 @@
     background-color: rgba(255,255,255,0.2);
     color: white;
 }
-
+a {
+    text-decoration: none !important;
+}
+.viewHeight {
+    height: 100vh;
+    overflow: auto;
+}
+.backgroundColor1 {
+    background-color: #154D7B;
+}
+.equipmentCount {
+    border: 1px solid white;
+}
+.borderedRow {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.borderedRow:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+.searchBarStyle {
+    border: none;
+}
+.formControlSearch {
+    padding: 6% !important;
+}
+.searchBarPrepend, .formControlSearch{
+    background-color: rgba(255,255,255,0.1) !important;
+    color: white !important;
+    border: none !important;
+}
+.formControlSearch::placeholder{
+    color: white;
+}
 .opct-1 {opacity: 0.1;}
 .opct-2 {opacity: 0.2;}
 .opct-3 {opacity: 0.3;}
