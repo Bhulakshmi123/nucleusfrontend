@@ -13,10 +13,10 @@ const ViewDetails = () => {
             <div className={sidebarView ? "mainContent mainContentMini bg-white" : "mainContent bg-white"}>
                 <Container fluid className="p-0">
                     <Row>
-                        <Col md={4}>
+                        <Col md={3} className="backgroundColor1 viewHeight px-0">
                             <SideArticle></SideArticle>
                         </Col>
-                        <Col md={8}></Col>
+                        <Col md={9}></Col>
                     </Row>
                 </Container>
             </div>

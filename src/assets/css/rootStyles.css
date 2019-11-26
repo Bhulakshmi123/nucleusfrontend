@@ -143,6 +143,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
 }
+<<<<<<< HEAD
 
 .opct-1 {
     opacity: 0.1;
@@ -303,3 +304,83 @@
 .bor-rad-10 {
     border-radius: 50px;
 }
+=======
+a {
+    text-decoration: none !important;
+}
+.viewHeight {
+    height: 100vh;
+    overflow: auto;
+}
+.backgroundColor1 {
+    background-color: #154D7B;
+}
+.equipmentCount {
+    border: 1px solid white;
+}
+.borderedRow {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.borderedRow:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+.searchBarStyle {
+    border: none;
+}
+.formControlSearch {
+    padding: 6% !important;
+}
+.searchBarPrepend, .formControlSearch{
+    background-color: rgba(255,255,255,0.1) !important;
+    color: white !important;
+    border: none !important;
+}
+.formControlSearch::placeholder{
+    color: white;
+}
+.opct-1 {opacity: 0.1;}
+.opct-2 {opacity: 0.2;}
+.opct-3 {opacity: 0.3;}
+.opct-4 {opacity: 0.4;}
+.opct-5 {opacity: 0.5;}
+.opct-6 {opacity: 0.6;}
+.opct-7 {opacity: 0.7;}
+.opct-8 {opacity: 0.8;}
+.opct-9 {opacity: 0.9;}
+.opct-10 {opacity: 1.0;}
+
+.mtn-1 {margin-top: -1%;}
+.mtn-2 {margin-top: -2%;}
+.mtn-3 {margin-top: -3%;}
+.mtn-4 {margin-top: -4%;}
+.mtn-5 {margin-top: -5%;}
+
+.mbn-1 {margin-bottom: -1%;}
+.mbn-2 {margin-bottom: -2%;}
+.mbn-3 {margin-bottom: -3%;}
+.mbn-4 {margin-bottom: -4%;}
+.mbn-5 {margin-bottom: -5%;}
+
+.mln-1 {margin-left: -1%;}
+.mln-2 {margin-left: -2%;}
+.mln-3 {margin-left: -3%;}
+.mln-4 {margin-left: -4%;}
+.mln-5 {margin-left: -5%;}
+
+.mrn-1 {margin-right: -1%;}
+.mrn-2 {margin-right: -2%;}
+.mrn-3 {margin-right: -3%;}
+.mrn-4 {margin-right: -4%;}
+.mrn-5 {margin-right: -5%;}
+
+.bor-rad-1 {border-radius: 5px;}
+.bor-rad-2 {border-radius: 10px;}
+.bor-rad-3 {border-radius: 15px;}
+.bor-rad-4 {border-radius: 20px;}
+.bor-rad-5 {border-radius: 25px;}
+.bor-rad-6 {border-radius: 30px;}
+.bor-rad-7 {border-radius: 35px;}
+.bor-rad-8 {border-radius: 40px;}
+.bor-rad-9 {border-radius: 45px;}
+.bor-rad-10 {border-radius: 50px;}
+>>>>>>> a3f2a5c45f501036432ff0fb7797f319cf7ad196

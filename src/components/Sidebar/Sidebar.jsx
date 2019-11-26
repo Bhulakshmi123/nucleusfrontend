@@ -12,8 +12,8 @@ const Sidebar = (props) => {
               if (!prop.redirect)
                 return (
                   <li key={key}>
-                    <NavLink to={prop.path} className="nav-link my-2 text-center" activeClassName="nav-link-active">
-                      <div className="navWid1"><i className={`propStyle2 mt-2 ${prop.icon}`}></i></div>
+                    <NavLink to={prop.path} className="nav-link my-2 text-center py-1" activeClassName="nav-link-active">
+                      <div className="navWid1 propStyle1">{prop.icon}</div>
                     </NavLink>
                   </li>
                 );
@@ -33,9 +33,9 @@ const Sidebar = (props) => {
               if (!prop.redirect)
                 return (
                   <li key={key}>
-                    <NavLink to={prop.path} className="nav-link my-2" activeClassName="nav-link-active">
-                      <div className="navWid1"><i className={`propStyle1 ${prop.icon}`}></i></div>
-                      <div className="navWid2 py-auto"><p className="propText">{prop.name}</p></div>
+                    <NavLink to={prop.path} className="nav-link my-2 py-1" activeClassName="nav-link-active">
+                      <div className="navWid1 propStyle1">{prop.icon}</div>
+                      <div className="navWid2 py-auto my-auto"><p className="propText">{prop.name}</p></div>
                     </NavLink>
                   </li>
                 );
