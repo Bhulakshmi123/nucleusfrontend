@@ -9,8 +9,8 @@ const BusinessMCard = (props) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.dataPicker);
     const sidebarView = useSelector(state => state.sidebarView);
+    let url = props.match.path.split('/')[props.match.path.split('/').length - 1];
     const dataFromUrl = () => {
-        let url = props.match.path.split('/')[props.match.path.split('/').length - 1];
         dispatch(dataObject(url));
         dispatch(sidebarViewAction(false));
     }
@@ -39,7 +39,7 @@ const BusinessMCard = (props) => {
                                         {
                                             prop[1].map((prop, key) => {
                                                 return (
-                                                    <Link to={`/business/new/view/${prop.projectId}`} key={key}>
+                                                    <Link to={`/business/${url}/view/${prop.projectId}`} key={key}>
                                                         <Container fluid className="card p-3 mb-4">
                                                             <Row>
                                                                 <Col md={5} className="my-auto text-dark">
