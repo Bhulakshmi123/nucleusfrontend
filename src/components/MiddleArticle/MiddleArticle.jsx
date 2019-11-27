@@ -5,7 +5,7 @@ import CalenderInput from '../FormFields/CalenderInput';
 import RadioInput from '../FormFields/RadioInput';
 import TextArea from '../FormFields/TextArea';
 import TimePickerinpt from '../FormFields/TimePickerinpt';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Modal, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 import '../../assets/css/form.css';
 import './MiddleArticle.css';
 class MiddleArticle extends Component {
@@ -13,60 +13,62 @@ class MiddleArticle extends Component {
         return (
             <React.Fragment>
                 <div className="innerDivCompact card card_stle">
-                    <div className="row">
-                        <div className="col-md-6 form-modal">
+                    <Row className="martp">
+                        <Col md={6} >
                             <TextInput type="text" label="Price" />
-                        </div>
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                        <Col md={6}>
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Duration" />
-                        </div>
-                    </div>
-                    <div className="row martp">
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                    </Row>
+                    <Row className="martp">
+                        <Col md={6}>
                             <CalenderInput name="Lead Date*" label="Start Date" />
-                        </div>
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                        <Col md={6}>
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Transportation" />
-                        </div>
-                    </div>
-                    <div className="row martp">
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                    </Row>
+                    <Row className="martp">
+                        <Col md={6}>
                             <label>Shift Type</label>
                             <div>
                                 <RadioInput name="Single" label="Single" />
-                                <RadioInput name="Double" label="Double" />
+                                <span className="time_pic" ><RadioInput name="Double" label="Double" /></span>
                             </div>
-                        </div>
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                        <Col md={6}>
                             <label>Shift 1 Work Duration</label>
-                            <div>
-                                {/* <TimePickerinpt placeholder="From"/><TimePickerinpt placeholder="To"/> */}
-                                <div className="col-md-3"><TimePickerinpt placeholder="From" /></div>
-                                <div className="col-md-3 time_pic"><TimePickerinpt placeholder="To" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row martp">
-                        <div className="col-md-6 form-modal">
+
+                            {/* <TimePickerinpt placeholder="From"/><TimePickerinpt placeholder="To"/> */}
+                            <TimePickerinpt placeholder="From" />
+                            <span className="time_pic" ><TimePickerinpt placeholder="To" /></span>
+
+                        </Col>
+                    </Row>
+                    <Row className="martp">
+                        <Col md={6}>
                             <TextInput type="text" label="Operator Batha" />
-                        </div>
-                        <div className="col-md-6 form-modal">
+                        </Col>
+                        <Col md={6}>
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Operator Food" />
-                        </div>
-                    </div>
-                    <div className="row martp">
-                        <div className="col-md-12 form-modal">
+                        </Col>
+                    </Row>
+                    <Row className="martp">
+                        <Col md={12}>
                             <TextArea name="Payment Terms" label="Payment Terms" ></TextArea>
-                        </div>
-                    </div>
-                    <div className="row martp">
-                        <div className="col-md-12 form-modal">
+                        </Col>
+                    </Row>
+                    <Row className="martp">
+                        <Col md={12}>
                             <TextArea name="Payment Terms" label="Remarks"></TextArea>
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <Button variant='primary'>Submit Details</Button>
-                    </div>
+                        </Col>
+                    </Row>
+                    <Row className="martp mt-3">
+                        <Col md={12}>
+                            <Button variant='primary'>Submit Details</Button>
+                        </Col>
+                    </Row>
                 </div>
             </React.Fragment>
         )

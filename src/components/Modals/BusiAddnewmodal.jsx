@@ -16,34 +16,34 @@ class BusiAddnewmodal extends Component {
             equipmentCount: 0,
             leadForm: {
                 phone_no: '',
-                // date_cal:'',
-                // renter_nm:'',
-                // renter_emil:'',
-                // alt_phoneno:'',
-                // com_name:'',
-                // designation:'',
-                // lead_priority:'',
-                // lead_source:'',
-                // equip_type:'',
-                // selct_make:'',
-                // equip_modal:'',
-                // min_year:'',
-                // capacity:'',
-                // job_loc:'',
-                // extd_start_dte:'',
-                // no_month:'',
-                // capacity:'',
-                // job_loc:'',
-                // extd_start_dte:'',
-                // no_month:'',
-                // state:'',
-                // district_nm:'',
-                // project_nm:'',
-                // operation_hours:'',
-                // operation_d_m:'',
+                date_cal:'',
+                renter_nm:'',
+                renter_emil:'',
+                alt_phoneno:'',
+                com_name:'',
+                designation:'',
+                lead_priority:'',
+                lead_source:'',
+                equip_type:'',
+                selct_make:'',
+                equip_modal:'',
+                min_year:'',
+                capacity:'',
+                job_loc:'',
+                extd_start_dte:'',
+                no_month:'',
+                capacity:'',
+                job_loc:'',
+                extd_start_dte:'',
+                no_month:'',
+                state:'',
+                district_nm:'',
+                project_nm:'',
+                operation_hours:'',
+                operation_d_m:'',
                 qunatity: '',
-                // operation_h_m:'',
-                // type_of_work:'',
+                operation_h_m:'',
+                type_of_work:'',
 
 
 
@@ -95,22 +95,22 @@ class BusiAddnewmodal extends Component {
                 <form onSubmit={this.onSubmit}>
                     <Row>
                         <Col md={3}><TextInput name="phone_no" type="text" placeholder="Phone No." label="Phone No.*" onChange={this.inputChangeHandler} /></Col>
-                        <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" /></Col>
-                        <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" /></Col>
-                        <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" /></Col>
+                        <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
+                        <Col md={3}><TextInput name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler}/></Col>
+                        <Col md={3}><TextInput name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler}/></Col>
                     </Row>
                     <Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
-                        <Col md={3}><TextInput name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." /></Col>
-                        <Col md={3}><TextInput name="com_name" label="Company Name" placeholder="Company Name" /></Col>
-                        <Col md={3}><TextInput name="designation" label="Designation" placeholder="Designation" /></Col>
+                        <Col md={3}><TextInput name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler}/></Col>
+                        <Col md={3}><TextInput name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler}/></Col>
+                        <Col md={3}><TextInput name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler}/></Col>
                     </Row>
                     <Row className="mt-3">
-                        <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority"></SelectInput></Col>
-                        <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" /></Col>
+                        <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" onChange={this.inputChangeHandler}></SelectInput></Col>
+                        <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Source" onChange={this.inputChangeHandler}/></Col>
                     </Row>
                     <Row>
                         <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
