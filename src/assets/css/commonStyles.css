@@ -308,9 +308,17 @@ body>.navbar-collapse .logo {
     padding: 30px 30px 0;
 }
 
-.back_com {}
+.fm_padding label {
+    font-weight: 700;
+    color: #333 !important;
+    font-size: 14px !important;
+    line-height: 1.42857143;
+}
 
-.fogt_pwd {}
+.form-modal,
+.fm_padding {
+    text-align: center !important;
+}
 
 .block-link {
     padding: 5px;
@@ -324,9 +332,28 @@ body>.navbar-collapse .logo {
 }
 
 .email_stle {
-    height: 40px !important;
+    height: 60px !important;
+    text-align: center;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #555 !important;
 }
 
 .pwd_stle {
-    height: 40px !important;
+    height: 60px !important;
+    text-align: center;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #555 !important;
+}
+
+.matgin_tp {
+    margin-top: 30px;
+}
+
+.fnt_stle {
+    padding: 5px;
+    color: #054ed5;
+    font-size: 14px;
+    cursor: pointer;
 }
