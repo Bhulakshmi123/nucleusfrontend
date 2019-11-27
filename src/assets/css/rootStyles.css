@@ -1,46 +1,57 @@
 .dataContainer {
     position: fixed;
 }
+
 .elementLeft {
     background-color: #081B2D;
     height: 100vh;
     padding: 0;
     overflow: auto;
 }
+
 .elementRight {
     background-color: #14446D;
     height: 100vh;
     overflow: auto;
     width: calc(100% - 250px);
 }
+
 .stickyTopColor {
     background-color: white;
 }
+
 .propStyle1 {
     font-size: 1.5rem;
     margin-right: 5%;
 }
+
 .propStyle2 {
     font-size: 1.5rem;
     margin-right: 5%;
 }
+
 .sideBarMini {
     width: 80px !important;
 }
+
 .sideBarMini ul {
     padding-left: 15% !important;
 }
+
 .sideBar {
     background-color: #081B2D;
     padding: 5% 0%;
     width: 250px;
 }
+
 .sideBar ul li {
     list-style-type: none;
 }
+
 .sideBar ul {
- padding-left: 5%;
+    padding-left: 5%;
 }
+
 .nav-link {
     font-size: 1rem;
     color: white;
@@ -48,65 +59,88 @@
     padding-top: 5%;
     transition: 0.2s;
 }
-.nav-link-active  {
+
+.nav-link-active {
     background-color: whitesmoke;
 }
-.nav-link:hover, .nav-link-active {
+
+.nav-link:hover,
+.nav-link-active {
     color: #081B2D;
     border-radius: 5px 0px 0px 5px;
     padding-top: 5%;
     background-color: whitesmoke;
 }
+
 .propText {
     margin: 0px;
     font-size: 0.95rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
+
 .navWid1 {
     display: block;
     width: 15%;
 }
+
 .navWid2 {
     display: block;
     width: 85%;
 }
+
 .mainContentMini {
     width: calc(100% - 80px) !important;
 }
+
 .mainContent {
     width: calc(100% - 250px);
     background-color: #14456E;
     height: 100vh;
     overflow: auto;
 }
+
+.loginContent {
+    width: calc(100%);
+    background-color: #14456E;
+    height: 100vh;
+    overflow: auto;
+}
+
 .container-medium {
     width: 95% !important;
     margin: auto !important;
 }
+
 .verticalNavLink {
     width: 35%;
     margin: auto;
 }
+
 .activeNavLink {
     color: white;
     border-bottom: 2px solid white;
 }
+
 .unActiveNavLink {
     color: white;
 }
+
 .unActiveNavLink:hover {
     color: white;
     border-bottom: 2px solid white;
 }
+
 .input-group-text {
     background-color: white !important;
 }
+
 .projectName {
     font-size: 1.2rem;
 }
+
 .whiteOpaque {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     color: white;
 }
 a {

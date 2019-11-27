@@ -135,7 +135,7 @@
     .form-modal label {
         font-size: 15px;
         color: rgba(37, 37, 37, 0.7);
-        margin-right: 20px;
+        margin-left: 10px;
     }
     
     .radio-modal {
@@ -184,7 +184,7 @@
     
     .custom-modal {
         width: 80%;
-    }    
+    }
     
     .red {
         text-align: left !important;
@@ -255,7 +255,6 @@
         display: none;
     }
     
-    
     .down_arrow {
         width: 12px;
         height: 12px;
@@ -306,7 +305,6 @@
     } */
     /* calnder Styling */
     
-    
     .stle_back {
         background-color: transparent !important;
     }
@@ -326,7 +324,7 @@
     }
     
     .time_pic {
-        margin-left: 40px;
+        margin-left: 28px !important;
     }
     
     .ant-time-picker-panel-placement-bottomLeft {
@@ -348,11 +346,17 @@
         font-family: 'Heebo', sans-serif !important;
         vertical-align: super;
     }
+    
     .table>thead>tr>th {
         font-weight: 600 !important;
         font-family: GilroyMedium;
     }
+    
     .table>tbody>tr>td {
         font-weight: 500 !important;
         font-family: GilroyMedium;
+    }
+    
+    .martp {
+        margin-top: 15px !important;
     }

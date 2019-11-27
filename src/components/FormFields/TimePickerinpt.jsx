@@ -8,9 +8,9 @@ function onChange(time, timeString) {
 class TimePickerinpt extends Component{
     render(){
         return(
-            <div>
+            <span>
                 <TimePicker className="inpt_size" placeholder={this.props.placeholder} use12Hours format="h:mm a" onChange={onChange} />
-            </div>
+            </span>
         );
     }
 }
