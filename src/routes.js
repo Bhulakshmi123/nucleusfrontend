@@ -1,3 +1,8 @@
+import React from 'react';
+import { FaHome, FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaTruckMonster, FaRegUserCircle } from 'react-icons/fa';
+import { AiOutlineDollar, AiOutlineUser } from "react-icons/ai";
+import { MdExitToApp } from "react-icons/md";
+import { FiBriefcase } from "react-icons/fi";
 import Dashboard from "views/Dashboard/";
 import Business from "views/Business/";
 import Projects from "views/Projects/";
@@ -7,16 +12,10 @@ import Contractors from "views/Contractors/";
 import Equipment from "views/Equipment/";
 import ManPower from "views/ManPower/";
 import Subscriptions from "views/Subscriptions/";
-import { FaHome, FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaTruckMonster, FaRegUserCircle } from 'react-icons/fa';
-import { AiOutlineDollar, AiOutlineUser } from "react-icons/ai";
-import { MdExitToApp } from "react-icons/md";
-import { FiBriefcase } from "react-icons/fi";
-import React from 'react';
 
 const dashboardRoutes = [{
     path: "/dashboard",
     name: "Dashboard",
-    // icon: "pe-7s-home",
     icon: <FaHome />,
     component: Dashboard,
     layout: "/nucleus",
@@ -25,7 +24,6 @@ const dashboardRoutes = [{
 {
     path: "/business/new",
     name: "Business",
-    // icon: "pe-7s-users",
     icon: <AiOutlineDollar />,
     component: Business,
     layout: "/nucleus"
@@ -33,7 +31,6 @@ const dashboardRoutes = [{
 {
     path: "/projects",
     name: "Projects",
-    // icon: "pe-7s-global",
     icon: <FiBriefcase />,
     component: Projects,
     layout: "/nucleus"
@@ -41,7 +38,6 @@ const dashboardRoutes = [{
 {
     path: "/rmp-users",
     name: "Rmp Users",
-    // icon: "pe-7s-diamond",
     icon: <AiOutlineUser />,
     component: RMPUsers,
     layout: "/nucleus"
@@ -49,7 +45,6 @@ const dashboardRoutes = [{
 {
     path: "/suppliers",
     name: "Suppliers",
-    // icon: "pe-7s-users",
     icon: <FaRegArrowAltCircleRight />,
     component: Suppliers,
     layout: "/nucleus"
@@ -57,7 +52,6 @@ const dashboardRoutes = [{
 {
     path: "/contractors",
     name: "Contractors",
-    // icon: "pe-7s-users",
     icon: <FaRegArrowAltCircleLeft />,
     component: Contractors,
     layout: "/nucleus"
@@ -65,7 +59,6 @@ const dashboardRoutes = [{
 {
     path: "/equipment",
     name: "Equipment",
-    // icon: "pe-7s-car",
     icon: <FaTruckMonster />,
     component: Equipment,
     layout: "/nucleus"
@@ -73,7 +66,6 @@ const dashboardRoutes = [{
 {
     path: "/man-power",
     name: "Man Power",
-    // icon: "pe-7s-headphones",
     icon: <FaRegUserCircle />,
     component: ManPower,
     layout: "/nucleus"
@@ -81,7 +73,6 @@ const dashboardRoutes = [{
 {
     path: "/subscriptions",
     name: "Subscriptions",
-    // icon: "pe-7s-graph1",
     icon: <MdExitToApp />,
     component: Subscriptions,
     layout: "/nucleus"

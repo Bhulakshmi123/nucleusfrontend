@@ -1,4 +1,3 @@
-import React from 'react';
 const sidebarView = (state = false, action) => {
     switch (action.type) {
         case 'SIDEBARVIEWACTION':
