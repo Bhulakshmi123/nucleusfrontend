@@ -12,6 +12,7 @@ import Contractors from "views/Contractors/";
 import Equipment from "views/Equipment/";
 import ManPower from "views/ManPower/";
 import Subscriptions from "views/Subscriptions/";
+import Loginpage from "views/Loginpage.jsx";
 
 const dashboardRoutes = [{
     path: "/dashboard",
@@ -75,6 +76,13 @@ const dashboardRoutes = [{
     name: "Subscriptions",
     icon: <MdExitToApp />,
     component: Subscriptions,
+    layout: "/nucleus"
+},
+{
+    path: "/loginpage",
+    name: "Loginpage",
+    icon: < MdExitToApp / > ,
+    component: Loginpage,
     layout: "/nucleus"
 }
 ];
