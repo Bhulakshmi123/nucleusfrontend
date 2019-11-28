@@ -37,7 +37,7 @@ const dashboardRoutes = [{
 },
 {
     path: "/rmp-users",
-    name: "Rmp Users",
+    name: "RMP Users",
     icon: <AiOutlineUser />,
     component: RMPUsers,
     layout: "/nucleus"
