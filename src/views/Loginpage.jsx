@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { Button, Row, Col, Form, Card } from 'react-bootstrap';
-import TextInput from '../components/FormFields/TextInput';
-import { useSelector, useDispatch } from 'react-redux';
-import { sidebarViewAction } from '../redux/actions';
+import React from 'react';
+import { Button, Col, Form, Card } from 'react-bootstrap';
+import { useState } from 'react';
 const Loginpage = (props) => {
-    const dispatch = useDispatch();
-    const sidebarView = useSelector(state => state.sidebarView);
-    const dataFromUrl = () => {
-        dispatch(sidebarViewAction(true));
+    const [validated, setValidated] = useState(false);
+    const handleSubmit = event => {
+        const form = event.currentTarget;
+        console.log('Form', form);
+        if (form.chechValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        setValidated(true)
     }
     return (
         <React.Fragment>
-            {dataFromUrl()}
-            <div className={sidebarView ? "loginContent" : "mainContent"}>
+            <div className="loginContent">
                 <div className="text-white text-center mt-5">
                     <div className="font-size-25">Hello EQUIPHUNT!</div>
                     <div className="font-size-11 opct-8 mb-3">Welcome to EH Trackr !</div>
@@ -20,14 +22,18 @@ const Loginpage = (props) => {
                         <Card>
                             <Card.Body>
                                 <div className="font-size-20 mt-0 text-dark">Login Details</div>
-                                <Form className="pt-4 px-3">
+                                <Form className="pt-4 px-3" noValidate validated={validated} onSubmit={handleSubmit}>
                                     <Form.Group controlId="formBasicEmail">
                                         <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
-                                        <Form.Control type="email" className="text-center p-4 font-size-13 hi-65" placeholder="Email or Phone" />
+                                        <Form.Control type="email" className="text-center p-4 font-size-13 hi-65" placeholder="Email or Phone" required  autoComplete="new-username"/>
+                                        <Form.Control.Feedback type="invalid">
+                                            Please choose a username.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
                                     <Form.Group controlId="formBasicPassword">
                                         <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                        <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" placeholder="Password" />
+                                        <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" placeholder="Password" required autoComplete="new-password" />
+                                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                     </Form.Group>
                                     <Button variant="primary" className="p-3 mt-4" block size="lg" type="submit">SIGN IN</Button>
                                     <Form.Group controlId="formBasicCheckbox">
