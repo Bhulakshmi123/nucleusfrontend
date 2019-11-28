@@ -27,7 +27,10 @@ const selectStyles = {
 };
 
 class SelectInput extends Component {
-  state = { isOpen: false, value: undefined };
+  state = {
+    isOpen: false,
+    value: undefined
+  };
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   };
@@ -64,7 +67,7 @@ class SelectInput extends Component {
             placeholder="Search..."
             styles={selectStyles}
             tabSelectsValue={false}
-            value={value}
+            value={this.props.options}
           />
         </Dropdown>
       </div>

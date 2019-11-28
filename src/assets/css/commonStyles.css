@@ -315,10 +315,11 @@ body>.navbar-collapse .logo {
     line-height: 1.42857143;
 }
 
-.form-modal,
+
+/* .form-modal,
 .fm_padding {
     text-align: center !important;
-}
+} */
 
 .block-link {
     padding: 5px;
