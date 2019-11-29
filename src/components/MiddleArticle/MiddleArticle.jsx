@@ -13,7 +13,7 @@ class MiddleArticle extends Component {
         return (
             <React.Fragment>
                 <div className="innerDivCompact card card_stle">
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={6} >
                             <TextInput type="text" label="Price" />
                         </Col>
@@ -21,7 +21,7 @@ class MiddleArticle extends Component {
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Duration" />
                         </Col>
                     </Row>
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={6}>
                             <CalenderInput name="Lead Date*" label="Start Date" />
                         </Col>
@@ -29,7 +29,7 @@ class MiddleArticle extends Component {
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Transportation" />
                         </Col>
                     </Row>
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={6}>
                             <label>Shift Type</label>
                             <div>
@@ -46,7 +46,7 @@ class MiddleArticle extends Component {
 
                         </Col>
                     </Row>
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={6}>
                             <TextInput type="text" label="Operator Batha" />
                         </Col>
@@ -54,17 +54,17 @@ class MiddleArticle extends Component {
                             <SelectInput name="Lead Source" cStyle="widthtwo" label="Operator Food" />
                         </Col>
                     </Row>
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={12}>
                             <TextArea name="Payment Terms" label="Payment Terms" ></TextArea>
                         </Col>
                     </Row>
-                    <Row className="martp">
+                    <Row className="mt-3">
                         <Col md={12}>
                             <TextArea name="Payment Terms" label="Remarks"></TextArea>
                         </Col>
                     </Row>
-                    <Row className="martp mt-3">
+                    <Row className="mt-3 mt-3">
                         <Col md={12}>
                             <Button variant='primary'>Submit Details</Button>
                         </Col>

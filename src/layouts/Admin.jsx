@@ -4,7 +4,7 @@ import { Row, Col, Container, Navbar } from 'react-bootstrap';
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
-import image from "assets/img/sidebar-3.jpg";
+import image from "assets/img/new_logo.png";
 import Business from "views/Business";
 // import '../assets/css/commonStyles.css'
 

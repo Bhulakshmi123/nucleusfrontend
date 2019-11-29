@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
-import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/fav-ico.png";
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 import { Link, Switch, Route } from 'react-router-dom';
 
@@ -34,10 +34,8 @@ class Header extends Component {
     return (
       <Navbar fixed="top" className="stickyTopColor">
         <Navbar.Brand href="#home">
-          <Link to="/loginpage">
-          <img alt="" src={logo} width="45" height="30" className="d-inline-block align-top"></img>
-          </Link>
-          React EH NUCLEUS
+          <Link to="/loginpage"><img alt="" src={logo} width="35" height="30" className="d-inline-block align-top mr-1"></img></Link>
+          <span className="text-secondary">React EH NUCLEUS</span>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
         <Navbar.Text className="text-center">
