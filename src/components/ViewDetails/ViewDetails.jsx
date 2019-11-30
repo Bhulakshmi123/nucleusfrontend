@@ -3,6 +3,7 @@ import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { sidebarViewAction } from '../../redux/actions';
 import SideArticle from '../../components/SideArticle/SideArticle';
+import AddViewModal from '../../components/AddViewTwo/AddViewModal';
 const ViewDetails = () => {
     const sidebarView = useSelector(state => state.sidebarView);
     const dispatch = useDispatch();

@@ -24,7 +24,7 @@ ReactDOM.render(
 					)
 				}}>
 				</Route>
-				<Redirect from="/" to="/dashboard" /> */}
+				<Redirect from="/" to="/dashboard" /> */} */}
 				<Route exact path="/" component={Loginpage}></Route>
 				<Route path="/admin" component={admin}></Route>
 				<Route path="/logout" component={logout}></Route>
