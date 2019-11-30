@@ -1,0 +1,1 @@
+export const GET_LOGIN_INFO = {type: 'LOGIN_INFORMATION',url:'/login'};

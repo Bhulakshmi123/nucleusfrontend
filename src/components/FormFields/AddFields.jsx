@@ -157,10 +157,10 @@ const AddFields = props => {
                 </Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><TextArea name="Payment Terms" label="Payment Terms" placeholder="Payment Terms"></TextArea></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms"/></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><TextArea name="Remarks" label="Remarks" placeholder="Any comments to go with the equipment"></TextArea></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment"/></Form.Group></Col>
             </Form.Row>
             <Modal.Footer className="px-0">
                 {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
