@@ -3,10 +3,9 @@
 // import ReactDOM from "react-dom";
 import { Component } from 'react';
 import '../../assets/css/form.css';
-import { Button } from 'react-bootstrap';
 import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
-
+import { Button, Modal, Row, Col, InputGroup, Form, FormControl } from 'react-bootstrap';
 import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 const options = [
@@ -27,7 +26,10 @@ const selectStyles = {
 };
 
 class SelectInput extends Component {
-  state = { isOpen: false, value: undefined };
+  state = {
+    isOpen: false,
+    value: undefined
+  };
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   };
@@ -50,22 +52,24 @@ class SelectInput extends Component {
             </Button>
           }
         >
-          <Select
-            autoFocus
-            backspaceRemovesValue={false}
-            className={this.props.cStyle}
-            components={{ DropdownIndicator, IndicatorSeparator: null }}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isClearable={false}
-            menuIsOpen
-            onChange={this.onSelectChange}
-            options={options}
-            placeholder="Search..."
-            styles={selectStyles}
-            tabSelectsValue={false}
-            value={value}
-          />
+          <Form.Group controlId="formBasicEmail">
+            <Select
+              autoFocus
+              backspaceRemovesValue={false}
+              className={this.props.cStyle}
+              components={{ DropdownIndicator, IndicatorSeparator: null }}
+              controlShouldRenderValue={false}
+              hideSelectedOptions={false}
+              isClearable={false}
+              menuIsOpen
+              onChange={this.onSelectChange}
+              options={options}
+              placeholder="Search..."
+              styles={selectStyles}
+              tabSelectsValue={false}
+              value={this.props.options}
+            />
+          </Form.Group>
         </Dropdown>
       </div>
     );
