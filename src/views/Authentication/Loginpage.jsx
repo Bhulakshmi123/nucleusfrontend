@@ -5,26 +5,33 @@ import { getClientInfo } from './actions';
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            username: "Muzan KibutSaji",
-            password: "nezuko"
+        const token = localStorage.getItem("token")
+        let loggedIn = true
+        if (token == null) {
+            loggedIn = false
         }
-        // this.onChange = this.onChange.bind(this)
-        // this.submitForm = this.submitForm.bind(this)
+        this.state = {
+            username: '',
+            password: '',
+            username: "Muzan KibutSaji",
+            password: "nezuko",
+            loggedIn
+        }
+        this.onChange = this.onChange.bind(this)
+        this.submitForm = this.submitForm.bind(this)
     }
-
-    componentDidMount() {
-        // this.getLogindata();
-    }
-
-
     onChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
         this.setState({ [e.target.name]: e.target.value })
     }
     submitForm(e) {
         e.preventDefault()
         const { username, password } = this.state
         if (username === 'A' && password === 'B') {
+            localStorage.setItem("token", "sajksadjldkjdlskajdskladjklsjdafkljskladjklfjakflsjaff")
+            this.setState({ loggedIn: true })
             console.log('it Workd');
         }
         let data = {
@@ -32,7 +39,9 @@ export class Loginpage extends Component {
             "password": "test",
             "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
         }
-        var result =  getClientInfo(data);
+        this.onChange = this.onChange.bind(this)
+        this.submitForm = this.submitForm.bind(this)
+        var result = getClientInfo(data);
         console.log('result', result);
     }
     render() {
@@ -64,21 +73,21 @@ export class Loginpage extends Component {
                                             <Form.Text className="text-muted">
                                                 We'll never share your email with anyone else.
                                             </Form.Text>
-                                        <Form.Text className="mt-4">
-                                            <span className="text-primary p-1 font-size-08 cursor-pointer">Back to Company ID</span>
-                                            <span className="text-dark">|</span>
-                                            <span className="text-primary p-1 font-size-08 cursor-pointer">Forgot Password ?</span>
-                                        </Form.Text>
-                                    </Form.Group>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                                            <Form.Text className="mt-4">
+                                                <span className="text-primary p-1 font-size-08 cursor-pointer">Back to Company ID</span>
+                                                <span className="text-dark">|</span>
+                                                <span className="text-primary p-1 font-size-08 cursor-pointer">Forgot Password ?</span>
+                                            </Form.Text>
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </div>
                 </div>
-            </div>
-        </React.Fragment>
-    );
-}
+            </React.Fragment>
+        );
+    }
 }
 export default Loginpage;
 // import React, { Component } from 'react'
