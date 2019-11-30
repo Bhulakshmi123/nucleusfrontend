@@ -7,9 +7,7 @@ import './assets/css/commonStyles.css'; // !BhuLakshi's Default CSS File
 import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
 import AdminLayout from "layouts/Admin.jsx";
-import Loginpage from './views/Authentication/Loginpage.jsx'
-import admin from './views/Authentication/admin.jsx'
-import logout from './views/Authentication/logout.jsx'
+import { Loginpage } from './views/Authentication/Loginpage.jsx'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -18,16 +16,9 @@ ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
 			<Switch>
-				{/* <Route path="/" render={(props) => {
-					return (
-						<AdminLayout {...props}></AdminLayout>
-					)
-				}}>
-				</Route>
-				<Redirect from="/" to="/dashboard" /> */} */}
-				<Route exact path="/" component={Loginpage}></Route>
-				<Route path="/admin" component={admin}></Route>
-				<Route path="/logout" component={logout}></Route>
+				<Redirect exact from="/" to="/login"></Redirect>
+				<Route path="/login" component={Loginpage}></Route>
+				<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
 			</Switch>
 		</BrowserRouter>
 	</Provider>,
