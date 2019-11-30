@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-class Loginpage extends Component {
+import { getClientInfo } from './actions';
+export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        const token = localStorage.getItem("token")
-        let loggedIn = true
-        if (token == null) {
-            loggedIn = false
-        }
         this.state = {
-            username: '',
-            password: '',
-            loggedIn
+            username: "Muzan KibutSaji",
+            password: "nezuko"
         }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
     onChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        this.setState({ [e.target.name]: e.target.value })
     }
     submitForm(e) {
         e.preventDefault()
         const { username, password } = this.state
         if (username === 'A' && password === 'B') {
-            localStorage.setItem("token", "sajksadjldkjdlskajdskladjklsjdafkljskladjklfjakflsjaff")
-            this.setState({ loggedIn: true })
+            console.log('it Workd');
         }
+        let data = {
+            "username": "equiphunt@yopmail.com",
+            "password": "test",
+            "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
+        }
+        var result =  getClientInfo(data);
+        console.log('result', result);
     }
     render() {
-        if (this.state.loggedIn) {
-            return <Redirect to="/admin"></Redirect>
-        }
         return (
             <React.Fragment>
                 <div className="loginContent">
@@ -54,7 +50,7 @@ class Loginpage extends Component {
                                         </Form.Group>
                                         <Form.Group controlId="formBasicPassword">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.pasword} onChange={this.onChange} placeholder="Password" required autoComplete="new-password" />
+                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" required autoComplete="new-password" />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Button variant="primary" className="p-3 mt-4" block size="lg" type="submit">SIGN IN</Button>
@@ -79,4 +75,18 @@ class Loginpage extends Component {
     }
 }
 export default Loginpage;
+// import React, { Component } from 'react'
+
+// export class Loginpage extends Component {
+//     render() {
+//         return (
+//             <div>
+
+//             </div>
+//         )
+//     }
+// }
+
+// export default Loginpage
+
 
