@@ -1,48 +1,26 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 import { getClientInfo } from './actions';
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        const token = localStorage.getItem("token")
-        let loggedIn = true
-        if (token == null) {
-            loggedIn = false
-        }
-        this.state = {
-            username: '',
-            password: '',
-            username: "Muzan KibutSaji",
-            password: "nezuko",
-            loggedIn
-        }
+        this.state = { username: '', password: '' }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
     onChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
         this.setState({ [e.target.name]: e.target.value })
     }
     submitForm(e) {
         e.preventDefault()
-        const { username, password } = this.state
-        if (username === 'A' && password === 'B') {
-            localStorage.setItem("token", "sajksadjldkjdlskajdskladjklsjdafkljskladjklfjakflsjaff")
-            this.setState({ loggedIn: true })
-            console.log('it Workd');
-        }
-        let data = {
-            "username": "equiphunt@yopmail.com",
-            "password": "test",
-            "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
-        }
-        this.onChange = this.onChange.bind(this)
-        this.submitForm = this.submitForm.bind(this)
-        var result = getClientInfo(data);
-        console.log('result', result);
+        const { username, password } = this.state;
+        let data = { "username": username, "password": password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" }
+        getClientInfo(data).then((res) => {
+            if (res == false) { console.log('Login Failed'); }
+            else {
+                {console.log(res)}
+            }
+        });
     }
     render() {
         return (
@@ -90,18 +68,6 @@ export class Loginpage extends Component {
     }
 }
 export default Loginpage;
-// import React, { Component } from 'react'
 
-// export class Loginpage extends Component {
-//     render() {
-//         return (
-//             <div>
-
-//             </div>
-//         )
-//     }
-// }
-
-// export default Loginpage
 
 

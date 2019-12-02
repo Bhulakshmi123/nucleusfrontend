@@ -22,6 +22,12 @@ export const sidebarViewAction = (nr) => {
         payload: nr
     };
 }
+export const saveTokenNoAction = (nr) => {
+    return {
+        type: 'SAVETOKENNOACTION',
+        payload:nr
+    }
+}
 export const addLead = leadForm => {
     return dispatch => {
         dispatch({
@@ -30,3 +36,4 @@ export const addLead = leadForm => {
         });
     }
 }
+

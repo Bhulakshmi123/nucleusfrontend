@@ -1,8 +1,8 @@
-// const env = require('./config').api_server;
-const env = 'http://192.168.0.194:9018';
+// const env = 'http://192.168.0.194:9018';
+const env = 'http://127.0.0.1:9018';
 
 const Service = {
-    fetchGet: async(url, token = null) => {
+    fetchGet: async (url, token = null) => {
         url = env + url;
         const headers = {};
         headers['source'] = 'nucleus';
@@ -11,9 +11,7 @@ const Service = {
         }
         try {
             const res = await fetch(url, { method: 'GET', headers: headers });
-
             if (res.status >= 200 && res.status < 400) {
-
                 return (res.json());
             } else if (res.status >= 400 && res.status < 500) {
                 if (res.status === 401) {
@@ -31,7 +29,7 @@ const Service = {
         }
     },
 
-    fetchPost: async(url, body, token = null) => {
+    fetchPost: async (url, body, token = null) => {
         url = env + url;
         const headers = { 'Content-Type': 'application/json' };
         headers['source'] = 'website';
@@ -55,13 +53,10 @@ const Service = {
             return false;
         }
     },
-
-
 };
 
 const onFailure = (type) => {
     console.log("API FAILED " + type);
-
 };
 
 export default Service;
