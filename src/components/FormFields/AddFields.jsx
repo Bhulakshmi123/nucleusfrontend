@@ -1,13 +1,7 @@
 import React from 'react';
-import { Button, Modal, Row, Col, InputGroup, FormControl, Form, Card, Table } from 'react-bootstrap';
-import TextInput from './TextInput';
+import { Button, Modal, Col, Form} from 'react-bootstrap';
 import SelectInput from './SelectInput';
 import '../../assets/css/form.css';
-// import InputName from './SelectInput';
-// import FileInput from './FileInput';
-import RadioInput from './RadioInput';
-import Checkbox from './Checkbox';
-import TextArea from './TextArea';
 import CalenderInput from './CalenderInput';
 const AddFields = props => {
     return (
@@ -157,10 +151,10 @@ const AddFields = props => {
                 </Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><Form.Group><Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms"/></Form.Group></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms" /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment"/></Form.Group></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment" /></Form.Group></Col>
             </Form.Row>
             <Modal.Footer className="px-0">
                 {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}

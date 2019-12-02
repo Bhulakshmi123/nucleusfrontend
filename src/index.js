@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
 import "./assets/css/rootStyles.css"; // !Mano's Default CSS File
-import './assets/css/commonStyles.css'; // !BhuLakshi's Default CSS File
+import './assets/css/commonStyles.css'; // !BhuLakshmi's Default CSS File
 import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
 import AdminLayout from "layouts/Admin.jsx";

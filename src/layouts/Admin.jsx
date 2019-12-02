@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Row, Col, Container, Navbar } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
 import image from "assets/img/new_logo.png";
-import Business from "views/Business";
-// import '../assets/css/commonStyles.css'
-
 class Admin extends Component {
   constructor(props) {
     super(props);
