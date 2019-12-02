@@ -1,4 +1,3 @@
-// const env = 'http://192.168.0.194:9018';
 const env = 'http://127.0.0.1:9018';
 
 const Service = {
