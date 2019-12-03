@@ -1,15 +1,29 @@
 import React, { Component } from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Button, Form} from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 class Header extends Component {
   constructor(props) {
     super(props);
+    const token = localStorage.getItem("tokenId");
+    console.log('token inAmdin', token);
+    let loggedIn = true
+    if (token === null) {
+      loggedIn = false
+    }
     this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
     this.state = {
-      sidebarExists: false
+      sidebarExists: false,
+      loggedIn
     };
+    this.logoutHandler = this.logoutHandler.bind(this)
+  }
+  logoutHandler(e) {
+    e.preventDefault();
+    console.log('Hello World');
+    localStorage.removeItem("tokenId");
+    this.setState({loggedIn:false})
   }
   mobileSidebarToggle(e) {
     if (this.state.sidebarExists === false) {
@@ -28,6 +42,9 @@ class Header extends Component {
     document.body.appendChild(node);
   }
   render() {
+    if (this.state.loggedIn === false) {
+      return (<Redirect to="/login"></Redirect>)
+    }
     return (
       <Navbar fixed="top" className="stickyTopColor">
         <Navbar.Brand href="#home">
@@ -44,6 +61,9 @@ class Header extends Component {
           <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
           </Navbar.Text>
+          <Form inline onSubmit={this.logoutHandler}>
+            <Button variant="outline-danger" size="sm" type="submit" className="my-auto ml-2">Logout</Button>
+          </Form>
         </Navbar.Collapse>
       </Navbar>
     );

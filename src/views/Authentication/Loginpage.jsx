@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = { username: '', password: '', tokenid: null, loginStatus: false }
+        this.state = { username: '', password: '', tokenId: null, loginStatus: false }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
@@ -19,21 +19,23 @@ export class Loginpage extends Component {
             "password": this.state.password,
             "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
         };
-        getClientInfo(data).then((res) => {
-            if (res === false) {
-                console.log('Login Failed');
-            }
-            else {
-                console.log(res);
-                this.setState({ tokenid: res.data.token, loginStatus: true })
-                return (
-                    <spyware token={this.props.tokenid}></spyware>
-                )
-            }
-        });
+        // getClientInfo(data).then((res) => {
+        //     if (res === false) {
+        //         console.log('Login Failed');
+        //     }
+        //     else {
+        //         console.log(res);
+        //         this.setState({ tokenid: res.data.token, loginStatus: true })
+        //         localStorage.setItem("tokenID", res.data.token);
+        //     }
+        // });
+        if (this.state.username === 'equiphunt@yopmail.com' && this.state.password === 'test') {
+            localStorage.setItem("tokenId", '1a8abc1c-8c11-11e8-86bd-7054d27b259a');
+            this.setState({ tokenId: '1a8abc1c-8c11-11e8-86bd-7054d27b259a', loginStatus: true })
+        }
     }
     render() {
-        if (this.state.loginStatus) {
+        if (this.state.tokenId != null) {
             return (<Redirect to="/dashboard"></Redirect>)
         }
         return (
