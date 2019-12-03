@@ -5,7 +5,7 @@ import { Component } from 'react';
 import '../../assets/css/form.css';
 import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
-import { Button, Modal, Row, Col, InputGroup, Form, FormControl } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 const options = [

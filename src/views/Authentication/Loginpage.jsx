@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
+import { Redirect } from 'react-router-dom';
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = { username: '', password: '' }
+        this.state = { username: '', password: '', tokenid: null, loginStatus: false }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
@@ -13,16 +14,28 @@ export class Loginpage extends Component {
     }
     submitForm(e) {
         e.preventDefault()
-        const { username, password } = this.state;
-        let data = { "username": username, "password": password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" }
+        let data = {
+            "username": this.state.username,
+            "password": this.state.password,
+            "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
+        };
         getClientInfo(data).then((res) => {
-            if (res == false) { console.log('Login Failed'); }
+            if (res === false) {
+                console.log('Login Failed');
+            }
             else {
-                { console.log(res) }
+                console.log(res);
+                this.setState({ tokenid: res.data.token, loginStatus: true })
+                return (
+                    <spyware token={this.props.tokenid}></spyware>
+                )
             }
         });
     }
     render() {
+        if (this.state.loginStatus) {
+            return (<Redirect to="/dashboard"></Redirect>)
+        }
         return (
             <React.Fragment>
                 <div className="loginContent">

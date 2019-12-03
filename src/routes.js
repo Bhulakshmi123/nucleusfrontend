@@ -13,70 +13,70 @@ import Equipment from "views/Equipment/";
 import ManPower from "views/ManPower/";
 import Subscriptions from "views/Subscriptions/";
 
-const dashboardRoutes = [{
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: <FaHome />,
-    component: Dashboard,
-    layout: "/nucleus",
-    sideveiw: "normal"
-},
-{
-    path: "/business/new",
-    name: "Business",
-    icon: <AiOutlineDollar />,
-    component: Business,
-    layout: "/nucleus"
-},
-{
-    path: "/projects",
-    name: "Projects",
-    icon: <FiBriefcase />,
-    component: Projects,
-    layout: "/nucleus"
-},
-{
-    path: "/rmp-users",
-    name: "RMP Users",
-    icon: <AiOutlineUser />,
-    component: RMPUsers,
-    layout: "/nucleus"
-},
-{
-    path: "/suppliers",
-    name: "Suppliers",
-    icon: <FaRegArrowAltCircleRight />,
-    component: Suppliers,
-    layout: "/nucleus"
-},
-{
-    path: "/contractors",
-    name: "Contractors",
-    icon: <FaRegArrowAltCircleLeft />,
-    component: Contractors,
-    layout: "/nucleus"
-},
-{
-    path: "/equipment",
-    name: "Equipment",
-    icon: <FaTruckMonster />,
-    component: Equipment,
-    layout: "/nucleus"
-},
-{
-    path: "/man-power",
-    name: "Man Power",
-    icon: <FaRegUserCircle />,
-    component: ManPower,
-    layout: "/nucleus"
-},
-{
-    path: "/subscriptions",
-    name: "Subscriptions",
-    icon: <MdExitToApp />,
-    component: Subscriptions,
-    layout: "/nucleus"
-}
+const dashboardRoutes = [
+    {
+        path: "/dashboard",
+        name: "Dashboard",
+        icon: <FaHome />,
+        component: Dashboard,
+        layout: "/nucleus"
+    },
+    {
+        path: "/business/new",
+        name: "Business",
+        icon: <AiOutlineDollar />,
+        component: Business,
+        layout: "/nucleus"
+    },
+    {
+        path: "/projects",
+        name: "Projects",
+        icon: <FiBriefcase />,
+        component: Projects,
+        layout: "/nucleus"
+    },
+    {
+        path: "/rmp-users",
+        name: "RMP Users",
+        icon: <AiOutlineUser />,
+        component: RMPUsers,
+        layout: "/nucleus"
+    },
+    {
+        path: "/suppliers",
+        name: "Suppliers",
+        icon: <FaRegArrowAltCircleRight />,
+        component: Suppliers,
+        layout: "/nucleus"
+    },
+    {
+        path: "/contractors",
+        name: "Contractors",
+        icon: <FaRegArrowAltCircleLeft />,
+        component: Contractors,
+        layout: "/nucleus"
+    },
+    {
+        path: "/equipment",
+        name: "Equipment",
+        icon: <FaTruckMonster />,
+        component: Equipment,
+        layout: "/nucleus"
+    },
+    {
+        path: "/man-power",
+        name: "Man Power",
+        icon: <FaRegUserCircle />,
+        component: ManPower,
+        layout: "/nucleus"
+    },
+    {
+        path: "/subscriptions",
+        name: "Subscriptions",
+        icon: <MdExitToApp />,
+        component: Subscriptions,
+        layout: "/nucleus"
+    }
 ];
 
 export default dashboardRoutes;

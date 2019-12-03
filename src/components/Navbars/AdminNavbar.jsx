@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
-import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
-import { Link, Switch, Route } from 'react-router-dom';
-
-
+import { Link } from 'react-router-dom';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -38,9 +35,9 @@ class Header extends Component {
           <span className="text-secondary">React EH NUCLEUS</span>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text className="text-center">
-          <i className="fas fa-home mr-2"></i>{this.props.brandText}
-        </Navbar.Text>
+          <Navbar.Text className="text-center">
+            <i className="fas fa-home mr-2"></i>{this.props.brandText}
+          </Navbar.Text>
         </Navbar.Collapse>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
