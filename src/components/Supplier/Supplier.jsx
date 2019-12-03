@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Supplier.css'
 import { Row, Col, Button, Container, Card } from 'react-bootstrap'
 class Supplier extends Component {
     render() {

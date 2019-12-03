@@ -58,7 +58,7 @@ class Renter extends Component {
                             </Col>
                             <Col lg={3} className="my-auto">
                                 <a href="https://www.google.com">
-                                    <i className={`fas fa-thumbs-down font-size-22 mr-4 ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
+                                    <i className={`fas fa-thumbs-down font-size-22 text-dark mr-4 ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
                                     <i className={`fas fa-thumbs-up font-size-22 mr-4 ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
                                     <div className="font-size-08  text-dark">{this.changeContent()}</div>
                                 </a>
