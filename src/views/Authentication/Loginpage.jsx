@@ -8,6 +8,9 @@ import { getClientInfo } from './actions';
 import { Formik, Field, ErrorMessage } from 'formik';
 class Loginpage extends React.Component {
     render() {
+        if (this.state.loginStatus === true) {
+            return (<Redirect to="/dashboard"></Redirect>)
+        }
         return (
             <div>
                 <div className="loginContent">

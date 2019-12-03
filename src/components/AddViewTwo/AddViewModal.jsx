@@ -23,7 +23,7 @@ class AddViewModal extends Component {
 
     render() {
         return (<span>
-            <span onClick={this.openModalHandler}><i className="fab fa-gg-circle icon-fs"></i></span>
+            <span onClick={this.openModalHandler}><i className="fab fa-gg-circle font-size-20"></i></span>
             <Modal show={this.state.isShowing} onHide={this.closeModalHandler}>
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>

@@ -5,7 +5,7 @@ import CalenderInput from '../FormFields/CalenderInput';
 import RadioInput from '../FormFields/RadioInput';
 import TextArea from '../FormFields/TextArea';
 import TimePickerinpt from '../FormFields/TimePickerinpt';
-import { Button, Modal, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { Button, Row, Col} from 'react-bootstrap';
 import '../../assets/css/form.css';
 import './MiddleArticle.css';
 class MiddleArticle extends Component {

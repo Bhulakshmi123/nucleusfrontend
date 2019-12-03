@@ -1,21 +1,24 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import { Row, Col, Container, Navbar } from 'react-bootstrap';
+import { Route, Switch, Redirect } from "react-router-dom";
+import { Row, Col, Container } from 'react-bootstrap';
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
 import image from "assets/img/new_logo.png";
-import Business from "views/Business";
-// import '../assets/css/commonStyles.css'
-
 class Admin extends Component {
   constructor(props) {
     super(props);
+    const token = localStorage.getItem("tokenId");
+    let loggedIn = true
+    if (token === null) {
+      loggedIn = false
+    }
     this.state = {
       image: image,
       color: "white",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+      fixedClasses: "dropdown show-dropdown open",
+      loggedIn
     };
   }
   handleNotificationClick = position => {
@@ -76,7 +79,6 @@ class Admin extends Component {
       this.setState({ fixedClasses: "dropdown" });
     }
   };
-
   // componentDidUpdate(e) {
   //   if (
   //     window.innerWidth < 993 &&
@@ -92,6 +94,9 @@ class Admin extends Component {
   //   }
   // }
   render() {
+    if (this.state.loggedIn === false) {
+      return (<Redirect to="/login"></Redirect>)
+    }
     return (
       <React.Fragment>
         <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>
@@ -103,10 +108,6 @@ class Admin extends Component {
             <Switch>{this.getRoutes(routes)}</Switch>
           </Row>
         </Container>
-        {/* <div className="wrapper">
-        <div id="main-panel" className={this.props.location.pathname.match(new RegExp("/", "g")).length >= 2 ? "sm-main-panel main-panel" : "main-panel"} ref="mainPanel">          
-        </div>
-      </div> */}
       </React.Fragment>
     );
   }

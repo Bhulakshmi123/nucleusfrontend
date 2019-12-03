@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
-import './Renter.css'
+import { Button, Row, Col, Container, Card } from 'react-bootstrap';
 class Renter extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +17,9 @@ class Renter extends Component {
     }
     render() {
         return (
-            <div className="card cardPadding">
+
+            <React.Fragment>
+                {/* <div className="card cardPadding">
                 <Row className="cardTop">
                     <Col lg={3} className="contentTop">
                         <div className="text-primary">Approved Price</div>
@@ -44,10 +45,44 @@ class Renter extends Component {
                         </a>
                     </Col>
                     <Col lg={3}>
-                        <Button bsStyle="primary"  className="mt-2 btn-primary-overRide btn-right-overRide"><i className="fas fa-edit nbSpan"></i>Edit Price</Button>
+                        <Button variant="primary" className="mt-2" size="sm"><i className="fas fa-edit mr-2"></i>Edit Price</Button>
                     </Col>
                 </Row>
-            </div>
+            </div> */}
+                <Card className="p-3 mx-auto">
+                    <Container>
+                        <Row>
+                            <Col lg={3} className="my-auto">
+                                <div className="text-primary">Approved Price</div>
+                                <div className="font-size-11 text-dark">Rs. {this.props.ApprovalPrice}</div>
+                            </Col>
+                            <Col lg={3} className="my-auto">
+                                <a href="https://www.google.com">
+                                    <i className={`fas fa-thumbs-down font-size-22 text-dark mr-4 ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
+                                    <i className={`fas fa-thumbs-up font-size-22 mr-4 ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
+                                    <div className="font-size-08  text-dark">{this.changeContent()}</div>
+                                </a>
+                            </Col>
+                            <Col lg={2} className="text-center my-auto">
+                                <a href="https://www.google.com" target="_blank">
+                                    <i className="far fa-file-pdf font-size-22  text-danger"></i>
+                                    <div className="font-size-08  text-dark">Quotation</div>
+                                </a>
+                            </Col>
+                            <Col lg={2} className="text-center my-auto">
+                                <a href="https://www.google.com" target="_blank">
+                                    <i className="far fa-file-pdf font-size-22 text-danger"></i>
+                                    <div className="font-size-08 text-dark">Work Order</div>
+                                </a>
+                            </Col>
+                            <Col lg={2} className="my-auto">
+                                <Button variant="primary float-right" size="sm"><i className="fas fa-edit mx-2"></i>Edit Price</Button>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Card>
+            </React.Fragment>
+
         )
     }
 }
