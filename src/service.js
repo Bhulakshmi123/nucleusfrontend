@@ -1,5 +1,7 @@
-// const env = require('./config').api_server;
-const env = 'http://192.168.0.194:9018';
+const env = 'http://127.0.0.1:9018';
+// const env = 'http://192.168.0.194:9018';
+// const env = 'http://localhost:9018';
+// const env = 'http://139.59.13.111:9018';
 
 const Service = {
     fetchGet: async(url, token = null) => {
@@ -38,6 +40,8 @@ const Service = {
         if (token) {
             headers['x-auth-token'] = token;
         }
+        console.log(url);
+        console.log(body);
         try {
             const res = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) });
             if (res.status >= 200 && res.status < 400) {

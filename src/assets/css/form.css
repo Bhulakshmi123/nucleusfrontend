@@ -249,6 +249,10 @@
         transform: rotate(45deg);
     }
     
+    .text_clr {
+        color: red !important;
+    }
+    
     .check:after {
         content: "";
         position: absolute;

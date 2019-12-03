@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Button, Col, Form, Card, Row, Table,Modal } from 'react-bootstrap';
 import '../../assets/css/form.css';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
