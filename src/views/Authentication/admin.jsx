@@ -16,11 +16,11 @@ export class admin extends Component {
     
     render() {
         if(this.state.loggedIn === false) {
-            return <Redirect to="/"></Redirect>
+            return <Redirect to="/login"></Redirect>
         }
         return (
             <div>
-                This is a Admin Component
+                This is a Admin Component jslkdjaslkdldksdjsdkjsalkd
                 <br></br>
                 <Link to="/logout">Logout</Link>
             </div>

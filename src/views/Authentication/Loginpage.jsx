@@ -1,15 +1,19 @@
-// import React, { Component } from 'react';
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
-import { render } from "react-dom";
-import * as Yup from 'yup';
 import { getClientInfo } from './actions';
-import { Formik, Field, ErrorMessage } from 'formik';
-class Loginpage extends React.Component {
+import { Redirect } from 'react-router-dom';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+export class Loginpage extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { tokenId: null, loginStatus: false }
+        console.log(this.state);
+    }
+
     render() {
         if (this.state.loginStatus === true) {
-            return (<Redirect to="/dashboard"></Redirect>)
+            return (<Redirect to="/admin"></Redirect>)
         }
         return (
             <div>
@@ -22,33 +26,29 @@ class Loginpage extends React.Component {
                                 <Card.Body>
                                     <div className="font-size-20 mt-0 text-dark">Login Details</div>
                                     <Formik
-                                        initialValues={{ email: '', password: '' }}
+                                        initialValues={{ email: "", password: "" }}
                                         validationSchema={Yup.object().shape({
                                             email: Yup.string()
-                                                .email('Email is invalid')
-                                                .required('Email is required'),
+                                                    .email('Email is invalid')
+                                                    .required('Email is required'),
                                             password: Yup.string()
                                                 .min(4, 'Password must be at least 4 characters')
                                                 .required('Password is required'),
                                         })}
-                                        // onChange = {(e) => {
-                                        //     this.setState({ [e.target.name]: e.target.value })
-                                        // }}
                                         onSubmit={fields => {
-                                            
                                             let data = { "username": fields.email, "password": fields.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" }
                                             getClientInfo(data).then((res) => {
-                                                if (res == false) {
+                                                if (res === false) {
                                                     console.log('Login Failed');
                                                 }
                                                 else {
-                                                    {
-                                                        console.log(res)
-                                                    }
+                                                    console.log('Response of API', res);
+                                                    this.setState({ tokenId: res.data.token, loginStatus: true })
+                                                    localStorage.setItem("tokenId", this.state.tokenId);
+                                                    console.log('Current State', this.state);
                                                 }
                                             });
                                         }}
-
                                     >
                                         {({
                                             values,

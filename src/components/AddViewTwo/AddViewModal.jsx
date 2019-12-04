@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Card, Row, Table,Modal } from 'react-bootstrap';
+import { Button, Col, Form, Modal } from 'react-bootstrap';
 import '../../assets/css/form.css';
 import TextInput from '../FormFields/TextInput';
 import SelectInput from '../FormFields/SelectInput';
@@ -29,46 +29,40 @@ class AddViewModal extends Component {
                     <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <form>
-                        <div className="row ">
-                            <div className="col-md-6 form-modal">
-                                <TextInput
-                                    type="text"
-                                    placeholder="Phone No."
-                                    name="fname"
-                                    value={this.state.fname}
-                                    onChange={this.handleChange}
-                                    label="Phone No.*" />
-                            </div>
-                            <div className="col-md-6 form-modal">
+                    <Form>
+                        <Form.Row>
+                            <Col md={6}>
+                                <Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control name="phone_no" placeholder="Phone No." /></Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <SelectInput cStyle="widthone" label="Duration" placeholder="Select District or State" />
-                            </div>
-                        </div>
-                        <div className="row martp">
-                            <div className="col-md-6">
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col md={6}>
                                 <CalenderInput name="Expected Start Date*" label="Expected Start Date*" placeholder="Expected Start Date" />
-                            </div>
-                            <div className="col-md-6 form-modal">
+                            </Col>
+                            <Col md={6}>
                                 <SelectInput cStyle="widthone" label="Duration" placeholder="Select District or State" />
-                            </div>
-                        </div>
-                        <div className="row martp">
-                            <div className="col-md-6 radio-modal">
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col md={6}>
                                 <label>Accomodation</label>
                                 <div>
                                     <RadioInput name="Yes" label="Yes" />
                                     <RadioInput name="No" label="No" />
                                 </div>
-                            </div>
-                            <div className="col-md-6 form-modal">
+                            </Col>
+                            <Col md={6}>
                                 <label>Shift 1 Work Duration</label>
                                 <div>
                                     <div className="col-md-3"><TimePickerinpt placeholder="From" /></div>
                                     <div className="col-md-3 time_pic"><TimePickerinpt placeholder="To" /></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="row martp">
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
                             <div className="col-md-6 form-modal">
                                 <TextInput
                                     type="text"
@@ -88,8 +82,8 @@ class AddViewModal extends Component {
                                     <TextArea name="Payment Terms" label="Payment Terms" ></TextArea>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </Form.Row>
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="btn-primary-overRide btn-left-overRide">Update Details</Button>

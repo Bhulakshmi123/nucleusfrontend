@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Button, Form} from "react-bootstrap";
+import { Navbar, Button, Form } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
 import { Link, Redirect } from 'react-router-dom';
@@ -28,7 +28,7 @@ class Header extends Component {
   mobileSidebarToggle(e) {
     if (this.state.sidebarExists === false) {
       this.setState({
-        sidebarExists: true
+        sidebarExists: true,
       });
     }
     e.preventDefault();
@@ -52,6 +52,9 @@ class Header extends Component {
           <span className="text-secondary">React EH NUCLEUS</span>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text className="text-center">
+            <i className="fas fa-home mr-2"></i>{this.props.brandText}
+          </Navbar.Text>
           <Navbar.Text className="text-center">
             <i className="fas fa-home mr-2"></i>{this.props.brandText}
           </Navbar.Text>

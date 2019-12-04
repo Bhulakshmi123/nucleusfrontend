@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Row, Container, Card } from 'react-bootstrap';
+import { Col, Row} from 'react-bootstrap';
 import './SupplierCards.css';
 import { supplierData } from '../../views/Business/SupplierData';
 class SupplierCards extends Component {
