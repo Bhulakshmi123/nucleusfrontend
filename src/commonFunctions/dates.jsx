@@ -50,5 +50,10 @@ const getDateFormat_3 = (date) => {
     let getDateFormat_3 = getDay(date) + ' ' + getDate(date) + '-' + getMonthNumber(date) + '-' + getFullYear(date);
     return getDateFormat_3; //Returns 'Thu 22-11-2019'
 }
+const getDateFormat_4 = (date) => {
+    let newDate = date.split('-');
+    let modifiedDate = newDate[2] + ' ' + getMonth(newDate[1]) + ' ' + newDate[0];
+    return modifiedDate;
+}
 
-export { getDate, getFullYear, getMonth, getMonthNumber, getFullMonth, getDay, getFullDay, getDayNumber, getDateFormat_1, getDateFormat_2, getDateFormat_3 }
+export { getDate, getFullYear, getMonth, getMonthNumber, getFullMonth, getDay, getFullDay, getDayNumber, getDateFormat_1, getDateFormat_2, getDateFormat_3, getDateFormat_4 }

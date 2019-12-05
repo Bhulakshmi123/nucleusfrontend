@@ -22,7 +22,7 @@ const dashboardRoutes = [
         layout: "/nucleus"
     },
     {
-        path: "/business/new",
+        path: "/business/leads/new",
         name: "Business",
         icon: <AiOutlineDollar />,
         component: Business,

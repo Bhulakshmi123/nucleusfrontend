@@ -1,12 +1,14 @@
-const env = 'http://127.0.0.1:9018';
-
+import { getIPAddress } from './config.js';
+// const env = 'http://139.59.13.111:9018';
+const env = getIPAddress();
+console.log(env)
 const Service = {
     fetchGet: async (url, token = null) => {
         url = env + url;
         const headers = {};
-        headers['source'] = 'nucleus';
+        headers['source'] = 'lms';
         if (token) {
-            headers['x-auth-token'] = token;
+            headers['x-access-token'] = token;
         }
         try {
             const res = await fetch(url, { method: 'GET', headers: headers });
@@ -30,15 +32,16 @@ const Service = {
 
     fetchPost: async (url, body, token = null) => {
         url = env + url;
+        console.log(url);
         const headers = { 'Content-Type': 'application/json' };
         headers['source'] = 'website';
         if (token) {
-            headers['x-auth-token'] = token;
+            headers['x-access-token'] = token;
         }
         try {
             const res = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) });
             if (res.status >= 200 && res.status < 400) {
-                console.log(res);
+                // console.log(res);
                 return (res.json());
             } else if (res.status >= 400 && res.status < 500) {
                 console.log(res);
