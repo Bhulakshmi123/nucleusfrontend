@@ -13,7 +13,7 @@ class AddViewTwo extends Component {
                         <Col lg={4}><h4>Single Drum Roller</h4></Col>
                         <Col lg={1}><AddViewModal /></Col>
                         <Col lg={2}>
-                            <Link to={`/business/active/view/eqsuppliers/101`}>
+                            <Link to={`/business/leads/lead/active/eqsupplier/25411b26-1738-11ea-8889-040118b51101`}>
                                 <Button variant="outline-primary" size="sm" block>Suppliers List</Button>
                             </Link>
                         </Col>

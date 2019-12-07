@@ -1,36 +1,32 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import { sidebarViewAction } from '../../redux/actions';
+import React, { Component } from 'react'
+import { getLeadInformation } from '../../views/Business/actions';
 import SideArticle from '../../components/SideArticle/SideArticle';
-import AddViewOne from '../AddViewOne/AddViewOne';
-import AddViewTwo from '../AddViewTwo/AddViewTwo';
-import AddViewThree from '../AddViewThree/AddViewThree';
-import { Switch, Route } from 'react-router-dom';
-const ViewDetails = () => {
-    const sidebarView = useSelector(state => state.sidebarView);
-    const dispatch = useDispatch();
-    const dataFromUrl = () => { dispatch(sidebarViewAction(true)) }
-    return (
-        <React.Fragment>
-            {dataFromUrl()}
-            <div className={sidebarView ? "mainContent mainContentMini bg-white" : "mainContent bg-white"}>
-                <Container fluid className="p-0">
-                    <Row>
-                        <Col md={3} className="backgroundColor1 viewHeight px-0">
-                            <SideArticle></SideArticle>
-                        </Col>
-                        <Col md={9} className="viewHeight mx-0">
-                            <Switch>
-                                <Route path="/business/active/view/eqsuppliers/:id" component={AddViewThree} />
-                                <Route path="/business/new/view/:id" component={AddViewOne} />
-                                <Route path="/business/active/view/:id" component={AddViewTwo} />
-                            </Switch>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        </React.Fragment>
-    )
+class ViewDetails extends Component {
+    constructor(props) {
+        super(props)
+        let token = localStorage.getItem("tokenId");
+        localStorage.setItem('SidebarMinized', true);
+        this.state = { "token": token, leadInformation: [] }
+    }
+    componentDidMount() {
+        this.getLeadInformation();
+    }
+    getLeadInformation = async () => {
+        let url = window.location.href.split('/');
+        console.log('URL', url[url.length - 1]);
+        let response = await getLeadInformation(url[url.length - 1], this.state.token);
+        if (response) {
+            localStorage.setItem('urlInfo', JSON.stringify(response.data));
+            this.setState({ "leadInformation": response.data })
+        }
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <SideArticle leadinfo={this.state.leadInformation}></SideArticle>
+                {/* <SideArticle leadinfo={JSON.parse(localStorage.getItem('urlInfo'))}></SideArticle> */}
+            </React.Fragment>
+        )
+    }
 }
-export default ViewDetails;
+export default ViewDetails

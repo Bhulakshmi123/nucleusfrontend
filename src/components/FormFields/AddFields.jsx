@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Modal, Col, Form} from 'react-bootstrap';
+import { Button, Modal, Col, Form } from 'react-bootstrap';
 import SelectInput from './SelectInput';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
-const AddFields = props => {
+const AddFields = (props) => {
     return (
         <React.Fragment>
             <Form.Row className="mt-3">
@@ -34,57 +34,29 @@ const AddFields = props => {
                 <Col md={3}>
                     <label className="font_stle">Shift Type</label>
                     <Form.Group>
-                        <Form.Check
-                            inline
-                            label="Day"
-                        />
-                        <Form.Check
-                            inline
-                            label="Night"
-                        />
+                        <Form.Check inline label="Day" />
+                        <Form.Check inline label="Night" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Transportation</label>
                     <Form.Group>
-                        <Form.Check
-                            inline
-                            label="To"
-                        />
-                        <Form.Check
-                            inline
-                            label="From"
-                        />
+                        <Form.Check inlinelabel="To" />
+                        <Form.Check inlinelabel="From" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Accomodation</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Check type="radio" inline label="Yes" />
+                        <Form.Check type="radio" inline label="No" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Food</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Check type="radio" inline label="Yes" />
+                        <Form.Check type="radio" inline label="No" />
                     </Form.Group>
                 </Col>
             </Form.Row>
@@ -92,61 +64,33 @@ const AddFields = props => {
                 <Col md={3}>
                     <label className="font_stle">Operator Allowance</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Check type="radio" inline label="Yes" />
+                        <Form.Check type="radio" inline label="No" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Vehicle Documents</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                        <Form.Check type="radio" inline label="Required" />
+                        <Form.Check type="radio" inline label="Not Required" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Operator License</label>
                     <Form.Group>
                         <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
+                            type="radio" inline label="Required" />
                         <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                            type="radio" inline label="Not Required" />
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Safety Measures</label>
                     <Form.Group>
                         <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
+                            type="radio" inline label="Required" />
                         <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                            type="radio" inline label="Not Required" />
                     </Form.Group>
                 </Col>
             </Form.Row>

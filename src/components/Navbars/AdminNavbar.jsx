@@ -7,7 +7,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     const token = localStorage.getItem("tokenId");
-    console.log('token inAmdin', token);
+    // console.log('token inAmdin', token);
     let loggedIn = true
     if (token === null) {
       loggedIn = false

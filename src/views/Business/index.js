@@ -5,15 +5,14 @@ import ViewDetails from '../../components/ViewDetails/ViewDetails';
 import EqSuppliers from '../../components/EquipmentSuppliers/EqSuppliers';
 import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
 import '../../assets/css/commonStyles.css';
-import './index.css'
 class Business extends Component {
   render() {
     return (
       <React.Fragment>
         <Router>
           <Switch>
-            <Route path="/business/leads/leadno/:id" component={ViewDetails} />
-            <Route path="/business/active/view/eqsuppliers/:id" component={ViewDetails} />
+            <Route path="/business/leads/lead/:id" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/eqsupplier/:id" component={ViewDetails} />
             <Route path="/business/new/view/:id" component={ViewDetails} />
             <Route path="/business/active/view/:id" component={ViewDetails} />
             <Route path="/business/pending/view/:id" component={ViewDetails} />

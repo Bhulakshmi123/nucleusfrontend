@@ -1,4 +1,4 @@
-.Sidebar {
+/* .Sidebar {
     color: white;
     background-color: #154A77;
     height: 100vh;
@@ -27,8 +27,8 @@
 .modifiedContainer {
     width: auto;
     position: fixed;
-    /* width: 100%; */
-    /* overflow: auto; */
+    width: 100%;
+    overflow: auto;
 }
 
 .modifiedContainer2 {
@@ -123,7 +123,7 @@ hr.borderEffect {
 }
 
 .activeData {
-    /* background-color: red; */
+    background-color: red;
     height: 100vh;
     width: 100%;
 }
@@ -172,4 +172,4 @@ a {
     overflow: auto;
     height: 100vh;
     padding-bottom: 75px;
-}
+} */

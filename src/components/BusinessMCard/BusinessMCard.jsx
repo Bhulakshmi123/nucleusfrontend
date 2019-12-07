@@ -3,22 +3,22 @@ import React, { Component } from 'react'
 import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { NavLink, Link, Route, Switch } from 'react-router-dom';
-import { getNewLeads, getActiveLeads, getPendingLeads, getRejectedLeads, getLeadInformation } from '../../views/Business/actions';
+import { getNewLeads, getActiveLeads, getPendingLeads, getRejectedLeads } from '../../views/Business/actions';
 import { getDateFormat_4 } from '../../commonFunctions/dates';
-import ViewDetails from '../ViewDetails/ViewDetails'
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
+        let url = window.location.href.split('/')[window.location.href.split('/').length - 1]
+        // console.log('URO o ',url)
         let token = localStorage.getItem("tokenId");
         localStorage.setItem('SidebarMinized', false);
-        this.state = { "token": token, "sidebarView": false, "newresponse": [], "activeresponse": [], "pendingresponse": [], "rejectedresponse": [], 'finalresponse': [] }
+        this.state = { "urlofPage": url, "token": token, "sidebarView": false, "newresponse": [], "activeresponse": [], "pendingresponse": [], "rejectedresponse": [], 'finalresponse': [] }
     }
     componentDidMount() {
         this.getNewLeads();
         this.getActiveLeads();
-        this.getPendingLeads();
-        this.getRejectedLeads();
-        this.getLeadInformation();
+        // this.getPendingLeads();
+        // this.getRejectedLeads();
     }
     getNewLeads = async () => {
         let response = await getNewLeads(this.state.token);
@@ -48,16 +48,7 @@ class BusinessMCard extends Component {
             // console.log(this.state.rejectedresponse);
         }
     }
-    getLeadInformation = async () => {
-        let response = await getLeadInformation('253f0cd9-1738-11ea-8889-040118b51101', this.state.token);
-        if (response) {
-            console.log('Lead Information', response)
-            // this.setState({ "rejectedresponse": response.data })
-            // console.log(this.state.rejectedresponse);
-        }
-    }
     dataChangeHandler = () => {
-        console.log('Data Chaned');
         let url = window.location.href.split('/')[window.location.href.split('/').length - 1];
         if (url === 'new') { this.setState({ 'finalresponse': this.state.newresponse }) }
         if (url === 'active') { this.setState({ 'finalresponse': this.state.activeresponse }) }
@@ -86,19 +77,19 @@ class BusinessMCard extends Component {
                                     <Row>
                                         <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">{getDateFormat_4(prop.lead_date)}</Col>
                                         <Col md={10}>
-                                            <Link to={`/business/leads/leadno/${prop.lead_uuid}`} >
-                                                <Container fluid className="card p-3 mb-4">
+                                            <Link to={`/business/leads/lead/${this.state.urlofPage}/${prop.lead_uuid}`} >
+                                                <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
                                                     <Row>
                                                         <Col md={5} className="my-auto text-dark">
-                                                            <div className="font-size-10 text-capitalize">{prop.lead_uuid}</div>
-                                                            {/* <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.projectLocation}</div> */}
+                                                            <div className="font-size-12 text-capitalize">{prop.companyName}</div>
+                                                            <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.lead_uuid}</div>
                                                         </Col>
                                                         <Col md={3} className="my-auto text-dark">
                                                             <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
                                                             <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.lead_contactNumber}</div>
                                                         </Col>
                                                         <Col md={2} className="my-auto">
-                                                            {prop.lead_isActive == 1 ? <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">OFFLINE</div>}
+                                                            {prop.lead_isActive == 1 ? <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
                                                         </Col>
                                                         <Col md={2} className="my-auto text-dark text-center">
                                                             <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
@@ -114,7 +105,6 @@ class BusinessMCard extends Component {
                         })}
                     </Container>
                 </div>
-
             </React.Fragment>
         )
     }

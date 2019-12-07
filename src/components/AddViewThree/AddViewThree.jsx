@@ -8,6 +8,7 @@ import { getSupplierList } from '../../views/Business/actions';
 import SupplierCards from '../SupplierCards/SupplierCards.jsx';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { MdPhone } from "react-icons/md";
+import AddViewModal from '../AddViewTwo/AddViewModal';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
@@ -45,8 +46,8 @@ class AddViewThree extends Component {
             <React.Fragment>
                 <Container className="mt-5 pl-0" fluid>
                     <Row>
-                        <Col md={6} className="my-auto"><h2 className="my-auto">Self Loading Concrete Mixer</h2></Col>
-                        <Col md={1} className="my-auto"><FaGgCircle className="font-size-22 text-primary" /></Col>
+                        <Col md={6} className="my-auto"><h3 className="my-auto">Self Loading Concrete Mixer</h3></Col>
+                        <Col md={1} className="my-auto"><AddViewModal></AddViewModal></Col>
                         <Col md={2} className="my-auto">
                             <Button variant="outline-danger" size="sm" block><FaRegStopCircle className="mr-1" />Reject</Button>
                         </Col>

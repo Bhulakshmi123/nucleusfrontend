@@ -5,7 +5,7 @@ const Sidebar = (props) => {
   // const sidebarView = useSelector(state => state.sidebarView);
   const sidebarView = localStorage.getItem('SidebarMinized');
   console.log('SidebarMinizedin Sidebar', sidebarView)
-  if (sidebarView === true) {
+  if (sidebarView == true) {
     return (
       <React.Fragment>
         <div className="flex-column sideBar sideBarMini py-5 my-4">
