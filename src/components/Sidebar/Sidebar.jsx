@@ -1,10 +1,8 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import { useSelector } from 'react-redux';
 const Sidebar = (props) => {
   // const sidebarView = useSelector(state => state.sidebarView);
   const sidebarView = localStorage.getItem('SidebarMinized');
-  console.log('SidebarMinizedin Sidebar', sidebarView)
   if (sidebarView == true) {
     return (
       <React.Fragment>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard';
 import ViewDetails from '../../components/ViewDetails/ViewDetails';
-import EqSuppliers from '../../components/EquipmentSuppliers/EqSuppliers';
 import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
 import '../../assets/css/commonStyles.css';
 class Business extends Component {
@@ -12,12 +11,13 @@ class Business extends Component {
         <Router>
           <Switch>
             <Route path="/business/leads/lead/:id" component={ViewDetails} />
-            <Route path="/business/leads/lead/active/eqsupplier/:id" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/:id/premium" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/:id/discovery" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/:id/basic" component={ViewDetails} />
             <Route path="/business/new/view/:id" component={ViewDetails} />
             <Route path="/business/active/view/:id" component={ViewDetails} />
             <Route path="/business/pending/view/:id" component={ViewDetails} />
             <Route path="/business/rejected/view/:id" component={ViewDetails} />
-            <Route path="/business/eqsuppliers/:supplierId/:equipmentId" component={EqSuppliers} />
             <Route path="/business/leads/new" component={BusinessMCard} />
             <Route path="/business/leads/active" component={BusinessMCard} />
             <Route path="/business/leads/pending" component={BusinessMCard} />

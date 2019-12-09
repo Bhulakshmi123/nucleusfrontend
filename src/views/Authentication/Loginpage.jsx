@@ -9,30 +9,19 @@ export class Loginpage extends Component {
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
-    }
+    onChange(e) { this.setState({ [e.target.name]: e.target.value }) }
     submitForm(e) {
         e.preventDefault()
-        let data = {
-            "username": this.state.username,
-            "password": this.state.password,
-            "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
-        };
-        getClientInfo(data).then((res) => {
-            if (res === false) {
-                console.log('Login Failed');
-            }
-            else {
-                console.log(res);
-                this.setState({ tokenId: res.data.token, loginStatus: true })
-                localStorage.setItem("tokenId", res.data.token);
-            }
-        });
-        // if (this.state.username === 'equiphunt@yopmail.com' && this.state.password === 'test') {
-        //     localStorage.setItem("tokenId", '1a8abc1c-8c11-11e8-86bd-7054d27b259a');
-        //     this.setState({ tokenId: '1a8abc1c-8c11-11e8-86bd-7054d27b259a', loginStatus: true })
-        // }
+        let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
+        this.getClientInfo(data);
+    }
+    getClientInfo = async (data) => {
+        let response = await getClientInfo(data);
+        if (response) {
+            this.setState({ tokenId: response.data.token, loginStatus: true })
+            localStorage.setItem("tokenId", response.data.token);
+        }
+        else { window.alert("Login Failed"); }
     }
     render() {
         if (this.state.loginStatus === true) {
@@ -49,14 +38,14 @@ export class Loginpage extends Component {
                                 <Card.Body>
                                     <div className="font-size-20 mt-0 text-dark">Login Details</div>
                                     <Form className="pt-4 px-3" onSubmit={this.submitForm}>
-                                        <Form.Group controlId="formBasicEmail">
+                                        <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
                                             <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email or Phone" required autoComplete="new-username" />
                                             <Form.Control.Feedback type="invalid">
                                                 Please choose a username.
                                             </Form.Control.Feedback>
                                         </Form.Group>
-                                        <Form.Group controlId="formBasicPassword">
+                                        <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
                                             <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" required autoComplete="new-password" />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

@@ -1,88 +1,68 @@
 import React, { Component } from 'react';
-import { Button, Row, Col, Container, Card } from 'react-bootstrap';
+import { Button, Row, Col, Container, Card, Modal } from 'react-bootstrap';
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
 class Renter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            renterStatus: "rejected"
+            renterStatus: "rejected",
+            "isApiCallSuccessfull": false,
+            "isModalShowing": false
         }
     }
+    openModalHandler = () => this.setState({ "isModalShowing": true })
+    closeModalHandler = () => this.setState({ "isModalShowing": false })
     changeContent = () => {
-        if (this.state.renterStatus === 'approved') {
-            return 'Renter Approved';
-        }
-        else {
-            return 'Renter Rejected';
-        }
+        if (this.state.renterStatus === 'approved') { return 'Renter Approved'; }
+        else { return 'Renter Rejected'; }
     }
     render() {
         return (
 
             <React.Fragment>
-                {/* <div className="card cardPadding">
-                <Row className="cardTop">
-                    <Col lg={3} className="contentTop">
-                        <div className="text-primary">Approved Price</div>
-                        <div>Rs. {this.props.ApprovalPrice}</div>
-                    </Col>
-                    <Col lg={2}>
-                        <a href="https://www.google.com">
-                            <i className={`fas fa-thumbs-down nbSpan up ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
-                            <i className={`fas fa-thumbs-up nbSpan down ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
-                            <div className="smFont">{this.changeContent()}</div>
-                        </a>
-                    </Col>
-                    <Col lg={2} className="text-center">
-                        <a href="https://www.google.com" target="_blank">
-                            <i className="far fa-file-pdf codeRed"></i>
-                            <div className="smFont">Quotation</div>
-                        </a>
-                    </Col>
-                    <Col lg={2} className="text-center">
-                        <a href="https://www.google.com" target="_blank">
-                            <i className="far fa-file-pdf codeRed"></i>
-                            <div className="smFont">Work Order</div>
-                        </a>
-                    </Col>
-                    <Col lg={3}>
-                        <Button variant="primary" className="mt-2" size="sm"><i className="fas fa-edit mr-2"></i>Edit Price</Button>
-                    </Col>
-                </Row>
-            </div> */}
                 <Card className="p-3 mx-auto">
                     <Container>
                         <Row>
-                            <Col lg={3} className="my-auto">
-                                <div className="text-primary">Approved Price</div>
-                                <div className="font-size-11 text-dark">Rs. {this.props.ApprovalPrice}</div>
+                            <Col md={3} className="my-auto">
+                                <div className="text-primary font-size-07">Approved Price</div>
+                                <div className="font-size-08 text-dark">Rs. {this.props.ApprovalPrice}</div>
                             </Col>
-                            <Col lg={3} className="my-auto">
-                                <a href="https://www.google.com">
-                                    <i className={`fas fa-thumbs-down font-size-22 text-dark mr-4 ${this.state.renterStatus === 'rejected' ? 'text-danger' : ''}`}></i>
-                                    <i className={`fas fa-thumbs-up font-size-22 mr-4 ${this.state.renterStatus === 'approved' ? 'text-success' : ''}`}></i>
-                                    <div className="font-size-08  text-dark">{this.changeContent()}</div>
-                                </a>
+                            <Col md={3} className="my-auto text-center">
+                                <Link to="/google">
+                                    <FaRegThumbsUp className="text-center font-size-22 text-danger mx-2"></FaRegThumbsUp>
+                                    <FaRegThumbsDown className="text-center  font-size-22 text-success  mx-2"></FaRegThumbsDown>
+                                    <div className="font-size-07 text-center text-dark mt-1">{this.changeContent()}</div>
+                                </Link>
                             </Col>
-                            <Col lg={2} className="text-center my-auto">
-                                <a href="https://www.google.com" target="_blank">
+                            <Col md={2} className="text-center my-auto">
+                                <Link to="/google">
                                     <i className="far fa-file-pdf font-size-22  text-danger"></i>
-                                    <div className="font-size-08  text-dark">Quotation</div>
-                                </a>
+                                    <div className="font-size-07  text-dark">Quotation</div>
+                                </Link>
                             </Col>
-                            <Col lg={2} className="text-center my-auto">
-                                <a href="https://www.google.com" target="_blank">
+                            <Col md={2} className="text-center my-auto">
+                                <Link to="/google">
                                     <i className="far fa-file-pdf font-size-22 text-danger"></i>
-                                    <div className="font-size-08 text-dark">Work Order</div>
-                                </a>
+                                    <div className="font-size-07 text-dark">Work Order</div>
+                                </Link>
                             </Col>
-                            <Col lg={2} className="my-auto">
-                                <Button variant="primary float-right" size="sm"><i className="fas fa-edit mx-2"></i>Edit Price</Button>
+                            <Col md={2} className="my-auto">
+                                <Button variant="primary float-right" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit</Button>
                             </Col>
                         </Row>
                     </Container>
                 </Card>
+                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                        <AddFeilds3></AddFeilds3>
+                    </Modal.Body>
+                </Modal>
             </React.Fragment>
-
         )
     }
 }

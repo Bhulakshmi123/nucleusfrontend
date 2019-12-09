@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Button, Form} from "react-bootstrap";
+import { Navbar, Button, Form } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
 import { Link, Redirect } from 'react-router-dom';
@@ -21,9 +21,8 @@ class Header extends Component {
   }
   logoutHandler(e) {
     e.preventDefault();
-    console.log('Hello World');
     localStorage.removeItem("tokenId");
-    this.setState({loggedIn:false})
+    this.setState({ loggedIn: false })
   }
   mobileSidebarToggle(e) {
     if (this.state.sidebarExists === false) {
@@ -47,9 +46,9 @@ class Header extends Component {
     }
     return (
       <Navbar fixed="top" className="stickyTopColor">
-        <Navbar.Brand href="#home">
-          <Link to="/loginpage"><img alt="" src={logo} width="35" height="30" className="d-inline-block align-top mr-1"></img></Link>
-          <span className="text-secondary">React EH NUCLEUS</span>
+        <Navbar.Brand href="/dashboard">
+          <img alt="" src={logo} width="35" height="30" className="d-inline-block align-top mr-1"></img>
+          <span className="text-dark">React EH NUCLEUS</span>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text className="text-center">

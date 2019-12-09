@@ -5,3 +5,4 @@ export const GET_LEADS_PENDING = { type: "PENDING_LEADS", url: '/lms/lead/pendin
 export const GET_LEADS_REJECTED = { type: "REJECTED_LEADS", url: '/lms/lead/rejected' }
 export const GET_LEAD_INFORMATION = { type: "LEAD_INFO", url: '/lms/lead/' }
 export const GET_LEAD_EQUIPMENT_DETAILS = { type: "LEAD_EQUIPMENT_DETAILS", url: '/lms/lead/' }
+export const CHANGE_LEAD_STATUS = { type: "CHANGING_LEAD_STATUS", url: '/lms/changeLeadStatus' }

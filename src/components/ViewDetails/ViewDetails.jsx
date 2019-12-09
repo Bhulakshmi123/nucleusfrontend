@@ -13,11 +13,11 @@ class ViewDetails extends Component {
     }
     getLeadInformation = async () => {
         let url = window.location.href.split('/');
-        console.log('URL', url[url.length - 1]);
         let response = await getLeadInformation(url[url.length - 1], this.state.token);
         if (response) {
             localStorage.setItem('urlInfo', JSON.stringify(response.data));
             this.setState({ "leadInformation": response.data })
+            // console.log('LeadInformation',response.data)
         }
     }
     render() {

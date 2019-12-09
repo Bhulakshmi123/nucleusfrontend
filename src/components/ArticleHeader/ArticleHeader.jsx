@@ -62,13 +62,6 @@ export class ArticleHeader extends Component {
                     <Modal.Body >
                         <BusiAddnewmodal />
                     </Modal.Body>
-                    {/* <Modal.Footer>
-                        <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button>
-                        <Button bsStyle="primary" onClick={this.openInputHandler} >Add New </Button>
-                    </Modal.Footer> */}
-                    <Modal.Footer>
-
-                    </Modal.Footer>
                 </Modal>
             </React.Fragment>
         )

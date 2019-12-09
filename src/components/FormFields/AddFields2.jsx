@@ -6,9 +6,7 @@ import CalenderInput from './CalenderInput';
 class AddFields2 extends Component {
     constructor(props) {
         super(props)
-        // console.log('this.propsTest', this.props.name, this.props.formData)
         this.state = { 'formData': this.props.formData }
-        // console.log('MOD',this.state.formData)
     }
 
     render() {
@@ -86,19 +84,15 @@ class AddFields2 extends Component {
                     <Col md={3}>
                         <label className="font_stle">Operator License</label>
                         <Form.Group>
-                            <Form.Check
-                                type="radio" inline label="Required" />
-                            <Form.Check
-                                type="radio" inline label="Not Required" />
+                            <Form.Check type="radio" inline label="Required" />
+                            <Form.Check type="radio" inline label="Not Required" />
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <label className="font_stle">Safety Measures</label>
                         <Form.Group>
-                            <Form.Check
-                                type="radio" inline label="Required" />
-                            <Form.Check
-                                type="radio" inline label="Not Required" />
+                            <Form.Check type="radio" inline label="Required" />
+                            <Form.Check type="radio" inline label="Not Required" />
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -109,7 +103,6 @@ class AddFields2 extends Component {
                     <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment" /></Form.Group></Col>
                 </Form.Row>
                 <Modal.Footer className="px-0">
-                    {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
                     <Button variant="primary" size="sm" className="px-4">Add</Button>
                 </Modal.Footer>
             </React.Fragment>

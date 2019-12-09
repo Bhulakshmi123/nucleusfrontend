@@ -2,14 +2,13 @@
 import React, { Component } from 'react'
 import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { NavLink, Link, Route, Switch } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { getNewLeads, getActiveLeads, getPendingLeads, getRejectedLeads } from '../../views/Business/actions';
 import { getDateFormat_4 } from '../../commonFunctions/dates';
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
         let url = window.location.href.split('/')[window.location.href.split('/').length - 1]
-        // console.log('URO o ',url)
         let token = localStorage.getItem("tokenId");
         localStorage.setItem('SidebarMinized', false);
         this.state = { "urlofPage": url, "token": token, "sidebarView": false, "newresponse": [], "activeresponse": [], "pendingresponse": [], "rejectedresponse": [], 'finalresponse': [] }
@@ -31,7 +30,7 @@ class BusinessMCard extends Component {
         let response = await getActiveLeads(this.state.token);
         if (response) {
             this.setState({ "activeresponse": response.data })
-            // console.log(this.state.activeresponse);
+            // console.log('Active Leads', this.state.activeresponse);
         }
     }
     getPendingLeads = async () => {
