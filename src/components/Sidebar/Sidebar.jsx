@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = (props) => {
   // const sidebarView = useSelector(state => state.sidebarView);
   const sidebarView = localStorage.getItem('SidebarMinized');
-  if (sidebarView == true) {
+  if (sidebarView === true) {
     return (
       <React.Fragment>
         <div className="flex-column sideBar sideBarMini py-5 my-4">

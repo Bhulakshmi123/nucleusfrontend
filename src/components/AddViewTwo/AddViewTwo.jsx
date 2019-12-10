@@ -32,8 +32,8 @@ class AddViewTwo extends Component {
     getLeadEquipmentDetails = async () => {
         let response = await getLeadEquipmentDetails(this.props.uid + '/' + this.props.leaduid, this.state.token);
         if (response) {
-            localStorage.setItem('formDetails', JSON.stringify(response.data[0]))
-            this.setState({ 'formDetails': JSON.parse(localStorage.getItem('formDetails')), "leadDetId": JSON.parse(localStorage.getItem('formDetails')).leadDet_id })
+            this.setState({ "formDetails": response.data[0], "leadDetId": response.data[0].leadDet_id })
+            this.setState({ "isApiCallSuccessfull": true })
         }
     }
     statusChanger = (e) => {
@@ -68,7 +68,7 @@ class AddViewTwo extends Component {
                     <div className="renterName mt-5">RENTER</div>
                     <Renter ApprovalPrice="4,16,00,000" RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler}></Renter>
                     <div className="renterName mt-5">FINALISED SUPPLIER</div>
-                    <Supplier details={JSON.parse(localStorage.getItem('formDetails'))}></Supplier>
+                    {this.state.isApiCallSuccessfull === true ? <Supplier details={this.state.formDetails}></Supplier> : null}
                     <div className="renterName mt-5">SHORTLISTED SUPPLIER</div>
                     {/* <Supplier></Supplier> */}
                 </Container>
@@ -77,7 +77,7 @@ class AddViewTwo extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields2 formData={this.state.formDetails}></AddFields2>
+                        {this.state.isApiCallSuccessfull === true ? <AddFields2 formData={this.state.formDetails}></AddFields2> : null}
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

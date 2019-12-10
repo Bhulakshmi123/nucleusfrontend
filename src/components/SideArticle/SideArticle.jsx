@@ -5,24 +5,51 @@ import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
 import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
+import { getLeadEquipmentDetails } from '../../views/Business/actions'
 class SideArticle extends Component {
     constructor(props) {
         super(props)
+        // console.log('SideArticle Proops', this.props)
         let token = localStorage.getItem("tokenId");
-        let urldata = JSON.parse(localStorage.getItem('urlInfo'));
         this.state = {
-            "isApiCallSuccessfull": false,
-            "isModalShowing": false,
-            "token": token,
-            'urldata': urldata,
-            'leadEquipmentUid': urldata[0].leadDet_uuid,
-            "urlName": urldata[0].lead_uuid,
-            "equipmentName": urldata[0].equipmentName,
-            "equipmentType": urldata[0].leadDet_equipmentType
+            isApiCallSuccessfull: false,
+            isModalShowing: false,
+            token: token,
+            leadEquipmentsInformation: this.props.leadinfo,
+            leadUuid: this.props.leadinfo[0].lead_uuid,
+            leadEquipmentUid: this.props.leadinfo[0].leadDet_uuid,
+            equipmentName: this.props.leadinfo[0].equipmentName,
+            equipmentType: this.props.leadinfo[0].leadDet_equipmentType,
+            specificEquipmentsDetails: [],
+            leadDetId: 0
         }
     }
-    openModalHandler = () => this.setState({ "isModalShowing": true })
-    closeModalHandler = () => this.setState({ "isModalShowing": false })
+
+    componentDidMount() {
+        this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+    }
+
+    openModalHandler = () => {
+        this.setState({ "isModalShowing": true })
+    }
+
+    closeModalHandler = () => {
+        this.setState({ "isModalShowing": false })
+    }
+
+    equipmentDataChangeHandler = (leadId, leadDetUuid) => {
+        this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
+        this.getLeadEquipmentDetails(leadId, leadDetUuid, this.state.token);
+    }
+
+    getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
+        let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
+        if (response) {
+            this.setState({ "specificEquipmentsDetails": response.data[0], "leadDetId": response.data[0].leadDet_id })
+            this.setState({ "isApiCallSuccessfull": true })
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -31,7 +58,7 @@ class SideArticle extends Component {
                         <div className="mt-4 px-4 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-5 mb-1 mt-3">New Lead</h6>
-                            <h3 className="text-white pl-1">{this.state.urldata[0].companyName}</h3>
+                            <h3 className="text-white pl-1">{this.state.leadEquipmentsInformation[0].companyName}</h3>
                             <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>
                         <div className="px-3 mx-0">
@@ -46,7 +73,7 @@ class SideArticle extends Component {
                             {
                                 this.props.leadinfo.map((prop, key) => {
                                     return (
-                                        <Row className="text-white borderedRow px-0 py-2 mx-0" key={key}>
+                                        <Row className="text-white borderedRow px-0 py-2 mx-0" key={key} onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid)}>
                                             <Col md={9} className="pl-4">
                                                 <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
@@ -62,13 +89,45 @@ class SideArticle extends Component {
                     </div>
                 </Col>
                 <Col md={7} className="viewHeight mx-0">
-                    <Switch>
-                        <Route path="/business/leads/lead/active/:id/premium"><AddViewThree uid={this.state.urlName} leaduid={this.state.leadEquipmentUid} equipment={this.state.equipmentName} equipmentType={this.state.equipmentType}></AddViewThree></Route>
-                        <Route path="/business/leads/lead/active/:id/discovery"><AddViewThree uid={this.state.urlName} leaduid={this.state.leadEquipmentUid} equipment={this.state.equipmentName} equipmentType={this.state.equipmentType}></AddViewThree></Route>
-                        <Route path="/business/leads/lead/active/:id/basic"><AddViewThree uid={this.state.urlName} leaduid={this.state.leadEquipmentUid} equipment={this.state.equipmentName} equipmentType={this.state.equipmentType}></AddViewThree></Route>
-                        <Route path="/business/leads/lead/new/:id"><AddViewOne uid={this.state.urlName} leaduid={this.state.leadEquipmentUid} equipment={this.state.equipmentName}></AddViewOne></Route>
-                        <Route path="/business/leads/lead/active/:id"><AddViewTwo uid={this.state.urlName} leaduid={this.state.leadEquipmentUid} equipment={this.state.equipmentName}></AddViewTwo></Route>
-                    </Switch>
+                    {this.state.isApiCallSuccessfull === true ?
+                        <Switch>
+                            <Route path="/business/leads/lead/active/:id/premium">
+                                <AddViewThree
+                                    uid={this.state.leadUuid}
+                                    leaduid={this.state.leadEquipmentUid}
+                                    equipment={this.state.equipmentName}
+                                    equipmentType={this.state.equipmentType}>
+                                </AddViewThree>
+                            </Route>
+                            <Route path="/business/leads/lead/active/:id/discovery">
+                                <AddViewThree
+                                    uid={this.state.leadUuid}
+                                    leaduid={this.state.leadEquipmentUid}
+                                    equipment={this.state.equipmentName}
+                                    equipmentType={this.state.equipmentType}>
+                                </AddViewThree>
+                            </Route>
+                            <Route path="/business/leads/lead/active/:id/basic">
+                                <AddViewThree
+                                    uid={this.state.leadUuid}
+                                    leaduid={this.state.leadEquipmentUid}
+                                    equipment={this.state.equipmentName}
+                                    equipmentType={this.state.equipmentType}>
+                                </AddViewThree>
+                            </Route>
+                            <Route path="/business/leads/lead/new/:id">
+                                <AddViewOne formData={this.state.specificEquipmentsDetails}></AddViewOne>
+                            </Route>
+                            <Route path="/business/leads/lead/active/:id">
+                                <AddViewTwo
+                                    uid={this.state.leadUuid}
+                                    leaduid={this.state.leadEquipmentUid}
+                                    equipment={this.state.equipmentName}>
+                                </AddViewTwo>
+                            </Route>
+                        </Switch>
+                        : null
+                    }
                 </Col>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
                     <Modal.Header closeButton>

@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Navbar, Button, Form } from "react-bootstrap";
 import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 class Header extends Component {
   constructor(props) {
     super(props);
-    const token = localStorage.getItem("tokenId");
-    // console.log('token inAmdin', token);
+    const token = localStorage.getItem("tokenId");;
     let loggedIn = true
     if (token === null) {
       loggedIn = false
