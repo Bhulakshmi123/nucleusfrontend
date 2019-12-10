@@ -113,7 +113,7 @@ class AddViewThree extends Component {
                                             this.setState({ 'selectedCategory': prop });
                                             this.setState({ 'dataToRender': this.state.response[prop] })
                                         }}
-                                        to={`/business/leads/lead/active/${this.props.uid}/${prop}`} >{prop}</NavLink>)
+                                        to={`/business/leads/lead/active/${prop}`} >{prop}</NavLink>)
                                 })
                             }
                         </Col>

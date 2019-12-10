@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button, Form, Modal } from 'react-bootstrap';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import AddFields2 from '../FormFields/AddFields2';
 import { changeLeadStatus } from '../../views/Business/actions';
@@ -65,5 +65,4 @@ class AddViewOne extends Component {
         )
     }
 }
-
-export default AddViewOne
+export default AddViewOne;

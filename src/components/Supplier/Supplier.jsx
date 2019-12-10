@@ -4,8 +4,8 @@ import { Row, Col, Button, Container, Card, Modal } from 'react-bootstrap';
 class Supplier extends Component {
     constructor(props) {
         super(props)
+        console.log('jsldjldksd', this.props.formData)
         this.state = {
-            "isApiCallSuccessfull": false,
             "isModalShowing": false
         }
     }
@@ -18,10 +18,9 @@ class Supplier extends Component {
                     <Container>
                         <Row>
                             <Col md={3} className="text-left my-auto">
-                                <div className="text-primary font-size-08">Lorem Epsum Doloris</div>
+                                <div className="text-primary font-size-08 text-capitalize">{ this.props.formData.leadDet_companyType }</div>
                                 <div className="font-size-09 text-dark">98482-58987</div>
                             </Col>
-
                             <Col md={9} className=" my-auto">
                                 <Row>
                                     <Col md={1} className="text-center my-auto">
@@ -54,23 +53,23 @@ class Supplier extends Component {
                         <Row className="">
                             <Col md={2} className="my-auto">
                                 <div className="text-primary font-size-07">Bid Price</div>
-                                <div className="text-dark font-size-08">Rs. 1,16,00,000</div>
+                                <div className="text-dark font-size-08">Rs. {this.props.formData.leadDet_price}</div>
                             </Col>
                             <Col md={1} className="my-auto">
                                 <div className="text-primary font-size-07">Battha</div>
-                                <div className="text-dark font-size-08">200</div>
+                                <div className="text-dark font-size-08">{this.props.formData.leadDet_operatorBatha}</div>
                             </Col>
                             <Col md={1} className="my-auto">
                                 <div className="text-primary font-size-07">Year</div>
-                                <div className="text-dark font-size-08">2012</div>
+                                <div className="text-dark font-size-08">{this.props.formData.leadDet_year}</div>
                             </Col>
                             <Col md={3} className="my-auto">
                                 <div className="text-primary font-size-07">Location</div>
-                                <div className="text-dark font-size-08">Hyderabad, Telangana, India 500055</div>
+                                <div className="text-dark font-size-08 text-capitalize">{this.props.formData.leadDet_location}</div>
                             </Col>
                             <Col md={3} className="my-auto">
                                 <div className="text-primary font-size-07">Supplier Remarks</div>
-                                <div className="text-dark font-size-08">Equipment Working Properly</div>
+                                <div className="text-dark font-size-08 text-capitalize">{this.props.formData.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
                                 <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit</Button>

@@ -91,7 +91,7 @@ class SideArticle extends Component {
                 <Col md={7} className="viewHeight mx-0">
                     {this.state.isApiCallSuccessfull === true ?
                         <Switch>
-                            <Route path="/business/leads/lead/active/:id/premium">
+                            <Route path="/business/leads/lead/active/premium">
                                 <AddViewThree
                                     uid={this.state.leadUuid}
                                     leaduid={this.state.leadEquipmentUid}
@@ -99,7 +99,7 @@ class SideArticle extends Component {
                                     equipmentType={this.state.equipmentType}>
                                 </AddViewThree>
                             </Route>
-                            <Route path="/business/leads/lead/active/:id/discovery">
+                            <Route path="/business/leads/lead/active/discovery">
                                 <AddViewThree
                                     uid={this.state.leadUuid}
                                     leaduid={this.state.leadEquipmentUid}
@@ -107,7 +107,7 @@ class SideArticle extends Component {
                                     equipmentType={this.state.equipmentType}>
                                 </AddViewThree>
                             </Route>
-                            <Route path="/business/leads/lead/active/:id/basic">
+                            <Route path="/business/leads/lead/active/basic">
                                 <AddViewThree
                                     uid={this.state.leadUuid}
                                     leaduid={this.state.leadEquipmentUid}
@@ -119,11 +119,7 @@ class SideArticle extends Component {
                                 <AddViewOne formData={this.state.specificEquipmentsDetails}></AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
-                                <AddViewTwo
-                                    uid={this.state.leadUuid}
-                                    leaduid={this.state.leadEquipmentUid}
-                                    equipment={this.state.equipmentName}>
-                                </AddViewTwo>
+                                <AddViewTwo formData={this.state.specificEquipmentsDetails}></AddViewTwo>
                             </Route>
                         </Switch>
                         : null

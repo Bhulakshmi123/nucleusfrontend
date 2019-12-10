@@ -11,9 +11,9 @@ class Business extends Component {
         <Router>
           <Switch>
             <Route path="/business/leads/lead/:id" component={ViewDetails} />
-            <Route path="/business/leads/lead/active/:id/premium" component={ViewDetails} />
-            <Route path="/business/leads/lead/active/:id/discovery" component={ViewDetails} />
-            <Route path="/business/leads/lead/active/:id/basic" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/premium" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/discovery" component={ViewDetails} />
+            <Route path="/business/leads/lead/active/basic" component={ViewDetails} />
             <Route path="/business/new/view/:id" component={ViewDetails} />
             <Route path="/business/active/view/:id" component={ViewDetails} />
             <Route path="/business/pending/view/:id" component={ViewDetails} />
