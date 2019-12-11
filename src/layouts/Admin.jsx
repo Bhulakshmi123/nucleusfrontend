@@ -9,16 +9,16 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     const token = localStorage.getItem("tokenId");
-    let loggedIn = true
-    if (token === null) {
-      loggedIn = false
-    }
+    // let loggedIn = true
+    // if (token === null) {
+    //   loggedIn = false
+    // }
     this.state = {
       image: image,
       color: "white",
       hasImage: true,
       fixedClasses: "dropdown show-dropdown open",
-      loggedIn
+      // loggedIn
     };
   }
   handleNotificationClick = position => {
@@ -94,9 +94,9 @@ class Admin extends Component {
   //   }
   // }
   render() {
-    if (this.state.loggedIn === false) {
-      return (<Redirect to="/login"></Redirect>)
-    }
+    // if (this.state.loggedIn === false) {
+    //   return (<Redirect to="/login"></Redirect>)
+    // }
     return (
       <React.Fragment>
         <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>

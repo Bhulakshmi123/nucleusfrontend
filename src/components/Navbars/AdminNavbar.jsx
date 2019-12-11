@@ -6,13 +6,15 @@ import { Redirect } from 'react-router-dom';
 class Header extends Component {
   constructor(props) {
     super(props);
-    const token = localStorage.getItem("tokenId");;
+    const token = localStorage.getItem("tokenId");
+    const username = localStorage.getItem("username");
     let loggedIn = true
     if (token === null) {
       loggedIn = false
     }
     this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
     this.state = {
+      name: username,
       sidebarExists: false,
       loggedIn
     };
@@ -57,7 +59,7 @@ class Header extends Component {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
+            Signed in as:  <a href="#login">{this.state.name}</a>
           </Navbar.Text>
           <Form inline onSubmit={this.logoutHandler}>
             <Button variant="outline-danger" size="sm" type="submit" className="my-auto ml-2">Logout</Button>

@@ -13,7 +13,6 @@ class AddViewThree extends Component {
         super(props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            isApiCallSuccessfull: false,
             token: token,
             response: this.props.supplierData,
             categoryNames: this.props.categoryNames,
@@ -22,7 +21,6 @@ class AddViewThree extends Component {
             checkedProjects: [],
             checked: true,
             redirect: false,
-            leadDetId: 0,
             isModalShowing: false
         }
         console.log('thisState', this.state)

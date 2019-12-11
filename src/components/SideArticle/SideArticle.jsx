@@ -9,16 +9,14 @@ import { getLeadEquipmentDetails, getSupplierList } from '../../views/Business/a
 class SideArticle extends Component {
     constructor(props) {
         super(props)
+        console.log('jdkld', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessfull: false,
             isModalShowing: false,
             token: token,
-            leadEquipmentsInformation: this.props.leadinfo,
             leadUuid: this.props.leadinfo[0].lead_uuid,
             leadEquipmentUid: this.props.leadinfo[0].leadDet_uuid,
-            equipmentName: this.props.leadinfo[0].equipmentName,
-            leadDetId: 0,
             specificEquipmentsDetails: [],
             specificEquipmentSupplierDetails: [],
             categoryNames: [],
@@ -47,7 +45,7 @@ class SideArticle extends Component {
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
-            this.setState({ "specificEquipmentsDetails": response.data[0], "leadDetId": response.data[0].leadDet_id })
+            this.setState({ "specificEquipmentsDetails": response.data[0] })
             this.getSupplierList(response.data[0].leadDet_equipmentType);
             this.setState({ "isApiCallSuccessfull": true })
         }
@@ -75,7 +73,7 @@ class SideArticle extends Component {
                         <div className="mt-4 px-4 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-5 mb-1 mt-3">New Lead</h6>
-                            <h3 className="text-white pl-1">{this.state.leadEquipmentsInformation[0].companyName}</h3>
+                            <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
                             <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>
                         <div className="px-3 mx-0">

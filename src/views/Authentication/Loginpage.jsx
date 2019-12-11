@@ -5,21 +5,32 @@ import { Redirect } from 'react-router-dom';
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = { username: '', password: '', tokenId: null, loginStatus: false }
+        this.state = {
+            username: "",
+            password: "",
+            tokenId: "",
+            loginStatus: false
+        }
+        console.log('props', this.state)
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
-    onChange(e) { this.setState({ [e.target.name]: e.target.value }) }
-    submitForm(e) {
-        e.preventDefault()
-        let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
-        this.getClientInfo(data);
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
-    getClientInfo = async (data) => {
+    submitForm(e) {
+        console.log('Button Wokring')
+        e.preventDefault()
+        this.getClientInfo();
+    }
+    getClientInfo = async () => {
+        let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
         let response = await getClientInfo(data);
         if (response) {
-            this.setState({ tokenId: response.data.token, loginStatus: true })
+            // this.setState({ tokenId: response.data.token})
             localStorage.setItem("tokenId", response.data.token);
+            localStorage.setItem("username", response.data.name);
+            this.setState({ loginStatus: true  })
         }
         else { window.alert("Login Failed"); }
     }
