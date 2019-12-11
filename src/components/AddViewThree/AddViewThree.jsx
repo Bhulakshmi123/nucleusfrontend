@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { getSupplierList, getLeadEquipmentDetails, changeLeadStatus } from '../../views/Business/actions';
+import { changeLeadStatus } from '../../views/Business/actions';
 import { Container, Col, Row, Button, Badge, InputGroup, Card, Modal } from 'react-bootstrap';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaRegStopCircle } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
@@ -11,76 +11,51 @@ import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        console.log("AddView Three", this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            "isApiCallSuccessfull": false,
-            "token": token,
-            "data": { "equipmentType": this.props.equipmentType.toString() },
-            "response": null,
-            "categoryNames": [],
-            "selectedCategory": null,
-            "dataToRender": [],
-            "checkedProjects": [],
+            isApiCallSuccessfull: false,
+            token: token,
+            response: this.props.supplierData,
+            categoryNames: this.props.categoryNames,
+            selectedCategory: this.props.selectedCategory,
+            dataToRender: this.props.dataToRender,
+            checkedProjects: [],
             checked: true,
-            "redirect": false,
-            "leadDetId": 0,
-            "formDetails": [],
-            "isModalShowing": false
+            redirect: false,
+            leadDetId: 0,
+            isModalShowing: false
         }
+        console.log('thisState', this.state)
     }
-    openModalHandler = () => this.setState({ "isModalShowing": true })
-    closeModalHandler = () => this.setState({ "isModalShowing": false })
-    setRedirect = () => { this.setState({ redirect: true }) }
+    openModalHandler = () => {
+        this.setState({ "isModalShowing": true });
+    }
+    closeModalHandler = () => {
+        this.setState({ "isModalShowing": false })
+    }
+    setRedirect = () => {
+        this.setState({ redirect: true })
+    }
     renderRedirect = () => {
         if (this.state.redirect) {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
     }
-    componentDidMount() {
-        this.getSupplierList();
-        this.getLeadEquipmentDetails();
-    }
-    getLeadEquipmentDetails = async () => {
-        let response = await getLeadEquipmentDetails(this.props.uid + '/' + this.props.leaduid, this.state.token);
-        if (response) {
-            this.setState({ "formDetails": response.data[0], "leadDetId": response.data[0].leadDet_id })
-            this.setState({ "isApiCallSuccessfull": true })
-        }
-    }
-    getSupplierList = async () => {
-        let response = await getSupplierList(this.state.data, this.state.token);
-        if (response) {
-            console.log('Supplie List', response);
-            let categoryName = [];
-            this.setState({ "response": response.data });
-            for (let categoryType in response.data) { categoryName.push(categoryType) }
-            this.setState({ 'categoryNames': categoryName, 'selectedCategory': categoryName[0] });
-            this.setState({ "dataToRender": response.data[this.state.selectedCategory] })
-        }
-    }
     statusChanger = (e) => {
-        let data = { "leadDetId": this.state.leadDetId.toString(), "newStatus": e.target.name };
+        let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name };
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "CLOSED") { this.setRedirect() }
-            else { alert('Something Went Wrong Please try After Sometime') }
+            if (data.newStatus === "CLOSED") {
+                this.setRedirect()
+            }
+            else {
+                alert('Something Went Wrong Please try After Sometime')
+            }
         });
     }
     handleCheck = (e) => {
         this.setState({ checked: !this.state.checked });
         if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
         else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
-        // console.log('checked',this.state.checkedProjects);
-        // if (this.state.checkedProjects.length <= this.state.categoryNames.length) {
-        //     this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] })
-        //     console.log('checkpoint1', this.state.checkedProjects);
-        // }
-        // else {
-        //     let data = this.state.checkedProjects;
-        //     data.pop();
-        //     console.log('checkpoint2', data);
-        //     this.setState({ "checkedProjects": data })
-        // }
     }
     render() {
         return (
@@ -88,7 +63,7 @@ class AddViewThree extends Component {
                 {this.renderRedirect()}
                 <Container className="mt-5 pl-0" fluid>
                     <Row>
-                        <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.equipment}</h3></Col>
+                        <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={1} className="my-auto">
                             <i className="fab fa-gg-circle text-center  text-dark font-size-20" onClick={this.openModalHandler}></i>
                         </Col>
@@ -144,7 +119,7 @@ class AddViewThree extends Component {
                                                                 <div className="font-size-10 text-capitalize text-primary">{prop.accountCategory}</div>
                                                                 <div className="">{prop.companyId}</div>
                                                             </Col>
-                                                            <Col md={4} className="my-auto">
+                                                            <Col md={4} className="my-auto px-0">
                                                                 <div className="font-size-10">{prop.companyName}</div>
                                                                 <div className="font-size-09"><IoMdMailOpen className="text-primary mr-2 font-size-10" />{prop.emailId}</div>
                                                             </Col>
@@ -168,7 +143,7 @@ class AddViewThree extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        {this.state.isApiCallSuccessfull === true ? <AddFields2 formData={this.state.formDetails}></AddFields2> : null}
+                        <AddFields2 formData={this.props.formData}></AddFields2>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

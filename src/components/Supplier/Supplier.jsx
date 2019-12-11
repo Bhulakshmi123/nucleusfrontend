@@ -4,7 +4,6 @@ import { Row, Col, Button, Container, Card, Modal } from 'react-bootstrap';
 class Supplier extends Component {
     constructor(props) {
         super(props)
-        console.log('jsldjldksd', this.props.formData)
         this.state = {
             "isModalShowing": false
         }
@@ -18,8 +17,8 @@ class Supplier extends Component {
                     <Container>
                         <Row>
                             <Col md={3} className="text-left my-auto">
-                                <div className="text-primary font-size-08 text-capitalize">{ this.props.formData.leadDet_companyType }</div>
-                                <div className="font-size-09 text-dark">98482-58987</div>
+                                <div className="text-primary font-size-08 text-capitalize">{this.props.formData.leadDet_companyType}</div>
+                                <div className="font-size-09 text-dark">{this.props.formData.equipmentName}</div>
                             </Col>
                             <Col md={9} className=" my-auto">
                                 <Row>

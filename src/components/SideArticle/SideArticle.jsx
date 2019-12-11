@@ -5,11 +5,10 @@ import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
 import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
-import { getLeadEquipmentDetails } from '../../views/Business/actions'
+import { getLeadEquipmentDetails, getSupplierList } from '../../views/Business/actions';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        // console.log('SideArticle Proops', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessfull: false,
@@ -19,9 +18,12 @@ class SideArticle extends Component {
             leadUuid: this.props.leadinfo[0].lead_uuid,
             leadEquipmentUid: this.props.leadinfo[0].leadDet_uuid,
             equipmentName: this.props.leadinfo[0].equipmentName,
-            equipmentType: this.props.leadinfo[0].leadDet_equipmentType,
+            leadDetId: 0,
             specificEquipmentsDetails: [],
-            leadDetId: 0
+            specificEquipmentSupplierDetails: [],
+            categoryNames: [],
+            selectedCategory: [],
+            dataToRender: []
         }
     }
 
@@ -46,7 +48,22 @@ class SideArticle extends Component {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0], "leadDetId": response.data[0].leadDet_id })
+            this.getSupplierList(response.data[0].leadDet_equipmentType);
             this.setState({ "isApiCallSuccessfull": true })
+        }
+    }
+
+    getSupplierList = async (equipmentType) => {
+        let data = { "equipmentType": equipmentType.toString() }
+        let response = await getSupplierList(data, this.state.token);
+        if (response) {
+            let categoryName = [];
+            this.setState({ specificEquipmentSupplierDetails: response.data })
+            for (let categoryType in response.data) {
+                categoryName.push(categoryType);
+            }
+            this.setState({ 'categoryNames': categoryName, 'selectedCategory': categoryName[0] });
+            this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
 
@@ -93,26 +110,29 @@ class SideArticle extends Component {
                         <Switch>
                             <Route path="/business/leads/lead/active/premium">
                                 <AddViewThree
-                                    uid={this.state.leadUuid}
-                                    leaduid={this.state.leadEquipmentUid}
-                                    equipment={this.state.equipmentName}
-                                    equipmentType={this.state.equipmentType}>
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.specificEquipmentSupplierDetails}
+                                    categoryNames={this.state.categoryNames}
+                                    selectedCategory={this.state.selectedCategory}
+                                    dataToRender={this.state.dataToRender}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/discovery">
                                 <AddViewThree
-                                    uid={this.state.leadUuid}
-                                    leaduid={this.state.leadEquipmentUid}
-                                    equipment={this.state.equipmentName}
-                                    equipmentType={this.state.equipmentType}>
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.specificEquipmentSupplierDetails}
+                                    categoryNames={this.state.categoryNames}
+                                    selectedCategory={this.state.selectedCategory}
+                                    dataToRender={this.state.dataToRender}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/basic">
                                 <AddViewThree
-                                    uid={this.state.leadUuid}
-                                    leaduid={this.state.leadEquipmentUid}
-                                    equipment={this.state.equipmentName}
-                                    equipmentType={this.state.equipmentType}>
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.specificEquipmentSupplierDetails}
+                                    categoryNames={this.state.categoryNames}
+                                    selectedCategory={this.state.selectedCategory}
+                                    dataToRender={this.state.dataToRender}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/new/:id">

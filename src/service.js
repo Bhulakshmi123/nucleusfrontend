@@ -40,7 +40,7 @@ const Service = {
         try {
             const res = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) });
             if (res.status >= 200 && res.status < 400) {
-                console.log(res);
+                // console.log(res);
                 return (res.json());
             } else if (res.status >= 400 && res.status < 500) {
                 console.log(res);

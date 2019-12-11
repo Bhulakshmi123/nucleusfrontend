@@ -29,7 +29,6 @@ class AddViewOne extends Component {
     }
     statusChanger = (e) => {
         let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name }
-        console.log(data);
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "REJECTED") {
                 this.setRedirecttoNew()
