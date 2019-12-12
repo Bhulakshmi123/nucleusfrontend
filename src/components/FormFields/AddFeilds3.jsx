@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Container, Col, Row } from 'react-bootstrap';
-import '../../assets/css/form.css';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import CalenderInput from './CalenderInput';

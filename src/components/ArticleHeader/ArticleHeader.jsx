@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import '../../assets/css/commonStyles.css';
-import '../../assets/css/form.css';
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
 export class ArticleHeader extends Component {

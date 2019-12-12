@@ -74,7 +74,7 @@ export class Loginpage extends Component {
                                         <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
                                             <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.handleChange.bind(this)} placeholder="Email or Phone" required autoComplete="new-username" />
-                                            <div className="error_msg">{this.state.errorMessage_username}</div>
+                                            <div className="text-danger font-size-10">{this.state.errorMessage_username}</div>
                                             <Form.Control.Feedback type="invalid">
                                                 {this.state.errorMessage_email}
                                             </Form.Control.Feedback>
@@ -82,11 +82,11 @@ export class Loginpage extends Component {
                                         <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
                                             <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" required autoComplete="new-password" />
-                                            <div className="error_msg"> {this.state.errorMessage_password}</div>
+                                            <div className="text-danger font-size-10"> {this.state.errorMessage_password}</div>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Button variant="primary" className="p-3 mt-4" block size="lg" type="submit">SIGN IN</Button>
-                                        <div className="error_msg"> {this.state.errorMessage_submit}</div>
+                                        <div className="text-danger font-size-10"> {this.state.errorMessage_submit}</div>
                                         <Form.Group controlId="formBasicCheckbox">
                                             <Form.Text className="text-muted">
                                                 We'll never share your email with anyone else.

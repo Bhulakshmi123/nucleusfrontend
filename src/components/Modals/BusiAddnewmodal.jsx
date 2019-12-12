@@ -93,19 +93,19 @@ class BusiAddnewmodal extends Component {
             <React.Fragment>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="ml-1">Phone No.*</Form.Label><Form.Control name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} /></Form.Group></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="ml-1">Renter Name*</Form.Label><Form.Control name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="ml-1">Renter Email</Form.Label><Form.Control name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
-                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="ml-1">Alternate Phone no.</Form.Label><Form.Control name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="ml-1">Company Name</Form.Label><Form.Control name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="ml-1">Designation</Form.Label><Form.Control name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" onChange={this.inputChangeHandler}></SelectInput></Col>

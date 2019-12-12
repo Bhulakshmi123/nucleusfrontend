@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Navbar, Button, Form } from "react-bootstrap";
-import '../../assets/css/commonStyles.css';
 import logo from "assets/img/fav-ico.png";
 import { Redirect } from 'react-router-dom';
 class Header extends Component {
@@ -46,7 +45,7 @@ class Header extends Component {
       return (<Redirect to="/login"></Redirect>)
     }
     return (
-      <Navbar fixed="top" className="stickyTopColor">
+      <Navbar fixed="top" className="bg-white">
         <Navbar.Brand href="/dashboard">
           <img alt="" src={logo} width="35" height="30" className="d-inline-block align-top mr-1"></img>
           <span className="text-dark">React EH NUCLEUS</span>

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
 import "./assets/css/rootStyles.css"; // !Mano's Default CSS File
 import './assets/css/commonStyles.css'; // !BhuLakshmi's Default CSS File
+import './assets/css/form.css'; // !BhuLakshmi's Other Default CSS File
 import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
 import AdminLayout from "layouts/Admin.jsx";
@@ -17,10 +18,10 @@ ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
 			<Switch>
-			<Redirect exact from="/" to="/login"></Redirect>
-			<Route path="/login" component={Loginpage}></Route>
-			<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
-		</Switch>
+				<Redirect exact from="/" to="/login"></Redirect>
+				<Route path="/login" component={Loginpage}></Route>
+				<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
+			</Switch>
 		</BrowserRouter>
 	</Provider >,
 	document.getElementById("root")

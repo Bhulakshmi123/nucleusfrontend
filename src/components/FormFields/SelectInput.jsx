@@ -2,7 +2,6 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 import { Component } from 'react';
-import '../../assets/css/form.css';
 import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
 import { Button, Form } from 'react-bootstrap';

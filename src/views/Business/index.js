@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard';
 import ViewDetails from '../../components/ViewDetails/ViewDetails';
 import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
-import '../../assets/css/commonStyles.css';
 class Business extends Component {
   render() {
     return (
