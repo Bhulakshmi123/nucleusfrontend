@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Row, Col, Container } from 'react-bootstrap';
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Sidebar from "components/Sidebar/Sidebar";
@@ -8,7 +8,7 @@ import image from "assets/img/new_logo.png";
 class Admin extends Component {
   constructor(props) {
     super(props);
-    const token = localStorage.getItem("tokenId");
+    // const token = localStorage.getItem("tokenId");
     // let loggedIn = true
     // if (token === null) {
     //   loggedIn = false

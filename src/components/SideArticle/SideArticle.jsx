@@ -9,7 +9,6 @@ import { getLeadEquipmentDetails, getSupplierList } from '../../views/Business/a
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        console.log('jdkld', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessfull: false,
@@ -112,7 +111,10 @@ class SideArticle extends Component {
                                     supplierData={this.state.specificEquipmentSupplierDetails}
                                     categoryNames={this.state.categoryNames}
                                     selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}>
+                                    dataToRender={this.state.dataToRender}
+                                    leadUuid={this.state.leadUuid}
+                                    leadDetUuid={this.state.leadEquipmentUid}
+                                    token={this.state.token}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/discovery">

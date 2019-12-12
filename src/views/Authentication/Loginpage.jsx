@@ -21,7 +21,7 @@ export class Loginpage extends Component {
     }
     submitForm(e) {
         e.preventDefault();
-        if (this.state.username == null || this.state.password == null) {
+        if (this.state.username === null || this.state.password === null) {
             this.setState({ 'errorMessage_submit': 'Check Login Details' })
         }
         else {
@@ -41,14 +41,14 @@ export class Loginpage extends Component {
 
     handleChange(e) {
         let error = 'errorMessage_' + [e.target.name];
-        if (e.target.type == 'text') {
+        if (e.target.type === 'text') {
             console.log(error);
             if (!validator.isEmail(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
                 this.setState({ [error]: '', [e.target.name]: e.target.value })
         }
-        if (e.target.type == 'password') {
+        if (e.target.type === 'password') {
             if (!validator.isAlphanumeric(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else

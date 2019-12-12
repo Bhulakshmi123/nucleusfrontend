@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { changeLeadStatus } from '../../views/Business/actions';
+import { changeLeadStatus, makeRequestBid } from '../../views/Business/actions';
 import { Container, Col, Row, Button, Badge, InputGroup, Card, Modal } from 'react-bootstrap';
 import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaRegStopCircle } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
@@ -11,6 +11,7 @@ import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
+        console.log('Porps', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -23,7 +24,6 @@ class AddViewThree extends Component {
             redirect: false,
             isModalShowing: false
         }
-        console.log('thisState', this.state)
     }
     openModalHandler = () => {
         this.setState({ "isModalShowing": true });
@@ -37,6 +37,23 @@ class AddViewThree extends Component {
     renderRedirect = () => {
         if (this.state.redirect) {
             return (<Redirect to="/business/leads/new"></Redirect>)
+        }
+    }
+    letsmakeRequestBid = async () => {
+        let data = {
+            "bidInfo": [
+                {
+                    "leadDet_leadId": this.props.formData.leadDet_leadId.toString(),
+                    "leadDet_companyUuid": this.props.formData.leadDet_companyUuid,
+                    "leadDet_equipmentType": this.props.formData.leadDet_equipmentType.toString(),
+                    "leadDet_createdBy": this.props.formData.leadDet_createdBy
+                }
+            ]
+        }
+        let urlPayload = this.props.leadUuid + '/' + this.props.leadDetUuid;
+        let response = await makeRequestBid(urlPayload, data, this.state.token);
+        if (response) {
+            console.log(response);
         }
     }
     statusChanger = (e) => {
@@ -90,7 +107,7 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block>Request Bids <Badge pill variant="primary">13</Badge></Button></Col>
+                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsmakeRequestBid}>Request Bids <Badge pill variant="primary">13</Badge></Button></Col>
                         <Col md={2} className="my-auto"><Button variant="info" size="sm" block><MdTextsms className="mr-1" />SMS</Button></Col>
                     </Row>
                     <Row>
