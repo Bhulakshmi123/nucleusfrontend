@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
 import { Redirect } from 'react-router-dom';
+var validator = require('validator');
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
@@ -9,9 +10,9 @@ export class Loginpage extends Component {
             username: "",
             password: "",
             tokenId: "",
-            loginStatus: false
+            loginStatus: false,
+            errorMessage: ''
         }
-        console.log('props', this.state)
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
@@ -19,21 +20,42 @@ export class Loginpage extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitForm(e) {
-        console.log('Button Wokring')
-        e.preventDefault()
-        this.getClientInfo();
+        e.preventDefault();
+        if (this.state.username == null || this.state.password == null) {
+            this.setState({ 'errorMessage_submit': 'Check Login Details' })
+        }
+        else {
+            this.getClientInfo();
+        }
     }
     getClientInfo = async () => {
         let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
         let response = await getClientInfo(data);
         if (response) {
-            // this.setState({ tokenId: response.data.token})
             localStorage.setItem("tokenId", response.data.token);
             localStorage.setItem("username", response.data.name);
-            this.setState({ loginStatus: true  })
+            this.setState({ loginStatus: true })
         }
         else { window.alert("Login Failed"); }
     }
+
+    handleChange(e) {
+        let error = 'errorMessage_' + [e.target.name];
+        if (e.target.type == 'text') {
+            console.log(error);
+            if (!validator.isEmail(e.target.value))
+                this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
+            else
+                this.setState({ [error]: '', [e.target.name]: e.target.value })
+        }
+        if (e.target.type == 'password') {
+            if (!validator.isAlphanumeric(e.target.value))
+                this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
+            else
+                this.setState({ 'errorMessage_': 'hwluytut', [e.target.name]: e.target.value })
+        }
+    }
+
     render() {
         if (this.state.loginStatus === true) {
             return (<Redirect to="/dashboard"></Redirect>)
@@ -51,17 +73,20 @@ export class Loginpage extends Component {
                                     <Form className="pt-4 px-3" onSubmit={this.submitForm}>
                                         <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
-                                            <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email or Phone" required autoComplete="new-username" />
+                                            <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.handleChange.bind(this)} placeholder="Email or Phone" required autoComplete="new-username" />
+                                            <div className="error_msg">{this.state.errorMessage_username}</div>
                                             <Form.Control.Feedback type="invalid">
-                                                Please choose a username.
+                                                {this.state.errorMessage_email}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" required autoComplete="new-password" />
+                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" required autoComplete="new-password" />
+                                            <div className="error_msg"> {this.state.errorMessage_password}</div>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Button variant="primary" className="p-3 mt-4" block size="lg" type="submit">SIGN IN</Button>
+                                        <div className="error_msg"> {this.state.errorMessage_submit}</div>
                                         <Form.Group controlId="formBasicCheckbox">
                                             <Form.Text className="text-muted">
                                                 We'll never share your email with anyone else.
