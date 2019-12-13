@@ -7,6 +7,11 @@
     src: url(../web-fonts/Gilroy-Medium.woff);
 }
 
+
+.fontGilroyMedium { font-family: GilroyMedium !important; }
+.fontGilroyBold { font-family: GilroyBold !important; }
+.fontRoboto { font-family: 'Roboto', sans-serif !important; }
+
 .dataContainer { position: fixed; }
 .sideBarMini { width: 80px !important; }
 .sideBarMini ul { padding-left: 15% !important; }
@@ -332,9 +337,6 @@ a { text-decoration: none !important; }
 .bg-lightgray { background-color: #EAE8EC !important; }
 .bg-lightestgray { background-color: #F0F0F0 !important; }
 
-.fontGilroyMedium { font-family: GilroyMedium !important; }
-.fontGilroyBold { font-family: GilroyBold !important; }
-.fontRoboto { font-family: 'Roboto', sans-serif !important; }
 
 .linkStateHover { color : black }
 .linkStateActive, .linkStateHover:hover { color: #154D7B !important; border-bottom : 2px solid #154D7B; }
