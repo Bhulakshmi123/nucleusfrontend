@@ -58,10 +58,10 @@ export class Loginpage extends Component {
 
     render() {
         if (this.state.loginStatus === true) {
-            return (<Redirect to="/dashboard"></Redirect>)
+            return (<Redirect to="/admin"></Redirect>)
         }
         return (
-            <React.Fragment>
+            <div>
                 <div className="loginContent">
                     <div className="text-white text-center mt-5">
                         <div className="font-size-25">Hello EQUIPHUNT!</div>
@@ -103,8 +103,8 @@ export class Loginpage extends Component {
                         </Col>
                     </div>
                 </div>
-            </React.Fragment>
-        );
+            </div>
+        )
     }
 }
 export default Loginpage;

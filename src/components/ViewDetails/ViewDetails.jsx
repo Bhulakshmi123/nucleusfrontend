@@ -30,4 +30,4 @@ class ViewDetails extends Component {
         )
     }
 }
-export default ViewDetails
+export default ViewDetails;

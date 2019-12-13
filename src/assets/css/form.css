@@ -162,7 +162,6 @@
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
-    
     .check:after {
         content: "";
         position: absolute;
