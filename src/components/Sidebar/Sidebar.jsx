@@ -51,7 +51,7 @@ const Sidebar = (props) => {
   //     <React.Fragment>
 
 
-  
+
   //       <div className="flex-column sideBar sideBarMini py-5 my-4">
   //         <ul>
   //           {props.routes.map((prop, key) => {

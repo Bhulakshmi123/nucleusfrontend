@@ -113,10 +113,9 @@ a { text-decoration: none !important; }
     overflow: auto;
     background-color: #F0F0F0; 
 }
-.backgroundColor1 { background-color: #154D7B; }
 .equipmentCount { border: 1px solid white; }
 .borderedRow { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-.borderedRow:hover { background-color: rgba(255, 255, 255, 0.3); }
+.borderedRow:hover, .borderedRowActive { background-color: rgba(255, 255, 255, 0.1); }
 .searchBarStyle { border: none; }
 .formControlSearch { padding: 6% !important; }
 
@@ -281,7 +280,7 @@ a { text-decoration: none !important; }
 .font-size-33 {font-size: 3.3rem !important;}
 .font-size-34 {font-size: 3.4rem !important;}
 .font-size-35 {font-size: 3.5rem !important;}
-.font-size-36 {font-size: 3.6rem !important;}
+.font-size-36 {font-size: 3.6rem !important;}export default 
 .font-size-37 {font-size: 3.7rem !important;}
 .font-size-38 {font-size: 3.8rem !important;}
 .font-size-39 {font-size: 3.9rem !important;}
@@ -334,6 +333,8 @@ a { text-decoration: none !important; }
 .w-100 {width: 100% !important;}
 
 
+.bg-bluefuchsia { background-color: #154D7B !important; }
+.bg-darkbluefuchisa { background-color: #081B2D !important; }
 .bg-lightgray { background-color: #EAE8EC !important; }
 .bg-lightestgray { background-color: #F0F0F0 !important; }
 

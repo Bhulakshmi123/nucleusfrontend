@@ -20,7 +20,8 @@ class SideArticle extends Component {
             specificEquipmentSupplierDetails: [],
             categoryNames: [],
             selectedCategory: [],
-            dataToRender: []
+            dataToRender: [],
+            choosen: 0
         }
     }
 
@@ -36,9 +37,10 @@ class SideArticle extends Component {
         this.setState({ "isModalShowing": false })
     }
 
-    equipmentDataChangeHandler = (leadId, leadDetUuid) => {
+    equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
         this.getLeadEquipmentDetails(leadId, leadDetUuid, this.state.token);
+        this.setState({ choosen: key })
     }
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
@@ -67,7 +69,7 @@ class SideArticle extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col md={3} className="backgroundColor1 viewHeight px-0">
+                <Col md={3} className="bg-bluefuchsia viewHeight px-0">
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-4 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
@@ -87,7 +89,10 @@ class SideArticle extends Component {
                             {
                                 this.props.leadinfo.map((prop, key) => {
                                     return (
-                                        <Row className="text-white borderedRow px-0 py-2 mx-0" key={key} onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid)}>
+                                        <Row
+                                            className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.choosen === key ? "borderedRowActive bor-rad-1" : "null"}`}
+                                            key={key}
+                                            onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-4">
                                                 <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
