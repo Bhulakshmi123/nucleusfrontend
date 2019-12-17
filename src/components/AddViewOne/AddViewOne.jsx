@@ -48,10 +48,10 @@ class AddViewOne extends Component {
                             <p>{this.props.formData.equipmentName}</p>
                         </Col>
                         <Col md={2}>
-                            <Button variant="outline-danger" size="sm" name="REJECTED" block onClick={this.statusChanger}><i className="fas fa-trash-alt mr-2"></i>Remove</Button>
+                            <Button variant="danger" size="sm" name="REJECTED" block onClick={this.statusChanger}><i className="fas fa-trash-alt mr-2"></i>Remove</Button>
                         </Col>
                         <Col md={2}>
-                            <Button variant="outline-success" size="sm" name="ACTIVATED" block onClick={this.statusChanger}>Activate Lead</Button>
+                            <Button variant="success" size="sm" name="ACTIVATED" block onClick={this.statusChanger}>Activate Lead</Button>
                         </Col>
                     </Row>
                     <Row>

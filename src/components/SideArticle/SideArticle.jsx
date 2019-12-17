@@ -26,9 +26,9 @@ class SideArticle extends Component {
     }
 
     componentDidMount() {
+        console.log('SideArticle',this.props.history);
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
-
     openModalHandler = () => {
         this.setState({ "isModalShowing": true })
     }
@@ -107,7 +107,7 @@ class SideArticle extends Component {
                         </Container>
                     </div>
                 </Col>
-                <Col md={7} className="viewHeight mx-0">
+                <Col md={9} className="viewHeight mx-0">
                     {this.state.isApiCallSuccessfull === true ?
                         <Switch>
                             <Route path="/business/leads/lead/active/premium">

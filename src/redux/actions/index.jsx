@@ -25,7 +25,7 @@ export const sidebarViewAction = (nr) => {
 export const saveTokenNoAction = (nr) => {
     return {
         type: 'SAVETOKENNOACTION',
-        payload:nr
+        payload: nr
     }
 }
 export const addLead = leadForm => {

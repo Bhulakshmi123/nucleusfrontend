@@ -8,7 +8,7 @@ const allReducers = combineReducers({
     counter: counterReducer,
     isLogged: loggedReducer,
     sidebarView: sidebarView,
-    tokenNo: savedTokenNo,
+    savedTokenNo: savedTokenNo,
     lead: leadReducer
 })
 export default allReducers;

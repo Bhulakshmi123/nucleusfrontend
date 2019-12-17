@@ -1,23 +1,27 @@
 
 import React, { Component } from 'react'
-import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
-import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { FaMapMarkedAlt, FaPhoneSquare } from "react-icons/fa";
+import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { getLeads } from '../../views/Business/actions';
 import { getDateFormat_4 } from '../../commonFunctions/dates';
+import { sidebarViewAction } from '../../redux/actions';
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            "isApiCallSuccessfull": false,
-            "token": token,
-            "sidebarView": false,
-            "leadType": 'new',
+            'isApiCallSuccessfull': false,
+            'token': token,
+            'sidebarView': false,
+            'leadType': 'new',
             'leadsInformation': []
         }
     }
     componentDidMount() {
+        this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType)
     }
     getLeads = async (leadType) => {
@@ -53,17 +57,17 @@ class BusinessMCard extends Component {
                                     <Container key={key}>
                                         <Row>
                                             <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">{getDateFormat_4(prop.lead_date)}</Col>
-                                            <Col md={10}>
+                                            <Col md={10} className="pr-0">
                                                 <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
                                                     <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
                                                         <Row>
                                                             <Col md={5} className="my-auto text-dark">
                                                                 <div className="font-size-12 text-capitalize">{prop.companyName}</div>
-                                                                <div><i className="fas fa-map-marked-alt mr-2 text-primary"></i>{prop.lead_uuid}</div>
+                                                                <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
                                                             </Col>
                                                             <Col md={3} className="my-auto text-dark">
                                                                 <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
-                                                                <div><i className="fas fa-phone-square mr-2 text-primary"></i>{prop.lead_contactNumber}</div>
+                                                                <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
                                                             </Col>
                                                             <Col md={2} className="my-auto">
                                                                 {prop.lead_isActive === 1 ? <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
@@ -87,7 +91,17 @@ class BusinessMCard extends Component {
         )
     }
 }
-export default BusinessMCard;
+const mapStateToProps = (state) => {
+    return {
+        sidebarView: state.sidebarView
+    }
+}
+const mapDispatchToProps = () => {
+    return {
+        sidebarViewAction
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps())(BusinessMCard);
 
 
 

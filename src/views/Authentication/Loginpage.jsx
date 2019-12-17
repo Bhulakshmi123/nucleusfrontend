@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { saveTokenNoAction } from '../../redux/actions/index.jsx'
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
 import { Redirect } from 'react-router-dom';
@@ -29,14 +31,22 @@ export class Loginpage extends Component {
         }
     }
     getClientInfo = async () => {
-        let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
+        let data = {
+            "username": this.state.username,
+            "password": this.state.password,
+            "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
+        };
         let response = await getClientInfo(data);
         if (response) {
+            // this.props.saveTokenNoAction(true);
+            console.log(this.props)
             localStorage.setItem("tokenId", response.data.token);
             localStorage.setItem("username", response.data.name);
             this.setState({ loginStatus: true })
         }
-        else { window.alert("Login Failed"); }
+        else {
+            window.alert("Login Failed");
+        }
     }
 
     handleChange(e) {
@@ -55,7 +65,6 @@ export class Loginpage extends Component {
                 this.setState({ 'errorMessage_': 'hwluytut', [e.target.name]: e.target.value })
         }
     }
-
     render() {
         if (this.state.loginStatus === true) {
             return (<Redirect to="/dashboard"></Redirect>)
@@ -73,7 +82,7 @@ export class Loginpage extends Component {
                                     <Form className="pt-4 px-3" onSubmit={this.submitForm}>
                                         <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
-                                            <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.handleChange.bind(this)} placeholder="Email or Phone" required autoComplete="new-username" />
+                                            <Form.Control type="text" className="text-center p-4 font-size-13 hi-65" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email or Phone" required autoComplete="new-username" />
                                             <div className="text-danger font-size-10">{this.state.errorMessage_username}</div>
                                             <Form.Control.Feedback type="invalid">
                                                 {this.state.errorMessage_email}
@@ -81,7 +90,7 @@ export class Loginpage extends Component {
                                         </Form.Group>
                                         <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" required autoComplete="new-password" />
+                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" required autoComplete="new-password" />
                                             <div className="text-danger font-size-10"> {this.state.errorMessage_password}</div>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
@@ -107,7 +116,18 @@ export class Loginpage extends Component {
         );
     }
 }
-export default Loginpage;
+const mapStateToProps = (state) => {
+    return {
+        savedTokenNo: state.savedTokenNo
+    }
+}
+const mapDispatchToProps = () => {
+    return {
+        saveTokenNoAction
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps())(Loginpage);
+
 
 
 

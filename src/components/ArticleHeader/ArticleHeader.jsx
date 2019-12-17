@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
+import { FaPlusCircle } from "react-icons/fa";
 import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
 export class ArticleHeader extends Component {
     constructor(props) {
@@ -10,24 +11,18 @@ export class ArticleHeader extends Component {
     }
     handleChange = (e) => {
         e.preventDefault();
-        let name = e.target.name;
+        // let name = e.target.name;
         let value = e.target.value;
-        console.log(name);
-        console.log(value);
         let count = this.state.equipmentCount;
         let equipmentList = this.state.equipmentList.slice();
         let singleEquipment = equipmentList[count]
         singleEquipment.name = value;
-        //this.setState(equipmentList);
-        console.log(this.state.equipmentList);
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        const data = this.state
-        console.log("hi", data)
+        // const data = this.state
     }
-
     openModalHandler = () => {
         this.setState({ isShowing: true });
     }
@@ -38,7 +33,6 @@ export class ArticleHeader extends Component {
         this.setState({ isEquipmentinfo: true });
     }
     render() {
-
         return (
             <React.Fragment>
                 <Container className="mt-2">
@@ -47,9 +41,7 @@ export class ArticleHeader extends Component {
                             <h1 className="mx-0 my-0 text-white text-left">{this.props.heading}</h1>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="light" size="sm" block onClick={this.openModalHandler}>
-                                <i className="fas fa-plus-circle mr-2 text-primary"></i>Add New
-                            </Button>
+                            <Button variant="light" size="sm" block onClick={this.openModalHandler}><FaPlusCircle className="text-primary mr-2" />Add New</Button>
                         </Col>
                     </Row>
                 </Container>

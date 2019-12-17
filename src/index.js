@@ -1,4 +1,6 @@
-import React from "react";
+
+
+import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
@@ -12,17 +14,23 @@ import { Loginpage } from './views/Authentication/Loginpage.jsx'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
-ReactDOM.render(
-	<Provider store={store}>
-		<BrowserRouter>
-			<Switch>
-				<Redirect exact from="/" to="/login"></Redirect>
-				<Route path="/login" component={Loginpage}></Route>
-				<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
-			</Switch>
-		</BrowserRouter>
-	</Provider >,
-	document.getElementById("root")
-);
+export default class Index extends Component {
+	render() {
+		return (
+			<React.Fragment>
+				<Provider store={store}>
+					<BrowserRouter>
+						<Switch>
+							<Redirect exact from="/" to="/login"></Redirect>
+							<Route path="/login" component={Loginpage}></Route>
+							<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
+						</Switch>
+					</BrowserRouter>
+				</Provider >,
+			</React.Fragment>
+		)
+	}
+}
+ReactDOM.render(<Index />, document.getElementById("root"));
+

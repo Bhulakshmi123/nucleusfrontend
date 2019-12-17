@@ -1,4 +1,4 @@
-const savedTokenNo = (state = false, action) => {
+const savedTokenNo = (state = 'null', action) => {
     switch (action.type) {
         case 'SAVETOKENNOACTION':
             return state = action.payload;
