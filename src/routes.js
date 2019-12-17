@@ -12,75 +12,68 @@ import Contractors from "views/Contractors/";
 import Equipment from "views/Equipment/";
 import ManPower from "views/ManPower/";
 import Subscriptions from "views/Subscriptions/";
-import Trail from "views/trail/";
 
-const dashboardRoutes = [{
-        path: "/login",
-        name: "Trail",
-        icon: < FaHome / > ,
-        component: Trail,
-        layout: "/nucleus"
-    },
+const dashboardRoutes = [
     {
         path: "/dashboard",
         name: "Dashboard",
-        icon: < FaHome / > ,
+        icon: <FaHome />,
         component: Dashboard,
         layout: "/nucleus"
     },
     {
         path: "/business/leads/new",
         name: "Business",
-        icon: < AiOutlineDollar / > ,
+        icon: <AiOutlineDollar />,
         component: Business,
         layout: "/nucleus"
     },
     {
         path: "/projects",
         name: "Projects",
-        icon: < FiBriefcase / > ,
+        icon: <FiBriefcase />,
         component: Projects,
         layout: "/nucleus"
     },
     {
         path: "/rmp-users",
         name: "RMP Users",
-        icon: < AiOutlineUser / > ,
+        icon: <AiOutlineUser />,
         component: RMPUsers,
         layout: "/nucleus"
     },
     {
         path: "/suppliers",
         name: "Suppliers",
-        icon: < FaRegArrowAltCircleRight / > ,
+        icon: <FaRegArrowAltCircleRight />,
         component: Suppliers,
         layout: "/nucleus"
     },
     {
         path: "/contractors",
         name: "Contractors",
-        icon: < FaRegArrowAltCircleLeft / > ,
+        icon: <FaRegArrowAltCircleLeft />,
         component: Contractors,
         layout: "/nucleus"
     },
     {
         path: "/equipment",
         name: "Equipment",
-        icon: < FaTruckMonster / > ,
+        icon: <FaTruckMonster />,
         component: Equipment,
         layout: "/nucleus"
     },
     {
         path: "/man-power",
         name: "Man Power",
-        icon: < FaRegUserCircle / > ,
+        icon: <FaRegUserCircle />,
         component: ManPower,
         layout: "/nucleus"
     },
     {
         path: "/subscriptions",
         name: "Subscriptions",
-        icon: < MdExitToApp / > ,
+        icon: <MdExitToApp />,
         component: Subscriptions,
         layout: "/nucleus"
     }

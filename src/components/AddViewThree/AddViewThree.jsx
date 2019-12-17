@@ -11,7 +11,6 @@ import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        console.log('Porps', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,

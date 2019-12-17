@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { sidebarViewAction } from '../../redux/actions';
 import { getLeadInformation } from '../../views/Business/actions';
 import SideArticle from '../../components/SideArticle/SideArticle';
 class ViewDetails extends Component {
@@ -13,6 +15,7 @@ class ViewDetails extends Component {
     }
     componentDidMount() {
         this.getLeadInformation();
+        this.props.sidebarViewAction(true);
     }
     getLeadInformation = async () => {
         let url = window.location.href.split('/');
@@ -25,9 +28,21 @@ class ViewDetails extends Component {
     render() {
         return (
             <React.Fragment>
-                {this.state.isApiCallSuccessfull === true ? <SideArticle leadinfo={this.state.leadInformation}></SideArticle> : null}
+                <div className={this.props.sidebarView ? "mainContent mainContentMini d-flex" : "mainContent"}>
+                    {this.state.isApiCallSuccessfull === true ? <SideArticle leadinfo={this.state.leadInformation}></SideArticle> : null}
+                </div>
             </React.Fragment>
         )
     }
 }
-export default ViewDetails;
+const mapStateToProps = (state) => {
+    return {
+        sidebarView: state.sidebarView
+    }
+}
+const mapDispatchToProps = () => {
+    return {
+        sidebarViewAction
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps())(ViewDetails)

@@ -31,10 +31,6 @@ class BusiAddnewmodal extends Component {
                 job_loc: '',
                 extd_start_dte: '',
                 no_month: '',
-                capacity: '',
-                job_loc: '',
-                extd_start_dte: '',
-                no_month: '',
                 state: '',
                 district_nm: '',
                 project_nm: '',
@@ -53,21 +49,17 @@ class BusiAddnewmodal extends Component {
     //             e.preventDefault();
     //             let name = e.target.name;
     //             let value = e.target.value;
-    //             console.log(name);
-    //             console.log(value);
     //             let count = this.state.equipmentCount;
     //             let equipmentList = this.state.equipmentList.slice();
     //             let singleEquipment = equipmentList[count]
     //             singleEquipment.name = value;
     //             //this.setState(equipmentList);
-    //             console.log(this.state.equipmentList);
     //         }
 
     onSubmit = (e) => {
         e.preventDefault();
         let data = this.state;
         data = this.state.leadForm;
-        console.log("hi", data)
         this.props.addLead(data);
     }
     openInputHandler = () => {

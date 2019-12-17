@@ -1,8 +1,7 @@
-
 import { getIPAddress } from './config.js';
 const env = getIPAddress();
 const Service = {
-    fetchGet: async(url, token = null) => {
+    fetchGet: async (url, token = null) => {
         url = env + url;
         // console.log('Final Url', url)
         const headers = {};
@@ -30,7 +29,7 @@ const Service = {
         }
     },
 
-    fetchPost: async(url, body, token = null) => {
+    fetchPost: async (url, body, token = null) => {
         url = env + url;
         // console.log(url);
         const headers = { 'Content-Type': 'application/json' };
@@ -38,8 +37,6 @@ const Service = {
         if (token) {
             headers['x-access-token'] = token;
         }
-        console.log(url);
-        console.log(body);
         try {
             const res = await fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) });
             if (res.status >= 200 && res.status < 400) {
