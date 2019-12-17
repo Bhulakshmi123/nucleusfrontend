@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Table } from 'react-bootstrap';
+import { Button, Col, Form, Modal, Table } from 'react-bootstrap';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import { addLead } from '../../redux/actions/index';
 import { connect } from 'react-redux';
-
+import { thisExpression } from '@babel/types';
+var validator = require('validator');
 class BusiAddnewmodal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            activeleadNo: null,
             isEquipmentinfo: false,
-            equipmentList: [],
             equipmentCount: 0,
             leadForm: {
                 phone_no: '',
@@ -22,90 +23,107 @@ class BusiAddnewmodal extends Component {
                 com_name: '',
                 designation: '',
                 lead_priority: '',
-                lead_source: '',
-                equip_type: '',
-                selct_make: '',
-                equip_modal: '',
-                min_year: '',
-                capacity: '',
-                job_loc: '',
-                extd_start_dte: '',
-                no_month: '',
-                capacity: '',
-                job_loc: '',
-                extd_start_dte: '',
-                no_month: '',
-                state: '',
-                district_nm: '',
-                project_nm: '',
-                operation_hours: '',
-                operation_d_m: '',
-                qunatity: '',
-                operation_h_m: '',
-                type_of_work: '',
-
-
-
-            }
+                equipmentLead: []
+            },
+            equipmentForm: {},
+            multipleLead: []
         }
     }
-    // handleChange = (e) => {
-    //             e.preventDefault();
-    //             let name = e.target.name;
-    //             let value = e.target.value;
-    //             console.log(name);
-    //             console.log(value);
-    //             let count = this.state.equipmentCount;
-    //             let equipmentList = this.state.equipmentList.slice();
-    //             let singleEquipment = equipmentList[count]
-    //             singleEquipment.name = value;
-    //             //this.setState(equipmentList);
-    //             console.log(this.state.equipmentList);
-    //         }
+    leadInputHandler = (e) => {
+        let equipmentForm = this.state.equipmentForm;
+        equipmentForm = {
+            ...equipmentForm,
+            [e.target.name]: e.target.value
+        }
+        this.setState({
+            equipmentForm: equipmentForm
+        });
+    }
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        let data = this.state;
-        data = this.state.leadForm;
-        console.log("hi", data)
-        this.props.addLead(data);
-    }
-    openInputHandler = () => {
-        this.setState({ isEquipmentinfo: true });
-    }
-    formInputHandler = () => {
-        this.setState({ phone_no: '' });
+    appendLeadEquipment = (e) => {
+        if (this.state.equipmentkey == null) {
+            let leadForm = this.state.leadForm;
+            let equipmentForm = this.state.equipmentForm;
+            leadForm.equipmentLead.push(equipmentForm);
+            this.setState({
+                leadForm: leadForm,
+                isEquipmentinfo: false,
+                equipmentForm: {}
+            }, () => {
+                console.log(leadForm);
+            });
+        } else {
+            console.log(this.state.equipmentForm);
+            let equipmentLead = this.state.leadForm.equipmentLead;
+            equipmentLead[this.state.equipmentkey] = this.state.equipmentForm;
+            let leadForm = this.state.leadForm;
+            leadForm.equipmentLead = equipmentLead;
+            this.setState({
+                leadForm: leadForm,
+                isEquipmentinfo: false,
+            });
+        }
     }
 
     inputChangeHandler = (e) => {
         let leadForm = this.state.leadForm;
+        let equipmentLead = this.state.equipmentLead;
         leadForm = {
-            ...leadForm,
+            ...equipmentLead,
             [e.target.name]: e.target.value
         }
         this.setState({
-            leadForm: leadForm
+            leadForm: equipmentLead
         });
     }
+
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        let leadForm = {
+            leadForm: this.state.leadForm,
+            equipmentLead: this.state.equipmentLead
+        }
+        console.log("hi", leadForm);
+    }
+
+    openInputHandler = () => {
+        this.setState({ isEquipmentinfo: true });
+    }
+    InputHandler = () => {
+        this.setState({ phone_no: '' });
+    }
+
+    editEquipmentForm = (key) => {
+        let equipmentLead = this.state.leadForm.equipmentLead;
+        this.setState({
+            isEquipmentinfo: true,
+            equipmentForm: equipmentLead[key],
+            equipmentkey: key
+        })
+    }
+
 
     render() {
         return (
             <React.Fragment>
-                <Form onSubmit={this.onSubmit}>
+                <Form name="dsplyComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="ml-1">Phone No.*</Form.Label><Form.Control name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} />
+                            {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
+                        </Form.Group></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="ml-1">Renter Name*</Form.Label><Form.Control name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="ml-1">Renter Email</Form.Label><Form.Control name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
-                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="ml-1">Alternate Phone no.</Form.Label><Form.Control name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="ml-1">Company Name</Form.Label><Form.Control name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="ml-1">Designation</Form.Label><Form.Control name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="alt_phoneno" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" onChange={this.inputChangeHandler}></SelectInput></Col>
@@ -129,21 +147,25 @@ class BusiAddnewmodal extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="align-middle">01</td>
-                                        <td className="align-middle">Muzan Kibutsaji</td>
-                                        <td className="align-middle">Demon</td>
-                                        <td className="align-middle">Edo Period</td>
-                                        <td className="align-middle">5000</td>
-                                        <td><Button variant="outline-primary" size="sm" block>Edit</Button></td>
-                                        <td><Button variant="outline-primary" size="sm" block>Delete</Button></td>
-                                    </tr>
+                                    {this.state.leadForm.equipmentLead.map((equipment, i) => {
+                                        return (
+                                            <tr>
+                                                <td className="align-middle">{equipment.capacity}</td>
+                                                <td className="align-middle">{i}</td>
+                                                <td className="align-middle">{equipment.equip_type}</td>
+                                                <td className="align-middle"></td>
+                                                <td className="align-middle"></td>
+                                                <td><Button variant="outline-primary" size="sm" block onClick={() => this.editEquipmentForm(i)}>Edit</Button></td>
+                                                <td><Button variant="outline-primary" size="sm" block>Delete</Button></td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </Table>
                         </Col>
                     </Form.Row>
-                    {this.state.isEquipmentinfo ? <AddFields inputChangeHandler={this.inputChangeHandler} qunatity={this.state.leadForm.qunatity} /> : null}
-                    <Button type="submit" variant="primary" size="sm" >Submit</Button>
+                    {this.state.isEquipmentinfo ? <AddFields leadInputHandler={this.leadInputHandler} appendLeadEquipment={this.appendLeadEquipment} equipmentForm={this.state.equipmentForm} /> : null}
+                    <Button type="submit" onClick={this.leadInputHandler} variant="primary" size="sm" >Submit</Button>
                 </Form>
             </React.Fragment>
         )
@@ -152,7 +174,7 @@ class BusiAddnewmodal extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addLead: leadForm => dispatch(addLead(leadForm))
+        addLead: multipleLead => dispatch(addLead(multipleLead))
     }
 }
 
