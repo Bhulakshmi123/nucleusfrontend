@@ -12,11 +12,13 @@ class BusinessMCard extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
+        let leadType = window.location.href.split('/');
+        console.log(leadType)
         this.state = {
             'isApiCallSuccessfull': false,
             'token': token,
             'sidebarView': false,
-            'leadType': 'new',
+            'leadType': leadType[leadType.length-1],
             'leadsInformation': []
         }
     }
