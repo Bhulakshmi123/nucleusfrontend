@@ -332,7 +332,7 @@ a { text-decoration: none !important; }
 .w-90 {width: 90% !important;}
 .w-100 {width: 100% !important;}
 
-
+.text-bluefuchsia { color:#154D7B !important; }
 .bg-bluefuchsia { background-color: #154D7B !important; }
 .bg-darkbluefuchisa { background-color: #081B2D !important; }
 .bg-lightgray { background-color: #EAE8EC !important; }

@@ -110,7 +110,7 @@ class AddViewThree extends Component {
                         <Col md={2} className="my-auto"><Button variant="info" size="sm" block><MdTextsms className="mr-1" />SMS</Button></Col>
                     </Row>
                     <Row>
-                        <Col md={12}>
+                        <Col md={12} className="mb-5 pb-5">
                             {
                                 this.state.dataToRender.map((prop, key) => {
                                     return (
@@ -138,8 +138,10 @@ class AddViewThree extends Component {
                                                                 <div className="font-size-09"><IoMdMailOpen className="text-primary mr-2 font-size-10" />{prop.emailId}</div>
                                                             </Col>
                                                             <Col md={2} className="my-auto text-center">
-                                                                <div className="font-size-18 text-primary">{prop.year}</div>
-                                                                <div className="w-100 text-center mtn-10">Year</div>
+                                                                <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}
+                                                                    <small className="d-block">Model</small>
+                                                                </div>
+                                                                {/* <div className="w-100 text-center font-size-08 text-dark">Model</div> */}
                                                             </Col>
                                                         </Row>
                                                     </Card>

@@ -26,13 +26,14 @@ class AddViewTwo extends Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return (<Redirect to="/business/leads/new"></Redirect>)
+            return (<Redirect to="/business/leads/active"></Redirect>)
         }
     }
     statusChanger = (e) => {
         let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name }
+        console.log('AddViewOne Data StatusChange', data)
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "CLOSED") {
+            if (data.newStatus === "DELETED") { //! Change Later to CLOSED
                 this.setRedirect()
             }
             else {
@@ -58,7 +59,7 @@ class AddViewTwo extends Component {
                             </Link>
                         </Col>
                         <Col md={2}>
-                            <Button variant="danger" size="sm" block name="CLOSED" onClick={this.statusChanger}><i className="fas fa-ban mr-2"></i>Reject</Button>
+                            <Button variant="danger" size="sm" block name="DELETED" onClick={this.statusChanger}><i className="fas fa-ban mr-2"></i>Reject</Button>
                         </Col>
                         <Col md={3}>
                             <Link to='/business/new'>

@@ -76,7 +76,6 @@ class BusiAddnewmodal extends Component {
         });
     }
 
-
     onSubmit = (e) => {
         e.preventDefault();
         let leadForm = {
