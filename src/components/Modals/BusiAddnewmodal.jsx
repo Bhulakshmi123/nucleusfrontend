@@ -5,6 +5,7 @@ import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import { addLead } from '../../redux/actions/index';
 import { connect } from 'react-redux';
+// import { thisExpression } from '@babel/types';
 // var validator = require('validator');
 class BusiAddnewmodal extends Component {
     constructor(props) {
@@ -69,6 +70,7 @@ class BusiAddnewmodal extends Component {
         let equipmentLead = this.state.equipmentLead;
         leadForm = {
             ...equipmentLead,
+            ...leadForm,
             [e.target.name]: e.target.value
         }
         this.setState({
