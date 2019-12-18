@@ -6,13 +6,7 @@ var validator = require('validator');
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            username: "",
-            password: "",
-            tokenId: "",
-            loginStatus: false,
-            errorMessage: ""
-        }
+        this.state = { username: null, password: null, tokenId: null, loginStatus: false, errorMessage: '' }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
@@ -29,7 +23,6 @@ export class Loginpage extends Component {
             })
         }else{
             let data = {
-                //"email": this.state.email,
                 "username": this.state.username,
                 "password": this.state.password,
                 "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a"
@@ -46,26 +39,11 @@ export class Loginpage extends Component {
             });
             console.log("bhu" +[data])
         }
-        
     }
 
 
-
-
-    // getClientInfo = async () => {
-    //     let data = { "username": this.state.username, "password": this.state.password, "companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a" };
-    //     let response = await getClientInfo(data);
-    //     if (response) {
-    //         localStorage.setItem("tokenId", response.data.token);
-    //         localStorage.setItem("username", response.data.name);
-    //         this.setState({ loginStatus: true })
-    //     }
-    //     else { window.alert("Login Failed"); }
-    // }
-
     handleChange(e) {
         let error = 'errorMessage_' + [e.target.name];
-
         if (e.target.type == 'text') {
             console.log(error);
             if (!validator.isEmail(e.target.value) )
