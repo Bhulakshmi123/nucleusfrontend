@@ -44,7 +44,7 @@ class AddViewOne extends Component {
                 <Container fluid>
                     {this.renderRedirect()}
                     <Row className="topContainer mt-5">
-                        <Col md={8} className="font-size-15">
+                        <Col md={8} className="font-size-20">
                             <p>{this.props.formData.equipmentName}</p>
                         </Col>
                         <Col md={2}>

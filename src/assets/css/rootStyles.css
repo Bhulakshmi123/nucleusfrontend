@@ -113,7 +113,7 @@ a { text-decoration: none !important; }
     overflow: auto;
     background-color: #F0F0F0; 
 }
-.equipmentCount { border: 1px solid white; }
+.equipmentCount { border: 2px solid white; }
 .borderedRow { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .borderedRow:hover, .borderedRowActive { background-color: rgba(255, 255, 255, 0.1); }
 .searchBarStyle { border: none; }

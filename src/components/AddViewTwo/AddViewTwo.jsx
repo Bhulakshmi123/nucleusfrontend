@@ -47,8 +47,8 @@ class AddViewTwo extends Component {
                 {this.renderRedirect()}
                 <Container className="mt-5">
                     <Row>
-                        <Col md={4}>
-                            <h4>{this.props.formData.equipmentName}</h4>
+                        <Col md={4}  className="font-size-20">
+                            <p>{this.props.formData.equipmentName}</p>
                         </Col>
                         <Col md={1}>
                             <i className="fab fa-gg-circle text-center  text-dark font-size-20" onClick={this.openModalHandler}></i>
