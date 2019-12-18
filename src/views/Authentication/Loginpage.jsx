@@ -76,7 +76,7 @@ export class Loginpage extends Component {
                                     <Form className="pt-4 px-3" onSubmit={this.submitForm}>
                                         <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
-                                            <Form.Control type="text" name='username' value={this.state.usename} onChange={this.handleChange.bind(this)} className="text-center p-4 font-size-13 hi-65" placeholder="Email or Phone" autoComplete="new-username" />
+                                            <Form.Control type="text" name='username' value={this.state.username} onChange={this.handleChange.bind(this)} className="text-center p-4 font-size-13 hi-65" placeholder="Email or Phone" autoComplete="new-username" />
                                             <div className="text-danger font-size-10">{this.state.errorMessage_username}</div>
                                             <Form.Control.Feedback type="invalid">
                                                 {this.state.errorMessage_email}
