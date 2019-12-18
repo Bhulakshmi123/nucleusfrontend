@@ -12,12 +12,14 @@ class BusinessMCard extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
+        let leadType = window.location.href.split('/');
         this.state = {
-            'isApiCallSuccessfull': false,
-            'token': token,
-            'sidebarView': false,
-            'leadType': 'new',
-            'leadsInformation': []
+            isApiCallSuccessfull: false,
+            token: token,
+            sidebarView: false,
+            leadType: leadType[leadType.length - 1],
+            leadsInformation: [],
+            leadDate: ''
         }
     }
     componentDidMount() {
@@ -62,7 +64,7 @@ class BusinessMCard extends Component {
                                                     <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
                                                         <Row>
                                                             <Col md={5} className="my-auto text-dark">
-                                                                <div className="font-size-12 text-capitalize">{prop.companyName}</div>
+                                                                <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger">[leadid: {prop.lead_id}]</small> </div>
                                                                 <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
                                                             </Col>
                                                             <Col md={3} className="my-auto text-dark">

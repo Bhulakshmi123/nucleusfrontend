@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, Modal, Table } from 'react-bootstrap';
+import { Button, Col, Form, Table } from 'react-bootstrap';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import { addLead } from '../../redux/actions/index';
 import { connect } from 'react-redux';
-import { thisExpression } from '@babel/types';
-var validator = require('validator');
+// var validator = require('validator');
 class BusiAddnewmodal extends Component {
     constructor(props) {
         super(props);

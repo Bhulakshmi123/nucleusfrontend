@@ -21,7 +21,6 @@ export class ArticleHeader extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        // const data = this.state
     }
     openModalHandler = () => {
         this.setState({ isShowing: true });
@@ -40,7 +39,7 @@ export class ArticleHeader extends Component {
                         <Col md={10} className="px-0">
                             <h1 className="mx-0 my-0 text-white text-left">{this.props.heading}</h1>
                         </Col>
-                        <Col md={2} className="my-auto">
+                        <Col md={2} className="my-auto px-0">
                             <Button variant="light" size="sm" block onClick={this.openModalHandler}><FaPlusCircle className="text-primary mr-2" />Add New</Button>
                         </Col>
                     </Row>
