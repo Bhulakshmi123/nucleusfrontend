@@ -10,7 +10,10 @@ const getMonth = (date) => {
     let month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[new Date(parseInt(date)).getMonth()]; //Returns Month Example: 'Nov'
 }
-
+const getMonthEquiphuntStyle = (date) => {
+    let month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return month[date - 1];
+}
 const getMonthNumber = (date) => {
     return new Date(parseInt(date)).getMonth() + 1; //Returns MonthNumber Example: 11
 }
@@ -52,8 +55,8 @@ const getDateFormat_3 = (date) => {
 }
 const getDateFormat_4 = (date) => {
     let newDate = date.split('-');
-    let modifiedDate = newDate[2] + ' ' + getMonth(newDate[1]) + ' ' + newDate[0];
+    let modifiedDate = newDate[2] + ' ' + getMonthEquiphuntStyle(parseInt(newDate[1])) + ' ' + newDate[0];
     return modifiedDate;
 }
 
-export { getDate, getFullYear, getMonth, getMonthNumber, getFullMonth, getDay, getFullDay, getDayNumber, getDateFormat_1, getDateFormat_2, getDateFormat_3, getDateFormat_4 }
+export { getDate, getFullYear, getMonth, getMonthNumber, getMonthEquiphuntStyle, getFullMonth, getDay, getFullDay, getDayNumber, getDateFormat_1, getDateFormat_2, getDateFormat_3, getDateFormat_4 }

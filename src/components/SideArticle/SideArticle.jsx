@@ -26,7 +26,7 @@ class SideArticle extends Component {
     }
 
     componentDidMount() {
-        console.log('SideArticle',this.props.history);
+        console.log('State', this.state)
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
     openModalHandler = () => {
@@ -44,6 +44,7 @@ class SideArticle extends Component {
     }
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
+        console.log('Rrpo', leadUuid, leadDetUuid)
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
@@ -78,7 +79,7 @@ class SideArticle extends Component {
                             <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>
                         <div className="px-3 mx-0">
-                            <InputGroup className="pl-2 ml-1 searchBarStyle">
+                            <InputGroup className="searchBarStyle">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className="searchBarPrepend"><i className="fas fa-search"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
@@ -93,12 +94,12 @@ class SideArticle extends Component {
                                             className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.choosen === key ? "borderedRowActive bor-rad-1" : "null"}`}
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
-                                            <Col md={9} className="pl-4">
-                                                <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
+                                            <Col md={9} className="pl-3">
+                                                <div className="pl-1 text-capitalize">{prop.equipmentName} <small className="text-warning">[Lead_uuid {prop.leadDet_id}]</small></div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">
-                                                <div className="text-white equipmentCount p-1 text-center">{prop.leadDet_quantity}</div>
+                                                <div className="text-white equipmentCount bor-rad-3 p-1 text-center">{prop.leadDet_quantity}</div>
                                             </Col>
                                         </Row>
                                     )
