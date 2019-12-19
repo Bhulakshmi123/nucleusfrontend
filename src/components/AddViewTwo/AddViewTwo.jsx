@@ -4,10 +4,12 @@ import { Link, Redirect } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import Supplier from '../Supplier/Supplier';
 import AddFields2 from '../FormFields/AddFields2';
-import { changeLeadStatus } from '../../views/Business/actions';
+import ShortListedSupplier from '../Supplier/ShortListedSupplier'
+import { changeLeadStatus, changeServiceStatus } from '../../views/Business/actions';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
+        console.log('AddViewTwo', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             "isModalShowing": false,
@@ -31,7 +33,6 @@ class AddViewTwo extends Component {
     }
     statusChanger = (e) => {
         let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name }
-        console.log('AddViewOne Data StatusChange', data)
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "DELETED") { //! Change Later to CLOSED
                 this.setRedirect()
@@ -41,13 +42,27 @@ class AddViewTwo extends Component {
             }
         });
     }
+    serviceChanger = (leadId, leadDetId, leadDetUuid, newStatus, createdBy, key) => {
+        // console.log('Serice Chfjaflk', key, uuid);
+        let data = {
+            "leadId": leadId.toString(),
+            "leadDetId": leadDetId.toString(),
+            "leadDetUuid": leadDetUuid,
+            "newStatus": newStatus,
+            "createdBy": createdBy
+        }
+        console.log(data, key)
+        changeServiceStatus(data, this.state.token).then((res) => {
+            console.log(res);
+        })
+    }
     render() {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
                 <Container className="mt-5">
                     <Row>
-                        <Col md={4}  className="font-size-20">
+                        <Col md={4} className="font-size-20">
                             <p>{this.props.formData.equipmentName}</p>
                         </Col>
                         <Col md={1}>
@@ -72,7 +87,15 @@ class AddViewTwo extends Component {
                     <div className="renterName mt-5">FINALISED SUPPLIER</div>
                     <Supplier formData={this.props.formData}></Supplier>
                     <div className="renterName mt-5">SHORTLISTED SUPPLIER</div>
-                    {/* <Supplier></Supplier> */}
+                    <div className="mb-5 pb-5">
+                        {
+                            this.props.supplierData.shortlisted.map((prop, key) => {
+                                return (
+                                    <ShortListedSupplier data={prop} key={key} finalise={() => this.serviceChanger(prop.lead_id, prop.leadDet_id, prop.leadDet_uuid, 'FINALIZED', prop.leadDet_createdBy, key)}></ShortListedSupplier>
+                                )
+                            })
+                        }
+                    </div>
                 </Container>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
@@ -82,7 +105,7 @@ class AddViewTwo extends Component {
                         <AddFields2 formData={this.props.formData}></AddFields2>
                     </Modal.Body>
                 </Modal>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }
