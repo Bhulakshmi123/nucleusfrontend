@@ -332,11 +332,18 @@ a { text-decoration: none !important; }
 .w-90 {width: 90% !important;}
 .w-100 {width: 100% !important;}
 
+.text-underline { text-decoration: underline !important;}
 .text-bluefuchsia { color:#154D7B !important; }
 .bg-bluefuchsia { background-color: #154D7B !important; }
 .bg-darkbluefuchisa { background-color: #081B2D !important; }
 .bg-lightgray { background-color: #EAE8EC !important; }
 .bg-lightestgray { background-color: #F0F0F0 !important; }
+
+.hovertext-primary:hover { color: #154D7B !important; }
+.hovertext-success:hover { color: green  !important; }
+.hovertext-danger:hover { color:  orangered  !important; }
+.hovertext-warning:hover { color: yellowgreen  !important; }
+
 
 
 .linkStateHover { color : black }

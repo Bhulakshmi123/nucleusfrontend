@@ -21,12 +21,12 @@ class SideArticle extends Component {
             categoryNames: [],
             selectedCategory: [],
             dataToRender: [],
-            choosen: 0
+            choosen: 0,
+            supplierData:[]
         }
     }
 
     componentDidMount() {
-        console.log('State', this.state)
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
     openModalHandler = () => {
@@ -44,10 +44,10 @@ class SideArticle extends Component {
     }
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
-        console.log('Rrpo', leadUuid, leadDetUuid)
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
+            this.setState( {'supplierData':response.supplierData})
             this.getSupplierList(response.data[0].leadDet_equipmentType);
             this.setState({ "isApiCallSuccessfull": true })
         }
@@ -145,7 +145,7 @@ class SideArticle extends Component {
                                 <AddViewOne formData={this.state.specificEquipmentsDetails}></AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
-                                <AddViewTwo formData={this.state.specificEquipmentsDetails}></AddViewTwo>
+                                <AddViewTwo formData={this.state.specificEquipmentsDetails} supplierData={this.state.supplierData}></AddViewTwo>
                             </Route>
                         </Switch>
                         : null
