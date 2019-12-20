@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Container, Modal } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import Renter from '../Renter/Renter';
-import Supplier from '../Supplier/Supplier';
+import FinalisedSupplier from '../Supplier/FinalisedSupplier';
 import AddFields2 from '../FormFields/AddFields2';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
 import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
@@ -56,6 +56,9 @@ class AddViewTwo extends Component {
             console.log(res);
         })
     }
+    testChanger = (a, b, c, d, e) => {
+        console.log('name', a, b, c, d, e);
+    }
     render() {
         return (
             <React.Fragment>
@@ -88,8 +91,11 @@ class AddViewTwo extends Component {
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
-                                <DefaultCard md={12}>No Finalised Suppliers are Availbale to Display</DefaultCard> :
-                                <Supplier formData={this.props.formData}></Supplier>
+                                <div>
+                                    <DefaultCard md={12}>No Finalised Suppliers are Availbale to Display</DefaultCard>
+                                    <FinalisedSupplier formData={this.props.formData} testChanger={this.testChanger.bind(this)}></FinalisedSupplier>
+                                </div> :
+                                <FinalisedSupplier formData={this.props.formData}></FinalisedSupplier>
                         }
                     </div>
                     <div className="renterName mt-5">SHORTLISTED SUPPLIER</div>
