@@ -49,7 +49,7 @@ class Renter extends Component {
                                 </Link>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="primary float-right" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit</Button>
+                                <Button variant="link" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit Price</Button>
                             </Col>
                         </Row>
                     </Container>

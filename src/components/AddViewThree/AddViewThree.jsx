@@ -97,7 +97,7 @@ class AddViewThree extends Component {
                         <Col md={7} className="text-left">
                             {
                                 this.state.categoryNames.map((prop, key) => {
-                                    return (<NavLink key={key} activeClassName="linkStateActive" className="mx-3 font-size-10 linkStateHover text-capitalize" onClick={
+                                    return (<NavLink key={key} activeClassName="linkStateActive" className="mx-3 font-size-10 hovertext-bluefuchisa-border text-dark text-capitalize" onClick={
                                         () => {
                                             this.setState({ 'selectedCategory': prop });
                                             this.setState({ 'dataToRender': this.state.response[prop] })
@@ -138,10 +138,10 @@ class AddViewThree extends Component {
                                                                 <div className="font-size-09"><IoMdMailOpen className="text-primary mr-2 font-size-10" />{prop.emailId}</div>
                                                             </Col>
                                                             <Col md={2} className="my-auto text-center">
-                                                                <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}
-                                                                    <small className="d-block">Model</small>
+                                                                <div>
+                                                                    <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}</div>
+                                                                    <small className="d-block mt-1">Model</small>
                                                                 </div>
-                                                                {/* <div className="w-100 text-center font-size-08 text-dark">Model</div> */}
                                                             </Col>
                                                         </Row>
                                                     </Card>

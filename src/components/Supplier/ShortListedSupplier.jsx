@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
-import { Row, Col, Button, Container, Card, Modal } from 'react-bootstrap';
+import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 class ShortListedSupplier extends Component {
@@ -43,28 +43,28 @@ class ShortListedSupplier extends Component {
                         </Row>
                         <hr />
                         <Row className="">
+                            <Col md={2}>
+                                <div className="text-primary font-size-08">Bid Price</div>
+                                <div className="text-dark font-size-09">Rs. {this.props.data.leadDet_price === null ? '-NA-' : this.props.data.leadDet_price} </div>
+                            </Col>
+                            <Col md={1}>
+                                <div className="text-primary font-size-08">Battha</div>
+                                <div className="text-dark font-size-09">{this.props.data.leadDet_operatorBatha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
+                            </Col>
+                            <Col md={1}>
+                                <div className="text-primary font-size-08">Year</div>
+                                <div className="text-dark font-size-09">{this.props.data.leadDet_year === null ? '-NA-' : this.props.data.leadDet_year}</div>
+                            </Col>
+                            <Col md={3}>
+                                <div className="text-primary font-size-08">Location</div>
+                                <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_location === null ? '-NA-' : this.props.data.leadDet_location}</div>
+                            </Col>
+                            <Col md={3}>
+                                <div className="text-primary font-size-08">Supplier Remarks</div>
+                                <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
+                            </Col>
                             <Col md={2} className="my-auto">
-                                <div className="text-primary font-size-07">Bid Price</div>
-                                <div className="text-dark font-size-08">Rs. {this.props.data.leadDet_price === null ? '-NA-' : this.props.data.leadDet_price} </div>
-                            </Col>
-                            <Col md={1} className="my-auto">
-                                <div className="text-primary font-size-07">Battha</div>
-                                <div className="text-dark font-size-08">{this.props.data.leadDet_operatorBatha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
-                            </Col>
-                            <Col md={1} className="my-auto">
-                                <div className="text-primary font-size-07">Year</div>
-                                <div className="text-dark font-size-08">{this.props.data.leadDet_year === null ? '-NA-' : this.props.data.leadDet_year}</div>
-                            </Col>
-                            <Col md={3} className="my-auto">
-                                <div className="text-primary font-size-07">Location</div>
-                                <div className="text-dark font-size-08 text-capitalize">{this.props.data.leadDet_location === null ? '-NA-' : this.props.data.leadDet_location}</div>
-                            </Col>
-                            <Col md={3} className="my-auto">
-                                <div className="text-primary font-size-07">Supplier Remarks</div>
-                                <div className="text-dark font-size-08 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
-                            </Col>
-                            <Col md={2} className="my-auto">
-                                <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit</Button>
+                                <Button variant="link" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>

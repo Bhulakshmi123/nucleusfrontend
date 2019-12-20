@@ -26,23 +26,23 @@ class Supplier extends Component {
                                         <div><i className="fas fa-ellipsis-v font-size-20"></i></div>
                                     </Col>
                                     <Col md={2} className="text-center my-auto">
-                                        <div><i className="fab fa-gg-circle text-center text-dark font-size-22"></i></div>
+                                        <div><i className="fab fa-gg-circle text-center text-muted font-size-28"></i></div>
                                         <div className="font-size-07">Finalised</div>
                                     </Col>
                                     <Col md={2} className="text-center my-auto">
-                                        <div><i className="fab fa-gg-circle text-center  text-dark font-size-22"></i></div>
+                                        <div><i className="fab fa-gg-circle text-center  text-muted font-size-28"></i></div>
                                         <div className="font-size-07">Inspection</div>
                                     </Col>
                                     <Col md={2} className="text-center my-auto">
-                                        <div><i className="fab fa-gg-circle text-center  text-dark font-size-22"></i></div>
+                                        <div><i className="fab fa-gg-circle text-center  text-muted font-size-28"></i></div>
                                         <div className="font-size-07">Feild Visit</div>
                                     </Col>
                                     <Col md={2} className="text-center my-auto">
-                                        <div><i className="fab fa-gg-circle text-center  text-dark font-size-22"></i></div>
+                                        <div><i className="fab fa-gg-circle text-center  text-muted font-size-28"></i></div>
                                         <div className="font-size-07">Agreement</div>
                                     </Col>
                                     <Col md={3} className="text-center my-auto">
-                                        <div className="lastIcon"><i className="fab fa-gg-circle text-center  text-dark font-size-22"></i></div>
+                                        <div className="lastIcon"><i className="fab fa-gg-circle text-center  text-muted font-size-28"></i></div>
                                         <div className="font-size-07">Signed Agreement</div>
                                     </Col>
                                 </Row>
