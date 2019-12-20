@@ -6,7 +6,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
-        console.log('Su', this.props)
         this.state = {
             "isModalShowing": false
         }
@@ -30,7 +29,7 @@ class ShortListedSupplier extends Component {
                                     <Col md={1} className="text-center my-auto">
                                         <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                     </Col>
-                                    <Col md={2} className="text-center my-auto hovertext-success">
+                                    <Col md={2} className="text-center my-auto hovertext-danger">
                                         <div><FaRegCheckCircle className="text-center font-size-22" onClick={this.props.finalise} /></div>
                                         <div className="font-size-07">Finalise</div>
                                     </Col>

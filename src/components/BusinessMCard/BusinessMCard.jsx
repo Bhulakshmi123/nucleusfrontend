@@ -56,14 +56,7 @@ class BusinessMCard extends Component {
                         {this.state.isApiCallSuccessfull === true}
                         <div>
                             {this.state.leadsInformation.length === 0 ?
-                                // <Container>
-                                //     <Row>
-                                //         <Col md={5} sm={12} xs={12} className="bg-light mx-auto bor-rad-1">
-                                //             <p className="text-center m-0 p-2 font-size-10 text-bluefuchsia fontGilroyMedium">No Leads Availbale to Display</p>
-                                //         </Col>
-                                //     </Row>
-                                // </Container>
-                                <DefaultCard md={5}>No Leads Availbale to Display</DefaultCard>:
+                                <DefaultCard md={5}>No Leads Availbale to Display</DefaultCard> :
                                 this.state.leadsInformation.map((prop, key) => {
                                     return (
                                         <Container key={key}>
