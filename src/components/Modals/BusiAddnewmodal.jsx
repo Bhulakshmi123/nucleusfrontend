@@ -39,7 +39,18 @@ class BusiAddnewmodal extends Component {
             equipmentForm: equipmentForm
         });
     }
-
+    inputChangeHandler = (e) => {
+        let leadForm = this.state.leadForm;
+        let equipmentLead = this.state.equipmentLead;
+        leadForm = {
+            ...equipmentLead,
+            ...leadForm,
+            [e.target.name]: e.target.value
+        }
+        this.setState({
+            leadForm: equipmentLead
+        });
+    }
     appendLeadEquipment = (e) => {
         if (this.state.equipmentkey == null) {
             let leadForm = this.state.leadForm;
@@ -65,19 +76,6 @@ class BusiAddnewmodal extends Component {
         }
     }
 
-    inputChangeHandler = (e) => {
-        let leadForm = this.state.leadForm;
-        let equipmentLead = this.state.equipmentLead;
-        leadForm = {
-            ...equipmentLead,
-            ...leadForm,
-            [e.target.name]: e.target.value
-        }
-        this.setState({
-            leadForm: equipmentLead
-        });
-    }
-
     onSubmit = (e) => {
         e.preventDefault();
         let leadForm = {
@@ -90,10 +88,6 @@ class BusiAddnewmodal extends Component {
     openInputHandler = () => {
         this.setState({ isEquipmentinfo: true });
     }
-    InputHandler = () => {
-        this.setState({ phone_no: '' });
-    }
-
     editEquipmentForm = (key) => {
         let equipmentLead = this.state.leadForm.equipmentLead;
         this.setState({
@@ -102,8 +96,6 @@ class BusiAddnewmodal extends Component {
             equipmentkey: key
         })
     }
-
-
     render() {
         return (
             <React.Fragment>
