@@ -6,7 +6,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
-        console.log('Su', this.props)
         this.state = {
             "isModalShowing": false
         }
@@ -19,20 +18,20 @@ class ShortListedSupplier extends Component {
                 <Card className="mx-auto p-3 my-4">
                     <small>
                         <Row>
-                            <Col md={4} className="text-left my-auto">
+                            <Col md={3} className="text-left my-auto">
                                 <div className="text-dark font-size-10 text-capitalize">{this.props.data.companyName}
                                     <small className="text-danger"> [{this.props.data.equipmentName}]</small>
                                 </div>
                                 <div className="font-size-08 text-dark">Priority : <span className="text-primary text-capitalize">{this.props.data.leadDet_priority}</span></div>
                             </Col>
-                            <Col md={8} className=" my-auto">
+                            <Col md={9} className=" my-auto">
                                 <Row>
                                     <Col md={1} className="text-center my-auto">
                                         <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                     </Col>
                                     <Col md={2} className="text-center my-auto hovertext-danger">
                                         <div><FaRegCheckCircle className="text-center font-size-22" onClick={this.props.finalise} /></div>
-                                        <div className="font-size-07">Finalised</div>
+                                        <div className="font-size-07">Finalise</div>
                                     </Col>
                                     <Col md={9} className="my-auto text-center">
                                         <div>lead_uuid</div>
@@ -42,7 +41,7 @@ class ShortListedSupplier extends Component {
                             </Col>
                         </Row>
                         <hr />
-                        <Row className="">
+                        <Row>
                             <Col md={2}>
                                 <div className="text-primary font-size-08">Bid Price</div>
                                 <div className="text-dark font-size-09">Rs. {this.props.data.leadDet_price === null ? '-NA-' : this.props.data.leadDet_price} </div>
@@ -64,7 +63,7 @@ class ShortListedSupplier extends Component {
                                 <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="link" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                                <Button variant="outline-primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>

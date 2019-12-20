@@ -35,7 +35,7 @@ class AddViewThree extends Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return (<Redirect to="/business/leads/new"></Redirect>)
+            return (<Redirect to="/business/leads/active"></Redirect>)
         }
     }
     letsmakeRequestBid = async () => {
@@ -53,6 +53,7 @@ class AddViewThree extends Component {
         let response = await makeRequestBid(urlPayload, data, this.state.token);
         if (response) {
             console.log(response);
+            this.setRedirect();
         }
     }
     statusChanger = (e) => {

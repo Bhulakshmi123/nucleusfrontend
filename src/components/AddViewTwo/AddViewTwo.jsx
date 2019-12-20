@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Container, Modal } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import Renter from '../Renter/Renter';
-import Supplier from '../Supplier/Supplier';
+import FinalisedSupplier from '../Supplier/FinalisedSupplier';
 import AddFields2 from '../FormFields/AddFields2';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
 import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
-import { changeLeadStatus, changeServiceStatus } from '../../views/Business/actions';
+import { changeLeadStatus } from '../../views/Business/actions';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
@@ -43,18 +43,20 @@ class AddViewTwo extends Component {
             }
         });
     }
-    serviceChanger = (leadId, leadDetId, leadDetUuid, newStatus, createdBy, key) => {
-        let data = {
-            "leadId": leadId.toString(),
-            "leadDetId": leadDetId.toString(),
-            "leadDetUuid": leadDetUuid,
-            "newStatus": newStatus,
-            "createdBy": createdBy
-        }
-        console.log(data, key)
-        changeServiceStatus(data, this.state.token).then((res) => {
-            console.log(res);
-        })
+    supplierStausChanger = (detid, status) => {
+        console.log(detid, status);
+        let data = { "leadDetId": detid.toString(), "newStatus": status }
+        changeLeadStatus(data, this.state.token).then((res) => {
+            if (data.newStatus === "FINALIZED") { //! Change Later to CLOSED
+                this.setRedirect()
+            }
+            else {
+                alert('Something Went Wrong Please try After Sometime')
+            }
+        });
+    }
+    testChanger = (e, a, b, c, d) => {
+        console.log('name', e.currentTarget.dataset.id, a, b, c, d);
     }
     render() {
         return (
@@ -82,24 +84,32 @@ class AddViewTwo extends Component {
                             </Link>
                         </Col>
                     </Row>
-                    <div className="renterName mt-5">RENTER</div>
-                    <Renter ApprovalPrice="4,16,00,000" RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler}></Renter>
-                    <div className="renterName mt-5">FINALISED SUPPLIER</div>
+                    <div className="renterName">RENTER</div>
+                    <div className="my-3">
+                        <Renter RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
+                    </div>
+                    <div className="renterName mt-3">FINALISED SUPPLIER</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
-                                <DefaultCard md={12}>No Finalised Suppliers are Availbale to Display</DefaultCard> :
-                                <Supplier formData={this.props.formData}></Supplier>
+                                <div>
+                                    <DefaultCard md={12}>No Finalised Suppliers are Availbale to Display</DefaultCard>
+                                </div> :
+                                this.props.supplierData.finalized.map((prop, key) => {
+                                    return (
+                                        <FinalisedSupplier data={prop} key={key} testChanger={this.testChanger.bind(this)}></FinalisedSupplier>
+                                    )
+                                })
                         }
                     </div>
-                    <div className="renterName mt-5">SHORTLISTED SUPPLIER</div>
+                    <div className="renterName mt-3">SHORTLISTED SUPPLIER</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?
                                 <DefaultCard md={12}>No Shortlisted Suppliers are Availbale to Display</DefaultCard> :
                                 this.props.supplierData.shortlisted.map((prop, key) => {
                                     return (
-                                        <ShortListedSupplier data={prop} key={key} finalise={() => this.serviceChanger(prop.lead_id, prop.leadDet_id, prop.leadDet_uuid, 'FINALIZED', prop.leadDet_createdBy, key)}></ShortListedSupplier>
+                                        <ShortListedSupplier data={prop} key={key} finalise={() => this.supplierStausChanger(prop.leadDet_id, 'FINALIZED')}></ShortListedSupplier>
                                     )
                                 })
                         }
