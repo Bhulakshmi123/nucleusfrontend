@@ -2,6 +2,7 @@ body,
 .modal-title {
     font-family: GilroyBold !important;
 }
+
 .modal-header {
     background-color: #0469D9;
     color: white;
@@ -12,6 +13,7 @@ body,
     color: black;
     font-family: GilroyBold;
 }
+
 ::-webkit-scrollbar {
     width: 0px;
 }
@@ -28,13 +30,10 @@ body,
     background: #555;
 }
 
-
 a {
     color: #1DC7EA;
     font-family: GilroyBold !important;
 }
-
-
 
 .sidebar .sidebar-wrapper {
     position: relative;
@@ -115,7 +114,3 @@ body>.navbar-collapse .logo {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     background-color: white;
 }
-
-
-
-

@@ -166,7 +166,7 @@ class BusiAddnewmodal extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addLead: multipleLead => dispatch(addLead(multipleLead))
+        addLead: equipmentForm => dispatch(addLead(equipmentForm))
     }
 }
 

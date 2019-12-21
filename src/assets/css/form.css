@@ -99,7 +99,8 @@ input[name="e_pe_shift"] {
     margin-left: 0px;
     position: relative;
     top: 3px;
-}    
+}
+
 .red {
     text-align: left !important;
     border-width: 1px !important;
@@ -196,7 +197,11 @@ input[name="e_pe_shift"] {
 .widthtwo {
     min-width: 154px;
 }
+
+
 /* calnder Styling */
+
+
 /* .react-datepicker {
     font-size: 1.3rem !important;
 }
@@ -217,6 +222,8 @@ input[name="e_pe_shift"] {
 .react-datepicker__day {
     margin: 0.5rem !important;
 } */
+
+
 /* calnder Styling */
 
 .stle_back {
@@ -269,4 +276,15 @@ input[name="e_pe_shift"] {
 .table>tbody>tr>td {
     font-weight: 500 !important;
     font-family: GilroyMedium;
+}
+
+.css-1okebmr-indicatorSeparator {
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    background-color: none !important;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    width: 1px;
+    box-sizing: border-box;
 }
