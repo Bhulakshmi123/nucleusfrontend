@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { changeLeadStatus, makeRequestBid } from '../../views/Business/actions';
+import { makeRequestBid } from '../../views/Business/actions';
 import { Container, Col, Row, Button, Badge, InputGroup, Card, Modal } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
@@ -11,7 +11,7 @@ import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add v3', this.props);
+        console.log('Add v3', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -23,11 +23,18 @@ class AddViewThree extends Component {
             checked: true,
             redirect: false,
             isModalShowing: false,
-            redirectPath: ''
+            redirectPath: '',
+            checkBoxData: []
         }
     }
+    componentDidMount() {
+        this.state.dataToRender.map((checky, index) => {
+            this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
+        })
+        console.log('Mo', this.state.checkBoxData)
+    }
+
     test = () => {
-        // console.log('this is a test Function');
         this.setState({ redirect: true, redirectPath: 'leaduuid' })
     }
     openModalHandler = () => {
@@ -36,14 +43,12 @@ class AddViewThree extends Component {
     closeModalHandler = () => {
         this.setState({ "isModalShowing": false })
     }
-    setRedirect = () => {
-        this.setState({ redirect: true, redirectPath: 'active' })
-    }
     renderRedirect = () => {
         if (this.state.redirect && this.state.redirectPath === 'active') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
         if (this.state.redirect && this.state.redirectPath === 'leaduuid') {
+            this.props.funFunction()
             return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
         }
     }
@@ -65,21 +70,11 @@ class AddViewThree extends Component {
             this.test();
         }
     }
-    statusChanger = (e) => {
-        let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name };
-        changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "CLOSED") {
-                this.setRedirect()
-            }
-            else {
-                alert('Something Went Wrong Please try After Sometime')
-            }
-        });
-    }
     handleCheck = (e) => {
         this.setState({ checked: !this.state.checked });
         if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
         else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
+        console.log(this.state.checkedProjects)
     }
     render() {
         return (
@@ -92,7 +87,7 @@ class AddViewThree extends Component {
                             <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20" onClick={this.openModalHandler}></i>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block name="CLOSED" onClick={this.statusChanger}>Reject</Button>
+                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
                             <Button variant="secondary" size="sm" block disabled>Move to Projects</Button>
@@ -129,7 +124,7 @@ class AddViewThree extends Component {
                                             <Container fluid className="w-95" key={key}>
                                                 <Row className="mt-2">
                                                     <Col md={1} className="my-auto">
-                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} onChange={this.handleCheck} />
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
                                                     </Col>
                                                     <Col md={11} className="pr-0">
                                                         <Card className="my-2 p-3">

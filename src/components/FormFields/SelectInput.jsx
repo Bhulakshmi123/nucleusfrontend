@@ -1,24 +1,26 @@
 import React from 'react';
 import Select from 'react-select';
 import '../../assets/css/form.css';
+
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
- 
+
 class SelectInput extends React.Component {
-  state = {
-    selectedOption: null,
-    // name:this.state
-  };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedOption: null,
+    }
+  }
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption: selectedOption });
     console.log(`Option selected:`, selectedOption);
   };
   render() {
     const { selectedOption } = this.state;
- 
     return (
       <div>
         <InputName label={this.props.label} />
@@ -35,9 +37,9 @@ class SelectInput extends React.Component {
 
 const InputName = props => {
   return (
-      <div className="form-modal">
-        <label>{props.label}</label>
-      </div>
+    <div className="form-modal">
+      <label>{props.label}</label>
+    </div>
   );
 };
 export default SelectInput;
