@@ -1,57 +1,27 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 import AddFields2 from '../FormFields/AddFields2';
-import { changeLeadStatus } from '../../views/Business/actions';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            token: token,
-            redirecttoNew: false,
-            redirecttoActive: false
+            token: token
         }
-    }
-    setRedirecttoNew = () => {
-        this.setState({ redirecttoNew: true })
-    }
-    setRedirecttoActive = () => {
-        this.setState({ redirecttoActive: true })
-    }
-    renderRedirect = () => {
-        if (this.state.redirecttoNew) {
-            return (<Redirect to="/business/leads/new"></Redirect>)
-        }
-        if (this.state.redirecttoActive) {
-            return (<Redirect to="/business/leads/active"></Redirect>)
-        }
-    }
-    statusChanger = (e) => {
-        let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name }
-        changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "DELETED") { //! change to REJECTED
-                this.setRedirecttoNew()
-            }
-            else {
-                this.setRedirecttoActive()
-            }
-        });
     }
     render() {
         return (
             <React.Fragment>
                 <Container fluid>
-                    {this.renderRedirect()}
                     <Row className="topContainer mt-5">
                         <Col md={8} className="font-size-20">
                             <p>{this.props.formData.equipmentName}</p>
                         </Col>
                         <Col md={2}>
-                            <Button variant="danger" size="sm" name="DELETED" block onClick={this.statusChanger}><i className="fas fa-trash-alt mr-2"></i>Remove</Button>
+                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW')}>Remove</Button>
                         </Col>
                         <Col md={2}>
-                            <Button variant="success" size="sm" name="ACTIVATED" block onClick={this.statusChanger}>Activate Lead</Button>
+                            <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW')}>Activate Lead</Button>
                         </Col>
                     </Row>
                     <Row>

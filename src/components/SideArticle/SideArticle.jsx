@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Container, Row, Col, InputGroup, FormControl, Modal } from 'react-bootstrap';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
 import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
-import { getLeadEquipmentDetails, getSupplierList } from '../../views/Business/actions';
+import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus } from '../../views/Business/actions';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
@@ -22,13 +22,48 @@ class SideArticle extends Component {
             selectedCategory: [],
             dataToRender: [],
             choosen: 0,
-            supplierData:[]
+            placeofAction: '',
+            supplierData: [],
+            redirect: false
         }
     }
 
     componentDidMount() {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
+    setRedirect = (action) => {
+        this.setState({
+            redirect: true,
+            placeofAction: action
+        })
+    }
+    renderBasedOnRedirect = () => {
+        if (this.state.redirect && this.state.placeofAction === 'ACTIVATED') {
+            return (<Redirect to="/business/leads/active"></Redirect>)
+        }
+        if (this.state.redirect && this.state.placeofAction === 'DELETEDNEW') {
+            return (<Redirect to="/business/leads/new"></Redirect>)
+        }
+        if (this.state.redirect && this.state.placeofAction === 'DELETEDACTIVE') {
+            return (<Redirect to="/business/leads/active"></Redirect>)
+        }
+    }
+
+    changeLeadStatus(leaddetid, newstatus, source) {
+        let data = { "leadDetId": leaddetid.toString(), "newStatus": newstatus }
+        changeLeadStatus(data, this.state.token).then((res) => {
+            if (data.newStatus === "DELETED") { //! Change Later to CLOSED
+                this.setRedirect(data.newStatus + source)
+            }
+            if (data.newStatus === "ACTIVATED") {
+                this.setRedirect(data.newStatus)
+            }
+            if (data.newStatus === "FINALIZED") {
+                this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+            }
+        });
+    }
+
     openModalHandler = () => {
         this.setState({ "isModalShowing": true })
     }
@@ -47,7 +82,7 @@ class SideArticle extends Component {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
-            this.setState( {'supplierData':response.supplierData})
+            this.setState({ 'supplierData': response.supplierData })
             this.getSupplierList(response.data[0].leadDet_equipmentType);
             this.setState({ "isApiCallSuccessfull": true })
         }
@@ -70,6 +105,7 @@ class SideArticle extends Component {
     render() {
         return (
             <React.Fragment>
+                {this.renderBasedOnRedirect()}
                 <Col md={3} className="bg-bluefuchsia viewHeight px-0">
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-4 mb-4">
@@ -142,10 +178,17 @@ class SideArticle extends Component {
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/new/:id">
-                                <AddViewOne formData={this.state.specificEquipmentsDetails}></AddViewOne>
+                                <AddViewOne
+                                    formData={this.state.specificEquipmentsDetails}
+                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
-                                <AddViewTwo formData={this.state.specificEquipmentsDetails} supplierData={this.state.supplierData}></AddViewTwo>
+                                <AddViewTwo
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.supplierData}
+                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                </AddViewTwo>
                             </Route>
                         </Switch>
                         : null
@@ -159,7 +202,7 @@ class SideArticle extends Component {
                         <AddFeilds3></AddFeilds3>
                     </Modal.Body>
                 </Modal>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }

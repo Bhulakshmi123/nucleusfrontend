@@ -7,7 +7,7 @@ import { changeServiceStatus } from '../../views/Business/actions'
 class FinalisedSupplier extends Component {
     constructor(props) {
         super(props)
-        console.log('sasd', this.props)
+        // console.log('sasd', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -24,9 +24,6 @@ class FinalisedSupplier extends Component {
             agreementStatus: '',
             signedAgreementStatus: '',
         }
-    }
-    componentDidMount() {
-
     }
     statusSorter = () => {
         this.props.data.transactions.map((prop, index) => {
@@ -45,9 +42,9 @@ class FinalisedSupplier extends Component {
             "newStatus": this.state.newstatus,
             "createdBy": this.state.createdby
         }
-        console.log('Data', data);
+        // console.log('Data', data);
         changeServiceStatus(data, this.state.token).then((res) => {
-            console.log(res);
+            // console.log(res);
         })
     }
     getServiceData = (leadid, leaddetid, leaddetuuid, newstatus, createdby) => {
@@ -80,23 +77,23 @@ class FinalisedSupplier extends Component {
                                 <Col md={1} className="text-center my-auto">
                                     <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-danger" data-id="FINALIZED" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FINALIZED" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalised</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-danger" data-id="INSPECTION" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="INSPECTION" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.inspectionStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.inspectionStatus ? "text-success font-size-07" : "font-size-07"}>Inspection</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-danger" data-id="FIELDVISIT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FIELDVISIT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.feildVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.feildVisitStatus ? "text-success font-size-07" : "font-size-07"}>Feild Visit</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-danger" data-id="AGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="AGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.agreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.agreementStatus ? "text-success font-size-07" : "font-size-07"}>Agreement</div>
                                 </Col>
-                                <Col md={3} className="text-center my-auto  hovertext-danger" data-id="SIGNEDAGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={3} className="text-center my-auto  hovertext-bluefuchisa" data-id="SIGNEDAGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.signedAgreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.signedAgreementStatus ? "text-success font-size-07" : "font-size-07"}>Signed Agreement</div>
                                 </Col>
