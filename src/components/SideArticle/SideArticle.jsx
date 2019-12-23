@@ -31,6 +31,11 @@ class SideArticle extends Component {
     componentDidMount() {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
+    // Test Function
+    testAddViewThree = () => {
+        this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+    }
+    // Test Function
     setRedirect = (action) => {
         this.setState({
             redirect: true,
@@ -92,6 +97,7 @@ class SideArticle extends Component {
         let data = { "equipmentType": equipmentType.toString() }
         let response = await getSupplierList(data, this.state.token);
         if (response) {
+            console.log('SupplierList', response)
             let categoryName = [];
             this.setState({ specificEquipmentSupplierDetails: response.data })
             for (let categoryType in response.data) {
@@ -156,7 +162,9 @@ class SideArticle extends Component {
                                     dataToRender={this.state.dataToRender}
                                     leadUuid={this.state.leadUuid}
                                     leadDetUuid={this.state.leadEquipmentUid}
-                                    token={this.state.token}>
+                                    token={this.state.token}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    funFunction={this.testAddViewThree}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/discovery">
@@ -165,7 +173,9 @@ class SideArticle extends Component {
                                     supplierData={this.state.specificEquipmentSupplierDetails}
                                     categoryNames={this.state.categoryNames}
                                     selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}>
+                                    dataToRender={this.state.dataToRender}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    funFunction={this.testAddViewThree}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/basic">
@@ -174,7 +184,9 @@ class SideArticle extends Component {
                                     supplierData={this.state.specificEquipmentSupplierDetails}
                                     categoryNames={this.state.categoryNames}
                                     selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}>
+                                    dataToRender={this.state.dataToRender}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    funFunction={this.testAddViewThree}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/new/:id">

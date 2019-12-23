@@ -7,7 +7,7 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
- 
+
 class SelectInput extends React.Component {
   constructor(props){
     super(props);
@@ -45,9 +45,9 @@ class SelectInput extends React.Component {
 
 const InputName = props => {
   return (
-      <div className="form-modal">
-        <label>{props.label}</label>
-      </div>
+    <div className="form-modal">
+      <label>{props.label}</label>
+    </div>
   );
 };
 export default SelectInput;

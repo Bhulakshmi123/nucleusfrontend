@@ -17,11 +17,11 @@ export class Loginpage extends Component {
         e.preventDefault();
         console.log(this.state.username);
         console.log(this.state.password);
-        if(this.state.username === null || this.state.password === null){
+        if (this.state.username === null || this.state.password === null) {
             this.setState({
-                'errorMessage_submit' : 'Check Login Details'
+                'errorMessage_submit': 'Check Login Details'
             })
-        }else{
+        } else {
             let data = {
                 "username": this.state.username,
                 "password": this.state.password,
@@ -37,7 +37,7 @@ export class Loginpage extends Component {
                     localStorage.setItem("tokenId", res.data.token);
                 }
             });
-            console.log("bhu" +[data])
+            console.log("bhu" + [data])
         }
     }
 
@@ -46,13 +46,13 @@ export class Loginpage extends Component {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {
             console.log(error);
-            if (!validator.isEmail(e.target.value) )
+            if (!validator.isEmail(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
                 this.setState({ [error]: '', [e.target.name]: e.target.value })
         }
         if (e.target.type === 'password') {
-            if (!validator.isAlphanumeric(e.target.value) )
+            if (!validator.isAlphanumeric(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
                 this.setState({ 'errorMessage_': 'hwluytut', [e.target.name]: e.target.value })
@@ -84,7 +84,7 @@ export class Loginpage extends Component {
                                         </Form.Group>
                                         <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)}placeholder="Password" autoComplete="new-password" />
+                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" autoComplete="new-password" />
                                             <div className="text-danger font-size-10"> {this.state.errorMessage_password}</div>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
