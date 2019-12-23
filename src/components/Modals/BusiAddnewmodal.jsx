@@ -44,7 +44,7 @@ class BusiAddnewmodal extends Component {
         let equipmentLead = this.state.equipmentLead;
         leadForm = {
             ...equipmentLead,
-            ...leadForm,
+            // ...leadForm,
             [e.target.name]: e.target.value
         }
         this.setState({
