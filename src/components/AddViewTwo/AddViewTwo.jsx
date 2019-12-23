@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Container, Modal } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import FinalisedSupplier from '../Supplier/FinalisedSupplier';
 import AddFields2 from '../FormFields/AddFields2';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
 import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
-import { changeLeadStatus } from '../../views/Business/actions';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        // console.log('AddViewTwo', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            "isModalShowing": false,
-            "token": token,
-            "redirect": false,
+            isModalShowing: false,
+            token: token,
         }
-    }
-    setRedirect = () => {
-        this.setState({ redirect: true })
     }
     openModalHandler = () => {
         this.setState({ "isModalShowing": true })
@@ -27,40 +21,12 @@ class AddViewTwo extends Component {
     closeModalHandler = () => {
         this.setState({ "isModalShowing": false })
     }
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return (<Redirect to="/business/leads/active"></Redirect>)
-        }
-    }
-    statusChanger = (e) => {
-        let data = { "leadDetId": this.props.formData.leadDet_id.toString(), "newStatus": e.target.name }
-        changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "DELETED") { //! Change Later to CLOSED
-                this.setRedirect()
-            }
-            else {
-                alert('Something Went Wrong Please try After Sometime')
-            }
-        });
-    }
-    supplierStausChanger = (detid, status) => {
-        let data = { "leadDetId": detid.toString(), "newStatus": status }
-        changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "FINALIZED") { //! Change Later to CLOSED
-                this.setRedirect()
-            }
-            else {
-                alert('Something Went Wrong Please try After Sometime')
-            }
-        });
-    }
     testChanger = (e, a, b, c, d) => {
         // console.log('name', e.currentTarget.dataset.id, a, b, c, d);
     }
     render() {
         return (
             <React.Fragment>
-                {this.renderRedirect()}
                 <Container className="mt-5">
                     <Row className="mb-4">
                         <Col md={4}>
@@ -75,7 +41,7 @@ class AddViewTwo extends Component {
                             </Link>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block name="DELETED" onClick={this.statusChanger}>Reject</Button>
+                            <Button variant="danger" size="sm" block name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED','ACTIVE')}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
                             <Link to='/business/new'>
@@ -111,7 +77,7 @@ class AddViewTwo extends Component {
                                 <DefaultCard md={12}>No Shortlisted Suppliers are Availbale to Display</DefaultCard> :
                                 this.props.supplierData.shortlisted.map((prop, key) => {
                                     return (
-                                        <ShortListedSupplier data={prop} key={key} finalise={() => this.supplierStausChanger(prop.leadDet_id, 'FINALIZED')}></ShortListedSupplier>
+                                        <ShortListedSupplier data={prop} key={key} finalise={this.props.statusChanger.bind(this)}></ShortListedSupplier>
                                     )
                                 })
                         }

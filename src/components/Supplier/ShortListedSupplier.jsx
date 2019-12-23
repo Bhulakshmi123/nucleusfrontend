@@ -29,8 +29,8 @@ class ShortListedSupplier extends Component {
                                     <Col md={1} className="text-center my-auto">
                                         <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                     </Col>
-                                    <Col md={2} className="text-center my-auto hovertext-danger">
-                                        <div><FaRegCheckCircle className="text-center font-size-22" onClick={this.props.finalise} /></div>
+                                    <Col md={2} className="text-center my-auto hovertext-bluefuchisa">
+                                        <div><FaRegCheckCircle className="text-center font-size-22" onClick={() => this.props.finalise(this.props.data.leadDet_id, 'FINALIZED','ACTIVE')} /></div>
                                         <div className="font-size-07">Finalise</div>
                                     </Col>
                                     <Col md={9} className="my-auto text-center">
