@@ -10,7 +10,7 @@ import { changeLeadStatus } from '../../views/Business/actions';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        console.log('AddViewTwo', this.props)
+        // console.log('AddViewTwo', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             "isModalShowing": false,
@@ -44,7 +44,6 @@ class AddViewTwo extends Component {
         });
     }
     supplierStausChanger = (detid, status) => {
-        console.log(detid, status);
         let data = { "leadDetId": detid.toString(), "newStatus": status }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "FINALIZED") { //! Change Later to CLOSED
@@ -56,38 +55,40 @@ class AddViewTwo extends Component {
         });
     }
     testChanger = (e, a, b, c, d) => {
-        console.log('name', e.currentTarget.dataset.id, a, b, c, d);
+        // console.log('name', e.currentTarget.dataset.id, a, b, c, d);
     }
     render() {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
                 <Container className="mt-5">
-                    <Row>
-                        <Col md={4} className="font-size-20">
-                            <p>{this.props.formData.equipmentName}</p>
+                    <Row className="mb-4">
+                        <Col md={4}>
+                            <h3 className="m-0">{this.props.formData.equipmentName}</h3>
                         </Col>
-                        <Col md={1}>
-                            <i className="fab fa-gg-circle text-center  text-dark font-size-20" onClick={this.openModalHandler}></i>
+                        <Col md={1} className="my-auto">
+                            <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer" onClick={this.openModalHandler}></i>
                         </Col>
-                        <Col md={2}>
+                        <Col md={2} className="my-auto">
                             <Link to={`/business/leads/lead/active/premium`}>
                                 <Button variant="primary" size="sm" block>Suppliers List</Button>
                             </Link>
                         </Col>
-                        <Col md={2}>
-                            <Button variant="danger" size="sm" block name="DELETED" onClick={this.statusChanger}><i className="fas fa-ban mr-2"></i>Reject</Button>
+                        <Col md={2} className="my-auto">
+                            <Button variant="danger" size="sm" block name="DELETED" onClick={this.statusChanger}>Reject</Button>
                         </Col>
-                        <Col md={3}>
+                        <Col md={3} className="my-auto">
                             <Link to='/business/new'>
-                                <Button variant="secondary" size="sm" block disabled><i className="fas fa-arrow-circle-right mr-2" ></i>Move to Projects</Button>
+                                <Button variant="secondary" size="sm" block disabled>Move to Projects</Button>
                             </Link>
                         </Col>
                     </Row>
+
                     <div className="renterName">RENTER</div>
                     <div className="my-3">
                         <Renter RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
+
                     <div className="renterName mt-3">FINALISED SUPPLIER</div>
                     <div>
                         {
@@ -102,6 +103,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
+
                     <div className="renterName mt-3">SHORTLISTED SUPPLIER</div>
                     <div className="mb-5 pb-5">
                         {
@@ -114,6 +116,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
+
                 </Container>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>

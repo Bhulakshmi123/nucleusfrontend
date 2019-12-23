@@ -22,7 +22,7 @@ class SideArticle extends Component {
             selectedCategory: [],
             dataToRender: [],
             choosen: 0,
-            supplierData:[]
+            supplierData: []
         }
     }
 
@@ -47,7 +47,7 @@ class SideArticle extends Component {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
-            this.setState( {'supplierData':response.supplierData})
+            this.setState({ 'supplierData': response.supplierData })
             this.getSupplierList(response.data[0].leadDet_equipmentType);
             this.setState({ "isApiCallSuccessfull": true })
         }

@@ -1,16 +1,17 @@
-
 import React, { Component } from 'react'
 import { changeLeadStatus, makeRequestBid } from '../../views/Business/actions';
 import { Container, Col, Row, Button, Badge, InputGroup, Card, Modal } from 'react-bootstrap';
-import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaRegStopCircle } from 'react-icons/fa';
+import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { NavLink, Redirect } from 'react-router-dom';
 import { MdTextsms } from 'react-icons/md';
 import { MdPhone } from "react-icons/md";
+import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
+        // console.log('Add v3', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -21,8 +22,13 @@ class AddViewThree extends Component {
             checkedProjects: [],
             checked: true,
             redirect: false,
-            isModalShowing: false
+            isModalShowing: false,
+            redirectPath: ''
         }
+    }
+    test = () => {
+        // console.log('this is a test Function');
+        this.setState({ redirect: true, redirectPath: 'leaduuid' })
     }
     openModalHandler = () => {
         this.setState({ "isModalShowing": true });
@@ -31,11 +37,14 @@ class AddViewThree extends Component {
         this.setState({ "isModalShowing": false })
     }
     setRedirect = () => {
-        this.setState({ redirect: true })
+        this.setState({ redirect: true, redirectPath: 'active' })
     }
     renderRedirect = () => {
-        if (this.state.redirect) {
+        if (this.state.redirect && this.state.redirectPath === 'active') {
             return (<Redirect to="/business/leads/active"></Redirect>)
+        }
+        if (this.state.redirect && this.state.redirectPath === 'leaduuid') {
+            return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
         }
     }
     letsmakeRequestBid = async () => {
@@ -52,8 +61,8 @@ class AddViewThree extends Component {
         let urlPayload = this.props.leadUuid + '/' + this.props.leadDetUuid;
         let response = await makeRequestBid(urlPayload, data, this.state.token);
         if (response) {
-            console.log(response);
-            this.setRedirect();
+            // console.log(response);
+            this.test();
         }
     }
     statusChanger = (e) => {
@@ -80,18 +89,18 @@ class AddViewThree extends Component {
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={1} className="my-auto">
-                            <i className="fab fa-gg-circle text-center  text-dark font-size-20" onClick={this.openModalHandler}></i>
+                            <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20" onClick={this.openModalHandler}></i>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block name="CLOSED" onClick={this.statusChanger}><FaRegStopCircle className="mr-1" />Reject</Button>
+                            <Button variant="danger" size="sm" block name="CLOSED" onClick={this.statusChanger}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
-                            <Button variant="secondary" size="sm" block disabled><FaRegArrowAltCircleRight className="mr-1" />Move to Projects</Button>
+                            <Button variant="secondary" size="sm" block disabled>Move to Projects</Button>
                         </Col>
                     </Row>
                     <Row>
                         <Col md={12} className="my-4 bg-lightgray mx-auto">
-                            <h2 className="py-4 m-0"><FaRegArrowAltCircleLeft className="mr-5" />Suppliers List</h2>
+                            <h2 className="py-4 m-0"><FaRegArrowAltCircleLeft className="mr-5 cursor-pointer hovertext-bluefuchisa" onClick={this.test} />Suppliers List</h2>
                         </Col>
                     </Row>
                     <Row className="mb-1">
@@ -113,44 +122,46 @@ class AddViewThree extends Component {
                     <Row>
                         <Col md={12} className="mb-5 pb-5">
                             {
-                                this.state.dataToRender.map((prop, key) => {
-                                    return (
-                                        <Container fluid className="w-95" key={key}>
-                                            <Row className="mt-2">
-                                                <Col md={1} className="my-auto">
-                                                    <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} onChange={this.handleCheck} />
-                                                </Col>
-                                                <Col md={11} className="pr-0">
-                                                    <Card className="my-2 p-3">
-                                                        <Row>
-                                                            <Col md={3} className="my-auto">
-                                                                <div className="font-size-10 text-capitalize"><IoMdPerson className="text-primary mr-1 font-size-12" />{prop.name}</div>
-                                                                <div className="font-size-09"><MdPhone className="text-primary mr-2 text-center font-size-10" />{prop.phoneNumber}</div>
-                                                            </Col>
-                                                            <Col md={1} className="my-auto">
-                                                                <div className="text-center"><IoMdMenu className="font-size-15 text-dark" /></div>
-                                                            </Col>
-                                                            <Col md={2} className="my-auto">
-                                                                <div className="font-size-10 text-capitalize text-primary">{prop.accountCategory}</div>
-                                                                <div className="">{prop.companyId}</div>
-                                                            </Col>
-                                                            <Col md={4} className="my-auto px-0">
-                                                                <div className="font-size-10">{prop.companyName}</div>
-                                                                <div className="font-size-09"><IoMdMailOpen className="text-primary mr-2 font-size-10" />{prop.emailId}</div>
-                                                            </Col>
-                                                            <Col md={2} className="my-auto text-center">
-                                                                <div>
-                                                                    <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}</div>
-                                                                    <small className="d-block mt-1">Model</small>
-                                                                </div>
-                                                            </Col>
-                                                        </Row>
-                                                    </Card>
-                                                </Col>
-                                            </Row>
-                                        </Container>
-                                    )
-                                })
+                                this.state.dataToRender.length === 0 ?
+                                    <DefaultCard md={10} className="my-3">{`No ${this.state.selectedCategory} Suppliers are Avaliable`}</DefaultCard> :
+                                    this.state.dataToRender.map((prop, key) => {
+                                        return (
+                                            <Container fluid className="w-95" key={key}>
+                                                <Row className="mt-2">
+                                                    <Col md={1} className="my-auto">
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} onChange={this.handleCheck} />
+                                                    </Col>
+                                                    <Col md={11} className="pr-0">
+                                                        <Card className="my-2 p-3">
+                                                            <Row>
+                                                                <Col md={3} className="my-auto">
+                                                                    <div className="font-size-10 text-capitalize"><IoMdPerson className="text-primary mr-1 font-size-12" />{prop.name}</div>
+                                                                    <div className="font-size-09"><MdPhone className="text-primary mr-2 text-center font-size-10" />{prop.phoneNumber}</div>
+                                                                </Col>
+                                                                <Col md={1} className="my-auto">
+                                                                    <div className="text-center"><IoMdMenu className="font-size-15 text-dark" /></div>
+                                                                </Col>
+                                                                <Col md={2} className="my-auto">
+                                                                    <div className="font-size-10 text-capitalize text-primary">{prop.accountCategory}</div>
+                                                                    <div className="">{prop.companyId}</div>
+                                                                </Col>
+                                                                <Col md={4} className="my-auto px-0">
+                                                                    <div className="font-size-10">{prop.companyName}</div>
+                                                                    <div className="font-size-09"><IoMdMailOpen className="text-primary mr-2 font-size-10" />{prop.emailId}</div>
+                                                                </Col>
+                                                                <Col md={2} className="my-auto text-center">
+                                                                    <div>
+                                                                        <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}</div>
+                                                                        <small className="d-block mt-1">Model</small>
+                                                                    </div>
+                                                                </Col>
+                                                            </Row>
+                                                        </Card>
+                                                    </Col>
+                                                </Row>
+                                            </Container>
+                                        )
+                                    })
                             }
                         </Col>
                     </Row>
