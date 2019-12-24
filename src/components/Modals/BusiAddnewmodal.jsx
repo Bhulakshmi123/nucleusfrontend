@@ -101,7 +101,7 @@ class BusiAddnewmodal extends Component {
             <React.Fragment>
                 <Form name="dsplyComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no"  placeholder="Phone No." onChange={this.inputChangeHandler} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
