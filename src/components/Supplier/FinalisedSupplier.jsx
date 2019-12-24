@@ -18,9 +18,9 @@ class FinalisedSupplier extends Component {
             leaddetuuid: '',
             newstatus: '',
             createdby: '',
-            finalizedStatus: '',
-            inspectionStatus: '',
-            feildVisitStatus: '',
+            finalizedStatus: true,
+            inspectionStatus: true,
+            feildVisitStatus: true,
             agreementStatus: '',
             signedAgreementStatus: '',
         }
@@ -61,7 +61,7 @@ class FinalisedSupplier extends Component {
     closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
     openModalHandler = () => this.setState({ "isModalShowing": true })
     closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Card className="mx-auto p-3 my-4">
@@ -108,7 +108,7 @@ class FinalisedSupplier extends Component {
                         </Col>
                         <Col md={1}>
                             <div className="text-primary font-size-08">Battha</div>
-                            <div className="text-dark font-size-09">{this.props.data.leadDet_operatorBatha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
+                            <div className="text-dark font-size-09">{this.props.data.leadDet_operatorBattha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
                         </Col>
                         <Col md={1}>
                             <div className="text-primary font-size-08">Year</div>

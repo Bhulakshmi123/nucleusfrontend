@@ -10,13 +10,11 @@ export class Loginpage extends Component {
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    submitForm(e) {
+    submitForm (e) {
         e.preventDefault();
-        console.log(this.state.username);
-        console.log(this.state.password);
         if (this.state.username === null || this.state.password === null) {
             this.setState({
                 'errorMessage_submit': 'Check Login Details'
@@ -37,12 +35,11 @@ export class Loginpage extends Component {
                     localStorage.setItem("tokenId", res.data.token);
                 }
             });
-            console.log("bhu" + [data])
         }
     }
 
 
-    handleChange(e) {
+    handleChange (e) {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {
             console.log(error);
@@ -55,20 +52,20 @@ export class Loginpage extends Component {
             if (!validator.isAlphanumeric(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
-                this.setState({ 'errorMessage_': 'hwluytut', [e.target.name]: e.target.value })
+                this.setState({ 'errorMessage_': 'Wrong Password', [e.target.name]: e.target.value })
         }
     }
 
-    render() {
+    render () {
         if (this.state.loginStatus === true) {
             return (<Redirect to="/dashboard"></Redirect>)
         }
         return (
             <React.Fragment>
-                <div className="loginContent">
+                <div className="loginContent w-100 vh-100">
                     <div className="text-white text-center mt-5">
                         <div className="font-size-25">Hello EQUIPHUNT!</div>
-                        <div className="font-size-11 opct-8 mb-3">Welcome to EH Trackr !</div>
+                        <div className="font-size-11 opct-08 mb-3">Welcome to EH Trackr !</div>
                         <Col md={4} sm={6} xs={12} className="mx-auto">
                             <Card>
                                 <Card.Body>
@@ -76,7 +73,7 @@ export class Loginpage extends Component {
                                     <Form className="pt-4 px-3" onSubmit={this.submitForm}>
                                         <Form.Group controlId="username">
                                             <Form.Label className="w-100 text-center text-dark">Email or Phone</Form.Label>
-                                            <Form.Control type="text" name='username' value={this.state.username} onChange={this.handleChange.bind(this)} className="text-center p-4 font-size-13 hi-65" placeholder="Email or Phone" autoComplete="new-username" />
+                                            <Form.Control type="text" name='username' value={this.state.username} onChange={this.handleChange.bind(this)} className="text-center p-4 font-size-13 h-65" placeholder="Email or Phone" autoComplete="new-username" />
                                             <div className="text-danger font-size-10">{this.state.errorMessage_username}</div>
                                             <Form.Control.Feedback type="invalid">
                                                 {this.state.errorMessage_email}
@@ -84,7 +81,7 @@ export class Loginpage extends Component {
                                         </Form.Group>
                                         <Form.Group controlId="password">
                                             <Form.Label className="w-100 text-center text-dark">Password</Form.Label>
-                                            <Form.Control type="password" className="text-center p-4 font-size-13 hi-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" autoComplete="new-password" />
+                                            <Form.Control type="password" className="text-center p-4 font-size-13 h-65" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} placeholder="Password" autoComplete="new-password" />
                                             <div className="text-danger font-size-10"> {this.state.errorMessage_password}</div>
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>

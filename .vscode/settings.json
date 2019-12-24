@@ -1,0 +1,33 @@
+{
+    "cSpell.words": [
+        "Battha",
+        "EQUIPHUNT",
+        "Gilroy",
+        "Loginpage",
+        "Makea",
+        "Textsms",
+        "Trackr",
+        "bluefuchsia",
+        "darkbluefuchisa",
+        "hovertext",
+        "leaduuid",
+        "lightestgray",
+        "opct",
+        "scrollbar"
+    ],
+    "funcList": {
+        "doubleSpacing": false,
+        "filters": [
+            {
+                "extensions": [
+                    ".c",
+                    ".jsx",
+                    ".js"
+                ],
+                "native": "/^[a-z]+\\s+\\w+\\(/mgi",
+                "display": "/\\S* +(\\w+)/1",
+                "sort": 0
+            }
+        ]
+    }
+}

@@ -27,11 +27,11 @@ class AddViewThree extends Component {
             checkBoxData: []
         }
     }
-    componentDidMount() {
+    componentDidMount () {
         this.state.dataToRender.map((checky, index) => {
             this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
         })
-        console.log('Mo', this.state.checkBoxData)
+        console.log('checkBoxData', this.state.checkBoxData)
     }
 
     test = () => {
@@ -47,12 +47,14 @@ class AddViewThree extends Component {
         if (this.state.redirect && this.state.redirectPath === 'active') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
-        if (this.state.redirect && this.state.redirectPath === 'leaduuid') {
-            this.props.funFunction()
-            return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
+        else {
+            if (this.state.redirect && this.state.redirectPath === 'leaduuid') {
+                this.props.funFunction()
+                return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
+            }
         }
     }
-    letsmakeRequestBid = async () => {
+    letsMakeaRequestBid = async () => {
         let data = {
             "bidInfo": [
                 {
@@ -76,7 +78,7 @@ class AddViewThree extends Component {
         else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
         console.log(this.state.checkedProjects)
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
@@ -111,7 +113,7 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsmakeRequestBid}>Request Bids <Badge pill variant="primary">13</Badge></Button></Col>
+                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsMakeaRequestBid}>Request Bids <Badge pill variant="primary">13</Badge></Button></Col>
                         <Col md={2} className="my-auto"><Button variant="info" size="sm" block><MdTextsms className="mr-1" />SMS</Button></Col>
                     </Row>
                     <Row>

@@ -24,7 +24,7 @@ class AddViewTwo extends Component {
     testChanger = (e, a, b, c, d) => {
         // console.log('name', e.currentTarget.dataset.id, a, b, c, d);
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Container className="mt-5">
@@ -41,7 +41,7 @@ class AddViewTwo extends Component {
                             </Link>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED','ACTIVE')}>Reject</Button>
+                            <Button variant="danger" size="sm" block name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
                             <Link to='/business/new'>
@@ -55,12 +55,12 @@ class AddViewTwo extends Component {
                         <Renter RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
 
-                    <div className="renterName mt-3">FINALISED SUPPLIER</div>
+                    <div className="renterName mt-3">FINALIZED SUPPLIER</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
                                 <div>
-                                    <DefaultCard md={12}>No Finalised Suppliers are Availbale to Display</DefaultCard>
+                                    <DefaultCard md={12}>No Finalized Suppliers are Available to Display</DefaultCard>
                                 </div> :
                                 this.props.supplierData.finalized.map((prop, key) => {
                                     return (
@@ -74,7 +74,7 @@ class AddViewTwo extends Component {
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?
-                                <DefaultCard md={12}>No Shortlisted Suppliers are Availbale to Display</DefaultCard> :
+                                <DefaultCard md={12}>No Shortlisted Suppliers are Available to Display</DefaultCard> :
                                 this.props.supplierData.shortlisted.map((prop, key) => {
                                     return (
                                         <ShortListedSupplier data={prop} key={key} finalise={this.props.statusChanger.bind(this)}></ShortListedSupplier>

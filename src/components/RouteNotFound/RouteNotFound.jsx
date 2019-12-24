@@ -3,7 +3,7 @@ import Error404 from '../../assets/img/Error404.png'
 const RouteNotFound = () => {
     return (
         <React.Fragment>
-            <img className="ErrorStyles" src={Error404} alt="Error 404 Not Found"></img>
+            <img className="vh-50 vw-50 d-block m-auto" src={Error404} alt="Error 404 Not Found"></img>
         </React.Fragment>
     )
 }

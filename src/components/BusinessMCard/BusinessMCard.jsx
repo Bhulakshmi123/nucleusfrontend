@@ -23,7 +23,7 @@ class BusinessMCard extends Component {
             leadDate: ''
         }
     }
-    componentDidMount() {
+    componentDidMount () {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType)
     }
@@ -37,7 +37,7 @@ class BusinessMCard extends Component {
         this.getLeads(e.target.name)
         this.setState({ 'leadType': e.target.name })
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <div className={this.state.sidebarView ? "mainContent mainContentMini" : "mainContent"}>
@@ -45,7 +45,7 @@ class BusinessMCard extends Component {
                         <Row>
                             <Col md={12}>
                                 <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
-                                <Nav className="justify-content-around verticalNavLink mb-4">
+                                <Nav className="justify-content-around my-2 mx-auto w-35 mb-4">
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler} disabled>Pending</NavLink>

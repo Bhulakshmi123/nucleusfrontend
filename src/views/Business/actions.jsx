@@ -4,8 +4,8 @@ import service from '../../service';
 export const getSupplierList = async (payload, token) => {
     return (await service.fetchPost(GET_EQUIPMENT_SUPPLIER_LIST.url, payload, token));
 };
-export const getLeads = async (leadtype, token) => {
-    return (await service.fetchGet(GET_LEADS.url + leadtype, token))
+export const getLeads = async (leadType, token) => {
+    return (await service.fetchGet(GET_LEADS.url + leadType, token))
 }
 export const getLeadInformation = async (payload, token) => {
     return (await service.fetchGet(GET_LEAD_INFORMATION.url + payload, token));
@@ -19,6 +19,6 @@ export const changeLeadStatus = async (payload, token) => {
 export const changeServiceStatus = async (payload, token) => {
     return (await service.fetchPost(CHANGE_SERVICE_STATUS.url, payload, token));
 }
-export const makeRequestBid = async (urlpayload, payload, token) => {
-    return (await service.fetchPost(MAKE_A_REQUEST_BID.url + urlpayload, payload, token));
+export const makeRequestBid = async (urlPayload, payload, token) => {
+    return (await service.fetchPost(MAKE_A_REQUEST_BID.url + urlPayload, payload, token));
 }
