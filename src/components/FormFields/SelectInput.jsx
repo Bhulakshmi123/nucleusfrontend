@@ -9,27 +9,36 @@ const options = [
 ];
 
 class SelectInput extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedOption: null,
+  constructor(props){
+    super(props);
+    console.log("Hello", this.props)
+    console.log("Hii",this.props.value)
+    this.state={
+      value: this.props.value,
+      // name:this.props.name
     }
   }
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption: selectedOption });
-    console.log(`Option selected:`, selectedOption);
+
+  handleChange = value => {
+    this.setState({ value :value });
+    // this.props.onChange(value);
+    console.log(`Option selected:`, value);
   };
+  getValue(){
+    const { value } = this.props;
+    return value === undefined ? this.state.value : value;
+  }
   render() {
-    const { selectedOption } = this.state;
     return (
       <div>
         <InputName label={this.props.label} />
         <Select
-          value={selectedOption}
+          value={this.getValue()}
           onChange={this.handleChange}
           options={options}
+          placeholder={this.props.placeholder}
           name={this.props.name}
-        />
+        > </Select>
       </div>
     );
   }
