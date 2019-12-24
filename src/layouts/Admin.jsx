@@ -93,14 +93,14 @@ class Admin extends Component {
   //     this.refs.mainPanel.scrollTop = 0;
   //   }
   // }
-  render() {
+  render () {
     // if (this.state.loggedIn === false) {
     //   return (<Redirect to="/login"></Redirect>)
     // }
     return (
       <React.Fragment>
         <AdminNavbar  {...this.props} brandText={this.getBrandText(this.props.location.pathname)}></AdminNavbar>
-        <Container fluid className="mt-5 dataContainer">
+        <Container fluid className="mt-5 position-fixed">
           <Row>
             <Col md="auto" className="elementLeft">
               <Sidebar {...this.props} routes={routes} color={this.state.color} />

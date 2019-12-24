@@ -62,7 +62,7 @@ export class Loginpage extends Component {
         }
         return (
             <React.Fragment>
-                <div className="loginContent w-100 vh-100">
+                <div className="bg-bluefuchsia overflow-auto w-100 vh-100">
                     <div className="text-white text-center mt-5">
                         <div className="font-size-25">Hello EQUIPHUNT!</div>
                         <div className="font-size-11 opct-08 mb-3">Welcome to EH Trackr !</div>

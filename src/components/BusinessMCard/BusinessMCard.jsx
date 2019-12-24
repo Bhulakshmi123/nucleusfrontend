@@ -15,7 +15,7 @@ class BusinessMCard extends Component {
         let token = localStorage.getItem("tokenId");
         let leadType = window.location.href.split('/');
         this.state = {
-            isApiCallSuccessfull: false,
+            isApiCallSuccessful: false,
             token: token,
             sidebarView: false,
             leadType: leadType[leadType.length - 1],
@@ -53,10 +53,10 @@ class BusinessMCard extends Component {
                                 </Nav>
                             </Col>
                         </Row>
-                        {this.state.isApiCallSuccessfull === true}
+                        {this.state.isApiCallSuccessful === true}
                         <div>
                             {this.state.leadsInformation.length === 0 ?
-                                <DefaultCard md={5}>No Leads Availbale to Display</DefaultCard> :
+                                <DefaultCard md={5}>No Leads Available to Display</DefaultCard> :
                                 this.state.leadsInformation.map((prop, key) => {
                                     return (
                                         <Container key={key}>

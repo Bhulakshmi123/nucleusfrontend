@@ -28,7 +28,7 @@ class SideArticle extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
     // Test Function
@@ -54,7 +54,7 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus(leaddetid, newstatus, source) {
+    changeLeadStatus (leaddetid, newstatus, source) {
         let data = { "leadDetId": leaddetid.toString(), "newStatus": newstatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "DELETED") { //! Change Later to CLOSED
@@ -108,11 +108,11 @@ class SideArticle extends Component {
         }
     }
 
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
-                <Col md={3} className="bg-bluefuchsia viewHeight px-0">
+                <Col md={3} className="bg-bluefuchsia vh-100 bg-light overflow-auto px-0">
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-4 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
@@ -150,7 +150,7 @@ class SideArticle extends Component {
                         </Container>
                     </div>
                 </Col>
-                <Col md={9} className="viewHeight mx-0">
+                <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
                     {this.state.isApiCallSuccessfull === true ?
                         <Switch>
                             <Route path="/business/leads/lead/active/premium">
