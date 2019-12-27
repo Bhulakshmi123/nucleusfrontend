@@ -11,8 +11,6 @@ const options = [
 class SelectInput extends React.Component {
   constructor(props){
     super(props);
-    console.log("Hello", this.props)
-    console.log("Hii",this.props.value)
     this.state={
       value: this.props.value,
       // name:this.props.name
@@ -22,7 +20,6 @@ class SelectInput extends React.Component {
   handleChange = value => {
     this.setState({ value :value });
     // this.props.onChange(value);
-    console.log(`Option selected:`, value);
   };
   getValue(){
     const { value } = this.props;

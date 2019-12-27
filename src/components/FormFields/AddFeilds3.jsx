@@ -5,7 +5,7 @@ import SelectInput from './SelectInput';
 import CalenderInput from './CalenderInput';
 import RadioInput from './RadioInput';
 import TextArea from './TextArea';
-import TimePickerinpt from './TimePickerinpt';
+import TimePickerInput from './TimePickerInput';
 class AddViewModal extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ class AddViewModal extends Component {
             isShowing: false,
         }
     }
-    render() {
+    render () {
         return (
             <form>
                 <Container fluid className="p-0">
@@ -27,7 +27,7 @@ class AddViewModal extends Component {
                     </Row>
                     <Row className="mt-3">
                         <Col md={6}>
-                            <label>Accomodation</label>
+                            <label>Accommodation</label>
                             <div>
                                 <RadioInput name="Yes" label="Yes" />
                                 <RadioInput name="No" label="No" />
@@ -40,8 +40,8 @@ class AddViewModal extends Component {
                         <Col md={12}>
                             <label>Shift 1 Work Duration</label>
                             <div>
-                                <div className="col-md-3"><TimePickerinpt placeholder="From" /></div>
-                                <div className="col-md-3 time_pic"><TimePickerinpt placeholder="To" /></div>
+                                <div className="col-md-5"><TimePickerInput placeholder="From" /></div>
+                                <div className="col-md-5"><TimePickerInput placeholder="To" /></div>
                             </div>
                         </Col>
                     </Row>
