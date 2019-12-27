@@ -96,7 +96,6 @@ class SideArticle extends Component {
         let data = { "equipmentType": equipmentType.toString() }
         let response = await getSupplierList(data, this.state.token);
         if (response) {
-            console.log('SupplierList', response)
             let categoryName = [];
             this.setState({ specificEquipmentSupplierDetails: response.data })
             for (let categoryType in response.data) {
@@ -113,7 +112,7 @@ class SideArticle extends Component {
                 {this.renderBasedOnRedirect()}
                 <Col md={3} className="bg-bluefuchsia vh-100 bg-light overflow-auto px-0">
                     <div className="mb-5 pb-5">
-                        <div className="mt-4 px-4 mb-4">
+                        <div className="mt-4 px-3 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
@@ -136,7 +135,7 @@ class SideArticle extends Component {
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-3">
-                                                <div className="pl-1 text-capitalize">{prop.equipmentName} <small className="text-warning">[Lead_uuid {prop.leadDet_id}]</small></div>
+                                                <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">

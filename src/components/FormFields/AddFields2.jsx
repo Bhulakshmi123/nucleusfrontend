@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { Button, Modal, Col, Form } from 'react-bootstrap';
+import { Button, Modal, Row, Col, Form } from 'react-bootstrap';
 import SelectInput from './SelectInput';
 import CalenderInput from './CalenderInput';
 class AddFields2 extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            equip_modal: ''
+            equip_modal: '',
         }
     }
-
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
-
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <SelectInput name="equip_type" cStyle="widthone" label="Equipment Type" placeholder="Select Equipment Type" defaultValue={this.props.formData.leadDet_modal} onChange={this.props.inputChangeHandler} ></SelectInput>
@@ -119,7 +117,7 @@ class AddFields2 extends Component {
                         </Form.Group>
                     </Col>
                     <Col md={3}>
-                        <label className="ml-1">Accomodation</label>
+                        <label className="ml-1">Accommodation</label>
                         <Form.Group>
                             <Form.Check type="radio" inline label="Yes" />
                             <Form.Check type="radio" inline label="No" />
