@@ -37,8 +37,6 @@ export class Loginpage extends Component {
             });
         }
     }
-
-
     handleChange (e) {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {

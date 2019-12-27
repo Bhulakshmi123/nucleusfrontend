@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import AddFeilds2 from '../../components/FormFields/AddFeilds3.jsx';
+import AddFields2 from '../../components/FormFields/AddFields2';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-import AddFields2 from 'components/FormFields/AddFields2';
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
+        console.log('lkdja',this.props)
         this.state = {
             "isModalShowing": false
         }
@@ -64,7 +64,7 @@ class ShortListedSupplier extends Component {
                                 <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="outline-primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                                <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>

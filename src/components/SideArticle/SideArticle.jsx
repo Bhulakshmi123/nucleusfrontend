@@ -11,7 +11,7 @@ class SideArticle extends Component {
         super(props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            isApiCallSuccessfull: false,
+            isApiCallSuccessful: false,
             isModalShowing: false,
             token: token,
             leadUuid: this.props.leadinfo[0].lead_uuid,
@@ -21,8 +21,8 @@ class SideArticle extends Component {
             categoryNames: [],
             selectedCategory: [],
             dataToRender: [],
-            choosen: 0,
-            placeofAction: '',
+            chosen: 0,
+            placeOfAction: '',
             supplierData: [],
             redirect: false
         }
@@ -39,17 +39,17 @@ class SideArticle extends Component {
     setRedirect = (action) => {
         this.setState({
             redirect: true,
-            placeofAction: action
+            placeOfAction: action
         })
     }
     renderBasedOnRedirect = () => {
-        if (this.state.redirect && this.state.placeofAction === 'ACTIVATED') {
+        if (this.state.redirect && this.state.placeOfAction === 'ACTIVATED') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeofAction === 'DELETEDNEW') {
+        if (this.state.redirect && this.state.placeOfAction === 'DELETEDNEW') {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeofAction === 'DELETEDACTIVE') {
+        if (this.state.redirect && this.state.placeOfAction === 'DELETEDACTIVE') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
     }
@@ -80,7 +80,7 @@ class SideArticle extends Component {
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
         this.getLeadEquipmentDetails(leadId, leadDetUuid, this.state.token);
-        this.setState({ choosen: key })
+        this.setState({ chosen: key })
     }
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
@@ -89,15 +89,13 @@ class SideArticle extends Component {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
             this.setState({ 'supplierData': response.supplierData })
             this.getSupplierList(response.data[0].leadDet_equipmentType);
-            this.setState({ "isApiCallSuccessfull": true })
+            this.setState({ "isApiCallSuccessful": true })
         }
     }
-
     getSupplierList = async (equipmentType) => {
         let data = { "equipmentType": equipmentType.toString() }
         let response = await getSupplierList(data, this.state.token);
         if (response) {
-            console.log('SupplierList', response)
             let categoryName = [];
             this.setState({ specificEquipmentSupplierDetails: response.data })
             for (let categoryType in response.data) {
@@ -114,7 +112,7 @@ class SideArticle extends Component {
                 {this.renderBasedOnRedirect()}
                 <Col md={3} className="bg-bluefuchsia vh-100 bg-light overflow-auto px-0">
                     <div className="mb-5 pb-5">
-                        <div className="mt-4 px-4 mb-4">
+                        <div className="mt-4 px-3 mb-4">
                             <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
@@ -133,11 +131,11 @@ class SideArticle extends Component {
                                 this.props.leadinfo.map((prop, key) => {
                                     return (
                                         <Row
-                                            className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.choosen === key ? "borderedRowActive bor-rad-1" : "null"}`}
+                                            className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.chosen === key ? "borderedRowActive bor-rad-1" : "null"}`}
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-3">
-                                                <div className="pl-1 text-capitalize">{prop.equipmentName} <small className="text-warning">[Lead_uuid {prop.leadDet_id}]</small></div>
+                                                <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">
@@ -151,7 +149,7 @@ class SideArticle extends Component {
                     </div>
                 </Col>
                 <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
-                    {this.state.isApiCallSuccessfull === true ?
+                    {this.state.isApiCallSuccessful === true ?
                         <Switch>
                             <Route path="/business/leads/lead/active/premium">
                                 <AddViewThree

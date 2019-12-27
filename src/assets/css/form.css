@@ -50,13 +50,6 @@ textarea.form-control {
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-
-.form-modal label {
-    font-size: 15px;
-    color: rgba(37, 37, 37, 0.7);
-    margin-left: 10px;
-}
-
 .radio-modal {
     font-size: 17px !important;
     font-weight: 500;
@@ -223,15 +216,6 @@ input[name="e_pe_shift"] {
 .react-datepicker__input-container {
     background: transparent;
     z-index: 2;
-}
-
-.inpt_size {
-    width: 86px !important;
-    /* top: 386px !important; */
-}
-
-.time_pic {
-    margin-left: 28px !important;
 }
 
 .ant-time-picker-panel-placement-bottomLeft {

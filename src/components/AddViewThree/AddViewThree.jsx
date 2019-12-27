@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
-import { Container, Col, Row, Button, Badge, InputGroup, Card, Modal } from 'react-bootstrap';
+import { Container, Col, Row, Button, InputGroup, Card, Modal } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { NavLink, Redirect } from 'react-router-dom';
@@ -113,14 +113,14 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsMakeaRequestBid}>Request Bids <Badge pill variant="primary">13</Badge></Button></Col>
+                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsMakeaRequestBid}>Request Bids</Button></Col>
                         <Col md={2} className="my-auto"><Button variant="info" size="sm" block><MdTextsms className="mr-1" />SMS</Button></Col>
                     </Row>
                     <Row>
                         <Col md={12} className="mb-5 pb-5">
                             {
                                 this.state.dataToRender.length === 0 ?
-                                    <DefaultCard md={10} className="my-3">{`No ${this.state.selectedCategory} Suppliers are Avaliable`}</DefaultCard> :
+                                    <DefaultCard md={10} className="my-3">{`No ${this.state.selectedCategory} Suppliers are Available`}</DefaultCard> :
                                     this.state.dataToRender.map((prop, key) => {
                                         return (
                                             <Container fluid className="w-95" key={key}>

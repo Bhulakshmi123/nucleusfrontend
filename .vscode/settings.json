@@ -9,14 +9,18 @@
         "Mano's",
         "Textsms",
         "Trackr",
+        "antd",
         "bluefuchsia",
         "darkbluefuchisa",
         "hovertext",
+        "leadinfo",
         "leaduuid",
         "lightestgray",
         "mano",
         "opct",
-        "scrollbar"
+        "scrollbar",
+        "widthone",
+        "woff"
     ],
     "funcList": {
         "doubleSpacing": false,

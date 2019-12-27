@@ -4,8 +4,7 @@ import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import AddFields2 from '../../components/FormFields/AddFields2.jsx';
 class Renter extends Component {
     constructor(props) {
-        super(props);
-        console.log(this.props)
+        super(props)
         this.state = {
             isApiCallSuccessfull: false,
             isServiceModalShowing: false,
@@ -54,7 +53,7 @@ class Renter extends Component {
                                             <div className="font-size-07 text-muted">Work Order</div>
                                         </Col>
                                         <Col md={2} className="my-auto px-0">
-                                            <Button variant="outline-primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit Price</Button>
+                                            <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit Price</Button>
                                         </Col>
                                     </React.Fragment> :
                                     null
@@ -62,12 +61,12 @@ class Renter extends Component {
                         </Row>
                     </Container>
                 </Card>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        {/* <AddFields2></AddFields2> */}
+                        <AddFields2 formData={this.props.formData}></AddFields2>
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">
