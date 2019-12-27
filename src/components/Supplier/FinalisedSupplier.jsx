@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddFeilds3 from '../FormFields/AddFeilds3.jsx';
+import AddFields2 from '../FormFields/AddFields2.jsx';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -7,7 +7,6 @@ import { changeServiceStatus } from '../../views/Business/actions'
 class FinalisedSupplier extends Component {
     constructor(props) {
         super(props)
-        // console.log('sasd', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -42,7 +41,6 @@ class FinalisedSupplier extends Component {
             "newStatus": this.state.newstatus,
             "createdBy": this.state.createdby
         }
-        // console.log('Data', data);
         changeServiceStatus(data, this.state.token).then((res) => {
             // console.log(res);
         })
@@ -123,16 +121,16 @@ class FinalisedSupplier extends Component {
                             <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="outline-primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                            <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                         </Col>
                     </Row>
                 </Card>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFeilds3></AddFeilds3>
+                        <AddFields2 formData={this.props.data}></AddFields2>
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">
