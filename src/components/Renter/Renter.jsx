@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Container, Card, Modal } from 'react-bootstrap';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
-import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
+import AddFields2 from '../../components/FormFields/AddFields2.jsx';
 class Renter extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props)
         this.state = {
             isApiCallSuccessfull: false,
             isServiceModalShowing: false,
@@ -66,7 +67,7 @@ class Renter extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFeilds3></AddFeilds3>
+                        {/* <AddFields2></AddFields2> */}
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">

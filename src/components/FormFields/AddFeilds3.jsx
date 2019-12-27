@@ -9,6 +9,7 @@ import TimePickerinpt from './TimePickerinpt';
 class AddViewModal extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props)
         this.state = {
             isShowing: false,
         }

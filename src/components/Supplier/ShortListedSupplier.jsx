@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
+// import AddFeilds2 from '../../components/FormFields/AddFeilds3.jsx';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
+import AddFields2 from 'components/FormFields/AddFields2';
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
@@ -68,12 +69,12 @@ class ShortListedSupplier extends Component {
                         </Row>
                     </small>
                 </Card>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFeilds3></AddFeilds3>
+                        <AddFields2 formData={this.props.data}></AddFields2>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

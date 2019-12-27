@@ -7,7 +7,7 @@ const AddFields = props => {
     return (
         <React.Fragment>
             <Form.Row className="mt-3">
-                <Col md={3}><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={props.equipmentForm.equip_type} onChange={props.leadInputHandler} ></SelectInput></Col>
+                <Col md={3}><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={props.equip_type} onChange={props.leadInputHandler} ></SelectInput></Col>
                 <Col md={3}><SelectInput name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={props.selct_make} onChange={props.leadInputHandler}></SelectInput></Col>
                 <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Model</Form.Label><Form.Control type="text" name="equip_modal" placeholder="Equipment Modal" value={props.equipmentForm.equip_modal} onChange={props.leadInputHandler} /></Form.Group></Col>
                 <Col md={3}><SelectInput name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={props.min_year} onChange={props.leadInputHandler}></SelectInput></Col>

@@ -27,7 +27,7 @@ export default class Index extends Component {
 							<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
 						</Switch>
 					</BrowserRouter>
-				</Provider >,
+				</Provider >
 			</React.Fragment>
 		)
 	}

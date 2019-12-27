@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddFeilds3 from '../FormFields/AddFeilds3.jsx';
+import AddFields2 from '../FormFields/AddFields2';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -7,7 +7,7 @@ import { changeServiceStatus } from '../../views/Business/actions'
 class FinalisedSupplier extends Component {
     constructor(props) {
         super(props)
-        // console.log('sasd', this.props)
+        console.log('sasd', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -61,7 +61,7 @@ class FinalisedSupplier extends Component {
     closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
     openModalHandler = () => this.setState({ "isModalShowing": true })
     closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Card className="mx-auto p-3 my-4">
@@ -127,12 +127,12 @@ class FinalisedSupplier extends Component {
                         </Col>
                     </Row>
                 </Card>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFeilds3></AddFeilds3>
+                        <AddFields2 formData={this.props.data}></AddFields2>
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">

@@ -1,44 +1,35 @@
 import React from 'react';
 import Select from 'react-select';
 import '../../assets/css/form.css';
-
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
-
+ 
 class SelectInput extends React.Component {
-  constructor(props){
-    super(props);
-    console.log("Hello", this.props)
-    console.log("Hii",this.props.value)
-    this.state={
-      value: this.props.value,
-      // name:this.props.name
-    }
-  }
-
-  handleChange = value => {
-    this.setState({ value :value });
-    // this.props.onChange(value);
-    console.log(`Option selected:`, value);
+  state = {
+    selectedOption: null,
+    // name:this.state
   };
-  getValue(){
-    const { value } = this.props;
-    return value === undefined ? this.state.value : value;
-  }
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  };
   render() {
+    const { selectedOption } = this.state;
+ 
+    console.log("virat", this.props);
     return (
       <div>
         <InputName label={this.props.label} />
         <Select
-          value={this.getValue()}
+          value={selectedOption}
           onChange={this.handleChange}
           options={options}
           placeholder={this.props.placeholder}
           name={this.props.name}
-        > </Select>
+        />
       </div>
     );
   }
@@ -46,9 +37,9 @@ class SelectInput extends React.Component {
 
 const InputName = props => {
   return (
-    <div className="form-modal">
-      <label>{props.label}</label>
-    </div>
+      <div className="form-modal">
+        <label>{props.label}</label>
+      </div>
   );
 };
 export default SelectInput;

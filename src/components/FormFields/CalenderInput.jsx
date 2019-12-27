@@ -21,6 +21,8 @@ class CalenderInput extends Component {
           <DatePicker className="form-control stle_back"
             selected={this.state.startDate}
             onChange={this.handleChange}
+            // value={this.props.value}
+            onClick={this.props.name}
             placeholder={this.props.placeholder}
           ></DatePicker>
           <img className="calender" src={require('assets/img/calendar.svg')} alt="CalenderIcon"></img>
