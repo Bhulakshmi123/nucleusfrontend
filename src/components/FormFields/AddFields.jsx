@@ -3,32 +3,39 @@ import { Button, Modal, Col, Form } from 'react-bootstrap';
 import SelectInput from './SelectInput';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
-const AddFields = props => {
-    return (
+
+// const AddFields = props => {
+class AddFields extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
         <React.Fragment>
             <Form.Row className="mt-3">
-                <Col md={3}><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={props.equip_type} onChange={props.leadInputHandler} ></SelectInput></Col>
-                <Col md={3}><SelectInput name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={props.selct_make} onChange={props.leadInputHandler}></SelectInput></Col>
-                <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Model</Form.Label><Form.Control type="text" name="equip_modal" placeholder="Equipment Modal" value={props.equipmentForm.equip_modal} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><SelectInput name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={props.min_year} onChange={props.leadInputHandler}></SelectInput></Col>
+                <Col md={3}><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equip_type} onChange={this.props.leadInputHandler} ></SelectInput></Col>
+                <Col md={3}><SelectInput name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={this.props.selct_make} onChange={this.props.leadInputHandler}></SelectInput></Col>
+                <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Model</Form.Label><Form.Control type="text" name="equip_modal" placeholder="Equipment Modal" value={this.props.equipmentForm.equip_modal} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><SelectInput name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.props.min_year} onChange={this.props.leadInputHandler}></SelectInput></Col>
             </Form.Row>
             <Form.Row className="mt-3">
-                <Col md={3}><Form.Group controlId="formGroupCapty"><Form.Label className="font_stle">Capacity</Form.Label><Form.Control type="text" name="capacity" placeholder="Capacity of Equipment" value={props.equipmentForm.capacity} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><Form.Group controlId="formGroupJob"><Form.Label className="font_stle">Job Location</Form.Label><Form.Control type="text" name="job_loc" placeholder="Location of Work" value={props.job_loc} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><CalenderInput name="extd_start_dte" label="Expected Start Date*" placeholder="Expected Start Date" value={props.extd_start_dte} onChange={props.leadInputHandler} /></Col>
-                <Col md={3}><Form.Group controlId="formGroupMoth"><Form.Label className="font_stle">No. of months</Form.Label><Form.Control type="text" name="no_month" placeholder="Duration of Work" value={props.no_month} onChange={props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupCapty"><Form.Label className="font_stle">Capacity</Form.Label><Form.Control type="text" name="capacity" placeholder="Capacity of Equipment" value={this.props.equipmentForm.capacity} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupJob"><Form.Label className="font_stle">Job Location</Form.Label><Form.Control type="text" name="job_loc" placeholder="Location of Work" value={this.props.job_loc} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><CalenderInput name="extd_start_dte" label="Expected Start Date*" placeholder="Expected Start Date" value={this.props.extd_start_dte} onChange={this.props.leadInputHandler} /></Col>
+                <Col md={3}><Form.Group controlId="formGroupMoth"><Form.Label className="font_stle">No. of months</Form.Label><Form.Control type="text" name="no_month" placeholder="Duration of Work" value={this.props.no_month} onChange={this.props.leadInputHandler} /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3">
-                <Col md={3}><SelectInput name="state" cStyle="widthone" label="State" placeholder="Select State" value={props.state} onChange={props.leadInputHandler}></SelectInput></Col>
-                <Col md={3}><SelectInput name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State" value={props.district_nm} onChange={props.leadInputHandler}></SelectInput></Col>
-                <Col md={3}><Form.Group controlId="formGroupprStage"><Form.Label className="font_stle">Project Stage</Form.Label><Form.Control type="text" name="project_nm" placeholder="Stage of Project" value={props.project_nm} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><Form.Group controlId="formGroupHD"><Form.Label className="font_stle">Operation hours per day</Form.Label><Form.Control type="text" name="operation_hours" placeholder="Operation hours per day" value={props.operation_hours} onChange={props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><SelectInput name="state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.state} onChange={this.props.leadInputHandler}></SelectInput></Col>
+                <Col md={3}><SelectInput name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State" value={this.props.district_nm} onChange={this.props.leadInputHandler}></SelectInput></Col>
+                <Col md={3}><Form.Group controlId="formGroupprStage"><Form.Label className="font_stle">Project Stage</Form.Label><Form.Control type="text" name="project_nm" placeholder="Stage of Project" value={this.props.project_nm} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupHD"><Form.Label className="font_stle">Operation hours per day</Form.Label><Form.Control type="text" name="operation_hours" placeholder="Operation hours per day" value={this.props.operation_hours} onChange={this.props.leadInputHandler} /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3">
-                <Col md={3}><Form.Group controlId="formGroupPM"><Form.Label className="font_stle">Operation days per month</Form.Label><Form.Control type="text" name="operation_d_m" placeholder="Operation days per month" value={props.operation_d_m} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><Form.Group controlId="formGroupQty"><Form.Label className="font_stle">Qunatity</Form.Label><Form.Control type="text" name="qunatity" placeholder="Qunatity" value={props.quantity} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><Form.Group controlId="formGroupHM"><Form.Label className="font_stle">Operation hours per month</Form.Label><Form.Control type="text" name="operation_h_m" placeholder="Operation hours per month" value={props.operation_h_m} onChange={props.leadInputHandler} /></Form.Group></Col>
-                <Col md={3}><Form.Group controlId="formGroupTOW"><Form.Label className="font_stle">Type of Work</Form.Label><Form.Control type="text" name="type_of_work" placeholder="Type of Work" value={props.type_of_work} onChange={props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupPM"><Form.Label className="font_stle">Operation days per month</Form.Label><Form.Control type="text" name="operation_d_m" placeholder="Operation days per month" value={this.props.operation_d_m} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupQty"><Form.Label className="font_stle">Qunatity</Form.Label><Form.Control type="text" name="qunatity" placeholder="Qunatity" value={this.props.quantity} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupHM"><Form.Label className="font_stle">Operation hours per month</Form.Label><Form.Control type="text" name="operation_h_m" placeholder="Operation hours per month" value={this.props.operation_h_m} onChange={this.props.leadInputHandler} /></Form.Group></Col>
+                <Col md={3}><Form.Group controlId="formGroupTOW"><Form.Label className="font_stle">Type of Work</Form.Label><Form.Control type="text" name="type_of_work" placeholder="Type of Work" value={this.props.type_of_work} onChange={this.props.leadInputHandler} /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3">
                 <Col md={3}>
@@ -158,9 +165,10 @@ const AddFields = props => {
             </Form.Row>
             <Modal.Footer className="px-0">
                 {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
-                <Button variant="primary" size="sm" className="px-4" onClick={props.appendLeadEquipment}>Add</Button>
+                <Button variant="primary" size="sm" className="px-4" onClick={this.props.appendLeadEquipment}>Add</Button>
             </Modal.Footer>
         </React.Fragment>
-    );
+        );
+    }
 }
 export default AddFields;

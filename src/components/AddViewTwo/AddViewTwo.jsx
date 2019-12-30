@@ -82,7 +82,6 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
-
                 </Container>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
                     <Modal.Header closeButton>

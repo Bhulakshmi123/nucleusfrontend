@@ -23,7 +23,7 @@ class BusiAddnewmodal extends Component {
                 com_name: '',
                 designation: '',
                 lead_priority: '',
-                equipmentLead: []
+                equipmentLead: [],
             },
             equipmentForm: {},
             multipleLead: []
@@ -75,7 +75,6 @@ class BusiAddnewmodal extends Component {
             });
         }
     }
-
     onSubmit = (e) => {
         e.preventDefault();
         let leadForm = {
@@ -88,6 +87,7 @@ class BusiAddnewmodal extends Component {
     openInputHandler = () => {
         this.setState({ isEquipmentinfo: true });
     }
+    
     editEquipmentForm = (key) => {
         let equipmentLead = this.state.leadForm.equipmentLead;
         this.setState({
