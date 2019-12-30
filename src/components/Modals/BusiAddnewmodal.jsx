@@ -61,10 +61,10 @@ class BusiAddnewmodal extends Component {
                 isEquipmentInfo: false,
                 equipmentForm: {}
             }, () => {
-                console.log(leadForm);
+                // console.log(leadForm);
             });
         } else {
-            console.log(this.state.equipmentForm);
+            // console.log(this.state.equipmentForm);
             let equipmentLead = this.state.leadForm.equipmentLead;
             equipmentLead[this.state.equipmentKey] = this.state.equipmentForm;
             let leadForm = this.state.leadForm;
@@ -81,7 +81,7 @@ class BusiAddnewmodal extends Component {
             leadForm: this.state.leadForm,
             equipmentLead: this.state.equipmentLead
         }
-        console.log("hi", leadForm);
+        // console.log("hi", leadForm);
     }
 
     openInputHandler = () => {
