@@ -10,9 +10,11 @@ class AddViewTwo extends Component {
     constructor(props) {
         super(props)
         // console.log('AddViewTwo',this.props);
+        let userUuid = localStorage.getItem("uuid");
         let token = localStorage.getItem("tokenId");
         this.state = {
             isModalShowing: false,
+            userUuid: userUuid,
             token: token,
         }
     }
@@ -46,7 +48,7 @@ class AddViewTwo extends Component {
                         </Col>
                         <Col md={3} className="my-auto">
                             <Link to='/business/new'>
-                                <Button variant="secondary" size="sm" block disabled>Move to Projects</Button>
+                                <Button variant="secondary" size="sm" block onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </Link>
                         </Col>
                     </Row>

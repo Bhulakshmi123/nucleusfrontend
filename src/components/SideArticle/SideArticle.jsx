@@ -109,14 +109,14 @@ class SideArticle extends Component {
             "leadId": leadId.toString(),
             "leadDetId": [leadDetId.toString()]
         }
-        // console.log('moveToProjects',data)
+        console.log('moveToProjects',data)
         let response = await moveToProjects(data, this.state.token);
         if (response) {
             // console.log('moveToProjects', response)
-            alert('Project Moved to New')
+            console.log('Project Moved to New')
         }
         else {
-            alert('Project Failed to Moved to New')
+            console.log('Project Failed to Moved to New')
         }
     }
     render () {
@@ -213,7 +213,8 @@ class SideArticle extends Component {
                                 <AddViewTwo
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.supplierData}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}>
                                 </AddViewTwo>
                             </Route>
                         </Switch>
