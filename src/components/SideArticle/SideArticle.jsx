@@ -4,8 +4,8 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFeilds3 from '../../components/FormFields/AddFeilds3.jsx';
-import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus } from '../../views/Business/actions';
+import AddFields3 from '../../components/FormFields/AddFields3.jsx';
+import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
@@ -31,11 +31,9 @@ class SideArticle extends Component {
     componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
-    // Test Function
     testAddViewThree = () => {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
-    // Test Function
     setRedirect = (action) => {
         this.setState({
             redirect: true,
@@ -105,7 +103,22 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
-
+    moveToProjects = async (userUuid, leadId, leadDetId) => {
+        let data = {
+            "userUuid": userUuid,
+            "leadId": leadId.toString(),
+            "leadDetId": [leadDetId.toString()]
+        }
+        // console.log('moveToProjects',data)
+        let response = await moveToProjects(data, this.state.token);
+        if (response) {
+            // console.log('moveToProjects', response)
+            alert('Project Moved to New')
+        }
+        else {
+            alert('Project Failed to Moved to New')
+        }
+    }
     render () {
         return (
             <React.Fragment>
@@ -162,7 +175,8 @@ class SideArticle extends Component {
                                     leadDetUuid={this.state.leadEquipmentUid}
                                     token={this.state.token}
                                     statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}>
+                                    funFunction={this.testAddViewThree}
+                                    moveToProjects={this.moveToProjects}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/discovery">
@@ -173,7 +187,8 @@ class SideArticle extends Component {
                                     selectedCategory={this.state.selectedCategory}
                                     dataToRender={this.state.dataToRender}
                                     statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}>
+                                    funFunction={this.testAddViewThree}
+                                    moveToProjects={this.moveToProjects}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/active/basic">
@@ -184,7 +199,8 @@ class SideArticle extends Component {
                                     selectedCategory={this.state.selectedCategory}
                                     dataToRender={this.state.dataToRender}
                                     statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}>
+                                    funFunction={this.testAddViewThree}
+                                    moveToProjects={this.moveToProjects}>
                                 </AddViewThree>
                             </Route>
                             <Route path="/business/leads/lead/new/:id">
@@ -209,7 +225,7 @@ class SideArticle extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFeilds3></AddFeilds3>
+                        <AddFields3></AddFields3>
                     </Modal.Body>
                 </Modal>
             </React.Fragment >

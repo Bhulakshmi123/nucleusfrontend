@@ -6,7 +6,13 @@ var validator = require('validator');
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
-        this.state = { username: null, password: null, tokenId: null, loginStatus: false, errorMessage: '' }
+        this.state = {
+            username: null,
+            password: null,
+            tokenId: null,
+            loginStatus: false,
+            errorMessage: ''
+        }
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
@@ -30,9 +36,10 @@ export class Loginpage extends Component {
                     window.alert('Login Failed');
                 }
                 else {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({ tokenId: res.data.token, loginStatus: true })
                     localStorage.setItem("tokenId", res.data.token);
+                    localStorage.setItem("uuid", res.data.uuid);
                 }
             });
         }

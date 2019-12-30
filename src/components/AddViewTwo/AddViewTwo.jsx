@@ -9,6 +9,7 @@ import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
+        // console.log('AddViewTwo',this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isModalShowing: false,

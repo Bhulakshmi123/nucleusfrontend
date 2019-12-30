@@ -34,23 +34,23 @@ class AddViewOne extends Component {
                                 <Row>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Equipment Type" placeholder={this.props.formData.leadDet_id === null ? 'Select Equipment Type': this.props.formData.leadDet_id} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInput name="equip_type" cStyle="widthone" label="Equipment Type" placeholder={this.props.formData.leadDet_id === null ? 'Select Equipment Type' : this.props.formData.leadDet_id} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Make" placeholder={this.props.formData.leadDet_companyType === null ? 'Select Equipment Type': this.props.formData.leadDet_companyType} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInput name="equip_type" cStyle="widthone" label="Make" placeholder={this.props.formData.leadDet_companyType === null ? 'Select Equipment Type' : this.props.formData.leadDet_companyType} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="Model">Model</label>
-                                            <input type="email" className="form-control" id="Model" aria-describedby="emailHelp" placeholder={this.props.formData.equipmentName === null ? 'Select Equipment Type': this.props.formData.equipmentName} value={this.props.formData.equipmentName} onChange={this.onChange}></input>
+                                            <input type="email" className="form-control" id="Model" aria-describedby="emailHelp" placeholder={this.props.formData.equipmentName === null ? 'Select Equipment Type' : this.props.formData.equipmentName} value={this.props.formData.equipmentName} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Minimum Year" placeholder={this.props.formData.leadDet_year === null ? 'Select Minimum Year': this.props.formData.leadDet_year} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInput name="equip_type" cStyle="widthone" label="Minimum Year" placeholder={this.props.formData.leadDet_year === null ? 'Select Minimum Year' : this.props.formData.leadDet_year} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
                                         </div>
                                     </Col>
                                 </Row>
@@ -82,10 +82,10 @@ class AddViewOne extends Component {
                                 </Row>
                                 <Row>
                                     <Col md={3} lg={3} xs={12}>
-                                        <SelectInput name="equip_type" cStyle="widthone" label="State" placeholder={this.props.formData.equipmentName === null ? 'Select State': this.props.formData.equipmentName} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                        <SelectInput name="equip_type" cStyle="widthone" label="State" placeholder={this.props.formData.equipmentName === null ? 'Select State' : this.props.formData.equipmentName} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
-                                        <SelectInput name="equip_type" cStyle="widthone" label="District" placeholder={this.props.formData.leadDet_location === null ? 'Select District': this.props.formData.leadDet_location} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                        <SelectInput name="equip_type" cStyle="widthone" label="District" placeholder={this.props.formData.leadDet_location === null ? 'Select District' : this.props.formData.leadDet_location} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
@@ -136,7 +136,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Day</div>
+                                                <div className="my-auto font-size-08">Day</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -144,7 +144,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Night</div>
+                                                <div className="my-auto font-size-08">Night</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -157,7 +157,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">One Side</div>
+                                                <div className="my-auto font-size-08">One Side</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -165,7 +165,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Two Side</div>
+                                                <div className="my-auto font-size-08">Two Side</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -178,7 +178,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Company Provides</div>
+                                                <div className="my-auto font-size-08">Company Provides</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -186,7 +186,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Self Provided</div>
+                                                <div className="my-auto font-size-08">Self Provided</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -199,7 +199,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Company Provides</div>
+                                                <div className="my-auto font-size-08">Company Provides</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -207,7 +207,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Self Provided</div>
+                                                <div className="my-auto font-size-08">Self Provided</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -222,7 +222,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Yes</div>
+                                                <div className="my-auto font-size-08">Yes</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -230,7 +230,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">No</div>
+                                                <div className="my-auto font-size-08">No</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -243,7 +243,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Required</div>
+                                                <div className="my-auto font-size-08">Required</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -251,7 +251,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Not Required</div>
+                                                <div className="my-auto font-size-08">Not Required</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -264,7 +264,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Required</div>
+                                                <div className="my-auto font-size-08">Required</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -272,7 +272,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Not Required</div>
+                                                <div className="my-auto font-size-08">Not Required</div>
                                             </div>
                                         </div>
                                     </Col>
@@ -285,7 +285,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Required</div>
+                                                <div className="my-auto font-size-08">Required</div>
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -293,7 +293,7 @@ class AddViewOne extends Component {
                                                         <input type="checkbox" aria-label="Checkbox for following text input"></input>
                                                     </div>
                                                 </div>
-                                                <div className="my-auto">Not Required</div>
+                                                <div className="my-auto font-size-08">Not Required</div>
                                             </div>
                                         </div>
                                     </Col>
