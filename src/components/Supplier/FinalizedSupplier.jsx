@@ -4,54 +4,57 @@ import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { changeServiceStatus } from '../../views/Business/actions'
-class FinalisedSupplier extends Component {
+class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
+        // console.log('Finalized Supplier', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
             isModalShowing: false,
             isServiceModalShowing: false,
-            leadid: '',
-            leaddetid: '',
-            leaddetuuid: '',
-            newstatus: '',
-            createdby: '',
-            finalizedStatus: true,
-            inspectionStatus: true,
-            feildVisitStatus: true,
-            agreementStatus: '',
-            signedAgreementStatus: '',
+            leadId: '',
+            leadDetId: '',
+            leadDetUuid: '',
+            newStatus: '',
+            createdBy: '',
+            finalizedStatus: false,
+            inspectionStatus: false,
+            felidVisitStatus: false,
+            agreementStatus: false,
+            signedAgreementStatus: false
         }
     }
     statusSorter = () => {
-        this.props.data.transactions.map((prop, index) => {
+        this.props.data.transactions.map((prop) => {
             if (prop === 'FINALIZED') { this.setState({ finalizedStatus: true }) }
             if (prop === 'INSPECTION') { this.setState({ inspectionStatus: true }) }
-            if (prop === 'FIELDVISIT') { this.setState({ feildVisitStatus: true }) }
+            if (prop === 'FIELDVISIT') { this.setState({ felidVisitStatus: true }) }
             if (prop === 'AGREEMENT') { this.setState({ agreementStatus: true }) }
             if (prop === 'SIGNEDAGREEMENT') { this.setState({ signedAgreementStatus: true }) }
         })
     }
     serviceChanger = () => {
         let data = {
-            "leadId": this.state.leadid,
-            "leadDetId": this.state.leaddetid,
-            "leadDetUuid": this.state.leaddetuuid,
-            "newStatus": this.state.newstatus,
-            "createdBy": this.state.createdby
+            "leadId": this.state.leadId,
+            "leadDetId": this.state.leadDetId,
+            "leadDetUuid": this.state.leadDetUuid,
+            "newStatus": this.state.newStatus,
+            "createdBy": this.state.createdBy
         }
+        // console.log('Service Data', data);
         changeServiceStatus(data, this.state.token).then((res) => {
-            // console.log(res);
+            console.log(res);
+            this.closeServiceModalHandler()
         })
     }
-    getServiceData = (leadid, leaddetid, leaddetuuid, newstatus, createdby) => {
+    getServiceData = (leadId, leadDetId, leadDetUuid, newStatus, createdBy) => {
         this.setState({
-            leadid: leadid.toString(),
-            leaddetid: leaddetid.toString(),
-            leaddetuuid: leaddetuuid,
-            newstatus: newstatus.currentTarget.dataset.id,
-            createdby: createdby
+            leadId: leadId.toString(),
+            leadDetId: leadDetId.toString(),
+            leadDetUuid: leadDetUuid,
+            newStatus: newStatus.currentTarget.dataset.id,
+            createdBy: createdBy
         })
         this.isServiceModalShowing()
     }
@@ -59,7 +62,7 @@ class FinalisedSupplier extends Component {
     closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
     openModalHandler = () => this.setState({ "isModalShowing": true })
     closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Card className="mx-auto p-3 my-4">
@@ -75,23 +78,23 @@ class FinalisedSupplier extends Component {
                                 <Col md={1} className="text-center my-auto">
                                     <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FINALIZED" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FINALIZED" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
-                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalised</div>
+                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalized</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="INSPECTION" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="INSPECTION" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.inspectionStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.inspectionStatus ? "text-success font-size-07" : "font-size-07"}>Inspection</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FIELDVISIT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.feildVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
-                                    <div className={this.state.feildVisitStatus ? "text-success font-size-07" : "font-size-07"}>Feild Visit</div>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="FIELDVISIT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
+                                    <div><FaRegCheckCircle className={this.state.felidVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div className={this.state.felidVisitStatus ? "text-success font-size-07" : "font-size-07"}>Felid Visit</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="AGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa" data-id="AGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.agreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.agreementStatus ? "text-success font-size-07" : "font-size-07"}>Agreement</div>
                                 </Col>
-                                <Col md={3} className="text-center my-auto  hovertext-bluefuchisa" data-id="SIGNEDAGREEMENT" onClick={(newstatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newstatus, this.props.data.leadDet_createdBy)}>
+                                <Col md={3} className="text-center my-auto  hovertext-bluefuchisa" data-id="SIGNEDAGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
                                     <div><FaRegCheckCircle className={this.state.signedAgreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
                                     <div className={this.state.signedAgreementStatus ? "text-success font-size-07" : "font-size-07"}>Signed Agreement</div>
                                 </Col>
@@ -106,7 +109,7 @@ class FinalisedSupplier extends Component {
                         </Col>
                         <Col md={1}>
                             <div className="text-primary font-size-08">Battha</div>
-                            <div className="text-dark font-size-09">{this.props.data.leadDet_operatorBattha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
+                            <div className="text-dark font-size-09">{this.props.data.leadDet_operatorBatha === null ? '-NA-' : this.props.data.leadDet_operatorBatha}</div>
                         </Col>
                         <Col md={1}>
                             <div className="text-primary font-size-08">Year</div>
@@ -146,4 +149,4 @@ class FinalisedSupplier extends Component {
     }
 }
 
-export default FinalisedSupplier
+export default FinalizedSupplier;

@@ -11,10 +11,12 @@ import AddFields2 from '../FormFields/AddFields2';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        console.log('Add v3', this.props);
+        // console.log('Add v3', this.props);
         let token = localStorage.getItem("tokenId");
+        let userUuid = localStorage.getItem("uuid");
         this.state = {
             token: token,
+            userUuid: userUuid,
             response: this.props.supplierData,
             categoryNames: this.props.categoryNames,
             selectedCategory: this.props.selectedCategory,
@@ -31,7 +33,7 @@ class AddViewThree extends Component {
         this.state.dataToRender.map((checky, index) => {
             this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
         })
-        console.log('checkBoxData', this.state.checkBoxData)
+        // console.log('checkBoxData', this.state.checkBoxData)
     }
 
     test = () => {
@@ -76,7 +78,7 @@ class AddViewThree extends Component {
         this.setState({ checked: !this.state.checked });
         if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
         else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
-        console.log(this.state.checkedProjects)
+        // console.log(this.state.checkedProjects)
     }
     render () {
         return (
@@ -92,7 +94,7 @@ class AddViewThree extends Component {
                             <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
-                            <Button variant="secondary" size="sm" block disabled>Move to Projects</Button>
+                            <Button variant="secondary" size="sm" block onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                         </Col>
                     </Row>
                     <Row>

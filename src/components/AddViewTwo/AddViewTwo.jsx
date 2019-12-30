@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Container, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
-import FinalisedSupplier from '../Supplier/FinalisedSupplier';
+import FinalizedSupplier from '../Supplier/FinalizedSupplier';
 import AddFields2 from '../FormFields/AddFields2';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
 import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
+        // console.log('AddViewTwo',this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isModalShowing: false,
@@ -64,7 +65,7 @@ class AddViewTwo extends Component {
                                 </div> :
                                 this.props.supplierData.finalized.map((prop, key) => {
                                     return (
-                                        <FinalisedSupplier data={prop} key={key} testChanger={this.testChanger.bind(this)}></FinalisedSupplier>
+                                        <FinalizedSupplier data={prop} key={key} testChanger={this.testChanger.bind(this)}></FinalizedSupplier>
                                     )
                                 })
                         }
@@ -77,7 +78,7 @@ class AddViewTwo extends Component {
                                 <DefaultCard md={12}>No Shortlisted Suppliers are Available to Display</DefaultCard> :
                                 this.props.supplierData.shortlisted.map((prop, key) => {
                                     return (
-                                        <ShortListedSupplier data={prop} key={key} finalise={this.props.statusChanger.bind(this)}></ShortListedSupplier>
+                                        <ShortListedSupplier data={prop} key={key} finalize={this.props.statusChanger.bind(this)}></ShortListedSupplier>
                                     )
                                 })
                         }
