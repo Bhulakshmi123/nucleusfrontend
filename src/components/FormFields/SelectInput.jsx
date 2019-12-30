@@ -13,12 +13,12 @@ class SelectInput extends React.Component {
   };
   handleChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    // console.log(`Option selected:`, selectedOption);
   };
   render() {
     const { selectedOption } = this.state;
  
-    console.log("virat", this.props);
+    // console.log("virat", this.props);
     return (
       <div>
         <InputName label={this.props.label} />

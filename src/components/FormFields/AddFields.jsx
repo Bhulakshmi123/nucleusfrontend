@@ -58,7 +58,7 @@ const AddFields = props => {
                     </Form.Group>
                 </Col>
                 <Col md={3}>
-                    <label className="font_stle">Accomodation</label>
+                    <label className="font_stle">Accommodation</label>
                     <Form.Group>
                         <Form.Check
                             type="radio"
