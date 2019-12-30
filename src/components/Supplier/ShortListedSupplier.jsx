@@ -6,7 +6,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
-        console.log('lkdja',this.props)
+        // console.log('ShortListed Supplier',this.props)
         this.state = {
             "isModalShowing": false
         }

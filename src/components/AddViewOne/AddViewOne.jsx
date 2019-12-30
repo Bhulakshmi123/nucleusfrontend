@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput'
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        console.log(this.props.formData)
+        // console.log(this.props.formData)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token

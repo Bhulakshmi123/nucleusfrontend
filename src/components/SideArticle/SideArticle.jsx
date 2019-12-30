@@ -109,15 +109,9 @@ class SideArticle extends Component {
             "leadId": leadId.toString(),
             "leadDetId": [leadDetId.toString()]
         }
-        // console.log('moveToProjects',data)
         let response = await moveToProjects(data, this.state.token);
-        if (response) {
-            // console.log('moveToProjects', response)
-            alert('Project Moved to New')
-        }
-        else {
-            alert('Project Failed to Moved to New')
-        }
+        if (response) { alert('Project Moved to New') }
+        else { alert('Failed to Move Project to Move') }
     }
     render () {
         return (
