@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Row, Col, Form } from 'react-bootstrap';
+import { Button, Modal, Col, Form } from 'react-bootstrap';
 import SelectInput from './SelectInput';
 import CalenderInput from './CalenderInput';
 class AddFields2 extends Component {

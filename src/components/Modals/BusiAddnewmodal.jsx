@@ -11,8 +11,8 @@ class BusiAddnewmodal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeleadNo: null,
-            isEquipmentinfo: false,
+            activeLeadNo: null,
+            isEquipmentInfo: false,
             equipmentCount: 0,
             leadForm: {
                 phone_no: '',
@@ -52,13 +52,13 @@ class BusiAddnewmodal extends Component {
         });
     }
     appendLeadEquipment = (e) => {
-        if (this.state.equipmentkey == null) {
+        if (this.state.equipmentKey == null) {
             let leadForm = this.state.leadForm;
             let equipmentForm = this.state.equipmentForm;
             leadForm.equipmentLead.push(equipmentForm);
             this.setState({
                 leadForm: leadForm,
-                isEquipmentinfo: false,
+                isEquipmentInfo: false,
                 equipmentForm: {}
             }, () => {
                 console.log(leadForm);
@@ -66,12 +66,12 @@ class BusiAddnewmodal extends Component {
         } else {
             console.log(this.state.equipmentForm);
             let equipmentLead = this.state.leadForm.equipmentLead;
-            equipmentLead[this.state.equipmentkey] = this.state.equipmentForm;
+            equipmentLead[this.state.equipmentKey] = this.state.equipmentForm;
             let leadForm = this.state.leadForm;
             leadForm.equipmentLead = equipmentLead;
             this.setState({
                 leadForm: leadForm,
-                isEquipmentinfo: false,
+                isEquipmentInfo: false,
             });
         }
     }
@@ -86,20 +86,20 @@ class BusiAddnewmodal extends Component {
     }
 
     openInputHandler = () => {
-        this.setState({ isEquipmentinfo: true });
+        this.setState({ isEquipmentInfo: true });
     }
     editEquipmentForm = (key) => {
         let equipmentLead = this.state.leadForm.equipmentLead;
         this.setState({
-            isEquipmentinfo: true,
+            isEquipmentInfo: true,
             equipmentForm: equipmentLead[key],
-            equipmentkey: key
+            equipmentKey: key
         })
     }
     render() {
         return (
             <React.Fragment>
-                <Form name="dsplyComponent" onSubmit={this.onSubmit} >
+                <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
                         <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no"  placeholder="Phone No." onChange={this.inputChangeHandler} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
@@ -156,7 +156,7 @@ class BusiAddnewmodal extends Component {
                             </Table>
                         </Col>
                     </Form.Row>
-                    {this.state.isEquipmentinfo ? <AddFields leadInputHandler={this.leadInputHandler} appendLeadEquipment={this.appendLeadEquipment} equipmentForm={this.state.equipmentForm} /> : null}
+                    {this.state.isEquipmentInfo ? <AddFields leadInputHandler={this.leadInputHandler} appendLeadEquipment={this.appendLeadEquipment} equipmentForm={this.state.equipmentForm} /> : null}
                     <Button type="submit" onClick={this.leadInputHandler} variant="primary" size="sm" >Submit</Button>
                 </Form>
             </React.Fragment>

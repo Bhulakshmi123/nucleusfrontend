@@ -6,7 +6,6 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
- 
 class SelectInput extends React.Component {
   state = {
     selectedOption: null,

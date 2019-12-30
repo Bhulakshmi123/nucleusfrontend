@@ -27,7 +27,7 @@ export class Loginpage extends Component {
             };
             getClientInfo(data).then((res) => {
                 if (res === false) {
-                    console.log('Login Failed');
+                    window.alert('Login Failed');
                 }
                 else {
                     console.log(res);
