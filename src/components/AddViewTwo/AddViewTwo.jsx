@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Container, Modal } from 'react-bootstrap';
+import { Row, Col, Button, Container, Modal, ButtonGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import FinalizedSupplier from '../Supplier/FinalizedSupplier';
@@ -32,33 +32,25 @@ class AddViewTwo extends Component {
             <React.Fragment>
                 <Container className="mt-5">
                     <Row className="mb-4">
-                        <Col md={4}>
-                            <h3 className="m-0">{this.props.formData.equipmentName}</h3>
+                        <Col md={6}>
+                            <h3 className="m-0 text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
-                        <Col md={1} className="my-auto">
-                            <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer" onClick={this.openModalHandler}></i>
-                        </Col>
-                        <Col md={2} className="my-auto">
-                            <Link to={`/business/leads/lead/active/premium`}>
-                                <Button variant="primary" size="sm" block>Suppliers List</Button>
-                            </Link>
-                        </Col>
-                        <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
-                        </Col>
-                        <Col md={3} className="my-auto">
-                            <Link to='/business/new'>
-                                <Button variant="secondary" size="sm" block onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
-                            </Link>
+                        <Col md={6} className="my-auto">
+                            <ButtonGroup className="float-right my-auto">
+                                <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer mr-3" onClick={this.openModalHandler}></i>
+                                <Link to={`/business/leads/lead/active/premium`}>
+                                    <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm">Supplier List</Button>
+                                </Link>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
+                            </ButtonGroup>
                         </Col>
                     </Row>
-
-                    <div className="renterName">RENTER</div>
+                    <div className="text-center fontGilroyMedium">---------- RENTER INFORMATION ----------</div>
                     <div className="my-3">
-                        <Renter RenterApproved="#" QuotationLink="#" WorkOrderLink="#" editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
+                        <Renter editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
-
-                    <div className="renterName mt-3">FINALIZED SUPPLIER</div>
+                    <div className="mt-3 text-center fontGilroyMedium">---------- FINALIZED SUPPLIERS ----------</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
@@ -72,8 +64,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
-
-                    <div className="renterName mt-3">SHORTLISTED SUPPLIER</div>
+                    <div className="mt-3 text-center fontGilroyMedium">---------- SHORTLISTED SUPPLIERS ----------</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?

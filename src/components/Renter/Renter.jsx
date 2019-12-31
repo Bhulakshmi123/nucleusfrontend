@@ -21,7 +21,7 @@ class Renter extends Component {
                 <Card className="p-3 mx-auto">
                     <Container>
                         <Row>
-                            <Col md={3} className="my-auto">
+                            <Col md={3} className="my-auto p-0">
                                 <div className="text-primary font-size-08">Approved Price</div>
                                 <div className="font-size-09 text-dark">Rs. {this.props.formData.leadDet_price}</div>
                             </Col>

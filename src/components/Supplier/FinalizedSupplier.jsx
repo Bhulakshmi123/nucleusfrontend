@@ -65,7 +65,7 @@ class FinalizedSupplier extends Component {
     render () {
         return (
             <React.Fragment>
-                <Card className="mx-auto p-3 my-4">
+                <Card className="mx-auto p-3 my-3">
                     <Row>
                         <Col md={3} className="text-left my-auto">
                             <div className="text-dark font-size-10 text-capitalize">{this.props.data.companyName}

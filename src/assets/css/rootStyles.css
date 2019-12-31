@@ -181,27 +181,60 @@ a { text-decoration: none !important; }
 .mrn-19 { margin-right: -19% !important;}
 .mrn-20 { margin-right: -20% !important;}
 
-.bor-rad-0 { border-radius: 0px !important;}
-.bor-rad-1 { border-radius: 5px !important;}
-.bor-rad-2 { border-radius: 10px !important;}
-.bor-rad-3 { border-radius: 15px !important;}
-.bor-rad-4 { border-radius: 20px !important;}
-.bor-rad-5 { border-radius: 25px !important;}
-.bor-rad-6 { border-radius: 30px !important;}
-.bor-rad-7 { border-radius: 35px !important;}
-.bor-rad-8 { border-radius: 40px !important;}
-.bor-rad-9 { border-radius: 45px !important;}
-.bor-rad-10 { border-radius: 50px !important;}
-.bor-rad-11 { border-radius: 55px !important;}
-.bor-rad-12 { border-radius: 60px !important;}
-.bor-rad-13 { border-radius: 65px !important;}
-.bor-rad-14 { border-radius: 70px !important;}
-.bor-rad-15 { border-radius: 75px !important;}
-.bor-rad-16 { border-radius: 80px !important;}
-.bor-rad-18 { border-radius: 85px !important;}
-.bor-rad-18 { border-radius: 90px !important;}
-.bor-rad-19 { border-radius: 95px !important;}
-.bor-rad-20 { border-radius: 100px !important;}
+.bor-rad-00 {border-radius: 0px !important;}
+.bor-rad-01 {border-radius: 1px !important;}
+.bor-rad-02 {border-radius: 2px !important;}
+.bor-rad-03 {border-radius: 3px !important;}
+.bor-rad-04 {border-radius: 4px !important;}
+.bor-rad-05 {border-radius: 5px !important;}
+.bor-rad-06 {border-radius: 6px !important;}
+.bor-rad-07 {border-radius: 7px !important;}
+.bor-rad-08 {border-radius: 8px !important;}
+.bor-rad-09 {border-radius: 9px !important;}
+.bor-rad-10 {border-radius: 10px !important;}
+.bor-rad-11 {border-radius: 11px !important;}
+.bor-rad-12 {border-radius: 12px !important;}
+.bor-rad-13 {border-radius: 13px !important;}
+.bor-rad-14 {border-radius: 14px !important;}
+.bor-rad-15 {border-radius: 15px !important;}
+.bor-rad-16 {border-radius: 16px !important;}
+.bor-rad-17 {border-radius: 17px !important;}
+.bor-rad-18 {border-radius: 18px !important;}
+.bor-rad-19 {border-radius: 19px !important;}
+.bor-rad-20 {border-radius: 20px !important;}
+.bor-rad-21 {border-radius: 21px !important;}
+.bor-rad-22 {border-radius: 22px !important;}
+.bor-rad-23 {border-radius: 23px !important;}
+.bor-rad-24 {border-radius: 24px !important;}
+.bor-rad-25 {border-radius: 25px !important;}
+.bor-rad-26 {border-radius: 26px !important;}
+.bor-rad-27 {border-radius: 27px !important;}
+.bor-rad-28 {border-radius: 28px !important;}
+.bor-rad-29 {border-radius: 29px !important;}
+.bor-rad-30 {border-radius: 30px !important;}
+.bor-rad-31 {border-radius: 31px !important;}
+.bor-rad-32 {border-radius: 32px !important;}
+.bor-rad-33 {border-radius: 33px !important;}
+.bor-rad-34 {border-radius: 34px !important;}
+.bor-rad-35 {border-radius: 35px !important;}
+.bor-rad-36 {border-radius: 36px !important;}
+.bor-rad-37 {border-radius: 37px !important;}
+.bor-rad-38 {border-radius: 38px !important;}
+.bor-rad-39 {border-radius: 39px !important;}
+.bor-rad-40 {border-radius: 40px !important;}
+.bor-rad-41 {border-radius: 41px !important;}
+.bor-rad-42 {border-radius: 42px !important;}
+.bor-rad-43 {border-radius: 43px !important;}
+.bor-rad-44 {border-radius: 44px !important;}
+.bor-rad-45 {border-radius: 45px !important;}
+.bor-rad-46 {border-radius: 46px !important;}
+.bor-rad-47 {border-radius: 47px !important;}
+.bor-rad-48 {border-radius: 48px !important;}
+.bor-rad-49 {border-radius: 49px !important;}
+.bor-rad-50 {border-radius: 50px !important;}
+
+
+
 
 
 .font-size-01 {font-size: 0.1rem !important;}

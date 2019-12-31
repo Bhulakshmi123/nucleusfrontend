@@ -5,7 +5,7 @@ export class DefaultCard extends Component {
         return (
             <Container>
                 <Row>
-                    <Col md={this.props.md} sm={12} xs={12} className="bg-light mx-auto bor-rad-1 m-3 p-2 card">
+                    <Col md={this.props.md} sm={12} xs={12} className="bg-light mx-auto bor-rad-05 m-3 p-2 card">
                         <p className="text-center m-0 p-2 font-size-10 text-bluefuchsia fontGilroyMedium">
                             {this.props.children}
                         </p>
