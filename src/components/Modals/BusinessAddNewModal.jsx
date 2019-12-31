@@ -39,6 +39,7 @@ class BusinessAddNewModal extends Component {
     }
     inputChangeHandler = (e) => {
         let leadForm = this.state.leadForm;
+        console.log('inputChangeHandler',e);
         let equipmentLead = this.state.equipmentLead;
         leadForm = {
             ...equipmentLead,
@@ -94,12 +95,12 @@ class BusinessAddNewModal extends Component {
             equipmentKey: key
         })
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no"  placeholder="Phone No." onChange={this.inputChangeHandler} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
@@ -124,7 +125,7 @@ class BusinessAddNewModal extends Component {
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>
-                            <Table hover className="text-center">
+                            <Table hover className="text-center table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S. No.</th>
@@ -139,14 +140,14 @@ class BusinessAddNewModal extends Component {
                                 <tbody>
                                     {this.state.leadForm.equipmentLead.map((equipment, i) => {
                                         return (
-                                            <tr>
+                                            <tr key={i}>
                                                 <td className="align-middle">{equipment.capacity}</td>
                                                 <td className="align-middle">{i}</td>
                                                 <td className="align-middle">{equipment.equip_type}</td>
                                                 <td className="align-middle"></td>
                                                 <td className="align-middle"></td>
-                                                <td><Button variant="outline-primary" size="sm" block onClick={() => this.editEquipmentForm(i)}>Edit</Button></td>
-                                                <td><Button variant="outline-primary" size="sm" block>Delete</Button></td>
+                                                <td><Button variant="info" size="sm" block onClick={() => this.editEquipmentForm(i)}>Edit</Button></td>
+                                                <td><Button variant="danger" size="sm" block>Delete</Button></td>
                                             </tr>
                                         );
                                     })}
