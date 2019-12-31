@@ -7,28 +7,22 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 class SelectInput extends React.Component {
-  state = {
-    selectedOption: null,
-    // name:this.state
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedOption: ''
+    }
+  }
+  onChange = (selectedOption) => {
+    this.setState({ selectedOption }, () => console.log(`Option selected:`, this.state.selectedOption)
+    );
   };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    // console.log(`Option selected:`, selectedOption);
-  };
-  render() {
+  render () {
     const { selectedOption } = this.state;
- 
-    // console.log("virat", this.props);
     return (
       <div>
-        <InputName label={this.props.label} />
-        <Select
-          value={selectedOption}
-          onChange={this.handleChange}
-          options={options}
-          placeholder={this.props.placeholder}
-          name={this.props.name}
-        />
+        <InputName label={this.props.label}></InputName>
+        <Select value={selectedOption} onChange={this.onChange} options={options} placeholder={this.props.placeholder} name={this.props.name}></Select>
       </div>
     );
   }
@@ -36,9 +30,9 @@ class SelectInput extends React.Component {
 
 const InputName = props => {
   return (
-      <div className="form-modal">
-        <label>{props.label}</label>
-      </div>
+    <div className="form-modal">
+      <label>{props.label}</label>
+    </div>
   );
 };
 export default SelectInput;

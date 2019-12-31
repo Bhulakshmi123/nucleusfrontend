@@ -3,11 +3,9 @@ import { Button, Col, Form, Table } from 'react-bootstrap';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { addLead } from '../../redux/actions/index';
-import { connect } from 'react-redux';
 // import { thisExpression } from '@babel/types';
 // var validator = require('validator');
-class BusiAddnewmodal extends Component {
+class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,10 +59,10 @@ class BusiAddnewmodal extends Component {
                 isEquipmentInfo: false,
                 equipmentForm: {}
             }, () => {
-                // console.log(leadForm);
+                console.log(leadForm);
             });
         } else {
-            // console.log(this.state.equipmentForm);
+            console.log(this.state.equipmentForm);
             let equipmentLead = this.state.leadForm.equipmentLead;
             equipmentLead[this.state.equipmentKey] = this.state.equipmentForm;
             let leadForm = this.state.leadForm;
@@ -82,7 +80,7 @@ class BusiAddnewmodal extends Component {
             leadForm: this.state.leadForm,
             equipmentLead: this.state.equipmentLead
         }
-        // console.log("hi", leadForm);
+        console.log("hi", leadForm);
     }
 
     openInputHandler = () => {
@@ -163,11 +161,4 @@ class BusiAddnewmodal extends Component {
         )
     }
 }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addLead: equipmentForm => dispatch(addLead(equipmentForm))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(BusiAddnewmodal);
+export default BusinessAddNewModal;
