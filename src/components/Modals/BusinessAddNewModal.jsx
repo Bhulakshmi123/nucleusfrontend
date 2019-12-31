@@ -21,7 +21,7 @@ class BusinessAddNewModal extends Component {
                 com_name: '',
                 designation: '',
                 lead_priority: '',
-                equipmentLead: []
+                equipmentLead: [],
             },
             equipmentForm: {},
             multipleLead: []
@@ -74,7 +74,6 @@ class BusinessAddNewModal extends Component {
             });
         }
     }
-
     onSubmit = (e) => {
         e.preventDefault();
         let leadForm = {
@@ -87,6 +86,7 @@ class BusinessAddNewModal extends Component {
     openInputHandler = () => {
         this.setState({ isEquipmentInfo: true });
     }
+    
     editEquipmentForm = (key) => {
         let equipmentLead = this.state.leadForm.equipmentLead;
         this.setState({

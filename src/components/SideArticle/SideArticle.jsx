@@ -207,7 +207,8 @@ class SideArticle extends Component {
                                 <AddViewTwo
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.supplierData}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}>
                                 </AddViewTwo>
                             </Route>
                         </Switch>
