@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
-import AddFields2 from '../../components/FormFields/AddFields2';
+import AddFieldsPro from '../../components/FormFields/AddFieldsPro';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
+        let token = localStorage.getItem("tokenId");
         // console.log('ShortListed Supplier',this.props)
         this.state = {
-            "isModalShowing": false
+            token: token,
+            leadUuid: '',
+            isModalShowing: false,
+            isShortlistedShowing: false,
+            leadId: '',
+            leadDetUuid: '',
         }
     }
-    openModalHandler = () => this.setState({ "isModalShowing": true })
-    closeModalHandler = () => this.setState({ "isModalShowing": false })
+    isFinalizedOpen = (bidId, editBid) => {
+        this.setState({ "isEditbidShowing": true });
+        this.setState({
+            leadUuid: bidId,
+            leadDetUuid: editBid
+        })
+    }
+    isFinalizedClose = () => {
+        this.setState({
+            "isEditbidShowing": false
+        })
+    }
     render() {
         return (
             <React.Fragment>
@@ -64,17 +80,17 @@ class ShortListedSupplier extends Component {
                                 <div className="text-dark font-size-09 text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                                <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>
                 </Card>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
+                <Modal show={this.state.isEditbidShowing} onHide={this.isFinalizedClose} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields2 formData={this.props.data}></AddFields2>
+                        <AddFieldsPro leadUuid={this.state.leadUuid} leadDetUuid={this.state.leadDetUuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

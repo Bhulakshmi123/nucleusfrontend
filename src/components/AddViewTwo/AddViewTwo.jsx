@@ -47,9 +47,7 @@ class AddViewTwo extends Component {
                             <Button variant="danger" size="sm" block name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
                         </Col>
                         <Col md={3} className="my-auto">
-                            <Link to='/business/new'>
                                 <Button variant="secondary" size="sm" block onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
-                            </Link>
                         </Col>
                     </Row>
 

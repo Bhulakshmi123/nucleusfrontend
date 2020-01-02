@@ -28,7 +28,7 @@ class SideArticle extends Component {
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
     testAddViewThree = () => {
@@ -52,7 +52,7 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus (leaddetid, newstatus, source) {
+    changeLeadStatus(leaddetid, newstatus, source) {
         let data = { "leadDetId": leaddetid.toString(), "newStatus": newstatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "DELETED") { //! Change Later to CLOSED
@@ -113,7 +113,7 @@ class SideArticle extends Component {
         if (response) { alert('Project Moved to New') }
         else { alert('Failed to Move Project to Move') }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}

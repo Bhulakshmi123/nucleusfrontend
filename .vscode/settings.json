@@ -23,6 +23,7 @@
         "mano",
         "opct",
         "scrollbar",
+        "selct",
         "widthone",
         "woff"
     ],
@@ -40,5 +41,8 @@
                 "sort": 0
             }
         ]
-    }
+    },
+    "cSpell.ignoreWords": [
+        "feilds"
+    ]
 }
