@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import { FaPlusCircle } from "react-icons/fa";
-import BusiAddnewmodal from '../Modals/BusiAddnewmodal';
+import BusinessAddNewModal from '../Modals/BusinessAddNewModal';
 export class ArticleHeader extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +11,6 @@ export class ArticleHeader extends Component {
     }
     handleChange = (e) => {
         e.preventDefault();
-        // let name = e.target.name;
         let value = e.target.value;
         let count = this.state.equipmentCount;
         let equipmentList = this.state.equipmentList.slice();
@@ -27,9 +26,6 @@ export class ArticleHeader extends Component {
     }
     closeModalHandler = () => {
         this.setState({ isShowing: false });
-    }
-    openInputHandler = () => {
-        this.setState({ isEquipmentinfo: true });
     }
     render() {
         return (
@@ -49,7 +45,7 @@ export class ArticleHeader extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <BusiAddnewmodal />
+                        <BusinessAddNewModal></BusinessAddNewModal>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

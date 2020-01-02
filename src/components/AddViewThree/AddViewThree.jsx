@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
-import { Container, Col, Row, Button, InputGroup, Card, Modal } from 'react-bootstrap';
+import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { NavLink, Redirect } from 'react-router-dom';
@@ -87,14 +87,12 @@ class AddViewThree extends Component {
                 <Container className="mt-5 pl-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
-                        <Col md={1} className="my-auto">
-                            <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20" onClick={this.openModalHandler}></i>
-                        </Col>
-                        <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
-                        </Col>
-                        <Col md={3} className="my-auto">
-                            <Button variant="secondary" size="sm" block onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
+                        <Col md={6} className="pr-0 my-auto">
+                            <ButtonGroup size="sm" className="float-right my-auto">
+                                <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
+                            </ButtonGroup>
                         </Col>
                     </Row>
                     <Row>
@@ -115,8 +113,12 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={3} className="my-auto"><Button variant="primary" size="sm" block onClick={this.letsMakeaRequestBid}>Request Bids</Button></Col>
-                        <Col md={2} className="my-auto"><Button variant="info" size="sm" block><MdTextsms className="mr-1" />SMS</Button></Col>
+                        <Col md={5}>
+                            <ButtonGroup size="sm" className="float-right my-auto">
+                                <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
+                                <Button variant="success" className="ml-1 bor-rad-03 px-3"><MdTextsms className="mr-1" />SMS</Button>
+                            </ButtonGroup>
+                        </Col>
                     </Row>
                     <Row>
                         <Col md={12} className="mb-5 pb-5">
@@ -150,7 +152,7 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="font-size-18 text-white bg-primary bor-rad-1">{prop.year}</div>
+                                                                        <div className="font-size-18 text-white bg-primary bor-rad-05">{prop.year}</div>
                                                                         <small className="d-block mt-1">Model</small>
                                                                     </div>
                                                                 </Col>

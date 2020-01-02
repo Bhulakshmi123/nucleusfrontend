@@ -3,11 +3,9 @@ import { Button, Col, Form, Table } from 'react-bootstrap';
 import SelectInput from '../FormFields/SelectInput';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { addLead } from '../../redux/actions/index';
-import { connect } from 'react-redux';
 // import { thisExpression } from '@babel/types';
 // var validator = require('validator');
-class BusiAddnewmodal extends Component {
+class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,6 +39,7 @@ class BusiAddnewmodal extends Component {
     }
     inputChangeHandler = (e) => {
         let leadForm = this.state.leadForm;
+        console.log('inputChangeHandler',e);
         let equipmentLead = this.state.equipmentLead;
         leadForm = {
             ...equipmentLead,
@@ -61,10 +60,10 @@ class BusiAddnewmodal extends Component {
                 isEquipmentInfo: false,
                 equipmentForm: {}
             }, () => {
-                // console.log(leadForm);
+                console.log(leadForm);
             });
         } else {
-            // console.log(this.state.equipmentForm);
+            console.log(this.state.equipmentForm);
             let equipmentLead = this.state.leadForm.equipmentLead;
             equipmentLead[this.state.equipmentKey] = this.state.equipmentForm;
             let leadForm = this.state.leadForm;
@@ -81,7 +80,7 @@ class BusiAddnewmodal extends Component {
             leadForm: this.state.leadForm,
             equipmentLead: this.state.equipmentLead
         }
-        // console.log("hi", leadForm);
+        console.log("hi", leadForm);
     }
 
     openInputHandler = () => {
@@ -96,12 +95,12 @@ class BusiAddnewmodal extends Component {
             equipmentKey: key
         })
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no"  placeholder="Phone No." onChange={this.inputChangeHandler} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandler} /></Col>
@@ -126,7 +125,7 @@ class BusiAddnewmodal extends Component {
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>
-                            <Table hover className="text-center">
+                            <Table hover className="text-center table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S. No.</th>
@@ -141,14 +140,14 @@ class BusiAddnewmodal extends Component {
                                 <tbody>
                                     {this.state.leadForm.equipmentLead.map((equipment, i) => {
                                         return (
-                                            <tr>
+                                            <tr key={i}>
                                                 <td className="align-middle">{equipment.capacity}</td>
                                                 <td className="align-middle">{i}</td>
                                                 <td className="align-middle">{equipment.equip_type}</td>
                                                 <td className="align-middle"></td>
                                                 <td className="align-middle"></td>
-                                                <td><Button variant="outline-primary" size="sm" block onClick={() => this.editEquipmentForm(i)}>Edit</Button></td>
-                                                <td><Button variant="outline-primary" size="sm" block>Delete</Button></td>
+                                                <td><Button variant="info" size="sm" block onClick={() => this.editEquipmentForm(i)}>Edit</Button></td>
+                                                <td><Button variant="danger" size="sm" block>Delete</Button></td>
                                             </tr>
                                         );
                                     })}
@@ -163,11 +162,4 @@ class BusiAddnewmodal extends Component {
         )
     }
 }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addLead: equipmentForm => dispatch(addLead(equipmentForm))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(BusiAddnewmodal);
+export default BusinessAddNewModal;

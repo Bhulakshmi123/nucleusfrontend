@@ -32,7 +32,7 @@ class ShortListedSupplier extends Component {
     render() {
         return (
             <React.Fragment>
-                <Card className="mx-auto p-3 my-4">
+                <Card className="mx-auto p-3 my-3">
                     <small>
                         <Row>
                             <Col md={3} className="text-left my-auto">
@@ -46,13 +46,13 @@ class ShortListedSupplier extends Component {
                                     <Col md={1} className="text-center my-auto">
                                         <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                     </Col>
-                                    <Col md={2} className="text-center my-auto hovertext-bluefuchisa">
+                                    <Col md={2} className="text-center my-auto hovertext-bluefuchisa cursor-pointer">
                                         <div><FaRegCheckCircle className="text-center font-size-22" onClick={() => this.props.finalize(this.props.data.leadDet_id, 'FINALIZED','ACTIVE')} /></div>
                                         <div className="font-size-07">Finalize</div>
                                     </Col>
                                     <Col md={9} className="my-auto text-center">
                                         <div>lead_uuid</div>
-                                        <span className="px-4 py-2 bor-rad-1 font-size-10 text-primary text-underline">{this.props.data.lead_uuid}</span>
+                                        <span className="px-4 py-2 bor-rad-05 font-size-10 text-primary text-underline">{this.props.data.lead_uuid}</span>
                                     </Col>
                                 </Row>
                             </Col>

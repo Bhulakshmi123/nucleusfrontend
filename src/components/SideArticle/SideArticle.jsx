@@ -138,7 +138,7 @@ class SideArticle extends Component {
                                 this.props.leadinfo.map((prop, key) => {
                                     return (
                                         <Row
-                                            className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.chosen === key ? "borderedRowActive bor-rad-1" : "null"}`}
+                                            className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.chosen === key ? "borderedRowActive bor-rad-05" : "null"}`}
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-3">
@@ -146,7 +146,7 @@ class SideArticle extends Component {
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">
-                                                <div className="text-white equipmentCount bor-rad-3 p-1 text-center">{prop.leadDet_quantity}</div>
+                                                <div className="text-white equipmentCount bor-rad-15 p-1 text-center">{prop.leadDet_quantity}</div>
                                             </Col>
                                         </Row>
                                     )
