@@ -43,11 +43,11 @@ class AddViewTwo extends Component {
                             </ButtonGroup>
                         </Col>
                     </Row>
-                    <div className="text-center fontGilroyMedium">---------- RENTER INFORMATION ----------</div>
+                    <div className="text-center text-danger">---------- RENTER INFORMATION ----------</div>
                     <div className="my-3">
                         <Renter editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
-                    <div className="mt-3 text-center fontGilroyMedium">---------- FINALIZED SUPPLIERS ----------</div>
+                    <div className="mt-3 text-center text-danger">---------- FINALIZED SUPPLIERS ----------</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
@@ -61,7 +61,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
-                    <div className="mt-3 text-center fontGilroyMedium">---------- SHORTLISTED SUPPLIERS ----------</div>
+                    <div className="mt-3 text-center text-danger">---------- SHORTLISTED SUPPLIERS ----------</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?

@@ -36,10 +36,11 @@ export class Loginpage extends Component {
                     window.alert('Login Failed');
                 }
                 else {
-                    // console.log(res);
-                    this.setState({ tokenId: res.data.token, loginStatus: true })
+                    console.log(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
+                    localStorage.setItem("username",res.data.name);
+                    this.setState({ tokenId: res.data.token, loginStatus: true })
                 }
             });
         }
