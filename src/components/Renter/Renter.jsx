@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Container, Card, Modal } from 'react-bootstrap';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
-import AddFields2 from '../../components/FormFields/AddFields2.jsx';
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 class Renter extends Component {
     constructor(props) {
         super(props)
@@ -66,7 +66,7 @@ class Renter extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields2 formData={this.props.formData}></AddFields2>
+                        <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">

@@ -7,11 +7,11 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { MdTextsms } from 'react-icons/md';
 import { MdPhone } from "react-icons/md";
 import { DefaultCard } from '../DefaultCard/DefaultCard';
-import AddFields2 from '../FormFields/AddFields2';
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add v3', this.props);
+        console.log('Add v3', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {
@@ -172,7 +172,7 @@ class AddViewThree extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields2 formData={this.props.formData}></AddFields2>
+                        <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

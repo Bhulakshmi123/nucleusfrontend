@@ -7,7 +7,7 @@ class AddFieldsPro extends Component {
     constructor(props) {
         let token = localStorage.getItem("tokenId");
         super(props)
-        console.log('Add Feilds', this.props)
+        console.log('Add Feilds Pro', this.props)
         this.state = {
             token: token,
             equip_modal: '',
@@ -23,9 +23,7 @@ class AddFieldsPro extends Component {
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
-            console.log('bhu',response)
             this.setState({formData:response.data[0]})
-            console.log(this.state ,"hiii")
         }
     }
     render() {
@@ -50,7 +48,7 @@ class AddFieldsPro extends Component {
                 </Form.Row>
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <Form.Group controlId="formGroupCapty">
+                        <Form.Group controlId="formGroupCapacity">
                             <Form.Label className="ml-1">Capacity</Form.Label>
                             <Form.Control name="capacity" placeholder="Capacity of Equipment" defaultValue={this.state.formData.leadDet_capacity} />
                         </Form.Group>
@@ -62,7 +60,7 @@ class AddFieldsPro extends Component {
                         </Form.Group>
                     </Col>
                     <Col md={3}>
-                        <CalenderInput name="extd_start_dte" label="Expected Start Date*" placeholder="Expected Start Date" defaultValue={this.state.formData.leadDet_startDate} />
+                        <CalenderInput name="expectedStartDate" label="Expected Start Date*" placeholder="Expected Start Date" defaultValue={this.state.formData.leadDet_startDate} />
                     </Col>
                     <Col md={3}>
                         <Form.Group controlId="formGroupMoth">
@@ -79,7 +77,7 @@ class AddFieldsPro extends Component {
                         <SelectInput name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State" defaultValue={this.state.formData.district_nm}></SelectInput>
                     </Col>
                     <Col md={3}>
-                        <Form.Group controlId="formGroupprStage">
+                        <Form.Group controlId="formGroupStage">
                             <Form.Label className="ml-1">Project Stage</Form.Label>
                             <Form.Control name="project_nm" placeholder="Stage of Project" defaultValue={this.state.formData.leadDet_operatorFood} />
                         </Form.Group>
@@ -181,6 +179,7 @@ class AddFieldsPro extends Component {
                     <Col md={12}>
                         <Form.Group>
                             <Form.Label className="ml-1">Payment Terms</Form.Label>
+                            
                             <Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms" defaultValue={`${this.state.formData.leadDet_paymentTerms}, ${this.state.formData.leadDet_companyUuid},${this.state.formData.leadDet_operatorAccommodation},${this.state.formData.leadDet_companyUuid}`} />
                         </Form.Group>
                     </Col>

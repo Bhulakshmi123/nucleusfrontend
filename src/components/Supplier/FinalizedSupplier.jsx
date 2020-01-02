@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import AddFields2 from '../FormFields/AddFields2.jsx';
-import AddFieldsPro from '../FormFields/AddFieldsPro.jsx';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { changeServiceStatus } from '../../views/Business/actions'
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
@@ -62,7 +61,7 @@ class FinalizedSupplier extends Component {
     }
     isFinalizedOpen = (bidId, editBid) => {
         this.setState({ "isEditbidShowing": true });
-        console.log('mfsjkf', bidId, editBid)
+        // console.log('mfsjkf', bidId, editBid)
         this.setState({
             leadUuid: bidId,
             leadDetUuid: editBid
@@ -146,7 +145,9 @@ class FinalizedSupplier extends Component {
                 </Card>
                 <Modal show={this.state.isEditbidShowing} onHide={this.isFinalizedClose} size="xl">
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
+                        <Modal.Title id="contained-modal-title-lg" className="my-auto">
+                            <h6 className="mb-0 text-white">Lead Details [{this.state.leadUuid}]</h6>
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
                         <AddFieldsPro leadUuid={this.state.leadUuid} leadDetUuid={this.state.leadDetUuid}></AddFieldsPro>

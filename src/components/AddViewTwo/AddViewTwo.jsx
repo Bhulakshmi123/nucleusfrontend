@@ -3,13 +3,13 @@ import { Row, Col, Button, Container, Modal, ButtonGroup } from 'react-bootstrap
 import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import FinalizedSupplier from '../Supplier/FinalizedSupplier';
-import AddFields2 from '../FormFields/AddFields2';
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
-import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
+import { DefaultCard } from '../DefaultCard/DefaultCard';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        // console.log('AddViewTwo',this.props);
+        console.log('AddViewTwo',this.props);
         let userUuid = localStorage.getItem("uuid");
         let token = localStorage.getItem("tokenId");
         this.state = {
@@ -23,9 +23,6 @@ class AddViewTwo extends Component {
     }
     closeModalHandler = () => {
         this.setState({ "isModalShowing": false })
-    }
-    testChanger = (e, a, b, c, d) => {
-        // console.log('name', e.currentTarget.dataset.id, a, b, c, d);
     }
     render () {
         return (
@@ -46,11 +43,11 @@ class AddViewTwo extends Component {
                             </ButtonGroup>
                         </Col>
                     </Row>
-                    <div className="text-center fontGilroyMedium">---------- RENTER INFORMATION ----------</div>
+                    <div className="text-center text-danger">---------- RENTER INFORMATION ----------</div>
                     <div className="my-3">
                         <Renter editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
-                    <div className="mt-3 text-center fontGilroyMedium">---------- FINALIZED SUPPLIERS ----------</div>
+                    <div className="mt-3 text-center text-danger">---------- FINALIZED SUPPLIERS ----------</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
@@ -59,12 +56,12 @@ class AddViewTwo extends Component {
                                 </div> :
                                 this.props.supplierData.finalized.map((prop, key) => {
                                     return (
-                                        <FinalizedSupplier data={prop} key={key} testChanger={this.testChanger.bind(this)}></FinalizedSupplier>
+                                        <FinalizedSupplier data={prop} key={key}></FinalizedSupplier>
                                     )
                                 })
                         }
                     </div>
-                    <div className="mt-3 text-center fontGilroyMedium">---------- SHORTLISTED SUPPLIERS ----------</div>
+                    <div className="mt-3 text-center text-danger">---------- SHORTLISTED SUPPLIERS ----------</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?
@@ -82,7 +79,7 @@ class AddViewTwo extends Component {
                         <Modal.Title id="contained-modal-title-md">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AddFields2 formData={this.props.formData}></AddFields2>
+                        <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
             </React.Fragment >

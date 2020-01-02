@@ -4,7 +4,6 @@ import SelectInput from './SelectInput';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
 
-// const AddFields = props => {
 class AddFields extends React.Component {
     constructor(props) {
         super(props);

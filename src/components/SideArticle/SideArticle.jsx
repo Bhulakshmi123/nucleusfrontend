@@ -4,11 +4,12 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFields3 from '../../components/FormFields/AddFields3.jsx';
+import AddFields3 from '../../components/FormFields/AddFields3';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
+        console.log('Side Article', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -24,12 +25,17 @@ class SideArticle extends Component {
             chosen: 0,
             placeOfAction: '',
             supplierData: [],
-            redirect: false
+            redirect: false,
+            filtered: this.props.leadinfo
         }
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
+    componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+    }
+    componentWillReceiveProps (nextProps) {
+        this.setState({ filtered: nextProps.leadinfo });
     }
     testAddViewThree = () => {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
@@ -52,8 +58,8 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus(leaddetid, newstatus, source) {
-        let data = { "leadDetId": leaddetid.toString(), "newStatus": newstatus }
+    changeLeadStatus (leadDetId, newStatus, source) {
+        let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "DELETED") { //! Change Later to CLOSED
                 this.setRedirect(data.newStatus + source)
@@ -67,13 +73,8 @@ class SideArticle extends Component {
         });
     }
 
-    openModalHandler = () => {
-        this.setState({ "isModalShowing": true })
-    }
-
-    closeModalHandler = () => {
-        this.setState({ "isModalShowing": false })
-    }
+    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
 
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
@@ -113,7 +114,23 @@ class SideArticle extends Component {
         if (response) { alert('Project Moved to New') }
         else { alert('Failed to Move Project to Move') }
     }
-    render() {
+    handleChange (e) {
+        let currentList = []
+        let displayedContacts;
+        if (e.target.value !== "") {
+            let searchQuery = e.target.value.toLowerCase();
+            currentList = this.props.leadinfo;
+            displayedContacts = currentList.filter(item => {
+                let searchValue = item.equipmentName.toLowerCase();
+                return searchValue.indexOf(searchQuery) !== -1;
+            })
+            this.setState({ filtered: displayedContacts })
+        }
+        else {
+            this.setState({ filtered: this.props.leadinfo })
+        }
+    }
+    render () {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
@@ -130,12 +147,12 @@ class SideArticle extends Component {
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className="searchBarPrepend"><i className="fas fa-search"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" />
+                                <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" onChange={this.handleChange} />
                             </InputGroup>
                         </div>
                         <Container fluid className="mt-3 px-0">
                             {
-                                this.props.leadinfo.map((prop, key) => {
+                                this.state.filtered.map((prop, key) => {
                                     return (
                                         <Row
                                             className={`text-white borderedRow px-0 py-2 mx-0 ${this.state.chosen === key ? "borderedRowActive bor-rad-05" : "null"}`}

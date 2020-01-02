@@ -37,9 +37,10 @@ export class Loginpage extends Component {
                 }
                 else {
                     // console.log(res);
-                    this.setState({ tokenId: res.data.token, loginStatus: true })
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
+                    localStorage.setItem("username",res.data.name);
+                    this.setState({ tokenId: res.data.token, loginStatus: true })
                 }
             });
         }
@@ -47,7 +48,7 @@ export class Loginpage extends Component {
     handleChange (e) {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {
-            console.log(error);
+            // console.log(error);
             if (!validator.isEmail(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
