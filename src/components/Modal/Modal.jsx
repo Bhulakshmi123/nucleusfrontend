@@ -4,7 +4,7 @@ import './Modal.css';
 const modal = (props) => {
     return (
         <div className="modal-wrapper" style={{ transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)', opacity: props.show ? '1' : '0', display:props.show ? 'block':'none', minWidth: props.minWidth, minHeight:props.minHeight}}>
-            <div className="modal-header">
+            <div className="bg-darkbluefuchisa text-white">
                 <span className="modalName">Lead Details</span>
                 <span className="modalClose" onClick={props.close}><i className="fas fa-times-circle"></i></span>
             </div>

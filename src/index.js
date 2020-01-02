@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
 import "./assets/css/rootStyles.css"; // !Mano's Default CSS File
-import './assets/css/commonStyles.css'; // !BhuLakshmi's Default CSS File
 import './assets/css/form.css'; // !BhuLakshmi's Other Default CSS File
 import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
