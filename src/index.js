@@ -7,8 +7,8 @@ import './assets/css/commonStyles.css'; // !BhuLakshmi's Default CSS File
 import './assets/css/form.css'; // !BhuLakshmi's Other Default CSS File
 import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
-import AdminLayout from "layouts/Admin.jsx";
-import { Loginpage } from './views/Authentication/Loginpage.jsx'
+import AdminLayout from "layouts/Admin";
+import { Loginpage } from './views/Authentication/Loginpage'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';

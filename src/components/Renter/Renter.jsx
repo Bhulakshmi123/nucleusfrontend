@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Container, Card, Modal } from 'react-bootstrap';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
-import AddFieldsPro from '../FormFields/AddFieldsPro.jsx';
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 class Renter extends Component {
     constructor(props) {
         super(props)

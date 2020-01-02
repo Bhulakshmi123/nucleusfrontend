@@ -4,7 +4,6 @@ import SelectInput from '../FormFields/SelectInput'
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        // console.log(this.props.formData)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token
@@ -17,19 +16,19 @@ class AddViewOne extends Component {
         return (
             <React.Fragment>
                 <Container fluid>
-                    <Row className="topContainer mt-5">
-                        <Col md={8} className="font-size-20">
-                            <p>{this.props.formData.equipmentName}</p>
+                    <Row className="my-4">
+                        <Col md={8}>
+                            <h3 className="mb-0 my-auto text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
-                        <Col md={2}>
+                        <Col md={2} className="my-auto">
                             <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW')}>Remove</Button>
                         </Col>
-                        <Col md={2}>
+                        <Col md={2} className="my-auto">
                             <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW')}>Activate Lead</Button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md={12} className="cardForm">
+                    <Row className="mt-4">
+                        <Col md={12}>
                             <React.Fragment>
                                 <Row>
                                     <Col md={3} lg={3} xs={12}>

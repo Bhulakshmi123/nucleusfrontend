@@ -61,7 +61,7 @@ class FinalizedSupplier extends Component {
     }
     isFinalizedOpen = (bidId, editBid) => {
         this.setState({ "isEditbidShowing": true });
-        console.log('mfsjkf', bidId, editBid)
+        // console.log('mfsjkf', bidId, editBid)
         this.setState({
             leadUuid: bidId,
             leadDetUuid: editBid

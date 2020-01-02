@@ -4,7 +4,7 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFields3 from '../../components/FormFields/AddFields3.jsx';
+import AddFields3 from '../../components/FormFields/AddFields3';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 class SideArticle extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class SideArticle extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
     testAddViewThree = () => {
@@ -52,8 +52,8 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus(leaddetid, newstatus, source) {
-        let data = { "leadDetId": leaddetid.toString(), "newStatus": newstatus }
+    changeLeadStatus (leadDetId, newStatus, source) {
+        let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (data.newStatus === "DELETED") { //! Change Later to CLOSED
                 this.setRedirect(data.newStatus + source)
@@ -67,13 +67,8 @@ class SideArticle extends Component {
         });
     }
 
-    openModalHandler = () => {
-        this.setState({ "isModalShowing": true })
-    }
-
-    closeModalHandler = () => {
-        this.setState({ "isModalShowing": false })
-    }
+    openModalHandler = () => {this.setState({ "isModalShowing": true })}
+    closeModalHandler = () => {this.setState({ "isModalShowing": false })}
 
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
@@ -113,7 +108,10 @@ class SideArticle extends Component {
         if (response) { alert('Project Moved to New') }
         else { alert('Failed to Move Project to Move') }
     }
-    render() {
+    handleChange(e) {
+        console.log(e.target.value);
+    }
+    render () {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
@@ -130,7 +128,7 @@ class SideArticle extends Component {
                                 <InputGroup.Prepend>
                                     <InputGroup.Text className="searchBarPrepend"><i className="fas fa-search"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" />
+                                <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" onChange={this.handleChange}/>
                             </InputGroup>
                         </div>
                         <Container fluid className="mt-3 px-0">

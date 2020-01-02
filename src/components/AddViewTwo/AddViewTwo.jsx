@@ -5,7 +5,7 @@ import Renter from '../Renter/Renter';
 import FinalizedSupplier from '../Supplier/FinalizedSupplier';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
-import { DefaultCard } from '../DefaultCard/DefaultCard.jsx';
+import { DefaultCard } from '../DefaultCard/DefaultCard';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)

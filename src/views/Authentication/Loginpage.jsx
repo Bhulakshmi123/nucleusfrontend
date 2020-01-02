@@ -36,7 +36,7 @@ export class Loginpage extends Component {
                     window.alert('Login Failed');
                 }
                 else {
-                    console.log(res);
+                    // console.log(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
                     localStorage.setItem("username",res.data.name);
@@ -48,7 +48,7 @@ export class Loginpage extends Component {
     handleChange (e) {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {
-            console.log(error);
+            // console.log(error);
             if (!validator.isEmail(e.target.value))
                 this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
             else
