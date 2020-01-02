@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AddFieldsPro from '../../components/FormFields/AddFieldsPro';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
+import AddFieldsPro from '../../components/FormFields/AddFieldsPro';
 class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
@@ -87,7 +87,9 @@ class ShortListedSupplier extends Component {
                 </Card>
                 <Modal show={this.state.isEditbidShowing} onHide={this.isFinalizedClose} size="xl">
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
+                        <Modal.Title id="contained-modal-title-lg" className="my-auto">
+                            <h6 className="mb-0 text-white">Lead Details [{this.state.leadUuid}]</h6>
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
                         <AddFieldsPro leadUuid={this.state.leadUuid} leadDetUuid={this.state.leadDetUuid}></AddFieldsPro>

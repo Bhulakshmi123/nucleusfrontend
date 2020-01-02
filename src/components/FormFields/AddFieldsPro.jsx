@@ -7,7 +7,7 @@ class AddFieldsPro extends Component {
     constructor(props) {
         let token = localStorage.getItem("tokenId");
         super(props)
-        console.log('Add Feilds', this.props)
+        console.log('Add Feilds Pro', this.props)
         this.state = {
             token: token,
             equip_modal: '',
@@ -23,9 +23,7 @@ class AddFieldsPro extends Component {
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
-            console.log('bhu',response)
             this.setState({formData:response.data[0]})
-            console.log(this.state ,"hiii")
         }
     }
     render() {
