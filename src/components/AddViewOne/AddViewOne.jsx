@@ -302,7 +302,7 @@ class AddViewOne extends Component {
                                     <Col md={12} lg={12} sm={12}>
                                         <div className="form-group">
                                             <label htmlFor="exampleFormControlTextarea1">Payment Terms</label>
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Payment Terms" value={`${this.props.formData.leadDet_companyUuid},${this.props.formData.equipmentName}`}></textarea>
+                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Payment Terms" value={`${this.props.formData.leadDet_paymentTerms},${this.props.formData.equipmentName}`}></textarea>
                                         </div>
                                     </Col>
                                 </Row>
@@ -310,7 +310,7 @@ class AddViewOne extends Component {
                                     <Col md={12} lg={12} sm={12}>
                                         <div className="form-group">
                                             <label htmlFor="exampleFormControlTextarea1">Remarks</label>
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any Remarks to go with the Equipments" value={`${this.props.formData.equipmentName}, ${this.props.formData.leadDet_uuid}`} ></textarea>
+                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any Remarks to go with the Equipments" value={`${this.props.formData.leadDet_remarks}, ${this.props.formData.leadDet_uuid}`} ></textarea>
                                         </div>
                                     </Col>
                                 </Row>
