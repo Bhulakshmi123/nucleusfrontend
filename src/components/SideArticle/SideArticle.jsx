@@ -116,13 +116,13 @@ class SideArticle extends Component {
     }
     handleChange (e) {
         let currentList = []
-        let displayedContacts;
+        let displayedContacts, searchQuery;
         if (e.target.value !== "") {
-            let searchQuery = e.target.value.toLowerCase();
             currentList = this.props.leadinfo;
+            searchQuery = e.target.value.toLowerCase();
             displayedContacts = currentList.filter(item => {
-                let searchValue = item.equipmentName.toLowerCase();
-                return searchValue.indexOf(searchQuery) !== -1;
+                let searchEquipmentName = item.equipmentName.toLowerCase();
+                return searchEquipmentName.indexOf(searchQuery) !== -1;
             })
             this.setState({ filtered: displayedContacts })
         }
