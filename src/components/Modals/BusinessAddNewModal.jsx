@@ -6,8 +6,6 @@ import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import * as moment from 'moment';
 import _ from 'lodash';
-
-
 // import { thisExpression } from '@babel/types';
 // var validator = require('validator');
 class BusinessAddNewModal extends Component {
@@ -53,6 +51,16 @@ class BusinessAddNewModal extends Component {
             isOpenFormDropDown : false
         }, () => {console.log(this.state.leadForm)});
 
+    }
+    equipInputChangeHandlerSelect = (e) => {
+        let equipmentForm = this.state.equipmentForm;
+        equipmentForm = {
+            ...equipmentForm,
+            [e.name]: e.value
+        }
+        this.setState({
+            equipmentForm: equipmentForm
+        });
     }
 
     inputChangeHandler = (e) => {
@@ -125,17 +133,7 @@ class BusinessAddNewModal extends Component {
         });
     }
 
-    equipInputChangeHandlerSelect = (e) => {
-        let equipmentForm = this.state.equipmentForm;
-        equipmentForm = {
-            ...equipmentForm,
-            [e.name]: e.value
-        }
-        this.setState({
-            equipmentForm: equipmentForm
-        });
-    }
-
+   
     appendEquipFormToLeadForm = () => {
         console.log(this.state.equipmentKey);
         if(this.state.equipmentKey != null){
@@ -179,9 +177,6 @@ class BusinessAddNewModal extends Component {
             leadForm.equipmentLead = equipmentLead;
             this.setState({leadForm});
         }
-
-        
-
     }
     render () {
         return (
@@ -205,15 +200,12 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
-                        <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = {this.state.leadForm.lead_priority? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput></Col>
+                        {/* <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = {this.state.leadForm.lead_priority? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput></Col>
                         <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
-                        placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col>
-                        
+                        placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
                         <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = "Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
 
                         <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder = "Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm2}></SelectInputSearch></Col>
-
-
                     </Form.Row>
                     <Form.Row>
                         <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
@@ -262,9 +254,7 @@ class BusinessAddNewModal extends Component {
                                 addEquipForm = {this.appendEquipFormToLeadForm}
                             />
                             : null
-
                     }
-                    
                     <Button type="submit" onClick={this.leadInputHandler} variant="primary" size="sm" >Submit</Button>
                 </Form>
             </React.Fragment>

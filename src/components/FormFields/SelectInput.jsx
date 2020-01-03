@@ -5,8 +5,8 @@ class SelectInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedOption: '',
-      options:this.props.options
+      selectedOption : '',
+      options : this.props.options
     }
   }
   render () {

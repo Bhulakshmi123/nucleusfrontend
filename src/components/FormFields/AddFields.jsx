@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, Col, Form } from 'react-bootstrap';
-import SelectInput from './SelectInput';
+import SelectInputSearch from './SelectInputSearch';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
 
@@ -22,10 +22,15 @@ class AddFields extends React.Component {
             <Button variant="primary" size="sm" className="px-4" onClick={this.props.addEquipForm}>Add</Button>
             <Button variant="primary" size="sm" className="px-4" onClick={this.props.closeEquipmentForm}>Close</Button>
             <Form.Row className="mt-3">
-                <Col md={3}><SelectInput name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.state.equipmentForm.equip_type} onChange={this.props.equipInputChangeHandlerSelect} ></SelectInput></Col>
-                <Col md={3}><SelectInput name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={this.state.equipmentForm.selct_make} onChange={this.props.equipInputChangeHandler}></SelectInput></Col>
+                {/* trIL DATA */}
+            <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = "Lead Priority" value={this.state.equipmentForm.lead_priority} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
+{/* trIL DATA */}
+
+                <Col md={3}><SelectInputSearch name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.state.equipmentForm.equip_type} onChange={this.props.equipInputChangeHandlerSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
+
+                <Col md={3}><SelectInputSearch name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={this.state.equipmentForm.selct_make} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
                 <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Model</Form.Label><Form.Control type="text" name="equip_modal" placeholder="Equipment Modal" value={this.state.equipmentForm.equip_modal} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
-                <Col md={3}><SelectInput name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.state.equipmentForm.min_year} onChange={this.props.equipInputChangeHandler}></SelectInput></Col>
+                <Col md={3}><SelectInputSearch name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.state.equipmentForm.min_year} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
             </Form.Row>
             <Form.Row className="mt-3">
                 <Col md={3}><Form.Group controlId="formGroupCapty"><Form.Label className="font_stle">Capacity</Form.Label><Form.Control type="text" name="capacity" placeholder="Capacity of Equipment" value={this.state.equipmentForm.capacity} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
@@ -35,8 +40,8 @@ class AddFields extends React.Component {
                 <Col md={3}><Form.Group controlId="formGroupMoth"><Form.Label className="font_stle">No. of months</Form.Label><Form.Control type="text" name="no_month" placeholder="Duration of Work" value={this.state.equipmentForm.no_month} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3">
-                <Col md={3}><SelectInput name="state" cStyle="widthone" label="State" placeholder="Select State" value={this.state.equipmentForm.state} onChange={this.props.equipInputChangeHandler}></SelectInput></Col>
-                <Col md={3}><SelectInput name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State" value={this.state.equipmentForm.district_nm} onChange={this.props.equipInputChangeHandler}></SelectInput></Col>
+                <Col md={3}><SelectInputSearch name="state" cStyle="widthone" label="State" placeholder="Select State" value={this.state.equipmentForm.state} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
+                <Col md={3}><SelectInputSearch name="district_nm" cStyle="widthone" label="District / Known Area" placeholder="Select District or State" value={this.state.equipmentForm.district_nm} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
                 <Col md={3}><Form.Group controlId="formGroupprStage"><Form.Label className="font_stle">Project Stage</Form.Label><Form.Control type="text" name="project_nm" placeholder="Stage of Project" value={this.state.equipmentForm.project_nm} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
                 <Col md={3}><Form.Group controlId="formGroupHD"><Form.Label className="font_stle">Operation hours per day</Form.Label><Form.Control type="text" name="operation_hours" placeholder="Operation hours per day" value={this.state.equipmentForm.operation_hours} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
             </Form.Row>
