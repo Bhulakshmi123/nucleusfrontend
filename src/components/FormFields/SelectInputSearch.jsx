@@ -6,6 +6,7 @@ import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
 import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
+import '../../assets/css/form.css';
 import { defaultTheme } from 'react-select';
 
 const { colors } = defaultTheme;
@@ -18,7 +19,8 @@ const selectStyles = {
 class SelectInput extends Component {
   state = {
     options:this.props.options,
-    isOpen : this.props.isOpen
+    isOpen : this.props.isOpen,
+    
   };
 
   componentWillReceiveProps(nextProps) {
