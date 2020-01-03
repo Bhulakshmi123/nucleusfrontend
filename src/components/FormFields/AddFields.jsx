@@ -52,8 +52,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Shift Type</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Day</option>
-                            <option>Night</option>
+                            <option value={this.state.equipmentForm.shift_type || ''}>Day</option>
+                            <option value={this.state.equipmentForm.shift_type || ''}>Night</option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
@@ -61,8 +61,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Transportation</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>To</option>
-                            <option>From</option>
+                            <option value={this.state.equipmentForm.transport_sel || ''}>To</option>
+                            <option value={this.state.equipmentForm.transport_sel || ''}>From</option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
@@ -70,8 +70,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Accommodation</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value={this.state.equipmentForm.sel_acco || ''}>Yes</option>
+                            <option value={this.state.equipmentForm.sel_acco || ''}>No</option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
@@ -79,8 +79,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Food</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value={this.state.equipmentForm.sel_food || ''}>Yes</option>
+                            <option value={this.state.equipmentForm.sel_food || ''}>No</option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
@@ -90,8 +90,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Operator Allowance</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value={this.state.equipmentForm.selct_make || ''}>Yes</option>
+                            <option value={this.state.equipmentForm.selct_make || ''}>No</option>
                         </Form.Control>                    
                     </Form.Group>
                 </Col>
@@ -99,8 +99,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Vehicle Documents</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Required</option>
-                            <option>Not Required</option>
+                            <option value={this.state.equipmentForm.sel_vehical || ''}>Required</option>
+                            <option value={this.state.equipmentForm.sel_vehical || ''}>Not Required</option>
                         </Form.Control>   
                     </Form.Group>
                 </Col>
@@ -108,8 +108,8 @@ class AddFields extends React.Component {
                     <label className="font_stle">Operator License</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Required</option>
-                            <option>Not Required</option>
+                            <option value={this.state.equipmentForm.sel_license || ''}>Required</option>
+                            <option value={this.state.equipmentForm.sel_license || ''}>Not Required</option>
                         </Form.Control>   
                     </Form.Group>
                 </Col>
@@ -117,17 +117,17 @@ class AddFields extends React.Component {
                     <label className="font_stle">Safety Measures</label>
                     <Form.Group>
                         <Form.Control as="select">
-                            <option>Required</option>
-                            <option>Not Required</option>
+                            <option value={this.state.equipmentForm.sel_measure || ''}>Required</option>
+                            <option value={this.state.equipmentForm.sel_measure || ''}>Not Required</option>
                         </Form.Control>
                     </Form.Group>
                 </Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><Form.Group><Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms" /></Form.Group></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" value={this.state.equipmentForm.pay_terms || ''} onChange={this.props.equipInputChangeHandler}  rows="4" name="Payment Terms" placeholder="Payment Terms" /></Form.Group></Col>
             </Form.Row>
             <Form.Row className="mt-3 form-modal">
-                <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment" /></Form.Group></Col>
+                <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" value={this.state.equipmentForm.sel_remarks || ''} onChange={this.props.equipInputChangeHandler}  rows="4" name="Remarks" placeholder="Any comments to go with the equipment" /></Form.Group></Col>
             </Form.Row>
         </React.Fragment>
         );
