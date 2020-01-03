@@ -19,15 +19,10 @@ class AddFields extends React.Component {
     render() {
         return (
         <React.Fragment>
-            <Button variant="primary" size="sm" className="px-4" onClick={this.props.addEquipForm}>Add</Button>
+            <Button variant="primary" size="sm" className="px-4 add_new_fiels" onClick={this.props.addEquipForm}>Add</Button>
             <Button variant="primary" size="sm" className="px-4" onClick={this.props.closeEquipmentForm}>Close</Button>
             <Form.Row className="mt-3">
-                {/* trIL DATA */}
-            <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = "Lead Priority" value={this.state.equipmentForm.lead_priority} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
-{/* trIL DATA */}
-
                 <Col md={3}><SelectInputSearch name="equip_type" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.state.equipmentForm.equip_type} onChange={this.props.equipInputChangeHandlerSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
-
                 <Col md={3}><SelectInputSearch name="selct_make" cStyle="widthone" label="Make" placeholder="Select Make" value={this.state.equipmentForm.selct_make} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
                 <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Model</Form.Label><Form.Control type="text" name="equip_modal" placeholder="Equipment Modal" value={this.state.equipmentForm.equip_modal} onChange={this.props.equipInputChangeHandler} /></Form.Group></Col>
                 <Col md={3}><SelectInputSearch name="min_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.state.equipmentForm.min_year} onChange={this.props.equipInputChangeHandler} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
@@ -55,57 +50,37 @@ class AddFields extends React.Component {
                 <Col md={3}>
                     <label className="font_stle">Shift Type</label>
                     <Form.Group>
-                        <Form.Check
-                            inline
-                            label="Day"
-                        />
-                        <Form.Check
-                            inline
-                            label="Night"
-                        />
+                        <Form.Control as="select">
+                            <option>Day</option>
+                            <option>Night</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Transportation</label>
                     <Form.Group>
-                        <Form.Check
-                            inline
-                            label="To"
-                        />
-                        <Form.Check
-                            inline
-                            label="From"
-                        />
+                        <Form.Control as="select">
+                            <option>To</option>
+                            <option>From</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Accommodation</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Control as="select">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Food</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Control as="select">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
             </Form.Row>
@@ -113,61 +88,37 @@ class AddFields extends React.Component {
                 <Col md={3}>
                     <label className="font_stle">Operator Allowance</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Yes"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="No"
-                        />
+                        <Form.Control as="select">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </Form.Control>                    
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Vehicle Documents</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                        <Form.Control as="select">
+                            <option>Required</option>
+                            <option>Not Required</option>
+                        </Form.Control>   
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Operator License</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                        <Form.Control as="select">
+                            <option>Required</option>
+                            <option>Not Required</option>
+                        </Form.Control>   
                     </Form.Group>
                 </Col>
                 <Col md={3}>
                     <label className="font_stle">Safety Measures</label>
                     <Form.Group>
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Required"
-                        />
-                        <Form.Check
-                            type="radio"
-                            inline
-                            label="Not Required"
-                        />
+                        <Form.Control as="select">
+                            <option>Required</option>
+                            <option>Not Required</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
             </Form.Row>
@@ -177,13 +128,24 @@ class AddFields extends React.Component {
             <Form.Row className="mt-3 form-modal">
                 <Col md={12}><Form.Group><Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="Remarks" placeholder="Any comments to go with the equipment" /></Form.Group></Col>
             </Form.Row>
-            <Modal.Footer className="px-0">
-                {/* <Button bsStyle="danger" onClick={this.closeModalHandler}>Close</Button> */}
-                <Button variant="primary" size="sm" className="px-4" onClick={this.props.addEquipForm}>Add</Button>
-                <Button variant="primary" size="sm" className="px-4" onClick={this.props.closeEquipmentForm}>Close</Button>
-            </Modal.Footer>
         </React.Fragment>
         );
     }
 }
 export default AddFields;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

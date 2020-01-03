@@ -40,18 +40,18 @@ class BusinessAddNewModal extends Component {
 
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
-        let placeHolder = e.name+'_name';
+        // let placeHolder = e.name+'_name';
         leadForm = {
             ...leadForm,
             [e.name]: e.value,
-            [placeHolder]: e.label
+            // [placeHolder]: e.label
         }
         this.setState({
             leadForm: leadForm,
             isOpenFormDropDown : false
         }, () => {console.log(this.state.leadForm)});
-
     }
+
     equipInputChangeHandlerSelect = (e) => {
         let equipmentForm = this.state.equipmentForm;
         equipmentForm = {
@@ -132,8 +132,6 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         });
     }
-
-   
     appendEquipFormToLeadForm = () => {
         console.log(this.state.equipmentKey);
         if(this.state.equipmentKey != null){
@@ -172,7 +170,6 @@ class BusinessAddNewModal extends Component {
             if (key > -1) {
                 equipmentLead.splice(key, 1);
             }
-
             let leadForm = this.state.leadForm;
             leadForm.equipmentLead = equipmentLead;
             this.setState({leadForm});
@@ -204,7 +201,6 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
                         placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
                         <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = "Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
-
                         <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder = "Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpen={this.state.isOpenFormDropDown} options={this.state.optionsForm2}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
@@ -212,7 +208,7 @@ class BusinessAddNewModal extends Component {
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>
-                            <Table hover className="text-center table-bordered">
+                            <Table hover className="text-center">
                                 <thead>
                                     <tr>
                                         <th>S. No.</th>

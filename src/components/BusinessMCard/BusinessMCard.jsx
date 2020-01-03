@@ -75,7 +75,7 @@ class BusinessMCard extends Component {
                                                                     <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
                                                                 </Col>
                                                                 <Col md={2} className="my-auto">
-                                                                    {prop.lead_isActive === 1 ? <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-dark py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
+                                                                    {prop.lead_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-secondary py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-dark text-center">
                                                                     <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>

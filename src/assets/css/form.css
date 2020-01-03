@@ -19,11 +19,31 @@
     padding-left: 10px;
 }
 
+.react-datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    margin-top: 1px;
+}
+
 .down_arrow {
     width: 12px;
     height: 12px;
     float: right;
     margin-top: 4px;
+}
+
+.select_palceholder {
+    font-size: 15px;
+    font-weight: 400 !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: rgba(37, 37, 37, 0.6);
+    font-family: 'Heebo', sans-serif !important;
+    vertical-align: super;
 }
 
 textarea.form-control {
@@ -167,4 +187,19 @@ input[name="e_pe_shift"] {
     margin-top: 8px;
     width: 1px;
     box-sizing: border-box;
+}
+
+.red {
+    text-align: left !important;
+    border-width: 1px !important;
+    font-weight: 100 !important;
+    border-color: #ccc !important;
+    font-family: 'Heebo', sans-serif !important;
+    font-size: 14px;
+    color: #555;
+    font-weight: 600 !important;
+}
+
+.add_new_fiels {
+    margin-right: 20px;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import '../../assets/css/form.css';
 class CalenderInput extends Component {
 
   render() {
