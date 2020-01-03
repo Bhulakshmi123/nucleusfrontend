@@ -178,26 +178,6 @@ var style = {
       padding: "6px 3px 3px 3px",
       fontWeight: "300",
       marginLeft: "65px"
-    },
-
-    success: {
-      // color: '#f0f5ea',
-      // backgroundColor: '#a1e82c'
-    },
-
-    error: {
-      // color: '#f4e9e9',
-      // backgroundColor: '#fc727a'
-    },
-
-    warning: {
-      // color: '#f9f6f0',
-      // backgroundColor: '#ffbc67'
-    },
-
-    info: {
-      // color: '#e8f0f4',
-      // backgroundColor: '#63d8f1'
     }
   },
 
@@ -239,12 +219,6 @@ var style = {
     }
   }
 };
-
-//
-// //
-// // // For tables
-// //
-//
 const thArray = ["ID", "Name", "Salary", "Country", "City"];
 const tdArray = [
   ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
@@ -255,11 +229,6 @@ const tdArray = [
   ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
 ];
 
-//
-// //
-// // // For icons
-// //
-//
 const iconsArray = [
   "pe-7s-album",
   "pe-7s-arc",
@@ -464,13 +433,6 @@ const iconsArray = [
   "pe-7s-alarm",
   "pe-7s-airplay"
 ];
-
-//
-// //
-// // // // For dashboard's charts
-// //
-//
-// Data for Pie Chart
 var dataPie = {
   labels: ["40%", "20%", "40%"],
   series: [40, 20, 40]
@@ -479,8 +441,6 @@ var legendPie = {
   names: ["Open", "Bounce", "Unsubscribe"],
   types: ["info", "danger", "warning"]
 };
-
-// Data for Line Chart
 var dataSales = {
   labels: [
     "9:00AM",
@@ -530,8 +490,6 @@ var legendSales = {
   names: ["Open", "Click", "Click Second Time"],
   types: ["info", "danger", "warning"]
 };
-
-// Data for Bar Chart
 var dataBar = {
   labels: [
     "Jan",

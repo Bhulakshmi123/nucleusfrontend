@@ -6,6 +6,18 @@
     font-family: GilroyMedium;
     src: url(../web-fonts/Gilroy-Medium.woff);
 }
+::-webkit-scrollbar {width: 0px;}
+::-webkit-scrollbar-track {background: #f1f1f1;}
+::-webkit-scrollbar-thumb {background: #888;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+body {
+    font-family: GilroyBold !important;
+    color: white;
+}
+a{
+    text-decoration: none !important;
+    font-family: GilroyBold !important;
+}
 label {
     color: dimgray !important;
     font-family: GilroyBold !important;
@@ -28,7 +40,6 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     overflow: auto;
     width: calc(100% - 250px);
 }
-
 .sideBar {
     background-color: #081B2D;
     padding: 5% 0%;
@@ -71,13 +82,12 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
 }
-a { text-decoration: none !important; }
+
 .equipmentCount { border: 2px solid white; }
 .borderedRow { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .borderedRow:hover, .borderedRowActive { background-color: rgba(255, 255, 255, 0.1); }
 .searchBarStyle { border: none; }
 .formControlSearch { padding: 6% !important; }
-
 .searchBarPrepend, .formControlSearch {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
@@ -232,10 +242,6 @@ a { text-decoration: none !important; }
 .bor-rad-48 {border-radius: 48px !important;}
 .bor-rad-49 {border-radius: 49px !important;}
 .bor-rad-50 {border-radius: 50px !important;}
-
-
-
-
 
 .font-size-01 {font-size: 0.1rem !important;}
 .font-size-02 {font-size: 0.2rem !important;}
@@ -396,3 +402,4 @@ a { text-decoration: none !important; }
 
 .linkStateActive { color: #154D7B !important; border-bottom : 2px solid #154D7B; }
 .input-group-text { border:none; background-color: #F0F0F0; }
+.form-control:focus { box-shadow: none !important;}
