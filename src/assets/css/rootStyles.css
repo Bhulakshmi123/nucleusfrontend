@@ -69,8 +69,8 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     overflow: auto;
 }
 .activeNavLink {
-    color: white;
     border-bottom: 2px solid white;
+    /* transition: 0.3s; */
 }
 .unActiveNavLink { color: white; }
 .unActiveNavLink:hover {
@@ -87,7 +87,7 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 .borderedRow { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .borderedRow:hover, .borderedRowActive { background-color: rgba(255, 255, 255, 0.1); }
 .searchBarStyle { border: none; }
-.formControlSearch { padding: 6% !important; }
+.formControlSearch { padding: 6%; }
 .searchBarPrepend, .formControlSearch {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
@@ -402,4 +402,33 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 
 .linkStateActive { color: #154D7B !important; border-bottom : 2px solid #154D7B; }
 .input-group-text { border:none; background-color: #F0F0F0; }
-.form-control:focus { box-shadow: none !important;}
+.form-control:focus, .customSelect:focus, .customInput:focus { box-shadow: none !important;}
+.customSelect {
+    border: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px 0px 0px 5px;
+}
+.customSelect > option {
+    color: white;
+    background-color: #154D7B;
+}
+.customInput{
+    border: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 0px 5px 5px 0px;
+}
+.demoClass {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #007aff;
+    color: white;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px 15px;
+    border-bottom-left-radius: 17px;
+}

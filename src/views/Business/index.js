@@ -21,6 +21,7 @@ class Business extends Component {
             <Route path="/business/leads/active" component={BusinessMCard} />
             <Route path="/business/leads/pending" component={BusinessMCard} />
             <Route path="/business/leads/rejected" component={BusinessMCard} />
+            <Route path="/business/leads/moved" component={BusinessMCard} />
             <Route component={RouteNotFound}></Route>
           </Switch>
         </Router>

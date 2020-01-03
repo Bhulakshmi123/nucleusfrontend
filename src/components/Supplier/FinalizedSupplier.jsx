@@ -7,6 +7,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
+        console.log('Final',this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -22,7 +23,7 @@ class FinalizedSupplier extends Component {
             felidVisitStatus: false,
             agreementStatus: false,
             signedAgreementStatus: false,
-            isEditbidShowing: false,
+            isEditBidShowing: false,
             leadUuid: ''
 
         }
@@ -60,17 +61,15 @@ class FinalizedSupplier extends Component {
         this.isServiceModalShowing()
     }
     isFinalizedOpen = (bidId, editBid) => {
-        this.setState({ "isEditbidShowing": true });
-        // console.log('mfsjkf', bidId, editBid)
+        this.setState({ "isEditBidShowing": true });
         this.setState({
             leadUuid: bidId,
             leadDetUuid: editBid
         })
-        console.log('f', this.state)
     }
     isFinalizedClose = () => {
         this.setState({
-            "isEditbidShowing": false
+            "isEditBidShowing": false
         })
     }
     isServiceModalShowing = () => this.setState({ "isServiceModalShowing": true })
@@ -143,7 +142,7 @@ class FinalizedSupplier extends Component {
                         </Col>
                     </Row>
                 </Card>
-                <Modal show={this.state.isEditbidShowing} onHide={this.isFinalizedClose} size="xl">
+                <Modal show={this.state.isEditBidShowing} onHide={this.isFinalizedClose} size="xl">
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-lg" className="my-auto">
                             <h6 className="mb-0 text-white">Lead Details [{this.state.leadUuid}]</h6>

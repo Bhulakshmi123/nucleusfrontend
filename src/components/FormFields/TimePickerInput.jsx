@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 
 function onChange (time, timeString) {
-    console.log(time, timeString);
+    // console.log(time, timeString);
 }
 class TimePickerInput extends Component {
     render () {

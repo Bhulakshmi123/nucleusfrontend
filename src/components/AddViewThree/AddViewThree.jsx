@@ -11,7 +11,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        console.log('Add v3', this.props);
+        // console.log('Add v3', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {

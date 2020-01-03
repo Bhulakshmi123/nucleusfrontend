@@ -9,7 +9,7 @@ import TimePickerInput from './TimePickerInput';
 class AddViewModal extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props)
+        // console.log(this.props)
         this.state = {
             isShowing: false,
         }

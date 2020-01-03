@@ -9,7 +9,7 @@ import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProje
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        console.log('Side Article', this.props)
+        // console.log('Side Article', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -55,7 +55,10 @@ class SideArticle extends Component {
         }
         if (this.state.redirect && this.state.placeOfAction === 'DELETEDACTIVE') {
             return (<Redirect to="/business/leads/active"></Redirect>)
+        } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
+            return (<Redirect to="/business/leads/moved"></Redirect>)
         }
+
     }
 
     changeLeadStatus (leadDetId, newStatus, source) {
@@ -72,7 +75,22 @@ class SideArticle extends Component {
             }
         });
     }
-
+    moveToProjects = async (userUuid, leadId, leadDetId) => {
+        let data = {
+            "userUuid": userUuid,
+            "leadId": leadId.toString(),
+            "leadDetId": [leadDetId.toString()]
+        }
+        // let response = await moveToProjects(data, this.state.token);
+        // if (response) { alert('Project Moved to New') }
+        // else { alert('Failed to Move Project to Move') }
+        moveToProjects(data, this.state.token).then((res) => {
+            if (res) {
+                // console.log('Ne', res);
+                this.setRedirect("MOVEDTOPROJECTS")
+            }
+        })
+    }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
 
@@ -104,25 +122,15 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
-    moveToProjects = async (userUuid, leadId, leadDetId) => {
-        let data = {
-            "userUuid": userUuid,
-            "leadId": leadId.toString(),
-            "leadDetId": [leadDetId.toString()]
-        }
-        let response = await moveToProjects(data, this.state.token);
-        if (response) { alert('Project Moved to New') }
-        else { alert('Failed to Move Project to Move') }
-    }
     handleChange (e) {
         let currentList = []
-        let displayedContacts;
+        let displayedContacts, searchQuery;
         if (e.target.value !== "") {
-            let searchQuery = e.target.value.toLowerCase();
             currentList = this.props.leadinfo;
+            searchQuery = e.target.value.toLowerCase();
             displayedContacts = currentList.filter(item => {
-                let searchValue = item.equipmentName.toLowerCase();
-                return searchValue.indexOf(searchQuery) !== -1;
+                let searchEquipmentName = item.equipmentName.toLowerCase();
+                return searchEquipmentName.indexOf(searchQuery) !== -1;
             })
             this.setState({ filtered: displayedContacts })
         }
