@@ -6,7 +6,6 @@ import { jsx } from '@emotion/core';
 // import Button from '@atlaskit/button';
 import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
-import '../../assets/css/form.css';
 import { defaultTheme } from 'react-select';
 
 const { colors } = defaultTheme;
@@ -29,9 +28,12 @@ class SelectInput extends Component {
       this.setState({ isOpen: nextProps.isOpen });
     }
   }
+
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   };    
+
+
   render() {
     const isOpen= this.state.isOpen;
     return (
@@ -41,7 +43,7 @@ class SelectInput extends Component {
           isOpen={this.state.isOpen}
           onClose={this.toggleOpen}
           target={
-            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen} >
+            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen ? 1 : 0} >
               <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
               {this.props.value ? `${this.props.value}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
             </Button>

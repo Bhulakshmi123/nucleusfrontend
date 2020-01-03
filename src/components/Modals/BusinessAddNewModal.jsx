@@ -32,6 +32,26 @@ class BusinessAddNewModal extends Component {
                 { value: 'pizza', label: 'Pizza', name:'lead_source' },
                 { value: 'burger', label: 'Burger', name:'lead_source' },
             ],
+            optionsForm3:[
+                { value: 'chocolate', label: 'Chocolate', name:'lead_priority' },
+                { value: 'strawberry', label: 'Strawberry', name:'lead_priority' },
+                { value: 'vanilla', label: 'Vanilla', name:'lead_priority' },
+            ],
+            optionsForm4:[
+                { value: 'icecream', label: 'Icecream', name:'lead_source' },
+                { value: 'pizza', label: 'Pizza', name:'lead_source' },
+                { value: 'burger', label: 'Burger', name:'lead_source' },
+            ],
+            optionsForm5:[
+                { value: 'chocolate', label: 'Chocolate', name:'lead_priority' },
+                { value: 'strawberry', label: 'Strawberry', name:'lead_priority' },
+                { value: 'vanilla', label: 'Vanilla', name:'lead_priority' },
+            ],
+            optionsForm6:[
+                { value: 'icecream', label: 'Icecream', name:'lead_source' },
+                { value: 'pizza', label: 'Pizza', name:'lead_source' },
+                { value: 'burger', label: 'Burger', name:'lead_source' },
+            ],
             startDate: new Date(),
             startDateEquip : new Date(),
             isOpenFormDropDown : false
@@ -40,11 +60,11 @@ class BusinessAddNewModal extends Component {
 
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
-        // let placeHolder = e.name+'_name';
+        let placeHolder = e.name+'_name';
         leadForm = {
             ...leadForm,
             [e.name]: e.value,
-            // [placeHolder]: e.label
+            [placeHolder]: e.label
         }
         this.setState({
             leadForm: leadForm,
@@ -142,13 +162,13 @@ class BusinessAddNewModal extends Component {
             this.setState({
                 leadForm,
                 equipmentKey : null
-            },() => this.closeEquipmentForm());
+            },() => {console.log("Hello" ,this.closeEquipmentForm())});
         }else{
             let leadForm = this.state.leadForm;
             leadForm.equipmentLead.push(this.state.equipmentForm);
             this.setState({
                 leadForm
-            },() => this.closeEquipmentForm());
+            },() => {console.log("hi",this.closeEquipmentForm())});
         }
     }
 
@@ -166,7 +186,6 @@ class BusinessAddNewModal extends Component {
             alert("Cannot Delete the record Now");
         }else{
             let equipmentLead = this.state.leadForm.equipmentLead;
-
             if (key > -1) {
                 equipmentLead.splice(key, 1);
             }
