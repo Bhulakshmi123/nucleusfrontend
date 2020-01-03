@@ -55,7 +55,10 @@ class SideArticle extends Component {
         }
         if (this.state.redirect && this.state.placeOfAction === 'DELETEDACTIVE') {
             return (<Redirect to="/business/leads/active"></Redirect>)
+        } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
+            return (<Redirect to="/business/leads/moved"></Redirect>)
         }
+
     }
 
     changeLeadStatus (leadDetId, newStatus, source) {
@@ -72,7 +75,22 @@ class SideArticle extends Component {
             }
         });
     }
-
+    moveToProjects = async (userUuid, leadId, leadDetId) => {
+        let data = {
+            "userUuid": userUuid,
+            "leadId": leadId.toString(),
+            "leadDetId": [leadDetId.toString()]
+        }
+        // let response = await moveToProjects(data, this.state.token);
+        // if (response) { alert('Project Moved to New') }
+        // else { alert('Failed to Move Project to Move') }
+        moveToProjects(data, this.state.token).then((res) => {
+            if (res) {
+                console.log('Ne', res);
+                this.setRedirect("MOVEDTOPROJECTS")
+            }
+        })
+    }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
 
@@ -103,16 +121,6 @@ class SideArticle extends Component {
             this.setState({ 'categoryNames': categoryName, 'selectedCategory': categoryName[0] });
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
-    }
-    moveToProjects = async (userUuid, leadId, leadDetId) => {
-        let data = {
-            "userUuid": userUuid,
-            "leadId": leadId.toString(),
-            "leadDetId": [leadDetId.toString()]
-        }
-        let response = await moveToProjects(data, this.state.token);
-        if (response) { alert('Project Moved to New') }
-        else { alert('Failed to Move Project to Move') }
     }
     handleChange (e) {
         let currentList = []

@@ -69,8 +69,8 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     overflow: auto;
 }
 .activeNavLink {
-    border: 2px solid white;
-    transition: 0.3s;
+    border-bottom: 2px solid white;
+    /* transition: 0.3s; */
 }
 .unActiveNavLink { color: white; }
 .unActiveNavLink:hover {
@@ -420,4 +420,15 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
     border-radius: 0px 5px 5px 0px;
+}
+.demoClass {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #007aff;
+    color: white;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px 15px;
+    border-bottom-left-radius: 17px;
 }

@@ -6,3 +6,4 @@ export const CHANGE_LEAD_STATUS = { type: "CHANGING_LEAD_STATUS", url: '/lms/cha
 export const CHANGE_SERVICE_STATUS = { type: "CHANGING_SERVICE_STATUS", url: '/lms/changeServiceStatus' }
 export const MAKE_A_REQUEST_BID = { type: "REQUEST_BID", url: '/lms/requestBid/' }
 export const MOVE_TO_PROJECTS = { type: "MOVING_TO_PROJECTS", url: '/lms/moveToProjects' }
+export const PROJECT_LIST_NUCLEUS = {type:"LIST_OF_PROJECTS_IN_NUCLEUS", url:'/lms/projects/new'}
