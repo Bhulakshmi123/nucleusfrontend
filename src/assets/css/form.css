@@ -19,6 +19,13 @@
     padding-left: 10px;
 }
 
+.down_arrow {
+    width: 12px;
+    height: 12px;
+    float: right;
+    margin-top: 4px;
+}
+
 textarea.form-control {
     height: auto;
 }
@@ -114,7 +121,6 @@ input[name="e_pe_shift"] {
     display: none;
 }
 
-
 .calender {
     width: 18px;
     height: 18px;
@@ -125,11 +131,9 @@ input[name="e_pe_shift"] {
     z-index: 1;
 }
 
-
 .widthone {
     min-width: 196px;
 }
-
 
 .stle_back {
     background-color: transparent !important;
@@ -143,7 +147,6 @@ input[name="e_pe_shift"] {
 .ant-time-picker-panel-placement-bottomLeft {
     top: 386px !important;
 }
-
 
 .table>thead>tr>th {
     font-weight: 600 !important;
