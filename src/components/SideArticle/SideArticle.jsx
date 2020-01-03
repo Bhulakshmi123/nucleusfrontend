@@ -9,7 +9,7 @@ import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProje
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        console.log('Side Article', this.props)
+        // console.log('Side Article', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -86,7 +86,7 @@ class SideArticle extends Component {
         // else { alert('Failed to Move Project to Move') }
         moveToProjects(data, this.state.token).then((res) => {
             if (res) {
-                console.log('Ne', res);
+                // console.log('Ne', res);
                 this.setRedirect("MOVEDTOPROJECTS")
             }
         })

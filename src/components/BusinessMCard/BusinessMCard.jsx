@@ -36,7 +36,7 @@ class BusinessMCard extends Component {
     getLeads = async (leadType) => {
         if (leadType === 'moved') {
             let response = await getProjectsOfNucleus(this.state.token);
-            console.log('Mo', response.data)
+            // console.log('Mo', response.data)
             this.setState({ projectsInformation: response.data })
             this.setState({ leadFamily: 'API2' })
         }
@@ -114,8 +114,8 @@ class BusinessMCard extends Component {
                                 <Nav className="">
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler} disabled>Pending</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler} disabled>Rejected</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler}>Pending</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/moved" name="moved" onClick={this.dataChangeHandler}>Moved To Projects</NavLink>
                                 </Nav>
                             </Col>
@@ -142,7 +142,7 @@ class BusinessMCard extends Component {
                                 </div>
                             </Col>
                         </Row>
-                        {this.state.isApiCallSuccessful === true}
+                        {/* {this.state.isApiCallSuccessful === true} */}
                         <div>
                             {
                                 this.state.leadFamily === 'API1' ?
@@ -191,11 +191,12 @@ class BusinessMCard extends Component {
                                                                 <Row>
                                                                     <div className="demoClass">{prop.project_createdOn.split('T')[0]}</div>
                                                                     <Col md={5} className="my-auto text-dark">
-                                                                        <div className="text-capitalize font-size-10">{prop.project_uuid} <small className="text-danger">[leadId: {prop.project_leadId}]</small> </div>
+                                                                        <div className="text-capitalize font-size-10 text-primary">{prop.project_uuid} <small className="text-danger">[leadId: {prop.project_leadId}]</small> </div>
                                                                         <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.project_uuid}</div>
                                                                     </Col>
                                                                     <Col md={5} className="my-auto text-dark">
-                                                                        <div className="text-capitalize font-size-09"><small className="text-danger">[project_leadId]</small>{prop.project_createdBy}</div>
+                                                                        <div><small className="text-danger">[project_leadId]</small></div>
+                                                                        <div className="text-capitalize font-size-09">{prop.project_createdBy}</div>
                                                                     </Col>
                                                                     <Col md={2} className="my-auto">
                                                                         {prop.project_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase mt-2 ">ACTIVE</div> : <div className="card text-center bg-secondary py-1 mx-4 text-white text-uppercase" value={prop.project_isActive}>OFFLINE</div>}
