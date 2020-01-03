@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
-import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Nav, InputGroup, FormControl } from 'react-bootstrap';
 import { FaMapMarkedAlt, FaPhoneSquare } from "react-icons/fa";
 import { ArticleHeader } from '../ArticleHeader/ArticleHeader';
 import { getLeads } from '../../views/Business/actions';
@@ -20,7 +20,8 @@ class BusinessMCard extends Component {
             sidebarView: false,
             leadType: leadType[leadType.length - 1],
             leadsInformation: [],
-            leadDate: ''
+            leadDate: '',
+            dummyDataHolder: []
         }
     }
     componentDidMount () {
@@ -31,11 +32,24 @@ class BusinessMCard extends Component {
         let response = await getLeads(leadType, this.state.token);
         if (response) {
             this.setState({ "leadsInformation": response.data })
+            this.setState({ "dummyDataHolder": response.data })
+            // console.log("This.State", this.state);
         }
     }
     dataChangeHandler = (e) => {
         this.getLeads(e.target.name)
         this.setState({ 'leadType': e.target.name })
+    }
+    handleChange (e) {
+        let currentList = []
+        let displayedLeads;
+        if (e.target.value !== '') {
+            let searchQuery = e.target.value.toLowerCase();
+            currentList = this.state.leadsInformation;
+            displayedLeads = currentList.filter(item => {
+                console.log('each Item', item);
+            })
+        }
     }
     render () {
         return (
@@ -45,12 +59,24 @@ class BusinessMCard extends Component {
                         <Row>
                             <Col md={12}>
                                 <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
-                                <Nav className="justify-content-around my-2 mx-auto w-35 mb-4">
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler} disabled>Pending</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-2" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler} disabled>Rejected</NavLink>
+                            </Col>
+                        </Row>
+                        <Row className="mb-3 mt-2">
+                            <Col md={8} className="my-auto">
+                                <Nav className=" d-flex justify-content-between w-45">
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler} disabled>Pending</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler} disabled>Rejected</NavLink>
                                 </Nav>
+                            </Col>
+                            <Col md={4} className="my-auto">
+                                <InputGroup className="searchBarStyle">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text className="searchBarPrepend"><i className="fas fa-search"></i></InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" onChange={this.handleChange} />
+                                </InputGroup>
                             </Col>
                         </Row>
                         {this.state.isApiCallSuccessful === true}
