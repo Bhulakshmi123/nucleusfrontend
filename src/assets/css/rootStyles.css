@@ -402,7 +402,9 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 
 .linkStateActive { color: #154D7B !important; border-bottom : 2px solid #154D7B; }
 .input-group-text { border:none; background-color: #F0F0F0; }
-.form-control:focus, .customSelect:focus, .customInput:focus { box-shadow: none !important;}
+.form-control:focus { box-shadow: none !important; }
+.customSelect:focus { box-shadow: none !important; }
+.customInput:focus { box-shadow: none !important; }
 .customSelect {
     border: none;
     color: white;
@@ -431,4 +433,12 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     margin: 0px;
     padding: 0px 15px;
     border-bottom-left-radius: 17px;
+}
+.customInput::placeholder {
+    color: white !important;
+}
+select::-ms-expand {	display: none; }
+select{
+    -webkit-appearance: none;
+    appearance: none;
 }

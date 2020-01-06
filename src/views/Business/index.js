@@ -13,10 +13,11 @@ class Business extends Component {
             <Route path="/business/leads/lead/active/premium" component={ViewDetails} />
             <Route path="/business/leads/lead/active/discovery" component={ViewDetails} />
             <Route path="/business/leads/lead/active/basic" component={ViewDetails} />
-            <Route path="/business/new/view/:id" component={ViewDetails} />
-            <Route path="/business/active/view/:id" component={ViewDetails} />
-            <Route path="/business/pending/view/:id" component={ViewDetails} />
-            <Route path="/business/rejected/view/:id" component={ViewDetails} />
+            {/* <Route path="/business/new/view/:id" component={ViewDetails} /> */}
+            {/* <Route path="/business/active/view/:id" component={ViewDetails} /> */}
+            {/* <Route path="/business/pending/view/:id" component={ViewDetails} /> */}
+            {/* <Route path="/business/rejected/view/:id" component={ViewDetails} /> */}
+            {/* <Route path="/business/moved/view/:id" component={ViewDetails} /> */}
             <Route path="/business/leads/new" component={BusinessMCard} />
             <Route path="/business/leads/active" component={BusinessMCard} />
             <Route path="/business/leads/rejected" component={BusinessMCard} />

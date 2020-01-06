@@ -236,6 +236,12 @@ class SideArticle extends Component {
                                     moveToProjects={this.moveToProjects}>
                                 </AddViewTwo>
                             </Route>
+                            <Route path="/business/leads/lead/moved/:id">
+                                <AddViewOne
+                                    formData={this.state.specificEquipmentsDetails}
+                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                </AddViewOne>
+                            </Route>
                         </Switch>
                         : null
                     }
