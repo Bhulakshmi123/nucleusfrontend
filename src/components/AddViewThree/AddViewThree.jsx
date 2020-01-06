@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
-import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup } from 'react-bootstrap';
+import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup, FormControl } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { NavLink, Redirect } from 'react-router-dom';
@@ -11,7 +11,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add v3', this.props);
+        // console.log('AddView Three v3', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {
@@ -21,6 +21,7 @@ class AddViewThree extends Component {
             categoryNames: this.props.categoryNames,
             selectedCategory: this.props.selectedCategory,
             dataToRender: this.props.dataToRender,
+            dummyDataHolder: this.props.dataToRender,
             checkedProjects: [],
             checked: true,
             redirect: false,
@@ -28,12 +29,44 @@ class AddViewThree extends Component {
             redirectPath: '',
             checkBoxData: []
         }
+        this.searchDataHandler = this.searchDataHandler.bind(this)
+    }
+    searchDataHandler (e) {
+        let currentList = []; 
+        let displayedLeads, searchQuery;
+        if (e.target.value !== "") {
+            currentList = this.state.dataToRender;
+            searchQuery = e.target.value.toLowerCase();
+            displayedLeads = currentList.filter(item => {
+                let searchValue = item.name.toLowerCase();
+                return searchValue.indexOf(searchQuery) !== -1;
+            })
+            this.setState({ dataToRender: displayedLeads })
+        }
+        else {
+            this.setState({ dataToRender: this.state.dummyDataHolder })
+        }
     }
     componentDidMount () {
-        this.state.dataToRender.map((checky, index) => {
-            this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
-        })
+        // this.state.dataToRender.map((checky, index) => {
+        //     this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
+        // })
+        // console.log('AddViewThree',this.props);
         // console.log('checkBoxData', this.state.checkBoxData)
+    }
+    componentWillReceiveProps (newProps) {
+        this.setState({
+            response: newProps.supplierData,
+            categoryNames: newProps.categoryNames,
+            selectedCategory: newProps.selectedCategory,
+            dataToRender: newProps.dataToRender,
+            checkedProjects: [],
+            checked: true,
+            redirect: false,
+            isModalShowing: false,
+            redirectPath: '',
+            checkBoxData: []
+        })
     }
 
     test = () => {
@@ -84,11 +117,11 @@ class AddViewThree extends Component {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
-                <Container className="mt-5 pl-0" fluid>
+                <Container className="mt-5 px-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={6} className="pr-0 my-auto">
-                            <ButtonGroup size="sm" className="float-right my-auto">
+                            <ButtonGroup size="sm" className="float-right my-auto mr-2">
                                 <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
@@ -101,7 +134,7 @@ class AddViewThree extends Component {
                         </Col>
                     </Row>
                     <Row className="mb-1">
-                        <Col md={7} className="text-left">
+                        <Col md={5} className="text-left">
                             {
                                 this.state.categoryNames.map((prop, key) => {
                                     return (<NavLink key={key} activeClassName="linkStateActive" className="mx-3 font-size-10 hovertext-bluefuchisa-border text-dark text-capitalize" onClick={
@@ -113,7 +146,10 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={5}>
+                        <Col md={4}>
+                            <input type="text" class="form-control" placeholder="Search Here" onChange={this.searchDataHandler}></input>
+                        </Col>
+                        <Col md={3}>
                             <ButtonGroup size="sm" className="float-right my-auto">
                                 <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
                                 <Button variant="success" className="ml-1 bor-rad-03 px-3"><MdTextsms className="mr-1" />SMS</Button>
@@ -152,7 +188,7 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="font-size-18 text-white bg-primary bor-rad-05">{prop.year}</div>
+                                                                        <div className="font-size-18 text-white bg-warning bor-rad-01">{prop.year}</div>
                                                                         <small className="d-block mt-1">Model</small>
                                                                     </div>
                                                                 </Col>

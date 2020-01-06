@@ -13,7 +13,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 export default class Index extends Component {
-	render() {
+	render () {
 		return (
 			<React.Fragment>
 				<Provider store={store}>

@@ -24,7 +24,8 @@ class BusinessMCard extends Component {
             leadDate: '',
             dummyDataHolder: [],
             selectedState: 'clientName',
-            leadFamily: ''
+            leadFamily: '',
+            initialDate: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
@@ -36,7 +37,6 @@ class BusinessMCard extends Component {
     getLeads = async (leadType) => {
         if (leadType === 'moved') {
             let response = await getProjectsOfNucleus(this.state.token);
-            // console.log('Mo', response.data)
             this.setState({ projectsInformation: response.data })
             this.setState({ leadFamily: 'API2' })
         }
@@ -45,6 +45,7 @@ class BusinessMCard extends Component {
             if (response) {
                 this.setState({ leadsInformation: response.data })
                 this.setState({ dummyDataHolder: response.data })
+                // this.setState({ initialDate: response.data[0].lead_date })
                 this.setState({ leadFamily: 'API1' })
             }
         }
@@ -114,8 +115,8 @@ class BusinessMCard extends Component {
                                 <Nav className="">
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/pending" name="pending" onClick={this.dataChangeHandler}>Pending</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
+                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/deleted" name="deleted" onClick={this.dataChangeHandler}>Deleted</NavLink>
                                     <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/moved" name="moved" onClick={this.dataChangeHandler}>Moved To Projects</NavLink>
                                 </Nav>
                             </Col>
@@ -127,9 +128,9 @@ class BusinessMCard extends Component {
                                     <FormControl aria-label="Text input with checkbox" placeholder="Search" className="formControlSearch" onChange={this.handleChange} />
                                 </InputGroup> */}
                                 <div className="input-group w-100">
-                                    <select className="customSelect w-40" onClick={this.selectHandler}>
+                                    <select className="customSelect w-40" value={this.state.selectedState} onChange={this.selectHandler}>
                                         <option value="searchBy">Search by</option>
-                                        <option selected value="clientName">Client Name</option>
+                                        <option value="clientName">Client Name</option>
                                         <option value="phoneNumber">Phone Number</option>
                                         <option value="equipmentCount">Equipment Count</option>
                                         <option value="location">Location</option>
@@ -142,44 +143,49 @@ class BusinessMCard extends Component {
                                 </div>
                             </Col>
                         </Row>
-                        {/* {this.state.isApiCallSuccessful === true} */}
                         <div>
                             {
                                 this.state.leadFamily === 'API1' ?
                                     this.state.leadsInformation.length === 0 ?
-                                        <DefaultCard md={5}>No Leads Available to Display</DefaultCard> :
-                                        this.state.leadsInformation.map((prop, key) => {
-                                            return (
-                                                <Container key={key}>
-                                                    <Row>
-                                                        <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">{getDateFormat_4(prop.lead_date)}</Col>
-                                                        <Col md={10} className="pr-0">
-                                                            <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
-                                                                <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
-                                                                    <Row>
-                                                                        <Col md={5} className="my-auto text-dark">
-                                                                            <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger">[leadid: {prop.lead_id}]</small> </div>
-                                                                            <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
-                                                                        </Col>
-                                                                        <Col md={3} className="my-auto text-dark">
-                                                                            <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
-                                                                            <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
-                                                                        </Col>
-                                                                        <Col md={2} className="my-auto">
-                                                                            {prop.lead_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-secondary py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
-                                                                        </Col>
-                                                                        <Col md={2} className="my-auto text-dark text-center">
-                                                                            <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
-                                                                            <div className="mtn-5">Equipment</div>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </Link>
-                                                        </Col>
-                                                    </Row>
-                                                </Container>
-                                            )
-                                        }) :
+                                        <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard> :
+                                        <div>
+                                            {
+                                                this.state.leadsInformation.map((prop, key) => {
+                                                    return (
+                                                        <Container key={key}>
+                                                            <Row>
+                                                                <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
+                                                                    {getDateFormat_4(prop.lead_date)}
+                                                                </Col>
+                                                                <Col md={10} className="pr-0">
+                                                                    <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
+                                                                        <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
+                                                                            <Row>
+                                                                                <Col md={5} className="my-auto text-dark">
+                                                                                    <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger">[leadId: {prop.lead_id}]</small> </div>
+                                                                                    <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
+                                                                                </Col>
+                                                                                <Col md={3} className="my-auto text-dark">
+                                                                                    <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
+                                                                                    <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto">
+                                                                                    {prop.lead_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-secondary py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto text-dark text-center">
+                                                                                    <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
+                                                                                    <div className="mtn-5">Equipment</div>
+                                                                                </Col>
+                                                                            </Row>
+                                                                        </Container>
+                                                                    </Link>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    )
+                                                })
+                                            }
+                                        </div> :
                                     this.state.projectsInformation.length === 0 ?
                                         <DefaultCard md={5}>No Projects Available to Display</DefaultCard> :
                                         this.state.projectsInformation.map((prop, key) => {
