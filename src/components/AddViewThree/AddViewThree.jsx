@@ -11,7 +11,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('AddView Three v3', this.props);
+        console.log('Add View Three Passed Props', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {
@@ -31,8 +31,10 @@ class AddViewThree extends Component {
         }
         this.searchDataHandler = this.searchDataHandler.bind(this)
     }
+    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
     searchDataHandler (e) {
-        let currentList = []; 
+        let currentList = [];
         let displayedLeads, searchQuery;
         if (e.target.value !== "") {
             currentList = this.state.dataToRender;
@@ -60,23 +62,14 @@ class AddViewThree extends Component {
             categoryNames: newProps.categoryNames,
             selectedCategory: newProps.selectedCategory,
             dataToRender: newProps.dataToRender,
-            checkedProjects: [],
-            checked: true,
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
-            checkBoxData: []
         })
+        console.log('Component Will Receive Props')
     }
-
     test = () => {
         this.setState({ redirect: true, redirectPath: 'leaduuid' })
-    }
-    openModalHandler = () => {
-        this.setState({ "isModalShowing": true });
-    }
-    closeModalHandler = () => {
-        this.setState({ "isModalShowing": false })
     }
     renderRedirect = () => {
         if (this.state.redirect && this.state.redirectPath === 'active') {
@@ -107,12 +100,12 @@ class AddViewThree extends Component {
             this.test();
         }
     }
-    handleCheck = (e) => {
-        this.setState({ checked: !this.state.checked });
-        if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
-        else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
-        // console.log(this.state.checkedProjects)
-    }
+    // handleCheck = (e) => {
+    //     this.setState({ checked: !this.state.checked });
+    //     if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
+    //     else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] })}
+    //     // console.log(this.state.checkedProjects)
+    // }
     render () {
         return (
             <React.Fragment>
@@ -123,7 +116,7 @@ class AddViewThree extends Component {
                         <Col md={6} className="pr-0 my-auto">
                             <ButtonGroup size="sm" className="float-right my-auto mr-2">
                                 <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>
@@ -141,13 +134,14 @@ class AddViewThree extends Component {
                                         () => {
                                             this.setState({ 'selectedCategory': prop });
                                             this.setState({ 'dataToRender': this.state.response[prop] })
+                                            console.log('After Click', this.state)
                                         }}
                                         to={`/business/leads/lead/active/${prop}`} >{prop}</NavLink>)
                                 })
                             }
                         </Col>
                         <Col md={4}>
-                            <input type="text" class="form-control" placeholder="Search Here" onChange={this.searchDataHandler}></input>
+                            <input type="text" className="form-control" placeholder="Search Here" onChange={this.searchDataHandler}></input>
                         </Col>
                         <Col md={3}>
                             <ButtonGroup size="sm" className="float-right my-auto">
@@ -188,8 +182,10 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="font-size-18 text-white bg-warning bor-rad-01">{prop.year}</div>
-                                                                        <small className="d-block mt-1">Model</small>
+                                                                        <div className="w-100 bg-warning bor-rad-05">
+                                                                            <div className="font-size-18 text-dark mbn-5">{prop.year}</div>
+                                                                            <small className="d-block mt-0 text-white bg-dark">Model</small>
+                                                                        </div>
                                                                     </div>
                                                                 </Col>
                                                             </Row>

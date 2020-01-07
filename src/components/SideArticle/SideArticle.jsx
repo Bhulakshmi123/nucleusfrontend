@@ -50,10 +50,10 @@ class SideArticle extends Component {
         if (this.state.redirect && this.state.placeOfAction === 'ACTIVATED') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'DELETEDNEW') {
+        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDNEW') {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'DELETEDACTIVE') {
+        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDACTIVE') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
             return (<Redirect to="/business/leads/moved"></Redirect>)
@@ -64,7 +64,7 @@ class SideArticle extends Component {
     changeLeadStatus (leadDetId, newStatus, source) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "DELETED") { //! Change Later to CLOSED
+            if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
                 this.setRedirect(data.newStatus + source)
             }
             if (data.newStatus === "ACTIVATED") {

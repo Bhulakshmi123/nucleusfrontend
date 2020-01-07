@@ -18,12 +18,8 @@ class AddViewTwo extends Component {
             token: token,
         }
     }
-    openModalHandler = () => {
-        this.setState({ "isModalShowing": true })
-    }
-    closeModalHandler = () => {
-        this.setState({ "isModalShowing": false })
-    }
+    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
     render () {
         return (
             <React.Fragment>
@@ -38,16 +34,16 @@ class AddViewTwo extends Component {
                                 <Link to={`/business/leads/lead/active/premium`}>
                                     <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm">Supplier List</Button>
                                 </Link>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="DELETED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
-                    <div className="text-center text-danger">---------- RENTER INFORMATION ----------</div>
+                    <div className="text-center text-white w-25 bg-success py-1 bor-rad-02">RENTER INFORMATION</div>
                     <div className="my-3">
                         <Renter editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
-                    <div className="mt-3 text-center text-danger">---------- FINALIZED SUPPLIERS ----------</div>
+                    <div className="mt-3 text-center text-white w-25 bg-primary py-1 bor-rad-02">FINALIZED SUPPLIERS</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
@@ -61,7 +57,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
-                    <div className="mt-3 text-center text-danger">---------- SHORTLISTED SUPPLIERS ----------</div>
+                    <div className="text-center text-white w-25 bg-danger py-1 bor-rad-02">SHORTLISTED SUPPLIERS</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?

@@ -7,7 +7,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
-        console.log('Final',this.props)
+        // console.log('Finalized Supplier Props',this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -76,7 +76,7 @@ class FinalizedSupplier extends Component {
     closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
     // openModalHandler = () => this.setState({ "isModalShowing": true })
     // closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Card className="mx-auto p-3 my-3">

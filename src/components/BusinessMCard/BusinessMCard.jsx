@@ -145,15 +145,16 @@ class BusinessMCard extends Component {
                                                     <Container key={key}>
                                                         <Row>
                                                             <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
-                                                                {getDateFormat_4(prop.lead_date)}
+                                                                {/* {getDateFormat_4(prop.lead_date)} */}
+                                                                {prop.lead_date}
                                                             </Col>
                                                             <Col md={10} className="pr-0">
                                                                 <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
-                                                                    <Container fluid className="card p-3 mb-4" onClick={this.dataMapper}>
+                                                                    <Container fluid className="card p-3 mb-4">
                                                                         <Row>
                                                                             <Col md={5} className="my-auto text-dark">
-                                                                                <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger">[leadId: {prop.lead_id}]</small> </div>
-                                                                                <div><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
+                                                                                <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
+                                                                                <div className="text-capitalize"><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
                                                                             </Col>
                                                                             <Col md={3} className="my-auto text-dark">
                                                                                 <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
