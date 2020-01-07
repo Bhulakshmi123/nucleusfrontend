@@ -423,17 +423,6 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     padding: 10px;
     border-radius: 0px 5px 5px 0px;
 }
-.demoClass {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #007aff;
-    color: white;
-    font-size: 12px;
-    margin: 0px;
-    padding: 0px 15px;
-    border-bottom-left-radius: 17px;
-}
 .customInput::placeholder {
     color: white !important;
 }
