@@ -145,8 +145,7 @@ class BusinessMCard extends Component {
                                                     <Container key={key}>
                                                         <Row>
                                                             <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
-                                                                {/* {getDateFormat_4(prop.lead_date)} */}
-                                                                {prop.lead_date}
+                                                                {getDateFormat_4(prop.lead_date)}
                                                             </Col>
                                                             <Col md={10} className="pr-0">
                                                                 <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
