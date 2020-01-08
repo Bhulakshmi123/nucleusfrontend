@@ -368,6 +368,9 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 .text-underline {text-decoration: underline !important;}
 .text-bluefuchsia {color:#154D7B !important;}
 
+.bg-moodIndigo {background-color: #9c27b0 !important;}
+.bg-bloodIndigo {background-color:#4a148c !important;}
+.bg-brickRed {background-color:#d50000 !important;}
 .bg-bluefuchsia {background-color: #154D7B !important;}
 .bg-darkbluefuchisa {background-color: #081B2D !important;}
 .bg-lightgray {background-color: #EAE8EC !important;}
@@ -402,6 +405,9 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 .border-bottom-secondary {border-bottom:2px solid #6c757e;}
 .border-bottom-info {border-bottom:2px solid #17a2b7;}
 .border-bottom-white {border-bottom:2px solid #ffffff;}
+
+.boxShadow-4bpx { box-shadow: 4px 4px rgba(0,0,0,1);}
+
 
 .input-group-text { border:none; background-color: #F0F0F0; }
 .form-control:focus { box-shadow: none !important; }

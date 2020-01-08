@@ -136,7 +136,7 @@ class AddViewThree extends Component {
                             {
                                 this.state.categoryNames.map((prop, key) => {
                                     return (
-                                        <div className={`text-capitalize my-auto mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
+                                        <div className={`text-capitalize my-auto text-dark mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
                                             {prop}
                                         </div>
                                     )
@@ -149,7 +149,7 @@ class AddViewThree extends Component {
                         <Col md={3}>
                             <ButtonGroup size="sm" className="float-right my-auto">
                                 <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
-                                <Button variant="success" className="ml-1 bor-rad-03 px-3"><MdTextsms className="mr-1" />SMS</Button>
+                                <Button variant="success" className="ml-1 bor-rad-03 px-3" disabled><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
