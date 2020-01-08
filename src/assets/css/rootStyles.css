@@ -68,15 +68,6 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
     height: 100vh;
     overflow: auto;
 }
-.activeNavLink {
-    border-bottom: 2px solid white;
-    /* transition: 0.3s; */
-}
-.unActiveNavLink { color: white; }
-.unActiveNavLink:hover {
-    color: white;
-    border-bottom: 2px solid white;
-}
 .input-group-text { background-color: white !important; }
 .whiteOpaque {
     background-color: rgba(255, 255, 255, 0.2);
@@ -390,17 +381,28 @@ input::placeholder, textarea::placeholder {font-family: GilroyBold !important;}
 .hovertext-dark:hover {color: #353a40 !important;}
 .hovertext-secondary:hover {color: #6c757e !important;}
 .hovertext-info:hover {color: #17a2b7 !important;}
+.hovertext-white:hover {color: #ffffff !important;}
 
 .hovertext-bluefuchisa-border:hover {border-bottom : 2px solid #154D7B;}
 .hovertext-primary-border:hover {border-bottom : 2px solid #007aff;}
 .hovertext-success-border:hover {border-bottom : 2px solid #27a844;}
 .hovertext-danger-border:hover {border-bottom : 2px solid #dd3546;}
-.hovertext-warning-border:hover {border-bottom : 2px solid #154D7B;}
-.hovertext-dark-border:hover {border-bottom : 2px solid #fec107;}
+.hovertext-warning-border:hover {border-bottom : 2px solid #fec107;}
+.hovertext-dark-border:hover {border-bottom : 2px solid #353a40;}
 .hovertext-secondary-border:hover {border-bottom : 2px solid #6c757e;}
 .hovertext-info-border:hover {border-bottom : 2px solid #17a2b7;}
+.hovertext-white-border:hover {border-bottom : 2px solid #ffffff;}
 
-.linkStateActive { color: #154D7B !important; border-bottom : 2px solid #154D7B; }
+.border-bottom-bluefuchisa {border-bottom:2px solid #154D7B;}
+.border-bottom-primary {border-bottom:2px solid #007aff;}
+.border-bottom-success {border-bottom:2px solid #27a844;}
+.border-bottom-danger {border-bottom:2px solid #dd3546;}
+.border-bottom-warning {border-bottom:2px solid #fec107;}
+.border-bottom-dark {border-bottom:2px solid #353a40;}
+.border-bottom-secondary {border-bottom:2px solid #6c757e;}
+.border-bottom-info {border-bottom:2px solid #17a2b7;}
+.border-bottom-white {border-bottom:2px solid #ffffff;}
+
 .input-group-text { border:none; background-color: #F0F0F0; }
 .form-control:focus { box-shadow: none !important; }
 .customSelect:focus { box-shadow: none !important; }

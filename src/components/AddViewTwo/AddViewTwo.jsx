@@ -31,7 +31,7 @@ class AddViewTwo extends Component {
                         <Col md={6} className="my-auto">
                             <ButtonGroup className="float-right my-auto">
                                 <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer mr-3" onClick={this.openModalHandler}></i>
-                                <Link to={`/business/leads/lead/active/premium`}>
+                                <Link to={`/business/leads/lead/active/suppliersList`}>
                                     <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm">Supplier List</Button>
                                 </Link>
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>

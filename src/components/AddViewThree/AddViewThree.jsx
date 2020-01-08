@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
-import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup, FormControl } from 'react-bootstrap';
+import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { MdTextsms } from 'react-icons/md';
 import { MdPhone } from "react-icons/md";
 import { DefaultCard } from '../DefaultCard/DefaultCard';
@@ -27,7 +27,8 @@ class AddViewThree extends Component {
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
-            checkBoxData: []
+            checkBoxData: [],
+            chosenCategory: 0
         }
         this.searchDataHandler = this.searchDataHandler.bind(this)
     }
@@ -65,6 +66,7 @@ class AddViewThree extends Component {
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
+            chosenCategory: 0
         })
         console.log('Component Will Receive Props')
     }
@@ -81,6 +83,9 @@ class AddViewThree extends Component {
                 return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
             }
         }
+    }
+    supplierCategoryChangeHandler = (categoryName, chosenKey) => {
+        this.setState({ chosenCategory: chosenKey, dataToRender: this.state.response[categoryName] })
     }
     letsMakeaRequestBid = async () => {
         let data = {
@@ -127,16 +132,14 @@ class AddViewThree extends Component {
                         </Col>
                     </Row>
                     <Row className="mb-1">
-                        <Col md={5} className="text-left">
+                        <Col md={5} className="text-left d-flex">
                             {
                                 this.state.categoryNames.map((prop, key) => {
-                                    return (<NavLink key={key} activeClassName="linkStateActive" className="mx-3 font-size-10 hovertext-bluefuchisa-border text-dark text-capitalize" onClick={
-                                        () => {
-                                            this.setState({ 'selectedCategory': prop });
-                                            this.setState({ 'dataToRender': this.state.response[prop] })
-                                            console.log('After Click', this.state)
-                                        }}
-                                        to={`/business/leads/lead/active/${prop}`} >{prop}</NavLink>)
+                                    return (
+                                        <div className={`text-capitalize my-auto mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
+                                            {prop}
+                                        </div>
+                                    )
                                 })
                             }
                         </Col>

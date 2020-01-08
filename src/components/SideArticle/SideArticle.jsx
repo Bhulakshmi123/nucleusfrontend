@@ -183,7 +183,7 @@ class SideArticle extends Component {
                 <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
                     {this.state.isApiCallSuccessful === true ?
                         <Switch>
-                            <Route path="/business/leads/lead/active/premium">
+                            <Route path="/business/leads/lead/active/suppliersList">
                                 <AddViewThree
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.specificEquipmentSupplierDetails}
@@ -193,30 +193,6 @@ class SideArticle extends Component {
                                     leadUuid={this.state.leadUuid}
                                     leadDetUuid={this.state.leadEquipmentUid}
                                     token={this.state.token}
-                                    statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}
-                                    moveToProjects={this.moveToProjects}>
-                                </AddViewThree>
-                            </Route>
-                            <Route path="/business/leads/lead/active/discovery">
-                                <AddViewThree
-                                    formData={this.state.specificEquipmentsDetails}
-                                    supplierData={this.state.specificEquipmentSupplierDetails}
-                                    categoryNames={this.state.categoryNames}
-                                    selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}
-                                    statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}
-                                    moveToProjects={this.moveToProjects}>
-                                </AddViewThree>
-                            </Route>
-                            <Route path="/business/leads/lead/active/basic">
-                                <AddViewThree
-                                    formData={this.state.specificEquipmentsDetails}
-                                    supplierData={this.state.specificEquipmentSupplierDetails}
-                                    categoryNames={this.state.categoryNames}
-                                    selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     funFunction={this.testAddViewThree}
                                     moveToProjects={this.moveToProjects}>

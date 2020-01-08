@@ -110,11 +110,11 @@ class BusinessMCard extends Component {
                         <Row className="mb-3 mt-2">
                             <Col md={7} className="my-auto">
                                 <Nav className="">
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/deleted" name="deleted" onClick={this.dataChangeHandler}>Deleted</NavLink>
-                                    <NavLink activeClassName="activeNavLink" className="unActiveNavLink px-3 mr-2" to="/business/leads/moved" name="moved" onClick={this.dataChangeHandler}>Moved To Projects</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/deleted" name="deleted" onClick={this.dataChangeHandler}>Deleted</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/moved" name="moved" onClick={this.dataChangeHandler}>Moved To Projects</NavLink>
                                 </Nav>
                             </Col>
                             <Col md={5} className="my-auto">
