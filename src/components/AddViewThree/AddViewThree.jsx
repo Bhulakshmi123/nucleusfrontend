@@ -29,11 +29,25 @@ class AddViewThree extends Component {
             checkBoxData: []
         }
     }
-    componentDidMount () {
+    componentDidMount() {
         this.state.dataToRender.map((checky, index) => {
             this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
         })
         // console.log('checkBoxData', this.state.checkBoxData)
+    }
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            response: newProps.supplierData,
+            categoryNames: newProps.categoryNames,
+            selectedCategory: newProps.selectedCategory,
+            dataToRender: newProps.dataToRender,
+            checkedProjects: [],
+            checked: true,
+            redirect: false,
+            isModalShowing: false,
+            redirectPath: '',
+            checkBoxData: []
+        })
     }
 
     test = () => {
@@ -80,7 +94,7 @@ class AddViewThree extends Component {
         else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
         // console.log(this.state.checkedProjects)
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {this.renderRedirect()}

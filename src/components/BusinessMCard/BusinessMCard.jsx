@@ -29,7 +29,7 @@ class BusinessMCard extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
-    componentDidMount () {
+    componentDidMount() {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType)
     }
@@ -49,14 +49,14 @@ class BusinessMCard extends Component {
             }
         }
     }
-    selectHandler (e) {
+    selectHandler(e) {
         this.setState({ 'selectedState': e.target.value })
     }
     dataChangeHandler = (e) => {
         this.getLeads(e.target.name)
         this.setState({ 'leadType': e.target.name })
     }
-    handleChange (e) {
+    handleChange(e) {
         let currentList, displayedLeads;
         if (e.target.value !== '') {
             let searchQuery;
@@ -99,7 +99,7 @@ class BusinessMCard extends Component {
             this.setState({ leadsInformation: this.state.dummyDataHolder })
         }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <div className={this.state.sidebarView ? "mainContent mainContentMini" : "mainContent"}>

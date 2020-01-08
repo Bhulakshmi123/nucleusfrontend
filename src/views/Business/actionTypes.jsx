@@ -7,3 +7,4 @@ export const CHANGE_SERVICE_STATUS = { type: "CHANGING_SERVICE_STATUS", url: '/l
 export const MAKE_A_REQUEST_BID = { type: "REQUEST_BID", url: '/lms/requestBid/' }
 export const MOVE_TO_PROJECTS = { type: "MOVING_TO_PROJECTS", url: '/lms/moveToProjects' }
 export const PROJECT_LIST_NUCLEUS = {type:"LIST_OF_PROJECTS_IN_NUCLEUS", url:'/lms/projects/new'}
+export const GET_EQUIPMENT_SUPPLIER_DETAILS = {type:"GET_SUPPLIER_DETAILS", url:'/lms/supplierDetails'}

@@ -1,4 +1,4 @@
-import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS } from './actionTypes';
+import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS, GET_EQUIPMENT_SUPPLIER_DETAILS } from './actionTypes';
 import service from '../../service';
 
 export const getSupplierList = async (payload, token) => {
@@ -27,4 +27,7 @@ export const moveToProjects = async (payload, token) => {
 }
 export const getProjectsOfNucleus = async (token) => {
     return (await service.fetchGet(PROJECT_LIST_NUCLEUS.url, token));
+}
+export const getSupplierDetails = async (payload, token) => {
+    return (await service.fetchPost(GET_EQUIPMENT_SUPPLIER_DETAILS.url, payload, token));
 }

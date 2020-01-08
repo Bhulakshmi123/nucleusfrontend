@@ -47,6 +47,11 @@ class AddFields extends React.Component {
             safetymgmtDropDown: [
                 { value: 'Required', label: 'Required', name: 'lead_safetyMeasures' },
                 { value: 'Not Required', label: 'Not Required', name: 'lead_safetyMeasures' }
+            ],
+            leadPriorityDropDown : [
+                { value: 'HOT', label: 'HOT', name: 'lead_priority' },
+                { value: 'MEDIUM', label: 'MEDIUM', name: 'lead_priority' },
+                { value: 'COLD', label: 'COLD', name: 'lead_priority' }
             ]
         }
     }
@@ -55,11 +60,9 @@ class AddFields extends React.Component {
         if (nextProps.equipmentForm !== this.props.equipmentForm) {
             this.setState({ equipmentForm: nextProps.equipmentForm });
         }
-
         if (nextProps.districtsDropDown !== this.props.districtsDropDown) {
             this.setState({ districtsDropDown: nextProps.districtsDropDown });
         }
-
     }
 
     render() {
@@ -73,7 +76,6 @@ class AddFields extends React.Component {
                         </SelectInputSearch>
                         <span className="lead_equipmentType_error">{this.props.equipmentForm.lead_equipmentType_error}</span>
                     </Col>
-
                     <Col md={3}>
                         <Form.Group controlId="formGroupmod">
                             <Form.Label className="font_stle">Make</Form.Label>
@@ -81,7 +83,6 @@ class AddFields extends React.Component {
                             <span className="lead_make_error">{this.props.equipmentForm.lead_make_error}</span>
                         </Form.Group>
                     </Col>
-
                     <Col md={3}>
                         <Form.Group controlId="formGroupPhno">
                             <Form.Label className="font_stle">
@@ -90,15 +91,12 @@ class AddFields extends React.Component {
                             <span className="lead_modal_error">{this.props.equipmentForm.lead_modal_error}</span>
                         </Form.Group>
                     </Col>
-
                     <Col md={3}>
                         <SelectInputSearch name="lead_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.props.equipmentForm.lead_year_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.yearDropDown}>
                         </SelectInputSearch>
                         <span className="lead_year_error">{this.props.equipmentForm.lead_year_error}</span>
                     </Col>
-
                 </Form.Row>
-
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group controlId="formGroupCapty">
@@ -254,7 +252,7 @@ class AddFields extends React.Component {
                             <span className="lead_operatorBatha_error">{this.props.equipmentForm.lead_operatorBatha_error}</span>
                         </Form.Group>
                     </Col>
-                    
+                    <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.props.equipmentForm.lead_priority_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isOpenD={this.props.isOpenD} options={this.state.leadPriorityDropDown}></SelectInputSearch></Col>
                 </Form.Row>
                 <Form.Row className="mt-3 form-modal">
                     <Col md={12}>
