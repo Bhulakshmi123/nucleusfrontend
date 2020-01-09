@@ -11,7 +11,7 @@ import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        console.log('Add View Three Passed Props', this.props);
+        // console.log('Add View Three Passed Props', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {
@@ -50,29 +50,21 @@ class AddViewThree extends Component {
             this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
-    componentDidMount () {
-        // this.state.dataToRender.map((checky, index) => {
-        //     this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
-        // })
-        // console.log('AddViewThree',this.props);
-        // console.log('checkBoxData', this.state.checkBoxData)
-    }
     componentWillReceiveProps (newProps) {
         this.setState({
             response: newProps.supplierData,
             categoryNames: newProps.categoryNames,
             selectedCategory: newProps.selectedCategory,
             dataToRender: newProps.dataToRender,
+            dummyDataHolder: newProps.dataToRender,
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
+            checkedProjects: [],
             chosenCategory: 0
         })
-        console.log('Component Will Receive Props')
     }
-    test = () => {
-        this.setState({ redirect: true, redirectPath: 'leaduuid' })
-    }
+    pageRedirectFunction = () => { this.setState({ redirect: true, redirectPath: 'leaduuid' }) }
     renderRedirect = () => {
         if (this.state.redirect && this.state.redirectPath === 'active') {
             return (<Redirect to="/business/leads/active"></Redirect>)
@@ -88,29 +80,39 @@ class AddViewThree extends Component {
         this.setState({ chosenCategory: chosenKey, dataToRender: this.state.response[categoryName] })
     }
     letsMakeaRequestBid = async () => {
-        let data = {
-            "bidInfo": [
-                {
+        if (this.state.checkedProjects.length === 0) {
+            window.alert('Please Select LEAST one Element');
+        }
+        else {
+            let intermediateData = this.state.checkedProjects.map((supplier) => {
+                return {
                     "leadDet_leadId": this.props.formData.leadDet_leadId.toString(),
                     "leadDet_companyUuid": this.props.formData.leadDet_companyUuid,
-                    "leadDet_equipmentType": this.props.formData.leadDet_equipmentType.toString(),
-                    "leadDet_createdBy": this.props.formData.leadDet_createdBy
-                }
-            ]
-        }
-        let urlPayload = this.props.leadUuid + '/' + this.props.leadDetUuid;
-        let response = await makeRequestBid(urlPayload, data, this.state.token);
-        if (response) {
-            // console.log(response);
-            this.test();
+                    "leadDet_equipmentType": supplier.equipmentType.toString(),
+                    "leadDet_createdBy": supplier.supplierUuid
+                };
+            })
+            let data = {
+                "bidInfo": [...intermediateData]
+            }
+            let urlPayload = this.props.leadUuid + '/' + this.props.leadDetUuid;
+            let response = await makeRequestBid(urlPayload, data, this.state.token);
+            if (response) {
+                this.pageRedirectFunction();
+            }
         }
     }
-    // handleCheck = (e) => {
-    //     this.setState({ checked: !this.state.checked });
-    //     if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
-    //     else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] })}
-    //     // console.log(this.state.checkedProjects)
-    // }
+    checkBoxHandler = (keyCoin, supplierUuid, Uuid, equipmentType) => {
+        let intermediateResult = this.state.checkedProjects.filter((provider) => {
+            return provider.key !== keyCoin
+        })
+        if (intermediateResult.length < this.state.checkedProjects.length) {
+            this.setState({ checkedProjects: [...intermediateResult] })
+        }
+        else {
+            this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] })
+        }
+    }
     render () {
         return (
             <React.Fragment>
@@ -128,7 +130,7 @@ class AddViewThree extends Component {
                     </Row>
                     <Row>
                         <Col md={12} className="my-4 bg-lightgray mx-auto">
-                            <h2 className="py-4 m-0"><FaRegArrowAltCircleLeft className="mr-5 cursor-pointer hovertext-bluefuchisa" onClick={this.test} />Suppliers List</h2>
+                            <h2 className="py-4 m-0"><FaRegArrowAltCircleLeft className="mr-5 cursor-pointer hovertext-bluefuchisa" onClick={this.pageRedirectFunction} />Suppliers List</h2>
                         </Col>
                     </Row>
                     <Row className="mb-1">
@@ -163,7 +165,7 @@ class AddViewThree extends Component {
                                             <Container fluid className="w-95" key={key}>
                                                 <Row className="mt-2">
                                                     <Col md={1} className="my-auto">
-                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} />
                                                     </Col>
                                                     <Col md={11} className="pr-0">
                                                         <Card className="my-2 p-3">
