@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button } from 'react-bootstrap';
-import SelectInput from '../FormFields/SelectInput'
+import { Container, Col, Row, Button, Form } from 'react-bootstrap';
+import SelectInputSearch from '../FormFields/SelectInputSearch';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
@@ -9,10 +9,23 @@ class AddViewOne extends Component {
             token: token
         }
     }
-    onChange (e) {
+    onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    render () {
+    inputChangeHandlerForSelect = (e) => {
+        let leadForm = this.state.leadForm;
+        let placeHolder = e.name + '_name';
+        leadForm = {
+            ...leadForm,
+            [e.name]: e.value,
+            [placeHolder]: e.label
+        }
+        this.setState({
+            leadForm: leadForm,
+            isOpenFormDropDown: false
+        }, () => { console.log(this.state.leadForm) });
+    }
+    render() {
         return (
             <React.Fragment>
                 <Container fluid>
@@ -33,12 +46,12 @@ class AddViewOne extends Component {
                                 <Row>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Equipment Type" placeholder={this.props.formData.leadDet_id === null ? 'Select Equipment Type' : this.props.formData.leadDet_id} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInputSearch name="equip_type" cStyle="widthone" label="Equipment Type" placeholder={this.props.formData.leadDet_id === null ? 'Select Equipment Type' : this.props.formData.leadDet_id} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInputSearch>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Make" placeholder={this.props.formData.leadDet_companyType === null ? 'Select Equipment Type' : this.props.formData.leadDet_companyType} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInputSearch name="equip_type" cStyle="widthone" label="Make" placeholder={this.props.formData.leadDet_companyType === null ? 'Select Equipment Type' : this.props.formData.leadDet_companyType} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInputSearch>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
@@ -49,7 +62,7 @@ class AddViewOne extends Component {
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
-                                            <SelectInput name="equip_type" cStyle="widthone" label="Minimum Year" placeholder={this.props.formData.leadDet_year === null ? 'Select Minimum Year' : this.props.formData.leadDet_year} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                            <SelectInputSearch name="equip_type" cStyle="widthone" label="Minimum Year" placeholder={this.props.formData.leadDet_year === null ? 'Select Minimum Year' : this.props.formData.leadDet_year} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInputSearch>
                                         </div>
                                     </Col>
                                 </Row>
@@ -81,10 +94,10 @@ class AddViewOne extends Component {
                                 </Row>
                                 <Row>
                                     <Col md={3} lg={3} xs={12}>
-                                        <SelectInput name="equip_type" cStyle="widthone" label="State" placeholder={this.props.formData.equipmentName === null ? 'Select State' : this.props.formData.equipmentName} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                        <SelectInputSearch name="equip_type" cStyle="widthone" label="State" placeholder={this.props.formData.equipmentName === null ? 'Select State' : this.props.formData.equipmentName} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInputSearch>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
-                                        <SelectInput name="equip_type" cStyle="widthone" label="District" placeholder={this.props.formData.leadDet_location === null ? 'Select District' : this.props.formData.leadDet_location} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInput>
+                                        <SelectInputSearch name="equip_type" cStyle="widthone" label="District" placeholder={this.props.formData.leadDet_location === null ? 'Select District' : this.props.formData.leadDet_location} defaultValue={this.props.formData.leadDet_modal} onChange={this.onChange} ></SelectInputSearch>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
@@ -125,194 +138,83 @@ class AddViewOne extends Component {
                                         </div>
                                     </Col>
                                 </Row>
-                                <Row>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="shiftType">Shift Type</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Day</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Night</div>
-                                            </div>
-                                        </div>
+                                <Form.Row className="mt-3">
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_shiftType" cStyle="widthone" label="Shift Type" placeholder="Select Shift Type">
+                                            </SelectInputSearch>
+                                            <span className="lead_shiftType_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Transportation">Transportation</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">One Side</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Two Side</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_transportation" cStyle="widthone" label="Shift Type" placeholder="Select Transportation" >
+                                            </SelectInputSearch>
+                                            <span className="lead_transportation_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Accommodation">Accommodation</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Company Provides</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Self Provided</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_operatorAccommodation" cStyle="widthone" label="Accommodation" placeholder="Select Accommodation" >
+                                            </SelectInputSearch>
+                                            <span className="lead_operatorAccommodation_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Food">Food</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Company Provides</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Self Provided</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_operatorFood" cStyle="widthone" label="Food" placeholder="Select Food">
+                                            </SelectInputSearch>
+                                            <span className="lead_operatorFood_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="OperatorAllowance">Operator Allowance</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Yes</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">No</div>
-                                            </div>
-                                        </div>
+                                </Form.Row>
+                                <Form.Row className="mt-3">
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_operatorAllowance" cStyle="widthone" label="Operator Allowance" placeholder="Select Operator Allowance">
+                                            </SelectInputSearch>
+                                            <span className="lead_operatorAllowance_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Vehicle Documents">Vehicle Documents</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Required</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Not Required</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_vechileDocuments" cStyle="widthone" label="Vehicle Documents" placeholder="Select Vehical Documents">
+                                            </SelectInputSearch>
+                                            <span className="lead_vechileDocuments_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Operator License">Operator License</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Required</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Not Required</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_operatorLicense" cStyle="widthone" label="Operator License" placeholder="Select Operator License" >
+                                            </SelectInputSearch>
+                                            <span className="lead_operatorLicense_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                    <Col md={3} lg={3} xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="Safety Measures">Safety Measures</label>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Required</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text">
-                                                        <input type="checkbox" aria-label="Checkbox for following text input"></input>
-                                                    </div>
-                                                </div>
-                                                <div className="my-auto font-size-08">Not Required</div>
-                                            </div>
-                                        </div>
+                                    <Col md={3}>
+                                        <Form.Group>
+                                            <SelectInputSearch name="lead_safetyMeasures" cStyle="widthone" label="Safety Measures" placeholder="Select safety Measures" >
+                                            </SelectInputSearch>
+                                            <span className="lead_safetyMeasures_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12} lg={12} sm={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="exampleFormControlTextarea1">Payment Terms</label>
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Payment Terms" value={`${this.props.formData.leadDet_paymentTerms},${this.props.formData.equipmentName}`}></textarea>
-                                        </div>
+                                </Form.Row>
+                                <Form.Row className="mt-3 form-modal">
+                                    <Col md={12}>
+                                        <Form.Group>
+                                            <Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea"  rows="4" name="lead_paymentTerms" placeholder="Payment Terms" />
+                                            <span className="lead_paymentTerms_error"></span>
+                                        </Form.Group>
                                     </Col>
-                                </Row>
-                                <Row className="pb-5 mb-5">
-                                    <Col md={12} lg={12} sm={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="exampleFormControlTextarea1">Remarks</label>
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any Remarks to go with the Equipments" value={`${this.props.formData.leadDet_remarks}, ${this.props.formData.leadDet_uuid}`} ></textarea>
-                                        </div>
+
+                                </Form.Row>
+                                <Form.Row className="mt-3 form-modal">
+                                    <Col md={12}>
+                                        <Form.Group>
+                                            <Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea"  rows="4" name="lead_remarks" placeholder="Any comments to go with the equipment" />
+                                            <span className="lead_remarks_error">}</span>
+                                        </Form.Group>
                                     </Col>
-                                </Row>
+                                </Form.Row>
                             </React.Fragment>
                         </Col>
                     </Row>
