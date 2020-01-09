@@ -50,10 +50,10 @@ class SideArticle extends Component {
         if (this.state.redirect && this.state.placeOfAction === 'ACTIVATED') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'DELETEDNEW') {
+        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDNEW') {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'DELETEDACTIVE') {
+        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDACTIVE') {
             return (<Redirect to="/business/leads/active"></Redirect>)
         } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
             return (<Redirect to="/business/leads/moved"></Redirect>)
@@ -64,7 +64,7 @@ class SideArticle extends Component {
     changeLeadStatus (leadDetId, newStatus, source) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "DELETED") { //! Change Later to CLOSED
+            if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
                 this.setRedirect(data.newStatus + source)
             }
             if (data.newStatus === "ACTIVATED") {
@@ -183,7 +183,7 @@ class SideArticle extends Component {
                 <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
                     {this.state.isApiCallSuccessful === true ?
                         <Switch>
-                            <Route path="/business/leads/lead/active/premium">
+                            <Route path="/business/leads/lead/active/suppliersList">
                                 <AddViewThree
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.specificEquipmentSupplierDetails}
@@ -193,30 +193,6 @@ class SideArticle extends Component {
                                     leadUuid={this.state.leadUuid}
                                     leadDetUuid={this.state.leadEquipmentUid}
                                     token={this.state.token}
-                                    statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}
-                                    moveToProjects={this.moveToProjects}>
-                                </AddViewThree>
-                            </Route>
-                            <Route path="/business/leads/lead/active/discovery">
-                                <AddViewThree
-                                    formData={this.state.specificEquipmentsDetails}
-                                    supplierData={this.state.specificEquipmentSupplierDetails}
-                                    categoryNames={this.state.categoryNames}
-                                    selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}
-                                    statusChanger={this.changeLeadStatus.bind(this)}
-                                    funFunction={this.testAddViewThree}
-                                    moveToProjects={this.moveToProjects}>
-                                </AddViewThree>
-                            </Route>
-                            <Route path="/business/leads/lead/active/basic">
-                                <AddViewThree
-                                    formData={this.state.specificEquipmentsDetails}
-                                    supplierData={this.state.specificEquipmentSupplierDetails}
-                                    categoryNames={this.state.categoryNames}
-                                    selectedCategory={this.state.selectedCategory}
-                                    dataToRender={this.state.dataToRender}
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     funFunction={this.testAddViewThree}
                                     moveToProjects={this.moveToProjects}>
@@ -235,6 +211,12 @@ class SideArticle extends Component {
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     moveToProjects={this.moveToProjects}>
                                 </AddViewTwo>
+                            </Route>
+                            <Route path="/business/leads/lead/moved/:id">
+                                <AddViewOne
+                                    formData={this.state.specificEquipmentsDetails}
+                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                </AddViewOne>
                             </Route>
                         </Switch>
                         : null

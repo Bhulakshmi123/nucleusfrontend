@@ -20,8 +20,10 @@ class ViewDetails extends Component {
     getLeadInformation = async () => {
         let url = window.location.href.split('/');
         let finalPayload = url[url.length - 1] + '/' + url[url.length - 2];
+        // console.log('ULR',window.location.href, finalPayload)
         let response = await getLeadInformation(finalPayload, this.state.token);
         if (response) {
+            // console.log('Rep',response)
             this.setState({ "leadInformation": response.data })
             this.setState({ "isApiCallSuccessful": true })
         }

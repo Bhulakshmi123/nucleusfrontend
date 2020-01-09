@@ -3,15 +3,16 @@ import { makeRequestBid } from '../../views/Business/actions';
 import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { MdTextsms } from 'react-icons/md';
 import { MdPhone } from "react-icons/md";
+import '../../assets/css/form.css';
 import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add v3', this.props);
+        console.log('Add View Three Passed Props', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {
@@ -21,18 +22,40 @@ class AddViewThree extends Component {
             categoryNames: this.props.categoryNames,
             selectedCategory: this.props.selectedCategory,
             dataToRender: this.props.dataToRender,
+            dummyDataHolder: this.props.dataToRender,
             checkedProjects: [],
             checked: true,
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
-            checkBoxData: []
+            checkBoxData: [],
+            chosenCategory: 0
+        }
+        this.searchDataHandler = this.searchDataHandler.bind(this)
+    }
+    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+    searchDataHandler(e) {
+        let currentList = [];
+        let displayedLeads, searchQuery;
+        if (e.target.value !== "") {
+            currentList = this.state.dataToRender;
+            searchQuery = e.target.value.toLowerCase();
+            displayedLeads = currentList.filter(item => {
+                let searchValue = item.name.toLowerCase();
+                return searchValue.indexOf(searchQuery) !== -1;
+            })
+            this.setState({ dataToRender: displayedLeads })
+        }
+        else {
+            this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
     componentDidMount() {
-        this.state.dataToRender.map((checky, index) => {
-            this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
-        })
+        // this.state.dataToRender.map((checky, index) => {
+        //     this.state.checkBoxData.push({ ...checky, 'key': index, 'isChecked': false })
+        // })
+        // console.log('AddViewThree',this.props);
         // console.log('checkBoxData', this.state.checkBoxData)
     }
     componentWillReceiveProps(newProps) {
@@ -41,23 +64,15 @@ class AddViewThree extends Component {
             categoryNames: newProps.categoryNames,
             selectedCategory: newProps.selectedCategory,
             dataToRender: newProps.dataToRender,
-            checkedProjects: [],
-            checked: true,
             redirect: false,
             isModalShowing: false,
             redirectPath: '',
-            checkBoxData: []
+            chosenCategory: 0
         })
+        console.log('Component Will Receive Props')
     }
-
     test = () => {
         this.setState({ redirect: true, redirectPath: 'leaduuid' })
-    }
-    openModalHandler = () => {
-        this.setState({ "isModalShowing": true });
-    }
-    closeModalHandler = () => {
-        this.setState({ "isModalShowing": false })
     }
     renderRedirect = () => {
         if (this.state.redirect && this.state.redirectPath === 'active') {
@@ -69,6 +84,9 @@ class AddViewThree extends Component {
                 return (<Redirect to={`/business/leads/lead/active/${this.props.formData.lead_uuid}`}></Redirect>)
             }
         }
+    }
+    supplierCategoryChangeHandler = (categoryName, chosenKey) => {
+        this.setState({ chosenCategory: chosenKey, dataToRender: this.state.response[categoryName] })
     }
     letsMakeaRequestBid = async () => {
         let data = {
@@ -88,23 +106,23 @@ class AddViewThree extends Component {
             this.test();
         }
     }
-    handleCheck = (e) => {
-        this.setState({ checked: !this.state.checked });
-        if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
-        else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] }); }
-        // console.log(this.state.checkedProjects)
-    }
+    // handleCheck = (e) => {
+    //     this.setState({ checked: !this.state.checked });
+    //     if (this.state.checkedProjects[this.state.checkedProjects.length - 1] === e.target.value) { }
+    //     else { this.setState({ checkedProjects: [...this.state.checkedProjects, e.target.value] })}
+    //     // console.log(this.state.checkedProjects)
+    // }
     render() {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
-                <Container className="mt-5 pl-0" fluid>
+                <Container className="mt-5 px-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={6} className="pr-0 my-auto">
-                            <ButtonGroup size="sm" className="float-right my-auto">
+                            <ButtonGroup size="sm" className="float-right my-auto mr-2">
                                 <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>
@@ -115,22 +133,24 @@ class AddViewThree extends Component {
                         </Col>
                     </Row>
                     <Row className="mb-1">
-                        <Col md={7} className="text-left">
+                        <Col md={5} className="text-left d-flex">
                             {
                                 this.state.categoryNames.map((prop, key) => {
-                                    return (<NavLink key={key} activeClassName="linkStateActive" className="mx-3 font-size-10 hovertext-bluefuchisa-border text-dark text-capitalize" onClick={
-                                        () => {
-                                            this.setState({ 'selectedCategory': prop });
-                                            this.setState({ 'dataToRender': this.state.response[prop] })
-                                        }}
-                                        to={`/business/leads/lead/active/${prop}`} >{prop}</NavLink>)
+                                    return (
+                                        <div className={`text-capitalize my-auto text-dark mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
+                                            {prop}
+                                        </div>
+                                    )
                                 })
                             }
                         </Col>
-                        <Col md={5}>
+                        <Col md={4}>
+                            <input type="text" className="form-control search_icon" onChange={this.searchDataHandler}></input>
+                        </Col>
+                        <Col md={3}>
                             <ButtonGroup size="sm" className="float-right my-auto">
                                 <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
-                                <Button variant="success" className="ml-1 bor-rad-03 px-3"><MdTextsms className="mr-1" />SMS</Button>
+                                <Button variant="success" className="ml-1 bor-rad-03 px-3" disabled><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
@@ -144,7 +164,13 @@ class AddViewThree extends Component {
                                             <Container fluid className="w-95" key={key}>
                                                 <Row className="mt-2">
                                                     <Col md={1} className="my-auto">
-                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
+                                                        {/* <span>
+                                                            <label className="container2">
+                                                                <input type="checkbox" className="jsonView viewChk" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
+                                                                <span className="checkmark2"></span>
+                                                            </label>
+                                                        </span> */}
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0 " value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
                                                     </Col>
                                                     <Col md={11} className="pr-0">
                                                         <Card className="my-2 p-3">
@@ -166,8 +192,10 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="font-size-18 text-white bg-primary bor-rad-05">{prop.year}</div>
-                                                                        <small className="d-block mt-1">Model</small>
+                                                                        <div className="w-100 bg-warning bor-rad-05">
+                                                                            <div className="font-size-18 text-dark mbn-5">{prop.year}</div>
+                                                                            <small className="d-block mt-0 text-white bg-dark">Model</small>
+                                                                        </div>
                                                                     </div>
                                                                 </Col>
                                                             </Row>

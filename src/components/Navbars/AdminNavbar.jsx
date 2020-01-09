@@ -19,12 +19,12 @@ class Header extends Component {
     };
     this.logoutHandler = this.logoutHandler.bind(this)
   }
-  logoutHandler(e) {
+  logoutHandler (e) {
     e.preventDefault();
     localStorage.removeItem("tokenId");
     this.setState({ loggedIn: false })
   }
-  mobileSidebarToggle(e) {
+  mobileSidebarToggle (e) {
     if (this.state.sidebarExists === false) {
       this.setState({
         sidebarExists: true
@@ -40,7 +40,7 @@ class Header extends Component {
     };
     document.body.appendChild(node);
   }
-  render() {
+  render () {
     if (this.state.loggedIn === false) {
       return (<Redirect to="/login"></Redirect>)
     }

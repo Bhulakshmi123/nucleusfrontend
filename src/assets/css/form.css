@@ -141,6 +141,32 @@ input[name="e_pe_shift"] {
     display: none;
 }
 
+.search_icon {
+    background-image: url('../img/search.png');
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+    background-size: 20px 19px;
+    width: 100px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    float: right;
+    background-color: white;
+    background-position: 12px 6px;
+    background-repeat: no-repeat;
+    padding: 12px 12px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border: none;
+}
+
+.search_icon:hover {
+    width: 100%;
+    background-color: white;
+    border: solid 1px rgba(37, 37, 37, 0.3);
+}
+
 .calender {
     width: 18px;
     height: 18px;
