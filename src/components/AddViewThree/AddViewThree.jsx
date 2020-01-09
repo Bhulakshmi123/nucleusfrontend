@@ -23,6 +23,7 @@ class AddViewThree extends Component {
             dataToRender: this.props.dataToRender,
             dummyDataHolder: this.props.dataToRender,
             checkedProjects: [],
+            requestBidsCount: 0,
             checked: true,
             redirect: false,
             isModalShowing: false,
@@ -108,9 +109,11 @@ class AddViewThree extends Component {
         })
         if (intermediateResult.length < this.state.checkedProjects.length) {
             this.setState({ checkedProjects: [...intermediateResult] })
+            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 })
         }
         else {
             this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] })
+            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
     render () {
@@ -145,12 +148,12 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={4}>
+                        <Col md={3}>
                             <input type="text" className="form-control" placeholder="Search Here" onChange={this.searchDataHandler}></input>
                         </Col>
-                        <Col md={3}>
+                        <Col md={4}>
                             <ButtonGroup size="sm" className="float-right my-auto">
-                                <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
+                                <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids <span className="badge badge-pill badge-light bor-rad-03 ml-1 text-primary">{this.state.requestBidsCount}</span></Button>
                                 <Button variant="success" className="ml-1 bor-rad-03 px-3" disabled><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
