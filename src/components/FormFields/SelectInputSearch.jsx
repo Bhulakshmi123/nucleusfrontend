@@ -19,7 +19,6 @@ class SelectInput extends Component {
   state = {
     options:this.props.options,
     isOpen : this.props.isOpen,
-    
   };
 
   componentWillReceiveProps(nextProps) {

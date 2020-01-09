@@ -27,7 +27,7 @@ class BusinessMCard extends Component {
         this.searchBoxHandler = this.searchBoxHandler.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
-    componentDidMount () {
+    componentDidMount() {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType)
     }
@@ -47,7 +47,7 @@ class BusinessMCard extends Component {
             }
         }
     }
-    selectHandler (e) {
+    selectHandler(e) {
         this.setState({ 'selectedState': e.target.value })
     }
     dataChangeHandler = (e) => {
@@ -97,7 +97,7 @@ class BusinessMCard extends Component {
             this.setState({ leadsInformation: this.state.dummyDataHolder })
         }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <div className={this.state.sidebarView ? "mainContent mainContentMini" : "mainContent"}>

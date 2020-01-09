@@ -4,6 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
+import { getSupplierDetails } from '../../views/Business/actions'
 import * as moment from 'moment';
 import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
@@ -11,12 +12,15 @@ import _ from 'lodash';
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
+        let token = localStorage.getItem("tokenId");
         this.state = {
+            supplierDetails: '',
+            token: token,
             activeLeadNo: null,
             isEquipmentInfo: false,
             equipmentKey: null,
             leadForm: {
-                date_cal: moment().format('YYYY-MM-DD'),
+                lead_date: moment().format('YYYY-MM-DD'),
                 equipmentLead: []
             },
             equipmentForm: {
@@ -27,7 +31,7 @@ class BusinessAddNewModal extends Component {
                 { value: 'strawberry', label: 'Strawberry', name: 'lead_priority' },
                 { value: 'vanilla', label: 'Vanilla', name: 'lead_priority' },
             ],
-            optionsForm2: [
+            leadSourceDropDown: [
                 { value: 'icecream', label: 'Icecream', name: 'lead_source' },
                 { value: 'pizza', label: 'Pizza', name: 'lead_source' },
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
@@ -39,47 +43,80 @@ class BusinessAddNewModal extends Component {
             ],
             startDate: new Date(),
             startDateEquip: new Date(),
-            equipmentFormCheck:0,
+            equipmentFormCheck: 0,
             isOpenFormDropDown: false,
             yearDropDown: [],
-            statesDropDown:[],
-            districtsDropDown:[],
-            requiredFieldInEquipForm:['lead_equipmentType', 'lead_safetyMeasures','lead_startDate']
+            statesDropDown: [],
+            districtsDropDown: [],
+            requiredFieldInEquipForm: ['lead_equipmentType', 'lead_safetyMeasures', 'lead_startDate']
         }
+        this.handleChange = this.handleChange.bind(this)
     }
-    componentWillMount(){
+    componentWillMount() {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
         this.computeDistrictsDropDownInForm();
-    }    
+    }
+    getSupplierDetails = async (phoneNumber) => {
+        let data = {
+            "phoneNumber": phoneNumber.toString()
+        }
+        let response = await getSupplierDetails(data, this.state.token);
+        if (response) {
+            
+            if (response.data.length > 0)
+                this.setState({ supplierDetails: response.data[0] })
+            else 
+                this.setState({ supplierDetails: {"name": null} })
+            console.log('Get Details of Supplier', this.state.supplierDetails)
+        }
+    }
+    // getLeadInformation = async ()
+    handleChange(e) {
+        console.log(e.target.value)
+        if (e.target.value.length === 10) {
+            this.getSupplierDetails(e.target.value)
+        }
+        else {
+            console.log("Wrong Number")
+        }
+    }
+    inputChangeHandler = (e) => {
+        let leadForm = this.state.leadForm;
+        leadForm = {
+            ...leadForm,
+            [e.target.name]: e.target.value
+        }
+        this.setState({
+            leadForm: leadForm
+        });
+    }
 
     computeYearDropDownInForm = () => {
         let currentYear = moment().format('YYYY');
         let yearDropDown = this.state.yearDropDown;
-
         for (let index = currentYear; index >= 1970; index--) {
             yearDropDown.push({ value: index, label: index, name: 'lead_year' });
         }
-
-        this.setState({yearDropDown});
+        this.setState({ yearDropDown });
     }
 
     computeStatesDropDownInForm = () => {
-        let statesDropDown = [ 
-                                { value: 'chocolate', label: 'Chocolate', name: 'lead_state' },
-                                { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
-                                { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
-                            ];
-        this.setState({statesDropDown});
+        let statesDropDown = [
+            { value: 'chocolate', label: 'Chocolate', name: 'lead_state' },
+            { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
+            { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
+        ];
+        this.setState({ statesDropDown });
     }
 
     computeDistrictsDropDownInForm = () => {
-        let districtsDropDown = [ 
-                                { value: 'chocolate', label: 'Chocolate', name: 'lead_district' },
-                                { value: 'strawberry', label: 'Strawberry', name: 'lead_district' },
-                                { value: 'vanilla', label: 'Vanilla', name: 'lead_district' }
-                            ];
-        this.setState({districtsDropDown});
+        let districtsDropDown = [
+            { value: 'chocolate', label: 'Chocolate', name: 'lead_district' },
+            { value: 'strawberry', label: 'Strawberry', name: 'lead_district' },
+            { value: 'vanilla', label: 'Vanilla', name: 'lead_district' }
+        ];
+        this.setState({ districtsDropDown });
     }
 
     inputChangeHandlerForSelect = (e) => {
@@ -99,20 +136,18 @@ class BusinessAddNewModal extends Component {
     equipInputChangeHandlerSelect = (e) => {
         let equipmentForm = this.state.equipmentForm;
         let placeHolder = e.name + '_name';
-        let error = e.name+'_error';
+        let error = e.name + '_error';
         let equipmentFormCheck = this.state.equipmentFormCheck;
-
-        if(this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value == null || e.value == '')){
+        if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value == null || e.value == '')) {
             equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
             };
             equipmentFormCheck++;
         }
-
-        if(equipmentForm.hasOwnProperty(e.name+'_error') || this.state.requiredFieldInEquipForm.indexOf(e.name) < 0){
+        if (equipmentForm.hasOwnProperty(e.name + '_error') || this.state.requiredFieldInEquipForm.indexOf(e.name) < 0) {
             equipmentFormCheck--;
-            delete equipmentForm[error]; 
+            delete equipmentForm[error];
         }
         equipmentForm = {
             ...equipmentForm,
@@ -121,30 +156,20 @@ class BusinessAddNewModal extends Component {
         }
         this.setState({
             equipmentForm: equipmentForm
-        }, () => {console.log(this.state.equipmentForm)} );
+        }, () => { console.log(this.state.equipmentForm) });
     }
 
-    inputChangeHandler = (e) => {
-        let leadForm = this.state.leadForm;
-        leadForm = {
-            ...leadForm,
-            [e.target.name]: e.target.value
-        }
-        this.setState({
-            leadForm: leadForm
-        });
-    }
-
+  
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
         leadForm = {
             ...leadForm,
-            date_cal: moment(date).format('YYYY-MM-DD')
+            lead_date: moment(date).format('YYYY-MM-DD')
         }
         this.setState({
             leadForm: leadForm,
             startDate: date
-        });
+        }, () => { console.log(this.state.leadForm) });
     }
 
     openInputHandler = () => {
@@ -180,36 +205,32 @@ class BusinessAddNewModal extends Component {
         this.setState({
             equipmentForm: equipmentForm,
             startDateEquip: date
-        }, () => {console.log(this.state.equipmentForm)});
+        }, () => { console.log(this.state.equipmentForm) });
     }
 
     equipInputChangeHandler = (e) => {
         let equipmentForm = this.state.equipmentForm;
         let equipmentFormCheck = this.state.equipmentFormCheck;
-        let error = e.target.name+'_error';
-        if((e.target.name == 'lead_workingCount'|| e.target.name == 'lead_workingTotalCount'|| e.target.name == 'operation_d_m' || e.target.name == 'lead_quantity'|| e.target.name == 'lead_workingHoursPerDay' || e.target.name == 'lead_operatorBatha' ) && e.target.value <= 0 && e.target.value != null && e.target.value != ''){
-
+        let error = e.target.name + '_error';
+        if ((e.target.name == 'lead_workingCount' || e.target.name == 'lead_workingTotalCount' || e.target.name == 'operation_d_m' || e.target.name == 'lead_quantity' || e.target.name == 'lead_workingHoursPerDay' || e.target.name == 'lead_operatorBatha') && e.target.value <= 0 && e.target.value != null && e.target.value != '') {
             equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
                 [e.target.name]: e.target.value
             };
             equipmentFormCheck++;
-        }else{
-
-            if(this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value == null || e.target.value == '')){
+        } else {
+            if (this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value == null || e.target.value == '')) {
                 equipmentForm = {
                     ...equipmentForm,
                     [error]: "Please check this Input",
                 };
                 equipmentFormCheck++;
             }
-
-            if(equipmentForm.hasOwnProperty(e.target.name+'_error') && this.state.requiredFieldInEquipForm.indexOf(e.target.name) < 0){
+            if (equipmentForm.hasOwnProperty(e.target.name + '_error') && this.state.requiredFieldInEquipForm.indexOf(e.target.name) < 0) {
                 equipmentFormCheck--;
-                delete equipmentForm[error]; 
+                delete equipmentForm[error];
             }
-
             equipmentForm = {
                 ...equipmentForm,
                 [e.target.name]: e.target.value
@@ -217,33 +238,28 @@ class BusinessAddNewModal extends Component {
         }
         this.setState({
             equipmentForm: equipmentForm,
-            equipmentFormCheck:equipmentFormCheck
-        }, () => {console.log(this.state.equipmentForm)});
+            equipmentFormCheck: equipmentFormCheck
+        }, () => { console.log(this.state.equipmentForm) });
     }
     appendEquipFormToLeadForm = () => {
-
         let errorCheck = 0;
         let equipmentForm = this.state.equipmentForm;
         this.state.requiredFieldInEquipForm.forEach((value) => {
-            if(!equipmentForm.hasOwnProperty(value)){
-                console.log(value+"== "+equipmentForm[value]);
+            if (!equipmentForm.hasOwnProperty(value)) {
+                console.log(value + "== " + equipmentForm[value]);
                 errorCheck++;
-                let error = value+'_error'
+                let error = value + '_error'
                 equipmentForm = {
                     ...equipmentForm,
                     [error]: "Please check this Input",
                 };
-            } 
+            }
         });
-
-        this.setState({equipmentForm});
-        if(this.state.equipmentFormCheck != 0){
-
+        this.setState({ equipmentForm });
+        if (this.state.equipmentFormCheck != 0) {
             //form validation and reset the equipmentFormCheck  to 0
-
         }
-
-        if(errorCheck == 0 ){ // add the equipmentFormCheck variable here for complete form checking.
+        if (errorCheck == 0) { // add the equipmentFormCheck variable here for complete form checking.
             if (this.state.equipmentKey != null) {
                 let leadForm = this.state.leadForm;
                 let equipmentLead = leadForm.equipmentLead;
@@ -258,10 +274,9 @@ class BusinessAddNewModal extends Component {
                 leadForm.equipmentLead.push(this.state.equipmentForm);
                 this.setState({
                     leadForm
-                }, () => { console.log(this.state.leadForm);this.closeEquipmentForm() });
+                }, () => { console.log(this.state.leadForm); this.closeEquipmentForm() });
             }
         }
-        
     }
 
     editEquipmentForm = (key) => {
@@ -291,12 +306,12 @@ class BusinessAddNewModal extends Component {
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phone_no" placeholder="Phone No." onChange={this.inputChangeHandler} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phoneNumber" placeholder="Phone No." onChange={this.handleChange} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
-                        <Col md={3}><CalenderInput name="date_cal" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="renter_nm" label="Renter Name*" placeholder="Renter Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" label="Renter Email" placeholder="Renter Email" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="name" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name}/></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
@@ -304,15 +319,15 @@ class BusinessAddNewModal extends Component {
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
                         <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName}/></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         {/* <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = {this.state.leadForm.lead_priority? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput></Col>
                         <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
                         placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
-                        <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col>
-                        <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm2}></SelectInputSearch></Col>
+                        {/* <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col> */}
+                        <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
                         <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
@@ -359,11 +374,10 @@ class BusinessAddNewModal extends Component {
                                 equipInputChangeHandler={this.equipInputChangeHandler}
                                 equipInputChangeHandlerSelect={this.equipInputChangeHandlerSelect}
                                 addEquipForm={this.appendEquipFormToLeadForm}
-                                equipmentTypeDropDownList = {this.state.equipmentTypeDropDownList}
-                                yearDropDown = {this.state.yearDropDown}
-                                statesDropDown = {this.state.statesDropDown}
-                                districtsDropDown = {this.state.districtsDropDown}
-                                
+                                equipmentTypeDropDownList={this.state.equipmentTypeDropDownList}
+                                yearDropDown={this.state.yearDropDown}
+                                statesDropDown={this.state.statesDropDown}
+                                districtsDropDown={this.state.districtsDropDown}
                             />
                             : null
                     }

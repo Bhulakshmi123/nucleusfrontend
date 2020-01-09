@@ -6,6 +6,7 @@ import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { Redirect } from 'react-router-dom';
 import { MdTextsms } from 'react-icons/md';
 import { MdPhone } from "react-icons/md";
+import '../../assets/css/form.css';
 import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewThree extends Component {
@@ -35,7 +36,7 @@ class AddViewThree extends Component {
     }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
-    searchDataHandler (e) {
+    searchDataHandler(e) {
         let currentList = [];
         let displayedLeads, searchQuery;
         if (e.target.value !== "") {
@@ -51,7 +52,7 @@ class AddViewThree extends Component {
             this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
-    componentWillReceiveProps (newProps) {
+    componentWillReceiveProps(newProps) {
         this.setState({
             response: newProps.supplierData,
             categoryNames: newProps.categoryNames,
@@ -116,10 +117,11 @@ class AddViewThree extends Component {
             this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
+                {console.log("Project List", this.state.checkedProjects)}
                 <Container className="mt-5 px-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
@@ -168,7 +170,13 @@ class AddViewThree extends Component {
                                             <Container fluid className="w-95" key={key}>
                                                 <Row className="mt-2">
                                                     <Col md={1} className="my-auto">
-                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0" value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} />
+                                                        {/* <span>
+                                                            <label className="container2">
+                                                                <input type="checkbox" className="jsonView viewChk" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
+                                                                <span className="checkmark2"></span>
+                                                            </label>
+                                                        </span> */}
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0 " value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} />
                                                     </Col>
                                                     <Col md={11} className="pr-0">
                                                         <Card className="my-2 p-3">
