@@ -36,7 +36,7 @@ class AddViewThree extends Component {
     }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
-    searchDataHandler(e) {
+    searchDataHandler (e) {
         let currentList = [];
         let displayedLeads, searchQuery;
         if (e.target.value !== "") {
@@ -52,7 +52,7 @@ class AddViewThree extends Component {
             this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps (newProps) {
         this.setState({
             response: newProps.supplierData,
             categoryNames: newProps.categoryNames,
@@ -117,11 +117,10 @@ class AddViewThree extends Component {
             this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
-                {console.log("Project List", this.state.checkedProjects)}
                 <Container className="mt-5 px-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
@@ -198,9 +197,9 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="w-100 bg-warning bor-rad-05">
-                                                                            <div className="font-size-18 text-dark mbn-5">{prop.year}</div>
-                                                                            <small className="d-block mt-0 text-white bg-dark">Model</small>
+                                                                        <div className="w-100 bg-moodIndigo bor-rad-02">
+                                                                            <div className="font-size-18 text-white mbn-5">{prop.year}</div>
+                                                                            <small className="d-block mt-0 text-white bg-bloodIndigo">Model</small>
                                                                         </div>
                                                                     </div>
                                                                 </Col>

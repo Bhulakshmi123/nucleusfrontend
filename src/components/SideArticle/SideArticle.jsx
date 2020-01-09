@@ -26,16 +26,22 @@ class SideArticle extends Component {
             placeOfAction: '',
             supplierData: [],
             redirect: false,
-            filtered: this.props.leadinfo
+            filtered: this.props.leadinfo,
+            goBackUrl: 'new'
         }
         this.handleChange = this.handleChange.bind(this)
     }
-
     componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+        this.backButtonHandler()
     }
     componentWillReceiveProps (nextProps) {
         this.setState({ filtered: nextProps.leadinfo });
+    }
+    backButtonHandler = () => {
+        let url = window.location.pathname.split('/');
+        // console.log('New Url', url);
+        this.setState({ goBackUrl: url[url.length - 2] })
     }
     testAddViewThree = () => {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
@@ -145,7 +151,7 @@ class SideArticle extends Component {
                 <Col md={3} className="bg-bluefuchsia vh-100 bg-light overflow-auto px-0">
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-3 mb-4">
-                            <Link to="/business/leads/new" className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
+                            <Link to={`/business/leads/${this.state.goBackUrl}`} className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
                             <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
