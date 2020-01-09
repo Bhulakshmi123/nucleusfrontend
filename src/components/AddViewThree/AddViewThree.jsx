@@ -24,6 +24,7 @@ class AddViewThree extends Component {
             dataToRender: this.props.dataToRender,
             dummyDataHolder: this.props.dataToRender,
             checkedProjects: [],
+            requestBidsCount: 0,
             checked: true,
             redirect: false,
             isModalShowing: false,
@@ -35,7 +36,7 @@ class AddViewThree extends Component {
     }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
-    searchDataHandler(e) {
+    searchDataHandler (e) {
         let currentList = [];
         let displayedLeads, searchQuery;
         if (e.target.value !== "") {
@@ -51,7 +52,7 @@ class AddViewThree extends Component {
             this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps (newProps) {
         this.setState({
             response: newProps.supplierData,
             categoryNames: newProps.categoryNames,
@@ -109,16 +110,17 @@ class AddViewThree extends Component {
         })
         if (intermediateResult.length < this.state.checkedProjects.length) {
             this.setState({ checkedProjects: [...intermediateResult] })
+            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 })
         }
         else {
             this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] })
+            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
-                {console.log("Project List", this.state.checkedProjects)}
                 <Container className="mt-5 px-0" fluid>
                     <Row>
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
@@ -147,12 +149,12 @@ class AddViewThree extends Component {
                                 })
                             }
                         </Col>
-                        <Col md={4}>
-                            <input type="text" className="form-control search_icon" onChange={this.searchDataHandler}></input>
-                        </Col>
                         <Col md={3}>
+                            <input type="text" className="form-control" placeholder="Search Here" onChange={this.searchDataHandler}></input>
+                        </Col>
+                        <Col md={4}>
                             <ButtonGroup size="sm" className="float-right my-auto">
-                                <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids</Button>
+                                <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids <span className="badge badge-pill badge-light bor-rad-03 ml-1 text-primary">{this.state.requestBidsCount}</span></Button>
                                 <Button variant="success" className="ml-1 bor-rad-03 px-3" disabled><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
@@ -195,9 +197,9 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="w-100 bg-warning bor-rad-05">
-                                                                            <div className="font-size-18 text-dark mbn-5">{prop.year}</div>
-                                                                            <small className="d-block mt-0 text-white bg-dark">Model</small>
+                                                                        <div className="w-100 bg-moodIndigo bor-rad-02">
+                                                                            <div className="font-size-18 text-white mbn-5">{prop.year}</div>
+                                                                            <small className="d-block mt-0 text-white bg-bloodIndigo">Model</small>
                                                                         </div>
                                                                     </div>
                                                                 </Col>
