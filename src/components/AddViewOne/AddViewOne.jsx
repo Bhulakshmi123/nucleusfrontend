@@ -9,7 +9,7 @@ class AddViewOne extends Component {
             token: token
         }
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     inputChangeHandlerForSelect = (e) => {
@@ -25,7 +25,7 @@ class AddViewOne extends Component {
             isOpenFormDropDown: false
         }, () => { console.log(this.state.leadForm) });
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Container fluid>
@@ -201,25 +201,29 @@ class AddViewOne extends Component {
                                 <Form.Row className="mt-3 form-modal">
                                     <Col md={12}>
                                         <Form.Group>
-                                            <Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea"  rows="4" name="lead_paymentTerms" placeholder="Payment Terms" />
+                                            <Form.Label className="font_stle">Payment Terms</Form.Label><Form.Control as="textarea" rows="4" name="lead_paymentTerms" placeholder="Payment Terms" />
                                             <span className="lead_paymentTerms_error"></span>
                                         </Form.Group>
                                     </Col>
-
                                 </Form.Row>
                                 <Form.Row className="mt-3 form-modal">
                                     <Col md={12}>
                                         <Form.Group>
-                                            <Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea"  rows="4" name="lead_remarks" placeholder="Any comments to go with the equipment" />
-                                            <span className="lead_remarks_error">}</span>
+                                            <Form.Label className="font_stle">Remarks</Form.Label><Form.Control as="textarea" rows="4" name="lead_remarks" placeholder="Any comments to go with the equipment" />
+                                            <span className="lead_remarks_error"></span>
                                         </Form.Group>
+                                    </Col>
+                                </Form.Row>
+                                <Form.Row className="mt-3 mb-5 form-modal">
+                                    <Col md={3} className="mb-5">
+                                        <Button variant="outline-primary" size="sm" block className="fontGilroyBold">Update Details</Button>
                                     </Col>
                                 </Form.Row>
                             </React.Fragment>
                         </Col>
                     </Row>
                 </Container>
-            </React.Fragment >
+            </React.Fragment>
         )
     }
 }
