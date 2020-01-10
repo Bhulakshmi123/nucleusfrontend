@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { getSupplierDetails } from '../../views/Business/actions'
+import { getSupplierDetails, createNewLead } from '../../views/Business/actions'
 import * as moment from 'moment';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
@@ -58,17 +58,37 @@ class BusinessAddNewModal extends Component {
         this.computeDistrictsDropDownInForm();
     }
     getSupplierDetails = async (phoneNumber) => {
-        let data = {
-            "phoneNumber": phoneNumber.toString()
-        }
+        let data = { "phoneNumber": phoneNumber.toString()}
         let response = await getSupplierDetails(data, this.state.token);
         if (response) {
-
             if (response.data.length > 0)
                 this.setState({ supplierDetails: response.data[0] })
             else
                 this.setState({ supplierDetails: { "name": null } })
             console.log('Get Details of Supplier', this.state.supplierDetails)
+        }
+    }
+    createNewLead = async(e) => {
+        e.preventDefault();
+        console.log('state',this.state.leadForm);
+        let data = {
+            "lead_companyUuid":"1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+            "lead_date":this.state.leadForm.lead_date,
+            "lead_contactPerson":"Walt Disney",
+            "lead_contactNumber":"789456120",
+            "lead_createdBy":"1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+	        "lead_details":[
+                this.state.leadForm.equipmentLead
+            ]
+        }
+        console.log('data',data);
+        let response = await createNewLead(data, this.state.token);
+        if(response) {
+            window.alert("Response of API1: Lead Successfully Created",response);
+        }
+        else {
+            window.alert("Response of API2: Lead Creation Failed",response);
+            this.setState({isEquipmentInfo:false})
         }
     }
     // getLeadInformation = async ()
@@ -89,7 +109,7 @@ class BusinessAddNewModal extends Component {
         }
         this.setState({
             leadForm: leadForm
-        });
+        },() => {console.log(this.state.leadForm)});
     }
 
     computeYearDropDownInForm = () => {
@@ -103,7 +123,7 @@ class BusinessAddNewModal extends Component {
 
     computeStatesDropDownInForm = () => {
         let statesDropDown = [
-            { value: 'chocolate', label: 'Chocolate', name: 'lead_state' },
+            { value: '1', label: 'Andhra Pradesh', name: 'lead_state' },
             { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
             { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
         ];
@@ -112,13 +132,12 @@ class BusinessAddNewModal extends Component {
 
     computeDistrictsDropDownInForm = () => {
         let districtsDropDown = [
-            { value: 'chocolate', label: 'Chocolate', name: 'lead_district' },
+            { value: '1', label: 'Some District', name: 'lead_district' },
             { value: 'strawberry', label: 'Strawberry', name: 'lead_district' },
             { value: 'vanilla', label: 'Vanilla', name: 'lead_district' }
         ];
         this.setState({ districtsDropDown });
     }
-
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';
@@ -306,12 +325,12 @@ class BusinessAddNewModal extends Component {
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="phoneNumber" placeholder="Phone No." onChange={this.handleChange} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="name" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler}/></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
@@ -319,7 +338,7 @@ class BusinessAddNewModal extends Component {
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
                         <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} /></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
@@ -381,7 +400,7 @@ class BusinessAddNewModal extends Component {
                             />
                             : null
                     }
-                    <Button type="submit" onClick={this.leadInputHandler} variant="primary" size="sm" >Submit</Button>
+                    <Button type="submit" onClick={this.createNewLead} variant="primary" size="sm" >Submit</Button>
                 </Form>
             </React.Fragment>
         )

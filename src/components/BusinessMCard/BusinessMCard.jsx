@@ -112,8 +112,8 @@ class BusinessMCard extends Component {
                                 <Nav className="">
                                     <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/new" name="new" onClick={this.dataChangeHandler}>New</NavLink>
                                     <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/active" name="active" onClick={this.dataChangeHandler} >Active</NavLink>
-                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
                                     <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/deleted" name="deleted" onClick={this.dataChangeHandler}>Deleted</NavLink>
+                                    <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/rejected" name="rejected" onClick={this.dataChangeHandler}>Rejected</NavLink>
                                     <NavLink activeClassName="border-bottom-white" className="text-white px-3 mr-2 hovertext-white-border" to="/business/leads/moved" name="moved" onClick={this.dataChangeHandler}>Moved To Projects</NavLink>
                                 </Nav>
                             </Col>
