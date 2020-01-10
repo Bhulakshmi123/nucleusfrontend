@@ -35,14 +35,13 @@
 }
 
 .select_palceholder {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400 !important;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
     letter-spacing: normal;
-    color: rgba(37, 37, 37, 0.6);
-    font-family: 'Heebo', sans-serif !important;
+    color:dimgray;
+    font-family: GilroyBold !important;
     vertical-align: super;
 }
 
@@ -221,8 +220,8 @@ input[name="e_pe_shift"] {
     font-weight: 100 !important;
     border-color: #ccc !important;
     font-family: 'Heebo', sans-serif !important;
-    font-size: 14px;
-    color: #555;
+    font-size: 12px;
+    color: dimgray;
     font-weight: 600 !important;
 }
 
