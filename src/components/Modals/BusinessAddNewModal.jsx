@@ -13,9 +13,12 @@ class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
         let token = localStorage.getItem("tokenId");
+        let supplierUuid = localStorage.getItem("supplierUuid");
         this.state = {
+            supplierPhoneNo: '',
             supplierDetails: '',
             token: token,
+            supplierUuid: supplierUuid,
             activeLeadNo: null,
             isEquipmentInfo: false,
             equipmentKey: null,
@@ -27,9 +30,9 @@ class BusinessAddNewModal extends Component {
                 lead_startDate: moment().format('YYYY-MM-DD')
             },
             optionsForm1: [
-                { value: 'chocolate', label: 'Chocolate', name: 'lead_priority' },
-                { value: 'strawberry', label: 'Strawberry', name: 'lead_priority' },
-                { value: 'vanilla', label: 'Vanilla', name: 'lead_priority' },
+                { value: '1', label: 'Chocolate', name: 'lead_priority' },
+                { value: '2', label: 'Strawberry', name: 'lead_priority' },
+                { value: '3', label: 'Vanilla', name: 'lead_priority' },
             ],
             leadSourceDropDown: [
                 { value: 'icecream', label: 'Icecream', name: 'lead_source' },
@@ -37,9 +40,9 @@ class BusinessAddNewModal extends Component {
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
             ],
             equipmentTypeDropDownList: [
-                { value: 'chocolate', label: 'Chocolate', name: 'lead_equipmentType' },
+                { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
                 { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
-                { value: 'vanilla', label: 'Vanilla', name: 'lead_equipmentType' },
+                { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
             ],
             startDate: new Date(),
             startDateEquip: new Date(),
@@ -59,26 +62,29 @@ class BusinessAddNewModal extends Component {
     }
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString()}
+        this.setState({supplierPhoneNo:phoneNumber.toString()})
         let response = await getSupplierDetails(data, this.state.token);
         if (response) {
-            if (response.data.length > 0)
+            if (response.data.length > 0) {
                 this.setState({ supplierDetails: response.data[0] })
-            else
+            }
+            else{            
                 this.setState({ supplierDetails: { "name": null } })
-            console.log('Get Details of Supplier', this.state.supplierDetails)
+                console.log('Get Details of Supplier', this.state.supplierDetails)
+            }
         }
     }
     createNewLead = async(e) => {
         e.preventDefault();
-        console.log('state',this.state.leadForm);
+        console.log('state',this.state.leadForm, this.state);
         let data = {
-            "lead_companyUuid":"1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+            "lead_companyUuid":this.state.supplierUuid,
             "lead_date":this.state.leadForm.lead_date,
-            "lead_contactPerson":"Walt Disney",
-            "lead_contactNumber":"789456120",
-            "lead_createdBy":"1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+            "lead_contactPerson":'Walt Disney',
+            "lead_contactNumber":this.state.supplierPhoneNo,
+            "lead_createdBy":this.state.supplierUuid,
 	        "lead_details":[
-                this.state.leadForm.equipmentLead
+                ...this.state.leadForm.equipmentLead
             ]
         }
         console.log('data',data);
@@ -102,6 +108,7 @@ class BusinessAddNewModal extends Component {
         }
     }
     inputChangeHandler = (e) => {
+        this.setState({[e.target.name]:e.target.value});
         let leadForm = this.state.leadForm;
         leadForm = {
             ...leadForm,

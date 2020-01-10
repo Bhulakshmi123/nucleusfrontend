@@ -40,6 +40,7 @@ export class Loginpage extends Component {
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
                     localStorage.setItem("username",res.data.name);
+                    localStorage.setItem("supplierUuid",res.data.supplierUuid);
                     this.setState({ tokenId: res.data.token, loginStatus: true })
                 }
             });

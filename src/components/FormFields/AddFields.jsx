@@ -252,6 +252,13 @@ class AddFields extends React.Component {
                             <span className="lead_operatorBatha_error">{this.props.equipmentForm.lead_operatorBatha_error}</span>
                         </Form.Group>
                     </Col>
+                    <Col md={3}>
+                        <Form.Group controlId="formGroupJob">
+                            <Form.Label className="font_stle">Lead Price</Form.Label>
+                            <Form.Control type="text" name="lead_price" placeholder="Lead Price" value={this.props.equipmentForm.lead_price || ''} onChange={this.props.equipInputChangeHandler} />
+                            <span className="lead_price_error">{this.props.equipmentForm.lead_price_error}</span>
+                        </Form.Group>
+                    </Col>
                     <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.props.equipmentForm.lead_priority_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isOpenD={this.props.isOpenD} options={this.state.leadPriorityDropDown}></SelectInputSearch></Col>
                 </Form.Row>
                 <Form.Row className="mt-3 form-modal">
