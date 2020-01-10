@@ -48,7 +48,7 @@ class AddFields extends React.Component {
                 { value: 'Required', label: 'Required', name: 'lead_safetyMeasures' },
                 { value: 'Not Required', label: 'Not Required', name: 'lead_safetyMeasures' }
             ],
-            leadPriorityDropDown : [
+            leadPriorityDropDown: [
                 { value: 'HOT', label: 'HOT', name: 'lead_priority' },
                 { value: 'MEDIUM', label: 'MEDIUM', name: 'lead_priority' },
                 { value: 'COLD', label: 'COLD', name: 'lead_priority' }
@@ -56,7 +56,7 @@ class AddFields extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
         if (nextProps.equipmentForm !== this.props.equipmentForm) {
             this.setState({ equipmentForm: nextProps.equipmentForm });
         }
@@ -65,7 +65,7 @@ class AddFields extends React.Component {
         }
     }
 
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Button variant="primary" size="sm" className="px-4 add_new_fiels" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
@@ -268,7 +268,7 @@ class AddFields extends React.Component {
                             <span className="lead_paymentTerms_error">{this.props.equipmentForm.lead_paymentTerms_error}</span>
                         </Form.Group>
                     </Col>
-                    
+
                 </Form.Row>
                 <Form.Row className="mt-3 form-modal">
                     <Col md={12}>
