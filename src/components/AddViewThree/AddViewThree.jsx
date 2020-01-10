@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
-import { Container, Col, Row, Button, InputGroup, Card, Modal, ButtonGroup } from 'react-bootstrap';
+import { Container, Col, Row, Button, Card, Modal, ButtonGroup } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
 import { Redirect } from 'react-router-dom';

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Modal, Col, Form } from 'react-bootstrap';
+import { Button, Col, Form } from 'react-bootstrap';
 import SelectInputSearch from './SelectInputSearch';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
-import { fromUnixTime } from 'date-fns';
+// import { fromUnixTime } from 'date-fns';
 
 class AddFields extends React.Component {
     constructor(props) {

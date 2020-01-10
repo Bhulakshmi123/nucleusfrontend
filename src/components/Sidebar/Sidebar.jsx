@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 const Sidebar = (props) => {
   const sidebarView = useSelector(state => state.sidebarView);

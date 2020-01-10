@@ -6,7 +6,7 @@ import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import { getSupplierDetails } from '../../views/Business/actions'
 import * as moment from 'moment';
-import _ from 'lodash';
+// import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
 // var validator = require('validator');
 class BusinessAddNewModal extends Component {
@@ -52,7 +52,7 @@ class BusinessAddNewModal extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
-    componentWillMount() {
+    componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
         this.computeDistrictsDropDownInForm();
@@ -63,16 +63,16 @@ class BusinessAddNewModal extends Component {
         }
         let response = await getSupplierDetails(data, this.state.token);
         if (response) {
-            
+
             if (response.data.length > 0)
                 this.setState({ supplierDetails: response.data[0] })
-            else 
-                this.setState({ supplierDetails: {"name": null} })
+            else
+                this.setState({ supplierDetails: { "name": null } })
             console.log('Get Details of Supplier', this.state.supplierDetails)
         }
     }
     // getLeadInformation = async ()
-    handleChange(e) {
+    handleChange (e) {
         console.log(e.target.value)
         if (e.target.value.length === 10) {
             this.getSupplierDetails(e.target.value)
@@ -159,7 +159,7 @@ class BusinessAddNewModal extends Component {
         }, () => { console.log(this.state.equipmentForm) });
     }
 
-  
+
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
         leadForm = {
@@ -301,7 +301,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
@@ -310,7 +310,7 @@ class BusinessAddNewModal extends Component {
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="name" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name}/></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="name" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} /></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
@@ -319,7 +319,7 @@ class BusinessAddNewModal extends Component {
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
                         </Col>
                         <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName}/></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} /></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
