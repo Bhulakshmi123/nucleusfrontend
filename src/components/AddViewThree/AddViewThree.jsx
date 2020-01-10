@@ -63,7 +63,8 @@ class AddViewThree extends Component {
             isModalShowing: false,
             redirectPath: '',
             checkedProjects: [],
-            chosenCategory: 0
+            chosenCategory: 0,
+            requestBidsCount: 0
         })
     }
     pageRedirectFunction = () => { this.setState({ redirect: true, redirectPath: 'leaduuid' }) }
@@ -197,9 +198,9 @@ class AddViewThree extends Component {
                                                                 </Col>
                                                                 <Col md={2} className="my-auto text-center">
                                                                     <div>
-                                                                        <div className="w-100 bg-moodIndigo bor-rad-02">
+                                                                        <div className="w-100 bg-primary bor-rad-02">
                                                                             <div className="font-size-18 text-white mbn-5">{prop.year}</div>
-                                                                            <small className="d-block mt-0 text-white bg-bloodIndigo">Model</small>
+                                                                            <small className="d-block mt-0 text-white bg-bluefuchsia">Model</small>
                                                                         </div>
                                                                     </div>
                                                                 </Col>
