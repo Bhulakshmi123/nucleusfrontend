@@ -169,14 +169,14 @@ class AddViewThree extends Component {
                                         return (
                                             <Container fluid className="w-95" key={key}>
                                                 <Row className="mt-2">
-                                                    <Col md={1} className="my-auto">
-                                                        {/* <span>
-                                                            <label className="container2">
-                                                                <input type="checkbox" className="jsonView viewChk" value={prop.uuid} data-id={prop.equipmentType} onChange={this.handleCheck} />
+                                                    <Col md={1} className="mrgin_to_checks">
+                                                        <span>
+                                                            <label className="check1">
+                                                                <input type="checkbox" value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} />
                                                                 <span className="checkmark2"></span>
                                                             </label>
-                                                        </span> */}
-                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0 " value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} />
+                                                        </span>
+                                                        {/* <InputGroup.Checkbox aria-label="Checkbox for following text input" className="mx-auto text-center bor-rad-0 " value={prop.uuid} data-id={prop.equipmentType} onChange={() => this.checkBoxHandler(key, prop.supplier_uuid, prop.uuid, prop.equipmentType)} /> */}
                                                     </Col>
                                                     <Col md={11} className="pr-0">
                                                         <Card className="my-2 p-3">

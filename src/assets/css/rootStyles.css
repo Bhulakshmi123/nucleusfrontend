@@ -516,3 +516,60 @@ select {
     -webkit-appearance: none;
     appearance: none;
 }
+
+.check1 {
+    display: block;
+    position: relative;
+    /* padding-left: 70px; */
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.check1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.check1 input:checked~.checkmark2 {
+    background-color: #2196F3;
+}
+
+.checkmark2 {
+    position: absolute;
+    top: -31px;
+    margin-left: 73%;
+    height: 17px;
+    width: 17px;
+    border: 1px solid #777;
+}
+
+.check1 input:checked~.checkmark2:after {
+    display: block;
+}
+
+.check1 .checkmark2:after {
+    left: 5px;
+    top: 0px;
+    width: 5px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark2:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.mrgin_to_checks {}
