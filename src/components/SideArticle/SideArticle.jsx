@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Container, Row, Col, InputGroup, FormControl, Modal } from 'react-bootstrap';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
@@ -229,7 +230,7 @@ class SideArticle extends Component {
                     }
                 </Col>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >

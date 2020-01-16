@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-import { changeServiceStatus } from '../../views/Business/actions'
+import { changeServiceStatus } from '../../views/Business/actions';
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 class FinalizedSupplier extends Component {
     constructor(props) {
@@ -142,7 +143,7 @@ class FinalizedSupplier extends Component {
                     </Row>
                 </Card>
                 <Modal show={this.state.isEditBidShowing} onHide={this.isFinalizedClose} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg" className="my-auto">
                             <h6 className="mb-0 text-white">Lead Details [{this.state.leadUuid}]</h6>
                         </Modal.Title>
@@ -152,7 +153,7 @@ class FinalizedSupplier extends Component {
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Upload Documents</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >

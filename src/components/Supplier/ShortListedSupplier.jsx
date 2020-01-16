@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Card, Modal } from 'react-bootstrap';
 import { FaRegCheckCircle } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import AddFieldsPro from '../../components/FormFields/AddFieldsPro';
 class ShortListedSupplier extends Component {
     constructor(props) {
@@ -86,7 +87,7 @@ class ShortListedSupplier extends Component {
                     </small>
                 </Card>
                 <Modal show={this.state.isEditBidShowing} onHide={this.isFinalizedClose} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg" className="my-auto">
                             <h6 className="mb-0 text-white">Lead Details [{this.state.leadUuid}]</h6>
                         </Modal.Title>

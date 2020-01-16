@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Container, Modal, ButtonGroup } from 'react-bootstrap';
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import { Link } from 'react-router-dom';
 import Renter from '../Renter/Renter';
 import FinalizedSupplier from '../Supplier/FinalizedSupplier';
@@ -71,7 +72,7 @@ class AddViewTwo extends Component {
                     </div>
                 </Container>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-md">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

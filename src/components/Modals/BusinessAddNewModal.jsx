@@ -197,7 +197,9 @@ class BusinessAddNewModal extends Component {
             startDate: date
         }, () => { console.log(this.state.leadForm) });
     }
+    openCloseHandler = () => {
 
+    }
     openInputHandler = () => {
         this.setState({
             isEquipmentInfo: true,
@@ -356,7 +358,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
-                        <Col className="my-3"><Button className="float-right px-4" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                        <Col className="my-3" md={3}><Button className="float-right px-4" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>

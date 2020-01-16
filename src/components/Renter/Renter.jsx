@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Container, Card, Modal } from 'react-bootstrap';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 class Renter extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class Renter extends Component {
                     </Container>
                 </Card>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
@@ -70,7 +71,7 @@ class Renter extends Component {
                     </Modal.Body>
                 </Modal>
                 <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Upload Documents</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >

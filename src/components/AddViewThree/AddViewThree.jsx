@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { makeRequestBid } from '../../views/Business/actions';
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 import { Container, Col, Row, Button, Card, Modal, ButtonGroup } from 'react-bootstrap';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
 import { IoMdPerson, IoMdMailOpen, IoMdMenu } from "react-icons/io";
@@ -216,7 +217,7 @@ class AddViewThree extends Component {
                     </Row>
                 </Container>
                 <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
