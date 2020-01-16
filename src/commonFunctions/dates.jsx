@@ -19,7 +19,7 @@ const getMonthNumber = (date) => {
 }
 
 const getFullMonth = (date) => {
-    let fullMonth = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Dececmber'];
+    let fullMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return fullMonth[new Date(parseInt(date)).getMonth()]; //Returns FUll Month Example: 'November'
 }
 

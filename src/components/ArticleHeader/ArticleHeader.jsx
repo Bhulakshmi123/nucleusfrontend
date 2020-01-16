@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
 import { FaPlusCircle } from "react-icons/fa";
 import BusinessAddNewModal from '../Modals/BusinessAddNewModal';
+import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGenerator';
 export class ArticleHeader extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ export class ArticleHeader extends Component {
     closeModalHandler = () => {
         this.setState({ isShowing: false });
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Container className="mt-2">
@@ -41,7 +42,7 @@ export class ArticleHeader extends Component {
                     </Row>
                 </Container>
                 <Modal show={this.state.isShowing} onHide={this.closeModalHandler} size="xl">
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >

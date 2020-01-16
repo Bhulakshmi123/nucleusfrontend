@@ -61,40 +61,40 @@ class BusinessAddNewModal extends Component {
         this.computeDistrictsDropDownInForm();
     }
     getSupplierDetails = async (phoneNumber) => {
-        let data = { "phoneNumber": phoneNumber.toString()}
-        this.setState({supplierPhoneNo:phoneNumber.toString()})
+        let data = { "phoneNumber": phoneNumber.toString() }
+        this.setState({ supplierPhoneNo: phoneNumber.toString() })
         let response = await getSupplierDetails(data, this.state.token);
         if (response) {
             if (response.data.length > 0) {
                 this.setState({ supplierDetails: response.data[0] })
             }
-            else{            
+            else {
                 this.setState({ supplierDetails: { "name": null } })
                 console.log('Get Details of Supplier', this.state.supplierDetails)
             }
         }
     }
-    createNewLead = async(e) => {
+    createNewLead = async (e) => {
         e.preventDefault();
-        console.log('state',this.state.leadForm, this.state);
+        console.log('state', this.state.leadForm, this.state);
         let data = {
-            "lead_companyUuid":this.state.supplierUuid,
-            "lead_date":this.state.leadForm.lead_date,
-            "lead_contactPerson":'Walt Disney',
-            "lead_contactNumber":this.state.supplierPhoneNo,
-            "lead_createdBy":this.state.supplierUuid,
-	        "lead_details":[
+            "lead_companyUuid": this.state.supplierUuid,
+            "lead_date": this.state.leadForm.lead_date,
+            "lead_contactPerson": 'Walt Disney',
+            "lead_contactNumber": this.state.supplierPhoneNo,
+            "lead_createdBy": this.state.supplierUuid,
+            "lead_details": [
                 ...this.state.leadForm.equipmentLead
             ]
         }
-        console.log('data',data);
+        console.log('data', data);
         let response = await createNewLead(data, this.state.token);
-        if(response) {
-            window.alert("Response of API1: Lead Successfully Created",response);
+        if (response) {
+            window.alert("Response of API1: Lead Successfully Created", response);
         }
         else {
-            window.alert("Response of API2: Lead Creation Failed",response);
-            this.setState({isEquipmentInfo:false})
+            window.alert("Response of API2: Lead Creation Failed", response);
+            this.setState({ isEquipmentInfo: false })
         }
     }
     // getLeadInformation = async ()
@@ -108,7 +108,7 @@ class BusinessAddNewModal extends Component {
         }
     }
     inputChangeHandler = (e) => {
-        this.setState({[e.target.name]:e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
         let leadForm = this.state.leadForm;
         leadForm = {
             ...leadForm,
@@ -116,7 +116,7 @@ class BusinessAddNewModal extends Component {
         }
         this.setState({
             leadForm: leadForm
-        },() => {console.log(this.state.leadForm)});
+        }, () => { console.log(this.state.leadForm) });
     }
 
     computeYearDropDownInForm = () => {
@@ -336,7 +336,7 @@ class BusinessAddNewModal extends Component {
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler}/></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
@@ -356,7 +356,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
-                        <Col className="my-3"><Button className="float-right" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                        <Col className="my-3"><Button className="float-right px-4" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>
@@ -407,7 +407,7 @@ class BusinessAddNewModal extends Component {
                             />
                             : null
                     }
-                    <Button type="submit" onClick={this.createNewLead} variant="primary" size="sm" >Submit</Button>
+                    <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
                 </Form>
             </React.Fragment>
         )

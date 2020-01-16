@@ -68,8 +68,8 @@ class AddFields extends React.Component {
     render () {
         return (
             <React.Fragment>
-                <Button variant="primary" size="sm" className="px-4 add_new_fiels" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
-                <Button variant="primary" size="sm" className="px-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button>
+                <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
+                <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button>
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentTypeDropDownList}>
@@ -278,8 +278,8 @@ class AddFields extends React.Component {
                         </Form.Group>
                     </Col>
                 </Form.Row>
-                <Button variant="primary" size="sm" className="px-4 add_new_fiels" onClick={this.props.addEquipForm}>Add Equipment Form</Button>
-                <Button variant="primary" size="sm" className="px-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button>
+                <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add Equipments</Button>
+                <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment</Button>
             </React.Fragment>
         );
     }
