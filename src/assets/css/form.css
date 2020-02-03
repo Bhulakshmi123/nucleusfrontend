@@ -15,6 +15,10 @@
     border: solid 1px rgba(37, 37, 37, 0.3);
 }
 
+.disable_add {
+    display: none;
+}
+
 .form-modal input {
     padding-left: 10px;
 }
@@ -40,7 +44,7 @@
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    color:dimgray;
+    color: dimgray;
     font-family: GilroyBold !important;
     vertical-align: super;
 }
