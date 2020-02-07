@@ -17,6 +17,7 @@
 
 .disable_add {
     display: none;
+    /* background-color: red; */
 }
 
 .form-modal input {
@@ -193,9 +194,10 @@ input[name="e_pe_shift"] {
     z-index: 2;
 }
 
-.ant-time-picker-panel-placement-bottomLeft {
+
+/* .ant-time-picker-panel-placement-bottomLeft {
     top: 386px !important;
-}
+} */
 
 .table>thead>tr>th {
     font-weight: 600 !important;
