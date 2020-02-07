@@ -135,14 +135,20 @@ class BusinessAddNewModal extends Component {
 
     computeStatesDropDownInForm = async (e) => {
         let response = await computeStatesDropDownInForm(this.state.token);
-        // let data = await response.json();
+        let statesDropDown = response.data;
+
+        statesDropDown.forEach(element => {
+            let dropDownEle = [{ label: element["name"], value: element }];
+            statesDropDown.push(dropDownEle);
+          });
+
+        // console.log("Hello world",user);
         console.log( "hello bbhu", response);
-        // console.log("hello world", data)
-        let statesDropDown = [
-            { value: '1', label: 'Andhra Pradesh', name: 'lead_state' },
-            { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
-            { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
-        ];
+        // let statesDropDown = [
+        //     { value: '1', label: 'Andhra Pradesh', name: 'lead_state' },
+        //     { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
+        //     { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
+        // ];
         this.setState({ statesDropDown });
     }
     // getStateLists = async (e) => {
