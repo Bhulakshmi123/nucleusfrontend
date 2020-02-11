@@ -124,7 +124,7 @@ class AddFields extends React.Component {
                 </Form.Row>
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown}></SelectInputSearch>
+                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t=>({value: t.id, label: t.name}))}></SelectInputSearch>
                         <span className="lead_state_error">{this.props.equipmentForm.lead_state_error}</span>
                     </Col>
                     <Col md={3}>

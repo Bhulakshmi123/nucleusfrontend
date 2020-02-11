@@ -155,7 +155,3 @@ const DropdownIndicator = () => (
 //     />
 //   </Svg>)
 export default SelectInput;
-
-
-
-

@@ -136,19 +136,13 @@ class BusinessAddNewModal extends Component {
     computeStatesDropDownInForm = async (e) => {
         let response = await computeStatesDropDownInForm(this.state.token);
         let statesDropDown = response.data;
-
-        statesDropDown.forEach(element => {
-            let dropDownEle = [{ label: element["name"], value: element }];
-            statesDropDown.push(dropDownEle);
-          });
+        console.log( "hello bbhu", response);
+        console.log("Hello world",statesDropDown);
+        // this.state.statesDropDown.map(function (e) {
+        //     return{ value: e.id, label: e.name , name:'lead_state_name'};
+        // })
 
         // console.log("Hello world",user);
-        console.log( "hello bbhu", response);
-        // let statesDropDown = [
-        //     { value: '1', label: 'Andhra Pradesh', name: 'lead_state' },
-        //     { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
-        //     { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
-        // ];
         this.setState({ statesDropDown });
     }
     // getStateLists = async (e) => {
@@ -203,7 +197,6 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         }, () => { console.log(this.state.equipmentForm) });
     }
-
 
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
@@ -377,7 +370,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
                         placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
                         {/* <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col> */}
-                        <Col md={3}><SelectInputSearch  name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} onClick={this.getStateLists} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
+                        <Col md={3}><SelectInputSearch  name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
                     <Col className="my-3"><Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add":"primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
