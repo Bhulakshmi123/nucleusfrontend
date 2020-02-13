@@ -8,7 +8,7 @@ import CalenderInput from './CalenderInput';
 class AddFields extends React.Component {
     constructor(props) {
         super(props);
-        console.log('Props Passed', this.props.districtsDropDown);
+        console.log('Props Passed', this.props.districtsDropDown[0]);
         this.state = {
             districtsDropDown: [
                 { id: 71, stateId: "5", name: "Araria" }
@@ -126,7 +126,7 @@ class AddFields extends React.Component {
                         <span className="lead_startDate_error">{this.props.equipmentForm.lead_startDate_error}</span>
                     </Col>
                     <Col md={3}>
-                        <SelectInputSearch name="lead_workingUnits" cStyle="widthone" label="Lead Type" placeholder="Select Lead Type" value={this.props.equipmentForm.lead_workingUnits_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.workingUnitsDropDown}></SelectInputSearch>
+                        <SelectInputSearch name="lead_workingUnits" cStyle="widthone" label="Lead Type" placeholder="Select Lead Type" value={this.props.equipmentForm.lead_workingUnits_name || ''} onChange={this.props.equipInputChangeHandlerSelect || null} isopen={this.props.isOpenD} options={this.state.workingUnitsDropDown}></SelectInputSearch>
 
                         <span className="lead_workingUnits_error">{this.props.equipmentForm.lead_workingUnits_error}</span>
                     </Col>

@@ -139,6 +139,7 @@ class BusinessAddNewModal extends Component {
         let response = await computeStatesDropDownInForm(this.state.token);
         let statesDropDown = response.data;
         this.setState({ statesDropDown });
+        console.log("States API",statesDropDown)
     }
 
     computeDistrictsDropDownInForm = async (e) => {
