@@ -11,7 +11,7 @@ const Service = {
         }
         try {
             const res = await fetch(url, { method: 'GET', headers: headers });
-            if (res.status >= 200 && res.status < 400) {
+            if (res.status >= 200 && res.status < 400 && res.status != 204) {
                 return (res.json());
             } else if (res.status >= 400 && res.status < 500) {
                 if (res.status === 401) {

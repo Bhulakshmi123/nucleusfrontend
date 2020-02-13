@@ -26,6 +26,10 @@ class SelectInput extends Component {
     if (nextProps.isOpen !== this.state.isOpen) {
       this.setState({ isOpen: nextProps.isOpen });
     }
+
+    if (nextProps.options !== this.state.options) {
+      this.setState({ options: nextProps.options });
+    }
   }
 
   toggleOpen = () => {
