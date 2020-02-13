@@ -8,7 +8,11 @@ import CalenderInput from './CalenderInput';
 class AddFields extends React.Component {
     constructor(props) {
         super(props);
+        console.log('Props Passed', this.props.districtsDropDown);
         this.state = {
+            districtsDropDown: [
+                { id: 71, stateId: "5", name: "Araria" }
+            ],
             shiftTypeDropDown: [
                 { value: '1', label: 'Shift 1 (5AM - 3PM)', name: 'lead_shiftType' },
                 { value: '2', label: 'Shift 2 (2PM - 10PM)', name: 'lead_shiftType' },
@@ -55,17 +59,22 @@ class AddFields extends React.Component {
             ]
         }
     }
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.equipmentForm !== this.props.equipmentForm) {
+    //         this.setState({ equipmentForm: nextProps.equipmentForm });
+    //     }
+    //     if (nextProps.districtsDropDown !== this.props.districtsDropDown) {
+    //         this.setState({ districtsDropDown: nextProps.districtsDropDown });
+    //     }
+    // }
 
-    componentWillReceiveProps (nextProps) {
-        if (nextProps.equipmentForm !== this.props.equipmentForm) {
-            this.setState({ equipmentForm: nextProps.equipmentForm });
-        }
-        if (nextProps.districtsDropDown !== this.props.districtsDropDown) {
-            this.setState({ districtsDropDown: nextProps.districtsDropDown });
-        }
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            districtsDropDown: newProps.districtsDropDown
+        }, () => { console.log('Templars vs Assassins', this.state.districtsDropDown) });
     }
 
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
@@ -124,11 +133,11 @@ class AddFields extends React.Component {
                 </Form.Row>
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t=>({value: t.id, label: t.name}))}></SelectInputSearch>
+                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t => ({ value: t.id, label: t.name }))}></SelectInputSearch>
                         <span className="lead_state_error">{this.props.equipmentForm.lead_state_error}</span>
                     </Col>
                     <Col md={3}>
-                        <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.districtsDropDown}>
+                        <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(item => ({ value: item.id, label: item.name }))}>
                         </SelectInputSearch>
                         <span className="lead_district_error">{this.props.equipmentForm.lead_district_error}</span>
                     </Col>
@@ -144,7 +153,7 @@ class AddFields extends React.Component {
                     <Col md={3}>
                         <Form.Group controlId="formGroupQty">
                             <Form.Label className="font_stle">
-                                Qunatity</Form.Label>
+                                Quantity</Form.Label>
                             <Form.Control type="number" name="lead_quantity" placeholder="Quantity" value={this.props.equipmentForm.lead_quantity || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_quantity_error">{this.props.equipmentForm.lead_quantity_error}</span>
                         </Form.Group>

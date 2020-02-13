@@ -1,4 +1,4 @@
-import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS, GET_EQUIPMENT_SUPPLIER_DETAILS,CREATE_LEAD, GET_STATES} from './actionTypes';
+import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS, GET_EQUIPMENT_SUPPLIER_DETAILS, CREATE_LEAD, GET_STATES, GET_CITIES } from './actionTypes';
 import service from '../../service';
 
 export const getSupplierList = async (payload, token) => {
@@ -36,4 +36,7 @@ export const createNewLead = async (payload, token) => {
 }
 export const computeStatesDropDownInForm = async (token) => {
     return (await service.fetchGet(GET_STATES.url, token));
+}
+export const computeDistrictsDropDownInForm = async (token, urlPayload) => {
+    return (await service.fetchGet(GET_CITIES.url + urlPayload, token));
 }

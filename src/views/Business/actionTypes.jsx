@@ -10,3 +10,4 @@ export const PROJECT_LIST_NUCLEUS = {type:"LIST_OF_PROJECTS_IN_NUCLEUS", url:'/l
 export const GET_EQUIPMENT_SUPPLIER_DETAILS = {type:"GET_SUPPLIER_DETAILS", url:'/lms/supplierDetails'}
 export const CREATE_LEAD = {type:"CREATE_A_NEW_LEAD", url:'/lms/lead/'}
 export const GET_STATES = {type:"GET_STATES", url:'/lms/getStates'}
+export const GET_CITIES = {type:"GET_CITIES", url:'/lms/getCities/'}

@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { getSupplierDetails, createNewLead, computeStatesDropDownInForm} from '../../views/Business/actions'
+import { getSupplierDetails, createNewLead, computeStatesDropDownInForm, computeDistrictsDropDownInForm } from '../../views/Business/actions'
 import * as moment from 'moment';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
@@ -13,11 +13,13 @@ class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
         let token = localStorage.getItem("tokenId");
+        let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
         this.state = {
             supplierPhoneNo: '',
             supplierDetails: '',
             token: token,
+            username: username,
             supplierUuid: supplierUuid,
             activeLeadNo: null,
             isEquipmentInfo: false,
@@ -58,11 +60,11 @@ class BusinessAddNewModal extends Component {
     // componentDidMount () {
     //     this.getStateLists();
     // }
-    componentWillMount () {
+    componentWillMount() {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
-        this.computeDistrictsDropDownInForm();
     }
+
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString() }
         this.setState({ supplierPhoneNo: phoneNumber.toString() })
@@ -77,7 +79,7 @@ class BusinessAddNewModal extends Component {
             }
         }
     }
-   
+
     createNewLead = async (e) => {
         e.preventDefault();
         console.log('state', this.state.leadForm, this.state);
@@ -101,9 +103,9 @@ class BusinessAddNewModal extends Component {
             this.setState({ isEquipmentInfo: false })
         }
     }
-    
+
     // getLeadInformation = async ()
-    handleChange (e) {
+    handleChange(e) {
         console.log(e.target.value)
         if (e.target.value.length === 10) {
             this.getSupplierDetails(e.target.value)
@@ -136,26 +138,12 @@ class BusinessAddNewModal extends Component {
     computeStatesDropDownInForm = async (e) => {
         let response = await computeStatesDropDownInForm(this.state.token);
         let statesDropDown = response.data;
-        console.log( "hello bbhu", response);
-        console.log("Hello world",statesDropDown);
-        // this.state.statesDropDown.map(function (e) {
-        //     return{ value: e.id, label: e.name , name:'lead_state_name'};
-        // })
-
-        // console.log("Hello world",user);
         this.setState({ statesDropDown });
     }
-    // getStateLists = async (e) => {
-    //     let response = await getStateLists(this.state.token);
-    //     console.log( "hello bbhu", response);
-    // }
-  
-    computeDistrictsDropDownInForm = () => {
-        let districtsDropDown = [
-            { value: '1', label: 'Some District', name: 'lead_district' },
-            { value: 'strawberry', label: 'Strawberry', name: 'lead_district' },
-            { value: 'vanilla', label: 'Vanilla', name: 'lead_district' }
-        ];
+
+    computeDistrictsDropDownInForm = async (e) => {
+        let response = await computeDistrictsDropDownInForm(this.state.token, this.state.equipmentForm.selectedState);
+        let districtsDropDown = response.data;
         this.setState({ districtsDropDown });
     }
     inputChangeHandlerForSelect = (e) => {
@@ -178,7 +166,7 @@ class BusinessAddNewModal extends Component {
         let error = e.name + '_error';
         let equipmentFormCheck = this.state.equipmentFormCheck;
         if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value == null || e.value == '')) {
-            equipmentForm = {   
+            equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
             };
@@ -190,12 +178,16 @@ class BusinessAddNewModal extends Component {
         }
         equipmentForm = {
             ...equipmentForm,
-            [e.name]: e.value,
+            // [e.name]: e.value,
+            selectedState: e.value,
             [placeHolder]: e.label
         }
         this.setState({
             equipmentForm: equipmentForm
-        }, () => { console.log(this.state.equipmentForm) });
+        }, () => { 
+            console.log(this.state.equipmentForm); 
+            this.computeDistrictsDropDownInForm();
+        });
     }
 
     inputChangeHandlerDate = (date) => {
@@ -211,9 +203,9 @@ class BusinessAddNewModal extends Component {
     }
     openCloseHandler = () => {
         this.setState({
-           
+
         })
-         console.log("hi")
+        console.log("hi")
     }
     openInputHandler = () => {
         this.setState({
@@ -224,7 +216,7 @@ class BusinessAddNewModal extends Component {
             startDateEquip: new Date(),
             equipmentKey: null
         }, () => {
-            console.log(this.state.equipmentForm);
+            // console.log(this.state.equipmentForm);
         });
     }
 
@@ -344,7 +336,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
@@ -359,7 +351,7 @@ class BusinessAddNewModal extends Component {
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
-                            <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
+                            <div className="my-auto py-1 px-0 text-primary text-uppercase">{this.state.username}</div>
                         </Col>
                         <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
                         <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} /></Form.Group></Col>
@@ -370,10 +362,10 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
                         placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
                         {/* <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col> */}
-                        <Col md={3}><SelectInputSearch  name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
+                        <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
                     </Form.Row>
                     <Form.Row>
-                    <Col className="my-3"><Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add":"primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                        <Col className="my-3"><Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add" : "primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
                     </Form.Row>
                     <Form.Row>
                         <Col md={12}>

@@ -1,18 +1,17 @@
 import React from 'react';
+import { sidebarViewAction } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../redux/actions/index';
 const Projects = () => {
-  const counter = useSelector(state => state.counter);
-  const isLogged = useSelector(state => state.isLogged);
+  const sidebarView = useSelector(state => state.sidebarView);
   const dispatch = useDispatch();
+  const dataFromUrl = () => { dispatch(sidebarViewAction(false)) }
   return (
-    <div className="mt-5">
-      <h1>Counter {counter}</h1>
-      <button onClick={() => dispatch(increment(5))}>+</button>
-      <button onClick={() => dispatch(decrement(5))}>-</button>
-      {isLogged ? <h3>React Sucks</h3> : ''}
-    </div>
+    <React.Fragment>
+      {dataFromUrl()}
+      <div className={sidebarView ? "mainContent mainContentMini" : "mainContent"}>
+        <h1 className="text-white text-center mt-5">Under Maintenance</h1>
+      </div>
+    </React.Fragment>
   )
 }
-
 export default Projects;

@@ -9,7 +9,7 @@ const Suppliers = () => {
     <React.Fragment>
       {dataFromUrl()}
       <div className={sidebarView ? "mainContent mainContentMini" : "mainContent"}>
-        <h1 className="text-white text-center mt-5">Suppliers</h1>
+      <h1 className="text-white text-center mt-5">Under Maintenance</h1>
       </div>
     </React.Fragment>
   )
