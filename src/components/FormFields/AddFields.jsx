@@ -148,10 +148,7 @@ class AddFields extends React.Component {
                         <span className="lead_state_error">{this.props.equipmentForm.lead_state_error}</span>
                     </Col>
                     <Col md={3}>
-                        <SelectInputSearch name="lead_district" cStyle="widthone" label="State" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_district' }))}></SelectInputSearch>
-
-                        {/* <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(e => ({ value: e.id, label: e.name, name: 'lead_district' }))}>
-                        </SelectInputSearch> */}
+                        <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_district' }))}></SelectInputSearch>
                         <span className="lead_district_error">{this.props.equipmentForm.lead_district_error}</span>
                     </Col>
 

@@ -64,8 +64,6 @@ class BusinessAddNewModal extends Component {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
-
-
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString() }
         this.setState({ supplierPhoneNo: phoneNumber.toString() })
