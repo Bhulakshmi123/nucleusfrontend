@@ -142,6 +142,19 @@ class AddFields extends React.Component {
                         <span className="lead_workingUnits_error">{this.props.equipmentForm.lead_workingUnits_error}</span>
                     </Col>
                 </Form.Row>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_state' }))}></SelectInputSearch>
@@ -169,6 +182,18 @@ class AddFields extends React.Component {
                         </Form.Group>
                     </Col>
                 </Form.Row>
+
+
+
+
+
+
+
+
+
+
+
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group controlId="formGroupHD">
@@ -265,14 +290,14 @@ class AddFields extends React.Component {
                 </Form.Row>
                 <Form.Row>
                     <Col md={3}>
-                        <Form.Group controlId="formGroupJob">
+                        <Form.Group controlId="formGroupOperatorBatha">
                             <Form.Label className="font_stle">Operator Batha</Form.Label>
                             <Form.Control type="text" name="lead_operatorBatha" placeholder="Operator Batha" value={this.props.equipmentForm.lead_operatorBatha || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_operatorBatha_error">{this.props.equipmentForm.lead_operatorBatha_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
-                        <Form.Group controlId="formGroupJob">
+                        <Form.Group controlId="formGroupLeadPrice">
                             <Form.Label className="font_stle">Lead Price</Form.Label>
                             <Form.Control type="text" name="lead_price" placeholder="Lead Price" value={this.props.equipmentForm.lead_price || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_price_error">{this.props.equipmentForm.lead_price_error}</span>

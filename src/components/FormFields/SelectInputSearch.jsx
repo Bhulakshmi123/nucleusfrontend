@@ -8,7 +8,7 @@ import { Button, Form } from 'react-bootstrap';
 import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 
-const { colors } = defaultTheme;
+const { colors } = defaultTheme;  
 
 const selectStyles = {
   control: provided => ({ ...provided, margin: 8 }),
@@ -20,9 +20,11 @@ class SelectInput extends Component {
     options:this.props.options,
     isOpen : this.props.isOpen,
   };
-
+  componentDidMount(){
+  }
   componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
+    console.log('Select Input Box options',nextProps);
     if (nextProps.isOpen !== this.state.isOpen) {
       this.setState({ isOpen: nextProps.isOpen });
     }
@@ -34,13 +36,14 @@ class SelectInput extends Component {
 
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
-  };    
+  };
 
 
   render() {
     const isOpen= this.state.isOpen;
     return (
       <div>
+        {/* {console.log('Select Input Box',this.state.options)} */}
         <InputName label={this.props.label} />
         <Dropdown
           isOpen={this.state.isOpen}
