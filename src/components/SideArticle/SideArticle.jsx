@@ -7,6 +7,8 @@ import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
 import AddFields3 from '../../components/FormFields/AddFields3';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
@@ -71,14 +73,21 @@ class SideArticle extends Component {
     changeLeadStatus (leadDetId, newStatus, source) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
-                this.setRedirect(data.newStatus + source)
+            console.log('Ne', res);
+            if (res.message === 'lead status updated.') {
+                if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
+                    this.setRedirect(data.newStatus + source)
+                }
+                if (data.newStatus === "ACTIVATED") {
+                    this.setRedirect(data.newStatus)
+                }
+                if (data.newStatus === "FINALIZED") {
+                    this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+                    this.successNotification();
+                }
             }
-            if (data.newStatus === "ACTIVATED") {
-                this.setRedirect(data.newStatus)
-            }
-            if (data.newStatus === "FINALIZED") {
-                this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+            else {
+                this.failedNotification();
             }
         });
     }
@@ -145,6 +154,18 @@ class SideArticle extends Component {
             this.setState({ filtered: this.props.leadinfo })
         }
     }
+    successNotification = () => {
+        toast("Equipment is Finalized", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-success text-white fontGilroyBold bor-rad-05 '
+        });
+    };
+    failedNotification = () => {
+        toast("Failed to Finalize the Equipment", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-danger text-white fontGilroyBold bor-rad-05 '
+        });
+    };
     render () {
         return (
             <React.Fragment>
