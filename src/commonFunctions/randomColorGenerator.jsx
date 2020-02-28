@@ -4,10 +4,10 @@ const randomHeaderColorGenerator = () => {
         return 'bg-bluefuchsia';
     }
     if (selectedColorNumber === 1) {
-        return 'bg-primary';
+        return 'bg-bluefuchsia';
     }
     if (selectedColorNumber === 2) {
-        return 'bg-tealGreen';
+        return 'bg-bluefuchsia';
     }
 }
 export { randomHeaderColorGenerator }

@@ -8,9 +8,10 @@ import thunk from 'redux-thunk';
 import allReducers from './redux/reducers';
 import AdminLayout from "layouts/Admin";
 import { Loginpage } from './views/Authentication/Loginpage'
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { ToastContainer} from 'react-toastify';
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 export default class Index extends Component {
 	render () {
@@ -24,6 +25,7 @@ export default class Index extends Component {
 							<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
 						</Switch>
 					</BrowserRouter>
+					<ToastContainer></ToastContainer>
 				</Provider >
 			</React.Fragment>
 		)

@@ -46,8 +46,7 @@ class FinalizedSupplier extends Component {
             "createdBy": this.state.createdBy
         }
         changeServiceStatus(data, this.state.token).then((res) => {
-            console.log(res);
-            this.closeServiceModalHandler()
+            this.closeServiceModalHandler();
         })
     }
     getServiceData = (leadId, leadDetId, leadDetUuid, newStatus, createdBy) => {
@@ -93,23 +92,33 @@ class FinalizedSupplier extends Component {
                                     <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                 </Col>
                                 <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="FINALIZED" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div>
+                                        <FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
+                                    </div>
                                     <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalized</div>
                                 </Col>
                                 <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="INSPECTION" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.inspectionStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div>
+                                        <FaRegCheckCircle className={this.state.inspectionStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
+                                    </div>
                                     <div className={this.state.inspectionStatus ? "text-success font-size-07" : "font-size-07"}>Inspection</div>
                                 </Col>
                                 <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="FIELDVISIT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.felidVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div>
+                                        <FaRegCheckCircle className={this.state.felidVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
+                                    </div>
                                     <div className={this.state.felidVisitStatus ? "text-success font-size-07" : "font-size-07"}>Felid Visit</div>
                                 </Col>
                                 <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="AGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.agreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div>
+                                        <FaRegCheckCircle className={this.state.agreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
+                                    </div>
                                     <div className={this.state.agreementStatus ? "text-success font-size-07" : "font-size-07"}>Agreement</div>
                                 </Col>
                                 <Col md={3} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="SIGNEDAGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy)}>
-                                    <div><FaRegCheckCircle className={this.state.signedAgreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} /></div>
+                                    <div>
+                                        <FaRegCheckCircle className={this.state.signedAgreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
+                                    </div>
                                     <div className={this.state.signedAgreementStatus ? "text-success font-size-07" : "font-size-07"}>Signed Agreement</div>
                                 </Col>
                             </Row>

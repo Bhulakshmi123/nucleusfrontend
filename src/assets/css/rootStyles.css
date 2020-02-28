@@ -332,6 +332,7 @@ search_icon .mrn-18 {margin-right: -18% !important;}
 .cursor-grab {cursor: -webkit-grab; cursor: grab;}
 .cursor-move {cursor: move;}
 
+
 .h-05 {height: 5px !important;}
 .h-10 {height: 10px !important;}
 .h-15 {height: 15px !important;}
@@ -422,6 +423,7 @@ search_icon .mrn-18 {margin-right: -18% !important;}
 .text-moodIndigo {color:#9c27b0 !important;}
 .text-bloodIndigo {color:#4a148c !important;}
 .text-brickRed {color:#d50000 !important;}
+.text-white {color: white !important;}
 
 .bg-tealGreen {background-color:#215763 !important;}
 .bg-moodIndigo {background-color: #9c27b0 !important;}
@@ -572,5 +574,4 @@ select {
     position: absolute;
     display: none;
 }
-
-.mrgin_to_checks {}
+.Toastify__toast-container--top-right {top:4em !important;}

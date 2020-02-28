@@ -165,7 +165,7 @@ class BusinessAddNewModal extends Component {
         let placeHolder = e.name + '_name';
         let error = e.name + '_error';
         let equipmentFormCheck = this.state.equipmentFormCheck;
-        if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value == null || e.value == '')) {
+        if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value === null || e.value === '')) {
             equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
@@ -185,7 +185,7 @@ class BusinessAddNewModal extends Component {
         this.setState({
             equipmentForm: equipmentForm
         }, () => { 
-            console.log(this.state.equipmentForm); 
+            // console.log(this.state.equipmentForm); 
             this.computeDistrictsDropDownInForm();
         });
     }
@@ -247,7 +247,7 @@ class BusinessAddNewModal extends Component {
         let equipmentForm = this.state.equipmentForm;
         let equipmentFormCheck = this.state.equipmentFormCheck;
         let error = e.target.name + '_error';
-        if ((e.target.name == 'lead_workingCount' || e.target.name == 'lead_workingTotalCount' || e.target.name == 'operation_d_m' || e.target.name == 'lead_quantity' || e.target.name == 'lead_workingHoursPerDay' || e.target.name == 'lead_operatorBatha') && e.target.value <= 0 && e.target.value != null && e.target.value != '') {
+        if ((e.target.name === 'lead_workingCount' || e.target.name === 'lead_workingTotalCount' || e.target.name === 'operation_d_m' || e.target.name === 'lead_quantity' || e.target.name === 'lead_workingHoursPerDay' || e.target.name === 'lead_operatorBatha') && e.target.value <= 0 && e.target.value !== null && e.target.value !== '') {
             equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
@@ -255,7 +255,7 @@ class BusinessAddNewModal extends Component {
             };
             equipmentFormCheck++;
         } else {
-            if (this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value == null || e.target.value == '')) {
+            if (this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value === null || e.target.value === '')) {
                 equipmentForm = {
                     ...equipmentForm,
                     [error]: "Please check this Input",
@@ -291,10 +291,10 @@ class BusinessAddNewModal extends Component {
             }
         });
         this.setState({ equipmentForm });
-        if (this.state.equipmentFormCheck != 0) {
+        if (this.state.equipmentFormCheck !== 0) {
             //form validation and reset the equipmentFormCheck  to 0
         }
-        if (errorCheck == 0) { // add the equipmentFormCheck variable here for complete form checking.
+        if (errorCheck === 0) { // add the equipmentFormCheck variable here for complete form checking.
             if (this.state.equipmentKey != null) {
                 let leadForm = this.state.leadForm;
                 let equipmentLead = leadForm.equipmentLead;
@@ -346,7 +346,7 @@ class BusinessAddNewModal extends Component {
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
                         <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">

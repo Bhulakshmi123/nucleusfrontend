@@ -10,6 +10,8 @@ import { MdPhone } from "react-icons/md";
 import '../../assets/css/form.css';
 import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
@@ -37,7 +39,7 @@ class AddViewThree extends Component {
     }
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
-    searchDataHandler(e) {
+    searchDataHandler (e) {
         let currentList = [];
         let displayedLeads, searchQuery;
         if (e.target.value !== "") {
@@ -53,7 +55,7 @@ class AddViewThree extends Component {
             this.setState({ dataToRender: this.state.dummyDataHolder })
         }
     }
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps (newProps) {
         this.setState({
             response: newProps.supplierData,
             categoryNames: newProps.categoryNames,
@@ -85,7 +87,7 @@ class AddViewThree extends Component {
     }
     letsMakeaRequestBid = async () => {
         if (this.state.checkedProjects.length === 0) {
-            window.alert('Please Select LEAST one Element');
+            this.requestBidCountNotifier()
         }
         else {
             let intermediateData = this.state.checkedProjects.map((supplier) => {
@@ -119,7 +121,19 @@ class AddViewThree extends Component {
             this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
-    render() {
+    requestBidCountNotifier = () => {
+        toast("Please Select At Least one Supplier", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05 '
+        });
+    };
+    smsStatusDisplay = () => {
+        toast("This Feature is Still Under Development", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-primary text-white fontGilroyBold bor-rad-05 '
+        });
+    };
+    render () {
         return (
             <React.Fragment>
                 {this.renderRedirect()}
@@ -144,7 +158,7 @@ class AddViewThree extends Component {
                             {
                                 this.state.categoryNames.map((prop, key) => {
                                     return (
-                                        <div className={`text-capitalize my-auto text-dark mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
+                                        <div className={`text-capitalize my-auto text-dark mr-3 hovertext-bluefuchisa-border hovertext-bluefuchisa cursor-pointer ${this.state.chosenCategory === key ? "border-bottom-bluefuchisa text-bluefuchsia" : null}`} key={key} onClick={() => this.supplierCategoryChangeHandler(prop, key)}>
                                             {prop}
                                         </div>
                                     )
@@ -157,7 +171,7 @@ class AddViewThree extends Component {
                         <Col md={4}>
                             <ButtonGroup size="sm" className="float-right my-auto">
                                 <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids <span className="badge badge-pill badge-light bor-rad-03 ml-1 text-primary">{this.state.requestBidsCount}</span></Button>
-                                <Button variant="success" className="ml-1 bor-rad-03 px-3" disabled><MdTextsms className="mr-1" />SMS</Button>
+                                <Button variant="success" className="ml-1 bor-rad-03 px-3" onClick={this.smsStatusDisplay}><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
