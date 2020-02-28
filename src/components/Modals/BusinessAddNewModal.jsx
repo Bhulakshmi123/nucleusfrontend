@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { getSupplierDetails, createNewLead, computeStatesDropDownInForm, computeDistrictsDropDownInForm } from '../../views/Business/actions'
+import { getSupplierDetails, createNewLead, computeStatesDropDownInForm } from '../../views/Business/actions'
 import * as moment from 'moment';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
@@ -64,7 +64,6 @@ class BusinessAddNewModal extends Component {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
-
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString() }
         this.setState({ supplierPhoneNo: phoneNumber.toString() })
@@ -140,12 +139,7 @@ class BusinessAddNewModal extends Component {
         let statesDropDown = response.data;
         this.setState({ statesDropDown });
     }
-
-    computeDistrictsDropDownInForm = async (e) => {
-        let response = await computeDistrictsDropDownInForm(this.state.token, this.state.equipmentForm.selectedState);
-        let districtsDropDown = response.data;
-        this.setState({ districtsDropDown });
-    }
+    
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';
@@ -178,15 +172,11 @@ class BusinessAddNewModal extends Component {
         }
         equipmentForm = {
             ...equipmentForm,
-            // [e.name]: e.value,
-            selectedState: e.value,
+            [e.name]: e.value,
             [placeHolder]: e.label
         }
         this.setState({
             equipmentForm: equipmentForm
-        }, () => { 
-            // console.log(this.state.equipmentForm); 
-            this.computeDistrictsDropDownInForm();
         });
     }
 
@@ -412,7 +402,7 @@ class BusinessAddNewModal extends Component {
                                 equipmentTypeDropDownList={this.state.equipmentTypeDropDownList}
                                 yearDropDown={this.state.yearDropDown}
                                 statesDropDown={this.state.statesDropDown}
-                                districtsDropDown={this.state.districtsDropDown}
+                                token = {this.state.token}
                             />
                             : null
                     }

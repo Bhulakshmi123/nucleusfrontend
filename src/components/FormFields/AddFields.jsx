@@ -4,15 +4,12 @@ import SelectInputSearch from './SelectInputSearch';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
 // import { fromUnixTime } from 'date-fns';
-
+import { computeDistrictsDropDownInForm } from '../../views/Business/actions'
 class AddFields extends React.Component {
     constructor(props) {
         super(props);
-        // console.log('Add New Modal First Props Passed', this.props.districtsDropDown);
         this.state = {
-            districtsDropDown: [
-                { id: 71, stateId: "5", name: "Finding Error" }
-            ],
+            districtsDropDown: [{id: 2, stateId: "1", name: "Nicobar"}],
             shiftTypeDropDown: [
                 { value: '1', label: 'Shift 1 (5AM - 3PM)', name: 'lead_shiftType' },
                 { value: '2', label: 'Shift 2 (2PM - 10PM)', name: 'lead_shiftType' },
@@ -58,26 +55,37 @@ class AddFields extends React.Component {
                 { value: 'COLD', label: 'COLD', name: 'lead_priority' }
             ]
         }
+
     }
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.equipmentForm !== this.props.equipmentForm) {
-    //         this.setState({ equipmentForm: nextProps.equipmentForm });
-    //     }
-    //     if (nextProps.districtsDropDown !== this.props.districtsDropDown) {
-    //         this.setState({ districtsDropDown: nextProps.districtsDropDown });
-    //     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.equipmentForm !== this.props.equipmentForm) {
+            this.setState({ equipmentForm: nextProps.equipmentForm },() => {
+                if(this.state.equipmentForm.lead_state){
+                    this.computeDistrictsDropDownInForm();
+                }
+            });   
+        }
+    }
+
+    computeDistrictsDropDownInForm = async (e) => {
+        console.log(this.state.districtsDropDown);
+        let response = await computeDistrictsDropDownInForm(this.props.token, this.state.equipmentForm.lead_state);
+        if(response){
+            this.setState({ districtsDropDown : response.data}, () => {
+                console.log(this.state.districtsDropDown);
+            });
+        }
+        let districtsDropDown = response.data;
+        
+    }
+
+    // componentWillReceiveProps(newProps) {
+    //     this.setState({
+    //         districtsDropDown: newProps.districtsDropDown
+    //     }, () => { console.log('Templars vs Assassins', this.state.districtsDropDown) });
     // }
 
-    componentWillReceiveProps (newProps) {
-        this.setState({
-            districtsDropDown: newProps.districtsDropDown
-        }, () => {
-            // console.log('AddFeilds Props Passed After API Call', this.state.districtsDropDown);
-            // this.state.districtsDropDown.map(item => { console.log(item) });
-        });
-    }
-
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
@@ -149,12 +157,11 @@ class AddFields extends React.Component {
 
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t => ({ value: t.id, label: t.name }))}></SelectInputSearch>
+                        <SelectInputSearch name="lead_state" cStyle="widthone" label="State" placeholder="Select State" value={this.props.equipmentForm.lead_state_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.statesDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_state' }))}></SelectInputSearch>
                         <span className="lead_state_error">{this.props.equipmentForm.lead_state_error}</span>
                     </Col>
                     <Col md={3}>
-                        {/* <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(item => ({ value: item.id, label: item.name }))}></SelectInputSearch> */}
-                        <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(item => ({ value: item.id, label: item.name }))}></SelectInputSearch>
+                        <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_district' }))}></SelectInputSearch>
                         <span className="lead_district_error">{this.props.equipmentForm.lead_district_error}</span>
                     </Col>
 
