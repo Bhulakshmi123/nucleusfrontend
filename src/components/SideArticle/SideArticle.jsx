@@ -118,6 +118,7 @@ class SideArticle extends Component {
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
+        console.log('API Response',response);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
             this.setState({ 'supplierData': response.supplierData })

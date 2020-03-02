@@ -6,8 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 class Projects extends Component {
   notify = () => {
     toast("Custom Style Notification with css class!", {
-      position: toast.POSITION.BOTTOM_CENTER,
-      className: 'customAlert'
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'bg-lightestgray text-dark fontGilroyBold bor-rad-05 text-center'
     });
   };
   render () {
@@ -17,7 +17,6 @@ class Projects extends Component {
           <h1 className="text-white text-center mt-5">Under Maintenance</h1>
           <div className="w-100 text-center">
             <Button variant="outline-warning" size="sm" onClick={this.notify}>Demo Alert Box</Button>
-            <ToastContainer />
           </div>
         </div>
       </React.Fragment>
