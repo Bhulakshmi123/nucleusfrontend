@@ -70,7 +70,7 @@ class SideArticle extends Component {
 
     }
 
-    changeLeadStatus (leadDetId, newStatus, source) {
+    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             console.log('Ne', res);
@@ -83,11 +83,11 @@ class SideArticle extends Component {
                 }
                 if (data.newStatus === "FINALIZED") {
                     this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
-                    this.successNotification();
+                    this.successNotification(supplierName);
                 }
             }
             else {
-                this.failedNotification();
+                this.failedNotification(supplierName);
             }
         });
     }
@@ -154,16 +154,16 @@ class SideArticle extends Component {
             this.setState({ filtered: this.props.leadinfo })
         }
     }
-    successNotification = () => {
-        toast("Equipment is Finalized", {
+    successNotification = (supplierName) => {
+        toast(supplierName + " is Finalized", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-success text-white fontGilroyBold bor-rad-05 '
+            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
-    failedNotification = () => {
-        toast("Failed to Finalize the Equipment", {
+    failedNotification = (supplierName) => {
+        toast(supplierName + " is Failed to Finalize", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-danger text-white fontGilroyBold bor-rad-05 '
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05 '
         });
     };
     render () {
