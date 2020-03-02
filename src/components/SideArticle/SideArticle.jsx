@@ -157,7 +157,7 @@ class SideArticle extends Component {
     successNotification = (supplierName) => {
         toast(supplierName + " is Finalized", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
+            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = (supplierName) => {
