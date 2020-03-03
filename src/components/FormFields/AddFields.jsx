@@ -88,8 +88,8 @@ class AddFields extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
-                <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button>
+                {/* <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
+                <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button> */}
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentTypeDropDownList}>
@@ -324,6 +324,7 @@ class AddFields extends React.Component {
                 </Form.Row>
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add Equipments</Button>
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment</Button>
+                <Button type="submit" onClick={this.props.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
             </React.Fragment>
         );
     }
