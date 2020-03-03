@@ -574,7 +574,15 @@ select {
     position: absolute;
     display: none;
 }
-.Toastify__toast-container--top-right {top:4em !important;}
+.Toastify__toast-container--top-right {top:4.5em !important;}
 .Toastify__toast-container--top-center {top:4em !important;}
+.Toastify__toast-container--top-left {top:4em !important;}
 
-
+a[disabled] {
+    color: white !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+.sideBar ul li {
+    cursor: not-allowed !important;
+}

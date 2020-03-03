@@ -36,7 +36,7 @@ class Projects extends Component {
         <div className="mainContent">
           <h1 className="text-white text-center mt-5">Under Maintenance</h1>
           <div className="w-100 text-center">
-            <Button variant="outline-warning" size="sm" onCslick={this.deleteThisGoal}>Demo Alert Box</Button>
+            <Button variant="outline-warning" size="sm" onClick={this.deleteThisGoal}>Demo Alert Box</Button>
           </div>
         </div>
       </React.Fragment>

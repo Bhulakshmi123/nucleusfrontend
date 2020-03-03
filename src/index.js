@@ -11,7 +11,7 @@ import { Loginpage } from './views/Authentication/Loginpage'
 import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 export default class Index extends Component {
 	render () {

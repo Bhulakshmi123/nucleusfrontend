@@ -85,7 +85,7 @@ export class Loginpage extends Component {
     }
     successNotification = (res) => {
         toast("Welcome Back "+ res.data.name, {
-            position: toast.POSITION.TOP_CENTER,
+            position: toast.POSITION.TOP_RIGHT,
             className: 'text-center bg-white text-dark fontGilroyBold bor-rad-05'
         });
     };

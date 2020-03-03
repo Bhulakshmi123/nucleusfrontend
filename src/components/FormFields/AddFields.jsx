@@ -68,11 +68,11 @@ class AddFields extends React.Component {
     }
 
     computeDistrictsDropDownInForm = async (e) => {
-        console.log(this.state.districtsDropDown);
+        // console.log(this.state.districtsDropDown);
         let response = await computeDistrictsDropDownInForm(this.props.token, this.state.equipmentForm.lead_state);
         if(response){
             this.setState({ districtsDropDown : response.data}, () => {
-                console.log(this.state.districtsDropDown);
+                // console.log(this.state.districtsDropDown);
             });
         }
         let districtsDropDown = response.data;

@@ -27,7 +27,7 @@ const dashboardRoutes = [
         icon: < AiOutlineDollar />,
         component: Business,
         layout: "/nucleus",
-        disabled: false
+        linkStatus: false
     },
     {
         path: "/projects",
@@ -35,7 +35,7 @@ const dashboardRoutes = [
         icon: < FiBriefcase />,
         component: Projects,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: false
     },
     {
         path: "/rmp-users",
@@ -43,7 +43,7 @@ const dashboardRoutes = [
         icon: < AiOutlineUser />,
         component: RMPUsers,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     },
     {
         path: "/suppliers",
@@ -51,7 +51,7 @@ const dashboardRoutes = [
         icon: < FaRegArrowAltCircleRight />,
         component: Suppliers,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     },
     {
         path: "/contractors",
@@ -59,7 +59,7 @@ const dashboardRoutes = [
         icon: < FaRegArrowAltCircleLeft />,
         component: Contractors,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     },
     {
         path: "/equipment",
@@ -67,7 +67,7 @@ const dashboardRoutes = [
         icon: < FaTruckMonster />,
         component: Equipment,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     },
     {
         path: "/man-power",
@@ -75,7 +75,7 @@ const dashboardRoutes = [
         icon: < FaRegUserCircle />,
         component: ManPower,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     },
     {
         path: "/subscriptions",
@@ -83,7 +83,7 @@ const dashboardRoutes = [
         icon: < MdExitToApp />,
         component: Subscriptions,
         layout: "/nucleus",
-        disabled: true
+        linkStatus: true
     }
 ];
 

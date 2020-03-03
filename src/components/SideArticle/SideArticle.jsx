@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        // console.log('Side Article', this.props)
+        console.log('Side Article', this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
