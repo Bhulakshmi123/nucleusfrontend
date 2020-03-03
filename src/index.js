@@ -32,4 +32,7 @@ export default class Index extends Component {
 	}
 }
 ReactDOM.render(<Index />, document.getElementById("root"));
+if(module.hot) {
+	module.hot.accept();
+}
 

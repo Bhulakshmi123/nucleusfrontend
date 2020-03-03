@@ -1,4 +1,6 @@
+currentDate=qqdate
+echo $currentDate
 git status
 git add -A
-git commit -am date
+git commit -am $currentDate
 git pull origin master
