@@ -8,12 +8,13 @@ class Projects extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      alert: false
+      alert: false,
+      counter: 1
     }
   }
   deleteThisGoal = () => {
     this.setState({ alert: true });
-    console.log('This is Being Called', this.state.alert);
+    console.log('This is NotBeing Called', this.state.alert);
   }
   hideAlert = () => {
     this.setState({ alert: false });
@@ -36,10 +37,11 @@ class Projects extends Component {
         <div className="mainContent">
           <h1 className="text-white text-center mt-5">Under Maintenance</h1>
           <div className="w-100 text-center">
-            <Button variant="outline-warning" size="sm" onClick={this.deleteThisGoal}>Demo Alert Box</Button>
-          </div>
+            <div className="text-white font-size-30">{this.state.counter}</div>
+            <Button variant="outline-warning" size="sm" onClick={() => { this.setState({counter: (this.state.counter+1)})}}>Demo Some Box</Button>
         </div>
-      </React.Fragment>
+        </div>
+      </React.Fragment >
     )
   }
 }

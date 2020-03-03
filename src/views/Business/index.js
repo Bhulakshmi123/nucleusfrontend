@@ -6,7 +6,9 @@ import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
 class Business extends Component {
   componentDidUpdate () {
     window.location.reload(false);
-    console.log('it Works');
+  }
+  componentDidMount () {
+    console.log('this Component is Called');
   }
   render () {
     return (

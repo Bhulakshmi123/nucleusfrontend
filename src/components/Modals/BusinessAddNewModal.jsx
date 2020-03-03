@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
+        console.log('Nemo Props',this.props);
         let token = localStorage.getItem("tokenId");
         let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
@@ -98,23 +99,25 @@ class BusinessAddNewModal extends Component {
         let response = await createNewLead(data, this.state.token);
         if (response) {
             this.successNotification(response);
-            this.setState({ isEquipmentInfo: false })
+            this.props.modalHider();
+            // this.setState({ isEquipmentInfo: false })
         }
         else {
             this.failedNotification();
-            this.setState({ isEquipmentInfo: false });
+            this.props.modalHider();
+            // this.setState({ isEquipmentInfo: false });
         }
     }
     successNotification = (response) => {
         toast(response.message+' Id: ['+response.data[0]+']', {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
         });
     };
     // getLeadInformation = async ()

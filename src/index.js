@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
@@ -13,7 +14,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
-export default class Index extends Component {
+class Index extends Component {
 	render () {
 		return (
 			<React.Fragment>
@@ -31,6 +32,7 @@ export default class Index extends Component {
 		)
 	}
 }
+export default hot(module)(Index);
 ReactDOM.render(<Index />, document.getElementById("root"));
 if(module.hot) {
 	module.hot.accept();

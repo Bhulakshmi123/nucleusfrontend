@@ -324,7 +324,7 @@ class AddFields extends React.Component {
                 </Form.Row>
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add Equipments</Button>
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment</Button>
-                <Button type="submit" onClick={this.props.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
+                {/* <Button type="submit" onClick={this.props.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button> */}
             </React.Fragment>
         );
     }

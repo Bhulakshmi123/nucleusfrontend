@@ -8,7 +8,7 @@ import image from "assets/img/new_logo.png";
 class Admin extends Component {
   constructor(props) {
     super(props);
-    console.log('this.props.history', this.props)
+    // console.log('this.props.history', this.props)
     // const token = localStorage.getItem("tokenId");
     // let loggedIn = true
     // if (token === null) {
