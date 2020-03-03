@@ -6,6 +6,8 @@ import CalenderInput from './CalenderInput';
 import RadioInput from './RadioInput';
 import TextArea from './TextArea';
 import TimePickerInput from './TimePickerInput';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class AddViewModal extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,18 @@ class AddViewModal extends Component {
             isShowing: false,
         }
     }
+    successNotification = () => {
+        toast("Details are Successfully Updated", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+        });
+    };
+    failedNotification = () => {
+        toast("failed to Update the Details", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+        });
+    };
     render () {
         return (
             <form>
@@ -49,8 +63,8 @@ class AddViewModal extends Component {
                     <Row className="mt-3">
                         <Col md={12}><TextArea name="Payment Terms" label="Payment Terms" ></TextArea></Col>
                     </Row>
-                    <Row className="my-3">
-                        <Button variant="primary" size="sm" className="ml-3">Update Details</Button>
+                    <Row className="my-3 float-right">
+                        <Button variant="primary" size="sm" className="mr-3" onClick={this.successNotification}>Update Details</Button>
                     </Row>
                 </Container>
             </form>

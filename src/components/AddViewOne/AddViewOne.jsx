@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +26,19 @@ class AddViewOne extends Component {
             leadForm: leadForm,
             isOpenFormDropDown: false
         }, () => { console.log(this.state.leadForm) });
-    }
+    };
+    successNotification = () => {
+        toast("Lead Details are Updated", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+        });
+    };
+    failedNotification = () => {
+        toast("Failed to Updated Lead Details", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+        });
+    };
     render () {
         return (
             <React.Fragment>
@@ -215,8 +229,8 @@ class AddViewOne extends Component {
                                     </Col>
                                 </Form.Row>
                                 <Form.Row className="mt-3 mb-5 form-modal">
-                                    <Col md={3} className="mb-5">
-                                        <Button variant="outline-primary" size="sm" block className="fontGilroyBold">Update Details</Button>
+                                    <Col md={12} className="mb-5">
+                                        <Button variant="primary" size="sm" className="fontGilroyBold float-right" onClick={this.successNotification}>Update Details</Button>
                                     </Col>
                                 </Form.Row>
                             </React.Fragment>

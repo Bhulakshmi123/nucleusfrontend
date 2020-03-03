@@ -6,6 +6,8 @@ import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
 import { getSupplierDetails, createNewLead, computeStatesDropDownInForm } from '../../views/Business/actions'
 import * as moment from 'moment';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
 // var validator = require('validator');
@@ -60,7 +62,7 @@ class BusinessAddNewModal extends Component {
     // componentDidMount () {
     //     this.getStateLists();
     // }
-    componentWillMount() {
+    componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
@@ -95,16 +97,28 @@ class BusinessAddNewModal extends Component {
         console.log('data', data);
         let response = await createNewLead(data, this.state.token);
         if (response) {
-            window.alert("Response of API1: Lead Successfully Created", response);
-        }
-        else {
-            window.alert("Response of API2: Lead Creation Failed", response);
+            this.successNotification(response);
             this.setState({ isEquipmentInfo: false })
         }
+        else {
+            this.failedNotification();
+            this.setState({ isEquipmentInfo: false });
+        }
     }
-
+    successNotification = (response) => {
+        toast(response.message+' Id: ['+response.data[0]+']', {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+        });
+    };
+    failedNotification = () => {
+        toast("Failed to Create a New Lead", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+        });
+    };
     // getLeadInformation = async ()
-    handleChange(e) {
+    handleChange (e) {
         console.log(e.target.value)
         if (e.target.value.length === 10) {
             this.getSupplierDetails(e.target.value)
@@ -139,7 +153,7 @@ class BusinessAddNewModal extends Component {
         let statesDropDown = response.data;
         this.setState({ statesDropDown });
     }
-    
+
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';
@@ -326,7 +340,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >

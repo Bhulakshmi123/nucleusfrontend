@@ -24,58 +24,66 @@ const dashboardRoutes = [
     {
         path: "/business/leads/new",
         name: "Business",
-        icon: < AiOutlineDollar / > ,
+        icon: < AiOutlineDollar />,
         component: Business,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: false
     },
     {
         path: "/projects",
         name: "Projects",
-        icon: < FiBriefcase / > ,
+        icon: < FiBriefcase />,
         component: Projects,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/rmp-users",
         name: "RMP Users",
-        icon: < AiOutlineUser / > ,
+        icon: < AiOutlineUser />,
         component: RMPUsers,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/suppliers",
         name: "Suppliers",
-        icon: < FaRegArrowAltCircleRight / > ,
+        icon: < FaRegArrowAltCircleRight />,
         component: Suppliers,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/contractors",
         name: "Contractors",
-        icon: < FaRegArrowAltCircleLeft / > ,
+        icon: < FaRegArrowAltCircleLeft />,
         component: Contractors,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/equipment",
         name: "Equipment",
-        icon: < FaTruckMonster / > ,
+        icon: < FaTruckMonster />,
         component: Equipment,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/man-power",
         name: "Man Power",
-        icon: < FaRegUserCircle / > ,
+        icon: < FaRegUserCircle />,
         component: ManPower,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     },
     {
         path: "/subscriptions",
         name: "Subscriptions",
-        icon: < MdExitToApp / > ,
+        icon: < MdExitToApp />,
         component: Subscriptions,
-        layout: "/nucleus"
+        layout: "/nucleus",
+        disabled: true
     }
 ];
 

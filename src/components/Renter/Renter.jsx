@@ -16,7 +16,7 @@ class Renter extends Component {
     closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
     openModalHandler = () => this.setState({ "isModalShowing": true })
     closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Card className="p-3 mx-auto">
