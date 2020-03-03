@@ -421,7 +421,7 @@ class BusinessAddNewModal extends Component {
                             />
                             : null
                     }
-                    {/* <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button> */}
+                    <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
                 </Form>
             </React.Fragment>
         )
