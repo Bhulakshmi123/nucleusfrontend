@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
+        console.log('Nemo Props',this.props);
         let token = localStorage.getItem("tokenId");
         let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
@@ -87,7 +88,7 @@ class BusinessAddNewModal extends Component {
         let data = {
             "lead_companyUuid": this.state.supplierUuid,
             "lead_date": this.state.leadForm.lead_date,
-            "lead_contactPerson": 'Walt Disney',
+            "lead_contactPerson": this.state.leadForm.lead_contactPerson,
             "lead_contactNumber": this.state.supplierPhoneNo,
             "lead_createdBy": this.state.supplierUuid,
             "lead_details": [
@@ -98,13 +99,13 @@ class BusinessAddNewModal extends Component {
         let response = await createNewLead(data, this.state.token);
         if (response) {
             this.successNotification(response);
-            // this.setState({ isEquipmentInfo: false })
             this.props.modalHider();
+            // this.setState({ isEquipmentInfo: false })
         }
         else {
             this.failedNotification();
-            // this.setState({ isEquipmentInfo: false });
             this.props.modalHider();
+            // this.setState({ isEquipmentInfo: false });
         }
     }
     successNotification = (response) => {
@@ -418,7 +419,8 @@ class BusinessAddNewModal extends Component {
                                 equipmentTypeDropDownList={this.state.equipmentTypeDropDownList}
                                 yearDropDown={this.state.yearDropDown}
                                 statesDropDown={this.state.statesDropDown}
-                                token={this.state.token}
+                                token = {this.state.token}
+                                createNewLead={this.createNewLead}
                             />
                             : null
                     }

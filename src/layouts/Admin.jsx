@@ -8,6 +8,7 @@ import image from "assets/img/new_logo.png";
 class Admin extends Component {
   constructor(props) {
     super(props);
+    // console.log('this.props.history', this.props)
     // const token = localStorage.getItem("tokenId");
     // let loggedIn = true
     // if (token === null) {
@@ -50,16 +51,13 @@ class Admin extends Component {
       autoDismiss: 15
     });
   };
-  getRoutes = routes => {
+  getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/nucleus") {
-        return (<Route path={prop.path} render={props => (<prop.component {...props} />)} key={key} />);
-      } else {
-        return null;
-      }
+      if (prop.layout === "/nucleus") { return (<Route exact path={prop.path} render={props => (<prop.component {...props} />)} key={key} />); }
+      else { return null; }
     });
   };
-  getBrandText = path => {
+  getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (
         this.props.location.pathname.indexOf(

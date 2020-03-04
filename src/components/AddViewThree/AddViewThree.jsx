@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add View Three Passed Props', this.props);
+        console.log('Add View Three Passed Props', this.props);
         let token = localStorage.getItem("tokenId");
         let userUuid = localStorage.getItem("uuid");
         this.state = {

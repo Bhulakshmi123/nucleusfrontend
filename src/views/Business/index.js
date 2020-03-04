@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import BusinessMCard from '../../components/BusinessMCard/BusinessMCard';
 import ViewDetails from '../../components/ViewDetails/ViewDetails';
 import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
 class Business extends Component {
+  componentDidUpdate () {
+    window.location.reload(false);
+  }
+  componentDidMount () {
+    console.log('this Component is Called');
+  }
   render () {
     return (
       <React.Fragment>

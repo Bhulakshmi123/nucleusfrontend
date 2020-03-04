@@ -1,21 +1,8 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 const Sidebar = (props) => {
   const sidebarView = useSelector(state => state.sidebarView);
-  // const testFunction = (e) => {
-  //   let eventUrl = window.location.pathname.split('/');
-  //   if (eventUrl[1] === e.target.id.toLowerCase()) {
-  //     console.log('ID Are Matching', eventUrl[1]);
-  //     redirectToHome()
-  //   }
-  // }
-  // const redirectToHome = () => {
-  //   return (
-  //     <Redirect to="/projects"></Redirect>
-  //   )
-  //   console.log('Deo');
-  // }
   if (sidebarView === true) {
     return (
       <React.Fragment>

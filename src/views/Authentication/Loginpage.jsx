@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Business from '../../views/Business';
 var validator = require('validator');
 export class Loginpage extends Component {
     constructor(props) {
@@ -41,7 +42,6 @@ export class Loginpage extends Component {
                     this.failedNotification();
                 }
                 else {
-                    console.log(res);
                     this.successNotification(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
@@ -67,7 +67,7 @@ export class Loginpage extends Component {
         }
     }
     successNotification = (res) => {
-        toast("Welcome Back "+ res.data.name, {
+        toast("Welcome Back " + res.data.name, {
             position: toast.POSITION.TOP_RIGHT,
             className: 'text-center bg-white text-dark fontGilroyBold bor-rad-05'
         });
