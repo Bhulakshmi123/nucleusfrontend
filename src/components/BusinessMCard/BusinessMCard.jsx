@@ -14,7 +14,6 @@ class BusinessMCard extends Component {
         super(props)
         let token = localStorage.getItem("tokenId");
         let leadType = window.location.href.split('/');
-        // console.log('im in Business Module');
         this.state = {
             isApiCallSuccessful: false,
             token: token,
@@ -28,22 +27,9 @@ class BusinessMCard extends Component {
         this.searchBoxHandler = this.searchBoxHandler.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
-    // componentWillMount () {
-    //     localStorage.getItem('leadsInformation') && this.setState({ leadsInformation: JSON.parse(localStorage.getItem('leadsInformation')) });
-    //     localStorage.getItem('dummyDataHolder') && this.setState({ leadsInformation: JSON.parse(localStorage.getItem('dummyDataHolder')) });
-    // }
     componentDidMount () {
-        if (!localStorage.getItem('leadsInformation')) {
-            this.props.sidebarViewAction(false);
-            console.log('I hope the Code tesy');
-            this.getLeads(this.state.leadType);
-        } else {
-            // console.log('Using Data of LocalStorage');
-        }
-    }
-    componentWillUpdate (nextProps, nextState) {
-        // localStorage.setItem('leadsInformation', JSON.stringify(nextState.leadsInformation));
-        // localStorage.setItem('dummyDataHolder', JSON.stringify(nextState.dummyDataHolder));
+        this.props.sidebarViewAction(false);
+        this.getLeads(this.state.leadType);
     }
     getLeads = async (leadType) => {
         if (leadType === 'moved') {

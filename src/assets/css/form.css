@@ -230,8 +230,3 @@ input[name="e_pe_shift"] {
     color: dimgray;
     font-weight: 600 !important;
 }
-
-.modal-open .modal {
-    /* overflow-x: scroll !important; */
-    /* overflow-y: auto; */
-}

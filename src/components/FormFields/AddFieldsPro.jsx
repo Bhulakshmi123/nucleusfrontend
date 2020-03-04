@@ -7,7 +7,7 @@ class AddFieldsPro extends Component {
     constructor(props) {
         let token = localStorage.getItem("tokenId");
         super(props)
-        console.log('Add Feilds Pro', this.props)
+        // console.log('Add Feilds Pro', this.props)
         this.state = {
             token: token,
             equip_modal: '',
