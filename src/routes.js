@@ -24,7 +24,7 @@ const dashboardRoutes = [
     {
         path: "/business/leads/new",
         name: "Business",
-        icon: < AiOutlineDollar />,
+        icon: < AiOutlineDollar / > ,
         component: Business,
         layout: "/nucleus",
         linkStatus: false
@@ -32,7 +32,7 @@ const dashboardRoutes = [
     {
         path: "/projects",
         name: "Projects",
-        icon: < FiBriefcase />,
+        icon: < FiBriefcase / > ,
         component: Projects,
         layout: "/nucleus",
         linkStatus: false
@@ -40,7 +40,7 @@ const dashboardRoutes = [
     {
         path: "/rmp-users",
         name: "RMP Users",
-        icon: < AiOutlineUser />,
+        icon: < AiOutlineUser / > ,
         component: RMPUsers,
         layout: "/nucleus",
         linkStatus: true
@@ -48,7 +48,7 @@ const dashboardRoutes = [
     {
         path: "/suppliers",
         name: "Suppliers",
-        icon: < FaRegArrowAltCircleRight />,
+        icon: < FaRegArrowAltCircleRight / > ,
         component: Suppliers,
         layout: "/nucleus",
         linkStatus: true
@@ -56,7 +56,7 @@ const dashboardRoutes = [
     {
         path: "/contractors",
         name: "Contractors",
-        icon: < FaRegArrowAltCircleLeft />,
+        icon: < FaRegArrowAltCircleLeft / > ,
         component: Contractors,
         layout: "/nucleus",
         linkStatus: true
@@ -64,7 +64,7 @@ const dashboardRoutes = [
     {
         path: "/equipment",
         name: "Equipment",
-        icon: < FaTruckMonster />,
+        icon: < FaTruckMonster / > ,
         component: Equipment,
         layout: "/nucleus",
         linkStatus: true
@@ -72,7 +72,7 @@ const dashboardRoutes = [
     {
         path: "/man-power",
         name: "Man Power",
-        icon: < FaRegUserCircle />,
+        icon: < FaRegUserCircle / > ,
         component: ManPower,
         layout: "/nucleus",
         linkStatus: true
@@ -80,7 +80,7 @@ const dashboardRoutes = [
     {
         path: "/subscriptions",
         name: "Subscriptions",
-        icon: < MdExitToApp />,
+        icon: < MdExitToApp / > ,
         component: Subscriptions,
         layout: "/nucleus",
         linkStatus: true
