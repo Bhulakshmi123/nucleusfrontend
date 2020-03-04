@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
-// var validator = require('validator');
+var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
@@ -49,6 +49,8 @@ class BusinessAddNewModal extends Component {
                 { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
                 { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
             ],
+            userMobileError: false,
+            errorMessageMobileNo: '',
             startDate: new Date(),
             startDateEquip: new Date(),
             equipmentFormCheck: 0,
@@ -122,13 +124,26 @@ class BusinessAddNewModal extends Component {
     };
     // getLeadInformation = async ()
     handleChange (e) {
-        console.log(e.target.value)
-        if (e.target.value.length === 10) {
-            this.getSupplierDetails(e.target.value)
+        this.setState({ [e.target.name]: e.target.value });
+        if (e.target.type === 'text') {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length >= 10) {
+                this.getSupplierDetails(e.target.value)
+                this.setState({ userMobileError: false, errorMessageMobileNo: '' });
+            }
+            else if (e.target.value.length === 0) {
+                this.setState({ userMobileError: false, errorMessageMobileNo: 'Invalid Phone Number' });
+            }
+            else {
+                this.setState({ userMobileError: true, errorMessageMobileNo: 'Invalid Phone Number' });
+            }
         }
-        else {
-            console.log("Wrong Number")
-        }
+        // console.log(e.target.value)
+        // if (e.target.value.length === 10) {
+        //     this.getSupplierDetails(e.target.value)
+        // }
+        // else {
+        //     console.log("Wrong Number")
+        // }
     }
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
