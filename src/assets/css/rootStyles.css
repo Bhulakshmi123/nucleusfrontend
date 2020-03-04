@@ -574,7 +574,11 @@ select {
     position: absolute;
     display: none;
 }
+
+.Toastify__toast-container--top-left {top:4.5em !important;}
+.Toastify__toast-container--top-center {top:4.5em !important;}
 .Toastify__toast-container--top-right {top:4.5em !important;}
+
 a[disabled] {
     color: white  !important;
     opacity: 0.8 !important;
