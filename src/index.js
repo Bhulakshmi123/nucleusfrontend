@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
@@ -32,9 +31,6 @@ class Index extends Component {
 		)
 	}
 }
-export default hot(module)(Index);
+export default Index;
 ReactDOM.render(<Index />, document.getElementById("root"));
-if(module.hot) {
-	module.hot.accept();
-}
 

@@ -35,6 +35,7 @@ class BusinessMCard extends Component {
     componentDidMount () {
         if (!localStorage.getItem('leadsInformation')) {
             this.props.sidebarViewAction(false);
+            console.log('I hope the Code tesy');
             this.getLeads(this.state.leadType);
         } else {
             // console.log('Using Data of LocalStorage');

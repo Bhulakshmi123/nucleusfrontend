@@ -351,9 +351,12 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
-                        <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}>
+                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
