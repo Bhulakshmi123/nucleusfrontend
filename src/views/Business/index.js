@@ -4,6 +4,9 @@ import BusinessMCard from '../../components/BusinessMCard/BusinessMCard';
 import ViewDetails from '../../components/ViewDetails/ViewDetails';
 import RouteNotFound from '../../components/RouteNotFound/RouteNotFound';
 class Business extends Component {
+  componentDidUpdate(){
+    window.location.reload(false);
+  }
   render () {
     return (
       <React.Fragment>
