@@ -60,6 +60,7 @@ class BusinessAddNewModal extends Component {
             requiredFieldInEquipForm: ['lead_equipmentType', 'lead_safetyMeasures', 'lead_startDate']
         }
         this.handleChange = this.handleChange.bind(this)
+        this.onChange = this.onChange.bind(this)
     }
     // componentDidMount () {
     //     this.getStateLists();
@@ -208,7 +209,9 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         });
     }
-
+    onChange (e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
         leadForm = {
@@ -360,7 +363,8 @@ class BusinessAddNewModal extends Component {
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
+                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange.bind(this)} />
+                        {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : null}
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
                         <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
