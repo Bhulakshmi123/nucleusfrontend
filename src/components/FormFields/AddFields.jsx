@@ -9,7 +9,7 @@ class AddFields extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            districtsDropDown: [{id: 2, stateId: "1", name: "Nicobar"}],
+            districtsDropDown: [{ id: 2, stateId: "1", name: "Nicobar" }],
             shiftTypeDropDown: [
                 { value: '1', label: 'Shift 1 (5AM - 3PM)', name: 'lead_shiftType' },
                 { value: '2', label: 'Shift 2 (2PM - 10PM)', name: 'lead_shiftType' },
@@ -57,26 +57,26 @@ class AddFields extends React.Component {
         }
 
     }
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
         if (nextProps.equipmentForm !== this.props.equipmentForm) {
-            this.setState({ equipmentForm: nextProps.equipmentForm },() => {
-                if(this.state.equipmentForm.lead_state){
+            this.setState({ equipmentForm: nextProps.equipmentForm }, () => {
+                if (this.state.equipmentForm.lead_state) {
                     this.computeDistrictsDropDownInForm();
                 }
-            });   
+            });
         }
     }
 
     computeDistrictsDropDownInForm = async (e) => {
         console.log(this.state.districtsDropDown);
         let response = await computeDistrictsDropDownInForm(this.props.token, this.state.equipmentForm.lead_state);
-        if(response){
-            this.setState({ districtsDropDown : response.data}, () => {
+        if (response) {
+            this.setState({ districtsDropDown: response.data }, () => {
                 console.log(this.state.districtsDropDown);
             });
         }
         let districtsDropDown = response.data;
-        
+
     }
 
     // componentWillReceiveProps(newProps) {
@@ -85,15 +85,15 @@ class AddFields extends React.Component {
     //     }, () => { console.log('Templars vs Assassins', this.state.districtsDropDown) });
     // }
 
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add  Equipment Form</Button>
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button>
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentTypeDropDownList}>
-                        </SelectInputSearch>
+                        <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentTypeDropDownList}></SelectInputSearch>
                         <span className="lead_equipmentType_error">{this.props.equipmentForm.lead_equipmentType_error}</span>
                     </Col>
                     <Col md={3}>
@@ -112,11 +112,11 @@ class AddFields extends React.Component {
                         </Form.Group>
                     </Col>
                     <Col md={3}>
-                        <SelectInputSearch name="lead_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.props.equipmentForm.lead_year_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.yearDropDown}>
-                        </SelectInputSearch>
+                        <SelectInputSearch name="lead_year" cStyle="widthone" label="Minimum Year" placeholder="Select Minimum Year" value={this.props.equipmentForm.lead_year_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.yearDropDown}></SelectInputSearch>
                         <span className="lead_year_error">{this.props.equipmentForm.lead_year_error}</span>
                     </Col>
                 </Form.Row>
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group controlId="formGroupCapty">
@@ -138,21 +138,9 @@ class AddFields extends React.Component {
                     </Col>
                     <Col md={3}>
                         <SelectInputSearch name="lead_workingUnits" cStyle="widthone" label="Lead Type" placeholder="Select Lead Type" value={this.props.equipmentForm.lead_workingUnits_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.workingUnitsDropDown}></SelectInputSearch>
-
                         <span className="lead_workingUnits_error">{this.props.equipmentForm.lead_workingUnits_error}</span>
                     </Col>
                 </Form.Row>
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <Form.Row className="mt-3">
@@ -164,130 +152,107 @@ class AddFields extends React.Component {
                         <SelectInputSearch name="lead_district" cStyle="widthone" label="District / Known Area" placeholder="Select District" value={this.props.equipmentForm.lead_district_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.districtsDropDown.map(t => ({ value: t.id, label: t.name, name: 'lead_district' }))}></SelectInputSearch>
                         <span className="lead_district_error">{this.props.equipmentForm.lead_district_error}</span>
                     </Col>
-
                     <Col md={3}>
                         <Form.Group controlId="formGroupprStage">
-                            <Form.Label className="font_stle">
-                                Project Stage</Form.Label>
+                            <Form.Label className="font_stle">Project Stage</Form.Label>
                             <Form.Control type="text" name="lead_projectStage" placeholder="Stage of Project" value={this.props.equipmentForm.lead_projectStage || ''} onChange={this.props.equipInputChangeHandler} />
                         </Form.Group>
                         <span className="lead_projectStage_error">{this.props.equipmentForm.lead_projectStage_error}</span>
                     </Col>
                     <Col md={3}>
                         <Form.Group controlId="formGroupQty">
-                            <Form.Label className="font_stle">
-                                Quantity</Form.Label>
+                            <Form.Label className="font_stle">Quantity</Form.Label>
                             <Form.Control type="number" name="lead_quantity" placeholder="Quantity" value={this.props.equipmentForm.lead_quantity || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_quantity_error">{this.props.equipmentForm.lead_quantity_error}</span>
                         </Form.Group>
                     </Col>
                 </Form.Row>
 
-
-
-
-
-
-
-
-
-
-
-
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group controlId="formGroupHD">
-                            <Form.Label className="font_stle">
-                                Operation hours per day</Form.Label>
+                            <Form.Label className="font_stle">Operation hours per day</Form.Label>
                             <Form.Control type="number" name="lead_workingHoursPerDay" placeholder="Operation hours per day" value={this.props.equipmentForm.lead_workingHoursPerDay || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_workingHoursPerDay_error">{this.props.equipmentForm.lead_workingHoursPerDay_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group controlId="formGroupPM">
-                            <Form.Label className="font_stle">
-                                Operation days per month</Form.Label>
+                            <Form.Label className="font_stle">Operation days per month</Form.Label>
                             <Form.Control type="number" name="lead_workingCount" placeholder="Operation days per month" value={this.props.equipmentForm.lead_workingCount || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_workingCount_error">{this.props.equipmentForm.lead_workingCount_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group controlId="formGroupHM">
-                            <Form.Label className="font_stle">
-                                Operation hours per month</Form.Label>
+                            <Form.Label className="font_stle">Operation hours per month</Form.Label>
                             <Form.Control type="number" name="lead_workingTotalCount" placeholder="Operation hours per month" value={this.props.equipmentForm.lead_workingTotalCount || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_workingTotalCount_error">{this.props.equipmentForm.lead_workingTotalCount_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group controlId="formGroupTOW">
-                            <Form.Label className="font_stle">
-                                Type of Work</Form.Label>
+                            <Form.Label className="font_stle">Type of Work</Form.Label>
                             <Form.Control type="text" name="lead_typeOfWork" placeholder="Type of Work" value={this.props.equipmentForm.lead_typeOfWork || ''} onChange={this.props.equipInputChangeHandler} />
                             <span className="lead_typeOfWork_error">{this.props.equipmentForm.lead_typeOfWork_error}</span>
                         </Form.Group>
                     </Col>
                 </Form.Row>
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_shiftType" cStyle="widthone" label="Shift Type" placeholder="Select Shift Type" value={this.props.equipmentForm.lead_shiftType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.shiftTypeDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_shiftType" cStyle="widthone" label="Shift Type" placeholder="Select Shift Type" value={this.props.equipmentForm.lead_shiftType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.shiftTypeDropDown}></SelectInputSearch>
                             <span className="lead_shiftType_error">{this.props.equipmentForm.lead_shiftType_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_transportation" cStyle="widthone" label="Shift Type" placeholder="Select Transportation" value={this.props.equipmentForm.lead_transportation || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.transportationDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_transportation" cStyle="widthone" label="Shift Type" placeholder="Select Transportation" value={this.props.equipmentForm.lead_transportation || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.transportationDropDown}></SelectInputSearch>
                             <span className="lead_transportation_error">{this.props.equipmentForm.lead_transportation_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_operatorAccommodation" cStyle="widthone" label="Accommodation" placeholder="Select Accommodation" value={this.props.equipmentForm.lead_operatorAccommodation_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.accommodationDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_operatorAccommodation" cStyle="widthone" label="Accommodation" placeholder="Select Accommodation" value={this.props.equipmentForm.lead_operatorAccommodation_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.accommodationDropDown}></SelectInputSearch>
                             <span className="lead_operatorAccommodation_error">{this.props.equipmentForm.lead_operatorAccommodation_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_operatorFood" cStyle="widthone" label="Food" placeholder="Select Food" value={this.props.equipmentForm.lead_operatorFood_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.foodDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_operatorFood" cStyle="widthone" label="Food" placeholder="Select Food" value={this.props.equipmentForm.lead_operatorFood_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.foodDropDown}></SelectInputSearch>
                             <span className="lead_operatorFood_error">{this.props.equipmentForm.lead_operatorFood_error}</span>
                         </Form.Group>
                     </Col>
                 </Form.Row>
+
                 <Form.Row className="mt-3">
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_operatorAllowance" cStyle="widthone" label="Operator Allowance" placeholder="Select Operator Allowance" value={this.props.equipmentForm.lead_operatorAllowance_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.allowanceDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_operatorAllowance" cStyle="widthone" label="Operator Allowance" placeholder="Select Operator Allowance" value={this.props.equipmentForm.lead_operatorAllowance_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.allowanceDropDown}></SelectInputSearch>
                             <span className="lead_operatorAllowance_error">{this.props.equipmentForm.lead_operatorAllowance_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_vechileDocuments" cStyle="widthone" label="Vehicle Documents" placeholder="Select Vehical Documents" value={this.props.equipmentForm.lead_vechileDocuments_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.licenseDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_vechileDocuments" cStyle="widthone" label="Vehicle Documents" placeholder="Select Vehical Documents" value={this.props.equipmentForm.lead_vechileDocuments_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.licenseDropDown}></SelectInputSearch>
                             <span className="lead_vechileDocuments_error">{this.props.equipmentForm.lead_vechileDocuments_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_operatorLicense" cStyle="widthone" label="Operator License" placeholder="Select Operator License" value={this.props.equipmentForm.lead_operatorLicense_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.operatorDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_operatorLicense" cStyle="widthone" label="Operator License" placeholder="Select Operator License" value={this.props.equipmentForm.lead_operatorLicense_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.operatorDropDown}></SelectInputSearch>
                             <span className="lead_operatorLicense_error">{this.props.equipmentForm.lead_operatorLicense_error}</span>
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_safetyMeasures" cStyle="widthone" label="Safety Measures" placeholder="Select safety Measures" value={this.props.equipmentForm.lead_safetyMeasures_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.safetymgmtDropDown}>
-                            </SelectInputSearch>
+                            <SelectInputSearch name="lead_safetyMeasures" cStyle="widthone" label="Safety Measures" placeholder="Select safety Measures" value={this.props.equipmentForm.lead_safetyMeasures_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.safetymgmtDropDown}></SelectInputSearch>
                             <span className="lead_safetyMeasures_error">{this.props.equipmentForm.lead_safetyMeasures_error}</span>
                         </Form.Group>
                     </Col>
                 </Form.Row>
+
                 <Form.Row>
                     <Col md={3}>
                         <Form.Group controlId="formGroupOperatorBatha">
@@ -303,8 +268,11 @@ class AddFields extends React.Component {
                             <span className="lead_price_error">{this.props.equipmentForm.lead_price_error}</span>
                         </Form.Group>
                     </Col>
-                    <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.props.equipmentForm.lead_priority_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isOpenD={this.props.isOpenD} options={this.state.leadPriorityDropDown}></SelectInputSearch></Col>
+                    <Col md={3}>
+                        <SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.props.equipmentForm.lead_priority_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isOpenD={this.props.isOpenD} options={this.state.leadPriorityDropDown}></SelectInputSearch>
+                    </Col>
                 </Form.Row>
+
                 <Form.Row className="mt-3 form-modal">
                     <Col md={12}>
                         <Form.Group>
@@ -312,8 +280,8 @@ class AddFields extends React.Component {
                             <span className="lead_paymentTerms_error">{this.props.equipmentForm.lead_paymentTerms_error}</span>
                         </Form.Group>
                     </Col>
-
                 </Form.Row>
+
                 <Form.Row className="mt-3 form-modal">
                     <Col md={12}>
                         <Form.Group>
@@ -322,8 +290,10 @@ class AddFields extends React.Component {
                         </Form.Group>
                     </Col>
                 </Form.Row>
+
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add Equipments</Button>
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment</Button>
+                
             </React.Fragment>
         );
     }
