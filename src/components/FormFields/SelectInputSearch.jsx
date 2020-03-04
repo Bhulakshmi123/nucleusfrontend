@@ -24,7 +24,7 @@ class SelectInput extends Component {
   }
   componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
-    console.log('Select Input Box options',nextProps);
+    // console.log('Select Input Box options',nextProps);
     if (nextProps.isOpen !== this.state.isOpen) {
       this.setState({ isOpen: nextProps.isOpen });
     }

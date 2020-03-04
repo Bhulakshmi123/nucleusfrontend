@@ -102,6 +102,7 @@ class BusinessAddNewModal extends Component {
         if (response) {
             this.successNotification(response);
             this.setState({ isEquipmentInfo: false })
+            this.props.modalHider();
         }
         else {
             this.failedNotification();
@@ -109,15 +110,15 @@ class BusinessAddNewModal extends Component {
         }
     }
     successNotification = (response) => {
-        toast(response.message+' Id: ['+response.data[0]+']', {
+        toast(response.message + ' Id: [' + response.data[0] + ']', {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
         });
     };
     // getLeadInformation = async ()
@@ -223,12 +224,7 @@ class BusinessAddNewModal extends Component {
             startDate: date
         }, () => { console.log(this.state.leadForm) });
     }
-    openCloseHandler = () => {
-        this.setState({
 
-        })
-        console.log("hi")
-    }
     openInputHandler = () => {
         this.setState({
             isEquipmentInfo: true,
@@ -362,34 +358,78 @@ class BusinessAddNewModal extends Component {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
+
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange.bind(this)} />
-                        {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : null}
-                            {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
-                        </Form.Group></Col>
-                        <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupPhno">
+                                <Form.Label className="font_stle">Phone No.*</Form.Label>
+                                <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
+                                {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : null}
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRent">
+                                <Form.Label className="font_stle">Renter Name*</Form.Label>
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRenterEmail">
+                                <Form.Label className="font_stle">Renter Email</Form.Label>
+                                <Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" />
+                            </Form.Group>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
                             <div className="my-auto py-1 px-0 text-primary text-uppercase">{this.state.username}</div>
                         </Col>
-                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupaltPhno">
+                                <Form.Label className="font_stle">Alternate Phone no.</Form.Label>
+                                <Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupCom_name">
+                                <Form.Label className="font_stle">Company Name</Form.Label>
+                                <Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupDesig">
+                                <Form.Label className="font_stle">Designation</Form.Label>
+                                <Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row className="mt-3">
-                        {/* <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = {this.state.leadForm.lead_priority? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput></Col>
-                        <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
-                        placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
-                        {/* <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col> */}
-                        <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
+                        {/* <Col md={3}>
+                            <SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder={this.state.leadForm.lead_priority ? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput>
+                        </Col> */}
+                        {/* <Col md={3}>
+                            <SelectInput name="lead_source" cStyle="widthone" label="Lead Source" placeholder={this.state.leadForm.lead_source ? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2}></SelectInput>
+                        </Col> */}
+                        {/* <Col md={3}>
+                            <SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch>
+                        </Col> */}
+                        <Col md={3}>
+                            <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row>
-                        <Col className="my-3"><Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add" : "primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                        <Col className="my-3">
+                            <Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add" : "primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row>
                         <Col md={12}>
                             <Table hover className="text-center">
@@ -422,6 +462,7 @@ class BusinessAddNewModal extends Component {
                             </Table>
                         </Col>
                     </Form.Row>
+
                     {
                         this.state.isEquipmentInfo ?
                             <AddFields

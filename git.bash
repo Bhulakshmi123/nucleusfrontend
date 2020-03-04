@@ -1,6 +1,4 @@
-currentDate=qqdate
-echo $currentDate
 git status
 git add -A
-git commit -am $currentDate
+git commit -m "$(date +"%D %T") by $(whoami)"
 git pull origin master

@@ -34,11 +34,11 @@ class SideArticle extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
-    componentDidMount () {
+    componentDidMount() {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
         this.backButtonHandler()
     }
-    componentWillReceiveProps (nextProps) {
+    componentWillReceiveProps(nextProps) {
         this.setState({ filtered: nextProps.leadinfo });
     }
     backButtonHandler = () => {
@@ -70,13 +70,18 @@ class SideArticle extends Component {
 
     }
 
-    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
+    changeLeadStatus(leadDetId, newStatus, source, supplierName) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
-            console.log('Ne', res);
+            console.log('Response of Status Changer', res);
             if (res.message === 'lead status updated.') {
-                if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
-                    this.setRedirect(data.newStatus + source)
+                if (data.newStatus === "DELETED") { //! Change Later to CLOSED
+                    this.setRedirect(data.newStatus + source);
+                    this.successNotification(supplierName);
+                }
+                if (data.newStatus === "REJECTED") { //! Change Later to CLOSED
+                    this.setRedirect(data.newStatus + source);
+                    this.successNotification(supplierName);
                 }
                 if (data.newStatus === "ACTIVATED") {
                     this.setRedirect(data.newStatus)
@@ -118,7 +123,7 @@ class SideArticle extends Component {
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
-        console.log('API Response',response);
+        console.log('API Response', response);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
             this.setState({ 'supplierData': response.supplierData })
@@ -139,7 +144,7 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
-    handleChange (e) {
+    handleChange(e) {
         let currentList = []
         let displayedContacts, searchQuery;
         if (e.target.value !== "") {
@@ -158,16 +163,16 @@ class SideArticle extends Component {
     successNotification = (supplierName) => {
         toast(supplierName + " is Finalized", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = (supplierName) => {
         toast(supplierName + " is Failed to Finalize", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05 '
+            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05 '
         });
     };
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}

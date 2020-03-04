@@ -10,7 +10,7 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        // console.log('AddViewTwo',this.props);
+        console.log('AddViewTwo',this.props);
         let userUuid = localStorage.getItem("uuid");
         let token = localStorage.getItem("tokenId");
         this.state = {
@@ -35,7 +35,7 @@ class AddViewTwo extends Component {
                                 <Link to={`/business/leads/lead/active/suppliersList`}>
                                     <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm">Supplier List</Button>
                                 </Link>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>

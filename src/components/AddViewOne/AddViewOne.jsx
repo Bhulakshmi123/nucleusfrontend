@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
+        console.log('Add View One',this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token
@@ -48,7 +49,7 @@ class AddViewOne extends Component {
                             <h3 className="mb-0 my-auto text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'NEW')}>Remove</Button>
+                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW', this.props.formData.equipmentName)}>Remove</Button>
                         </Col>
                         <Col md={2} className="my-auto">
                             <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW')}>Activate Lead</Button>
