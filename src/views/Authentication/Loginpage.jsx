@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Business from '../../views/Business';
 var validator = require('validator');
 export class Loginpage extends Component {
     constructor(props) {
@@ -42,6 +41,7 @@ export class Loginpage extends Component {
                     this.failedNotification();
                 }
                 else {
+                    console.log(res);
                     this.successNotification(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
@@ -52,6 +52,23 @@ export class Loginpage extends Component {
             });
         }
     }
+    // handleChange (e) {
+    //     this.setState({ [e.target.name]: e.target.value });
+    //     console.log('Validator Test',validator.isEmail(''))
+    //     let error = 'errorMessage_' + [e.target.name];
+    //     if (e.target.type === 'text') {
+    //         if (!validator.isEmail(e.target.value))
+    //             this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
+    //         else
+    //             this.setState({ [error]: '', [e.target.name]: e.target.value })
+    //     }
+    //     if (e.target.type === 'password') {
+    //         if (!validator.isAlphanumeric(e.target.value))
+    //             this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
+    //         else
+    //             this.setState({ 'errorMessage_': 'Wrong Password', [e.target.name]: e.target.value })
+    //     }
+    // }userNameError: false
     handleChange (e) {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
@@ -75,7 +92,7 @@ export class Loginpage extends Component {
     failedNotification = () => {
         toast("Unable to Login Please Check your Credentials", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-dark fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
         });
     };
 
@@ -127,3 +144,5 @@ export class Loginpage extends Component {
     }
 }
 export default Loginpage;
+
+

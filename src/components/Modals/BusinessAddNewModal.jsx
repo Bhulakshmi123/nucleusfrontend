@@ -14,7 +14,6 @@ var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
-        console.log('Nemo Props',this.props);
         let token = localStorage.getItem("tokenId");
         let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
@@ -90,7 +89,7 @@ class BusinessAddNewModal extends Component {
         let data = {
             "lead_companyUuid": this.state.supplierUuid,
             "lead_date": this.state.leadForm.lead_date,
-            "lead_contactPerson": this.state.leadForm.lead_contactPerson,
+            "lead_contactPerson": 'Walt Disney',
             "lead_contactNumber": this.state.supplierPhoneNo,
             "lead_createdBy": this.state.supplierUuid,
             "lead_details": [
@@ -101,25 +100,23 @@ class BusinessAddNewModal extends Component {
         let response = await createNewLead(data, this.state.token);
         if (response) {
             this.successNotification(response);
-            this.props.modalHider();
-            // this.setState({ isEquipmentInfo: false })
+            this.setState({ isEquipmentInfo: false })
         }
         else {
             this.failedNotification();
-            this.props.modalHider();
-            // this.setState({ isEquipmentInfo: false });
+            this.setState({ isEquipmentInfo: false });
         }
     }
     successNotification = (response) => {
         toast(response.message+' Id: ['+response.data[0]+']', {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
         });
     };
     // getLeadInformation = async ()
@@ -366,12 +363,9 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
                             {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
                         </Form.Group></Col>
-                        <Col md={3}>
-                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}>
-                            <Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}>
-                            <Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}><Form.Group controlId="formGroupRenterEmail"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
@@ -437,8 +431,7 @@ class BusinessAddNewModal extends Component {
                                 equipmentTypeDropDownList={this.state.equipmentTypeDropDownList}
                                 yearDropDown={this.state.yearDropDown}
                                 statesDropDown={this.state.statesDropDown}
-                                token = {this.state.token}
-                                createNewLead={this.createNewLead}
+                                token={this.state.token}
                             />
                             : null
                     }

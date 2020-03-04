@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class AddViewModal extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props)
+        // console.log(this.props)
         this.state = {
             isShowing: false,
         }

@@ -46,7 +46,7 @@ export class ArticleHeader extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <BusinessAddNewModal modalHider={this.closeModalHandler}></BusinessAddNewModal>
+                        <BusinessAddNewModal></BusinessAddNewModal>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>
