@@ -52,23 +52,6 @@ export class Loginpage extends Component {
             });
         }
     }
-    // handleChange (e) {
-    //     this.setState({ [e.target.name]: e.target.value });
-    //     console.log('Validator Test',validator.isEmail(''))
-    //     let error = 'errorMessage_' + [e.target.name];
-    //     if (e.target.type === 'text') {
-    //         if (!validator.isEmail(e.target.value))
-    //             this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
-    //         else
-    //             this.setState({ [error]: '', [e.target.name]: e.target.value })
-    //     }
-    //     if (e.target.type === 'password') {
-    //         if (!validator.isAlphanumeric(e.target.value))
-    //             this.setState({ [error]: 'Check ' + [e.target.name] + ' input' })
-    //         else
-    //             this.setState({ 'errorMessage_': 'Wrong Password', [e.target.name]: e.target.value })
-    //     }
-    // }userNameError: false
     handleChange (e) {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
@@ -84,21 +67,21 @@ export class Loginpage extends Component {
         }
     }
     successNotification = (res) => {
-        toast("Login Successful, Welcome Back "+ res.data.name, {
+        toast("Welcome Back "+ res.data.name, {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-dark fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Unable to Login Please Check your Credentials", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-dark fontGilroyBold bor-rad-05'
         });
     };
 
     render () {
         if (this.state.loginStatus === true) {
-            return (<Redirect to="/dashboard"></Redirect>)
+            return (<Redirect to="/business/leads/new"></Redirect>)
         }
         return (
             <React.Fragment>

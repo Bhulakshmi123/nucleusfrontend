@@ -98,23 +98,25 @@ class BusinessAddNewModal extends Component {
         let response = await createNewLead(data, this.state.token);
         if (response) {
             this.successNotification(response);
-            this.setState({ isEquipmentInfo: false })
+            // this.setState({ isEquipmentInfo: false })
+            this.props.modalHider();
         }
         else {
             this.failedNotification();
-            this.setState({ isEquipmentInfo: false });
+            // this.setState({ isEquipmentInfo: false });
+            this.props.modalHider();
         }
     }
     successNotification = (response) => {
         toast(response.message+' Id: ['+response.data[0]+']', {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
         });
     };
     // getLeadInformation = async ()
