@@ -14,6 +14,7 @@ var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
+        console.log('this.props', this.props)
         let token = localStorage.getItem("tokenId");
         let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
@@ -103,10 +104,12 @@ class BusinessAddNewModal extends Component {
             this.successNotification(response);
             this.setState({ isEquipmentInfo: false })
             this.props.modalHider();
+            this.props.getLeadsOnSubmit('new');
         }
         else {
             this.failedNotification();
             this.setState({ isEquipmentInfo: false });
+            this.props.getLeadsOnSubmit('new');
         }
     }
     successNotification = (response) => {

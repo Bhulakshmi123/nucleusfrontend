@@ -271,7 +271,9 @@ class SideArticle extends Component {
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.supplierData}
                                     statusChanger={this.changeLeadStatus.bind(this)}
-                                    moveToProjects={this.moveToProjects}>
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-none'
+                                    buttonStatus='d-visible'>
                                 </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/deleted/:id">
@@ -281,6 +283,16 @@ class SideArticle extends Component {
                                     buttonStatus='d-none'
                                     labelStatus='d-visible'>
                                 </AddViewOne>
+                            </Route>
+                            <Route path="/business/leads/lead/rejected/:id">
+                                <AddViewTwo
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.supplierData}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-visible'
+                                    buttonStatus='d-none'>
+                                </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/moved/:id">
                                 <AddViewOne

@@ -6,9 +6,14 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 export class ArticleHeader extends Component {
     constructor(props) {
         super(props);
+        console.log('Article Header', this.props);
         this.state = {
             isShowing: false,
         }
+    }
+    componentDidMount () {
+        // console.log('Ne,o')
+        // this.props.getLeads('new');
     }
     handleChange = (e) => {
         e.preventDefault();
@@ -24,6 +29,7 @@ export class ArticleHeader extends Component {
     }
     openModalHandler = () => {
         this.setState({ isShowing: true });
+        // this.props.getLeads('new');
     }
     closeModalHandler = () => {
         this.setState({ isShowing: false });
@@ -46,7 +52,7 @@ export class ArticleHeader extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <BusinessAddNewModal modalHider={this.closeModalHandler}></BusinessAddNewModal>
+                        <BusinessAddNewModal modalHider={this.closeModalHandler} getLeadsOnSubmit={this.props.getLeads.bind(this)}></BusinessAddNewModal>
                     </Modal.Body>
                 </Modal>
             </React.Fragment>

@@ -41,7 +41,7 @@ class BusinessMCard extends Component {
         }
         else {
             let response = await getLeads(leadType, this.state.token);
-            // console.log('Lead Response', leadType, response);
+            console.log('getLeads Api is Called');
             if (response) {
                 this.setState({ leadsInformation: response.data })
                 this.setState({ dummyDataHolder: response.data })
@@ -105,7 +105,7 @@ class BusinessMCard extends Component {
                     <Container className="my-5 pb-5">
                         <Row>
                             <Col md={12}>
-                                <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
+                                <ArticleHeader heading='Leads' buttonName='Add New' getLeads={this.getLeads.bind(this)}></ArticleHeader>
                             </Col>
                         </Row>
                         <Row className="mb-3 mt-2">
@@ -161,7 +161,8 @@ class BusinessMCard extends Component {
                                                                                 <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
                                                                             </Col>
                                                                             <Col md={2} className="my-auto">
-                                                                                <div className={`card text-center py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
+                                                                                <div className={`card text-center 
+                                                                                py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
                                                                             </Col>
                                                                             <Col md={2} className="my-auto text-dark text-center">
                                                                                 <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>

@@ -58,7 +58,7 @@ class AddViewOne extends Component {
                             <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button>
                         </Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
-                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-05 text-uppercase">This Lead is Deleted</h4>
+                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-30 text-uppercase">This Lead is Deleted</h4>
                         </Col>
                     </Row>
                     <Row className="mt-4">
