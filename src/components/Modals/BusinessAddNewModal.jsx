@@ -359,12 +359,12 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupPhno">
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange} />
+                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange.bind(this)} />
                                 {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : <span></span>}
                             </Form.Group>
                         </Col>
                         <Col md={3}>
-                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
+                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date"  onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
                         </Col>
                         <Col md={3}>
                             <Form.Group controlId="formGroupRent">

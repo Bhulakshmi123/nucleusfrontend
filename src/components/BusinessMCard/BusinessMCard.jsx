@@ -41,7 +41,7 @@ class BusinessMCard extends Component {
         }
         else {
             let response = await getLeads(leadType, this.state.token);
-            // console.log('Lead Response', leadType, response);
+            console.log('Lead Response', leadType, response);
             if (response) {
                 this.setState({ leadsInformation: response.data })
                 this.setState({ dummyDataHolder: response.data })
