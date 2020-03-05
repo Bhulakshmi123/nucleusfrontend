@@ -27,7 +27,7 @@ class BusinessMCard extends Component {
         this.searchBoxHandler = this.searchBoxHandler.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
-    componentDidMount() {
+    componentDidMount () {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType);
     }
@@ -41,21 +41,21 @@ class BusinessMCard extends Component {
         }
         else {
             let response = await getLeads(leadType, this.state.token);
-            console.log('Lead Response', leadType, response);
+            // console.log('Lead Response', leadType, response);
             if (response) {
                 this.setState({ leadsInformation: response.data })
                 this.setState({ dummyDataHolder: response.data })
             }
         }
     }
-    selectHandler(e) {
+    selectHandler (e) {
         this.setState({ 'selectedState': e.target.value })
     }
     dataChangeHandler = (e) => {
         this.getLeads(e.target.name)
         this.setState({ 'leadType': e.target.name })
     }
-    searchBoxHandler(e) {
+    searchBoxHandler (e) {
         let currentList, displayedLeads;
         if (e.target.value !== '') {
             let searchQuery;
@@ -98,7 +98,7 @@ class BusinessMCard extends Component {
             this.setState({ leadsInformation: this.state.dummyDataHolder })
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <div className={this.state.sidebarView ? "mainContent mainContentMini" : "mainContent"}>
@@ -161,7 +161,7 @@ class BusinessMCard extends Component {
                                                                                 <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
                                                                             </Col>
                                                                             <Col md={2} className="my-auto">
-                                                                                {prop.lead_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-danger py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
+                                                                                <div className={`card text-center py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
                                                                             </Col>
                                                                             <Col md={2} className="my-auto text-dark text-center">
                                                                                 <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
