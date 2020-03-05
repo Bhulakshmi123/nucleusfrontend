@@ -62,9 +62,6 @@ class BusinessAddNewModal extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.onChange = this.onChange.bind(this)
     }
-    // componentDidMount () {
-    //     this.getStateLists();
-    // }
     componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
@@ -125,7 +122,7 @@ class BusinessAddNewModal extends Component {
     handleChange (e) {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
-            if (validator.isMobilePhone(e.target.value) && e.target.value.length >= 10) {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length == 10) {
                 this.getSupplierDetails(e.target.value)
                 this.setState({ userMobileError: false, errorMessageMobileNo: '' });
             }
@@ -358,13 +355,12 @@ class BusinessAddNewModal extends Component {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
-
                     <Form.Row>
                         <Col md={3}>
                             <Form.Group controlId="formGroupPhno">
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
-                                {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : null}
+                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange} />
+                                {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : <span></span>}
                             </Form.Group>
                         </Col>
                         <Col md={3}>
