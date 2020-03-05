@@ -293,7 +293,7 @@ class AddFields extends React.Component {
 
                 <Button variant="primary" size="sm" className="px-4 mr-4" onClick={this.props.addEquipForm}>Add Equipments</Button>
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment</Button>
-                
+
             </React.Fragment>
         );
     }

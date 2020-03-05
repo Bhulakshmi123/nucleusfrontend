@@ -6,11 +6,14 @@ import 'react-toastify/dist/ReactToastify.css';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        console.log('Add View One',this.props);
+        // console.log('Add View One', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token
         }
+    }
+    componentWillReceiveProps () {
+
     }
     onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
@@ -48,11 +51,14 @@ class AddViewOne extends Component {
                         <Col md={8}>
                             <h3 className="mb-0 my-auto text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
-                        <Col md={2} className="my-auto">
+                        <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
                             <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW', this.props.formData.equipmentName)}>Remove</Button>
                         </Col>
-                        <Col md={2} className="my-auto">
-                            <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW')}>Activate Lead</Button>
+                        <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
+                            <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button>
+                        </Col>
+                        <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
+                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-05 text-uppercase">This Lead is Deleted</h4>
                         </Col>
                     </Row>
                     <Row className="mt-4">
@@ -231,7 +237,7 @@ class AddViewOne extends Component {
                                 </Form.Row>
                                 <Form.Row className="mt-3 mb-5 form-modal">
                                     <Col md={12} className="mb-5">
-                                        <Button variant="primary" size="sm" className="fontGilroyBold float-right" onClick={this.successNotification}>Update Details</Button>
+                                        <Button variant="primary" size="sm" className={`fontGilroyBold float-right ${this.props.buttonStatus}`} onClick={this.successNotification}>Update Details</Button>
                                     </Col>
                                 </Form.Row>
                             </React.Fragment>

@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        // console.log('Side Article', this.props)
+        console.log('Side Article', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -34,61 +34,89 @@ class SideArticle extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
-    componentDidMount() {
+
+    componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
-        this.backButtonHandler()
+        this.backButtonHandler();
     }
-    componentWillReceiveProps(nextProps) {
-        this.setState({ filtered: nextProps.leadinfo });
+
+    componentWillReceiveProps (nextProps) {
+        this.setState({
+            leadUuid: nextProps.leadinfo[0].lead_uuid,
+            leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
+            filtered: nextProps.leadinfo
+        });
+        this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
+
     backButtonHandler = () => {
         let url = window.location.pathname.split('/');
-        // console.log('New Url', url);
         this.setState({ goBackUrl: url[url.length - 2] })
     }
+
     testAddViewThree = () => {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
+
     setRedirect = (action) => {
         this.setState({
             redirect: true,
             placeOfAction: action
         })
     }
+
     renderBasedOnRedirect = () => {
         if (this.state.redirect && this.state.placeOfAction === 'ACTIVATED') {
-            return (<Redirect to="/business/leads/active"></Redirect>)
-        }
-        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDNEW') {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDACTIVE') {
+        if (this.state.redirect && this.state.placeOfAction === 'DELETED') {
+            return (<Redirect to="/business/leads/new"></Redirect>)
+        }
+        if (this.state.redirect && this.state.placeOfAction === 'REJECTED') {
             return (<Redirect to="/business/leads/active"></Redirect>)
-        } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
+        }
+        if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
             return (<Redirect to="/business/leads/moved"></Redirect>)
         }
-
     }
 
-    changeLeadStatus(leadDetId, newStatus, source, supplierName) {
+    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
-            console.log('Response of Status Changer', res);
             if (res.message === 'lead status updated.') {
-                if (data.newStatus === "DELETED") { //! Change Later to CLOSED
-                    this.setRedirect(data.newStatus + source);
-                    this.successNotification(supplierName);
-                }
-                if (data.newStatus === "REJECTED") { //! Change Later to CLOSED
-                    this.setRedirect(data.newStatus + source);
-                    this.successNotification(supplierName);
-                }
                 if (data.newStatus === "ACTIVATED") {
-                    this.setRedirect(data.newStatus)
+                    if (this.state.filtered.length > 1) {
+                        this.successNotification(supplierName, leadDetId, 'is Activated');
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.successNotification(supplierName, leadDetId, 'is Activated');
+                        this.setRedirect(data.newStatus);
+                    }
+                }
+                if (data.newStatus === "DELETED") {
+                    if (this.state.filtered.length > 1) {
+                        this.successNotification(supplierName, leadDetId, 'is Removed');
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.successNotification(supplierName, leadDetId, 'is Removed');
+                        this.setRedirect(data.newStatus);
+                    }
+                }
+                if (data.newStatus === "REJECTED") {
+                    if (this.state.filtered.length > 1) {
+                        this.successNotification(supplierName, leadDetId, 'is Rejected');
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.successNotification(supplierName, leadDetId, 'is Rejected');
+                        this.setRedirect(data.newStatus);
+                    }
                 }
                 if (data.newStatus === "FINALIZED") {
                     this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
-                    this.successNotification(supplierName);
+                    this.successNotification(supplierName, leadDetId, 'is Finalized');
                 }
             }
             else {
@@ -107,7 +135,6 @@ class SideArticle extends Component {
         // else { alert('Failed to Move Project to Move') }
         moveToProjects(data, this.state.token).then((res) => {
             if (res) {
-                // console.log('Ne', res);
                 this.setRedirect("MOVEDTOPROJECTS")
             }
         })
@@ -123,7 +150,6 @@ class SideArticle extends Component {
 
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
-        console.log('API Response', response);
         if (response) {
             this.setState({ "specificEquipmentsDetails": response.data[0] })
             this.setState({ 'supplierData': response.supplierData })
@@ -144,7 +170,7 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
-    handleChange(e) {
+    handleChange (e) {
         let currentList = []
         let displayedContacts, searchQuery;
         if (e.target.value !== "") {
@@ -160,10 +186,10 @@ class SideArticle extends Component {
             this.setState({ filtered: this.props.leadinfo })
         }
     }
-    successNotification = (supplierName) => {
-        toast(supplierName + " is Finalized", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
+    successNotification = (supplierName, idOfEquipment, contextOfNotification) => {
+        toast(supplierName.toLowerCase() + ' [' + idOfEquipment + '] ' + contextOfNotification, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: ' text-capitalize text-center bg-white text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = (supplierName) => {
@@ -172,7 +198,7 @@ class SideArticle extends Component {
             className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05 '
         });
     };
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
@@ -201,7 +227,7 @@ class SideArticle extends Component {
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-3">
-                                                <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
+                                                <div className="pl-1 text-capitalize">{prop.equipmentName.toLowerCase()}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">
@@ -235,7 +261,9 @@ class SideArticle extends Component {
                             <Route path="/business/leads/lead/new/:id">
                                 <AddViewOne
                                     formData={this.state.specificEquipmentsDetails}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    buttonStatus='d-visible'
+                                    labelStatus='d-none'>>
                                 </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
@@ -245,6 +273,14 @@ class SideArticle extends Component {
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     moveToProjects={this.moveToProjects}>
                                 </AddViewTwo>
+                            </Route>
+                            <Route path="/business/leads/lead/deleted/:id">
+                                <AddViewOne
+                                    formData={this.state.specificEquipmentsDetails}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    buttonStatus='d-none'
+                                    labelStatus='d-visible'>
+                                </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/moved/:id">
                                 <AddViewOne

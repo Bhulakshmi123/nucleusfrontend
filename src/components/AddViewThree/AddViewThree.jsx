@@ -143,7 +143,7 @@ class AddViewThree extends Component {
                         <Col md={6} className="pr-0 my-auto">
                             <ButtonGroup size="sm" className="float-right my-auto mr-2">
                                 <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'CLOSED', 'ACTIVE')}>Reject</Button>
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>

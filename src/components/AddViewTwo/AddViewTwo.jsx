@@ -10,7 +10,7 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        console.log('AddViewTwo',this.props);
+        // console.log('AddViewTwo',this.props);
         let userUuid = localStorage.getItem("uuid");
         let token = localStorage.getItem("tokenId");
         this.state = {
