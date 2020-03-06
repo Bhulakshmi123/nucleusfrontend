@@ -48,7 +48,7 @@ class AddViewOne extends Component {
             <React.Fragment>
                 <Container fluid>
                     <Row className="my-4">
-                        <Col md={8}>
+                        <Col md={8} className="my-auto">
                             <h3 className="mb-0 my-auto text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
@@ -58,7 +58,7 @@ class AddViewOne extends Component {
                             <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button>
                         </Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
-                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-05 text-uppercase">This Lead is Deleted</h4>
+                            <h6 className="text-white bg-brickRed text-center p-2 bor-rad-30 text-uppercase">This Lead is Deleted</h6>
                         </Col>
                     </Row>
                     <Row className="mt-4">

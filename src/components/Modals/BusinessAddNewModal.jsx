@@ -14,6 +14,7 @@ var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
+        console.log('this.props', this.props)
         let token = localStorage.getItem("tokenId");
         let username = localStorage.getItem("username");
         let supplierUuid = localStorage.getItem("supplierUuid");
@@ -49,7 +50,9 @@ class BusinessAddNewModal extends Component {
                 { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
             ],
             userMobileError: false,
+            renterNameError:false,
             errorMessageMobileNo: '',
+            errorMessageRenterName:'',
             startDate: new Date(),
             startDateEquip: new Date(),
             equipmentFormCheck: 0,
@@ -57,7 +60,7 @@ class BusinessAddNewModal extends Component {
             yearDropDown: [],
             statesDropDown: [],
             districtsDropDown: [],
-            requiredFieldInEquipForm: ['lead_equipmentType', 'lead_safetyMeasures', 'lead_startDate']
+            requiredFieldInEquipForm: ['lead_equipmentType','lead_startDate']
         }
         this.handleChange = this.handleChange.bind(this)
         this.onChange = this.onChange.bind(this)
@@ -95,15 +98,18 @@ class BusinessAddNewModal extends Component {
             ]
         }
         console.log('data', data);
+        // this.handleChange{}
         let response = await createNewLead(data, this.state.token);
         if (response) {
             this.successNotification(response);
             this.setState({ isEquipmentInfo: false })
             this.props.modalHider();
+            this.props.getLeadsOnSubmit('new');
         }
         else {
             this.failedNotification();
             this.setState({ isEquipmentInfo: false });
+            this.props.getLeadsOnSubmit('new');
         }
     }
     successNotification = (response) => {
@@ -120,7 +126,6 @@ class BusinessAddNewModal extends Component {
     };
     // getLeadInformation = async ()
     handleChange (e) {
-        this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
             if (validator.isMobilePhone(e.target.value) && e.target.value.length == 10) {
                 this.getSupplierDetails(e.target.value)
@@ -143,14 +148,26 @@ class BusinessAddNewModal extends Component {
     }
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        let leadForm = this.state.leadForm;
-        leadForm = {
-            ...leadForm,
-            [e.target.name]: e.target.value
+        if(e.target.type === 'text'){
+            if(validator.isLength(e.target.value) && e.target.value.length === ''){
+                this.setState({ renterNameError : false, errorMessageRenterName: '' })
+            } else if (e.target.value.length === 0){
+                console.log("")
+                this.setState({ renterNameError : true, errorMessageRenterName: 'Invalid Renter Name'})
+            }
+            else {
+                this.setState({ renterNameError : true, errorMessageRenterName: ''})
+            }
+        }else {
+            let leadForm = this.state.leadForm;
+            leadForm = {
+                ...leadForm,
+                [e.target.name]: e.target.value
+            }
+            this.setState({
+                leadForm: leadForm
+            }, () => { console.log(this.state.leadForm) });
         }
-        this.setState({
-            leadForm: leadForm
-        }, () => { console.log(this.state.leadForm) });
     }
 
     computeYearDropDownInForm = () => {
@@ -190,7 +207,7 @@ class BusinessAddNewModal extends Component {
         if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value === null || e.value === '')) {
             equipmentForm = {
                 ...equipmentForm,
-                [error]: "Please check this Input",
+                [error]: "Please Select This Input",
             };
             equipmentFormCheck++;
         }
@@ -301,7 +318,7 @@ class BusinessAddNewModal extends Component {
                 let error = value + '_error'
                 equipmentForm = {
                     ...equipmentForm,
-                    [error]: "Please check this Input",
+                    [error]: "Please Select This Input",
                 };
             }
         });
@@ -359,7 +376,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupPhno">
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange.bind(this)} />
+                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange} />
                                 {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : <span></span>}
                             </Form.Group>
                         </Col>
@@ -370,6 +387,7 @@ class BusinessAddNewModal extends Component {
                             <Form.Group controlId="formGroupRent">
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
                                 <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} />
+                                {this.state.renterNameError ? <div className="text-danger font-size-10">{this.state.errorMessageRenterName}</div> : <span></span>}
                             </Form.Group>
                         </Col>
                         <Col md={3}>
@@ -476,7 +494,7 @@ class BusinessAddNewModal extends Component {
                             />
                             : null
                     }
-                    <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
+                    <Button type="submit"  onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
                 </Form>
             </React.Fragment>
         )

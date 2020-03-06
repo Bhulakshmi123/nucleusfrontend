@@ -29,15 +29,19 @@ class AddViewTwo extends Component {
                         <Col md={6}>
                             <h3 className="m-0 text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
-                        <Col md={6} className="my-auto">
+                        <Col md={6} className={`my-auto ${this.props.buttonStatus}`}>
                             <ButtonGroup className="float-right my-auto">
                                 <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer mr-3" onClick={this.openModalHandler}></i>
                                 <Link to={`/business/leads/lead/active/suppliersList`}>
-                                    <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm">Supplier List</Button>
+                                    <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm" >Supplier List</Button>
                                 </Link>
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
                                 <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
                             </ButtonGroup>
+                        </Col>
+                        <Col md={2} className={`my-auto ${this.props.labelStatus}`}></Col>
+                        <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
+                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-30 text-uppercase">This Lead is Rejected</h4>
                         </Col>
                     </Row>
                     <div className="text-center text-white w-25 bg-moodIndigo  py-1 bor-rad-02 boxShadow-4bpx">RENTER INFORMATION</div>
