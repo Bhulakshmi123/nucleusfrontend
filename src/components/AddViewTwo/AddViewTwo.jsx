@@ -10,23 +10,25 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
-        // console.log('AddViewTwo',this.props);
-        let userUuid = localStorage.getItem("uuid");
-        let token = localStorage.getItem("tokenId");
+        let userUuid = localStorage.getItem("uuid"),
+            token = localStorage.getItem("tokenId");
         this.state = {
             isModalShowing: false,
             userUuid: userUuid,
             token: token,
         }
     }
+
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+
     render () {
         return (
             <React.Fragment>
                 <Container className="mt-5">
                     <Row className="mb-4">
-                        <Col md={6}>
+                        <Col md={6} className="my-auto">
                             <h3 className="m-0 text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
                         <Col md={6} className={`my-auto ${this.props.buttonStatus}`}>
@@ -36,12 +38,12 @@ class AddViewTwo extends Component {
                                     <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm" >Supplier List</Button>
                                 </Link>
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
-                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id)}>Move to Projects</Button>
+                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.labelStatus}`}></Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
-                            <h4 className="text-white bg-brickRed text-center p-2 bor-rad-30 text-uppercase">This Lead is Rejected</h4>
+                            <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Rejected</div>
                         </Col>
                     </Row>
                     <div className="text-center text-white w-25 bg-moodIndigo  py-1 bor-rad-02 boxShadow-4bpx">RENTER INFORMATION</div>

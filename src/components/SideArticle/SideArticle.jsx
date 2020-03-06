@@ -41,6 +41,7 @@ class SideArticle extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
+        console.log('nextProps',nextProps);
         this.setState({
             leadUuid: nextProps.leadinfo[0].lead_uuid,
             leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
@@ -76,7 +77,7 @@ class SideArticle extends Component {
             return (<Redirect to="/business/leads/active"></Redirect>)
         }
         if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
-            return (<Redirect to="/business/leads/moved"></Redirect>)
+            return (<Redirect to="/business/leads/active"></Redirect>)
         }
     }
 
@@ -124,22 +125,30 @@ class SideArticle extends Component {
             }
         });
     }
-    moveToProjects = async (userUuid, leadId, leadDetId) => {
+
+    moveToProjects = async (userUuid, leadId, leadDetId, supplierName) => {
         let data = {
             "userUuid": userUuid,
             "leadId": leadId.toString(),
             "leadDetId": [leadDetId.toString()]
         }
-        // let response = await moveToProjects(data, this.state.token);
-        // if (response) { alert('Project Moved to New') }
-        // else { alert('Failed to Move Project to Move') }
+        console.log('Move To Projects Data', data);
         moveToProjects(data, this.state.token).then((res) => {
             if (res) {
-                this.setRedirect("MOVEDTOPROJECTS")
+                if (this.state.filtered.length > 1) {
+                    this.successNotification(supplierName, leadDetId, 'is Moved To Projects');
+                    this.props.getLeadInformation();
+                }
+                else {
+                    this.successNotification(supplierName, leadDetId, 'is Moved To Projects');
+                    this.setRedirect("MOVEDTOPROJECTS");
+                }
             }
         })
     }
+
     openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+
     closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
 
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
@@ -157,6 +166,7 @@ class SideArticle extends Component {
             this.setState({ "isApiCallSuccessful": true })
         }
     }
+
     getSupplierList = async (equipmentType) => {
         let data = { "equipmentType": equipmentType.toString() }
         let response = await getSupplierList(data, this.state.token);
@@ -170,6 +180,7 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
+
     handleChange (e) {
         let currentList = []
         let displayedContacts, searchQuery;
@@ -186,18 +197,21 @@ class SideArticle extends Component {
             this.setState({ filtered: this.props.leadinfo })
         }
     }
+
     successNotification = (supplierName, idOfEquipment, contextOfNotification) => {
         toast(supplierName.toLowerCase() + ' [' + idOfEquipment + '] ' + contextOfNotification, {
             position: toast.POSITION.BOTTOM_RIGHT,
-            className: ' text-capitalize text-center bg-white text-success fontGilroyBold bor-rad-05'
+            className: ' text-capitalize text-center bg-dark text-success fontGilroyBold bor-rad-05'
         });
     };
+
     failedNotification = (supplierName) => {
         toast(supplierName + " is Failed to Finalize", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05 '
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05 '
         });
     };
+
     render () {
         return (
             <React.Fragment>
