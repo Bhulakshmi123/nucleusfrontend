@@ -14,11 +14,14 @@ var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
-        console.log('this.props', this.props)
-        let token = localStorage.getItem("tokenId");
-        let username = localStorage.getItem("username");
-        let supplierUuid = localStorage.getItem("supplierUuid");
+
+        let token = localStorage.getItem("tokenId"),
+            username = localStorage.getItem("username"),
+            supplierUuid = localStorage.getItem("supplierUuid"),
+            leadType = window.location.href.split('/');
+
         this.state = {
+            leadType: leadType[leadType.length - 1],
             supplierPhoneNo: '',
             supplierDetails: '',
             token: token,
@@ -40,7 +43,7 @@ class BusinessAddNewModal extends Component {
                 { value: '3', label: 'Vanilla', name: 'lead_priority' },
             ],
             leadSourceDropDown: [
-                { value: 'icecream', label: 'Icecream', name: 'lead_source' },
+                { value: 'iceCream', label: 'IceCream', name: 'lead_source' },
                 { value: 'pizza', label: 'Pizza', name: 'lead_source' },
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
             ],
@@ -69,6 +72,7 @@ class BusinessAddNewModal extends Component {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
+
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString() }
         this.setState({ supplierPhoneNo: phoneNumber.toString() })
@@ -104,24 +108,25 @@ class BusinessAddNewModal extends Component {
             this.successNotification(response);
             this.setState({ isEquipmentInfo: false })
             this.props.modalHider();
-            this.props.getLeadsOnSubmit('new');
+            if (this.state.leadType === 'new') {
+                this.props.getLeadsOnSubmit('new');
+            }
         }
         else {
             this.failedNotification();
             this.setState({ isEquipmentInfo: false });
-            this.props.getLeadsOnSubmit('new');
         }
     }
     successNotification = (response) => {
         toast(response.message + ' Id: [' + response.data[0] + ']', {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-success fontGilroyBold bor-rad-05'
+            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-white text-danger fontGilroyBold bor-rad-05'
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
         });
     };
     // getLeadInformation = async ()

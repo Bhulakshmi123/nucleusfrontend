@@ -35,16 +35,21 @@ class BusinessMCard extends Component {
         if (leadType === 'moved') {
             let response = await getProjectsOfNucleus(this.state.token);
             if (response) {
-                this.setState({ leadsInformation: response.data })
-                this.setState({ dummyDataHolder: response.data })
+                this.setState({
+                    leadsInformation: response.data,
+                    dummyDataHolder: response.data,
+                    isApiCallSuccessful: true
+                })
             }
         }
         else {
             let response = await getLeads(leadType, this.state.token);
-            console.log('getLeads Api is Called');
             if (response) {
-                this.setState({ leadsInformation: response.data })
-                this.setState({ dummyDataHolder: response.data })
+                this.setState({
+                    leadsInformation: response.data,
+                    dummyDataHolder: response.data,
+                    isApiCallSuccessful: true
+                })
             }
         }
     }
@@ -137,48 +142,50 @@ class BusinessMCard extends Component {
                         </Row>
                         <div>
                             {
-                                this.state.leadsInformation.length === 0 ?
-                                    <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard> :
-                                    <div>
-                                        {
-                                            this.state.leadsInformation.map((prop, key) => {
-                                                return (
-                                                    <Container key={key}>
-                                                        <Row>
-                                                            <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
-                                                                {getDateFormat_4(prop.lead_date)}
-                                                            </Col>
-                                                            <Col md={10} className="pr-0">
-                                                                <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
-                                                                    <Container fluid className="card p-3 mb-4">
-                                                                        <Row>
-                                                                            <Col md={5} className="my-auto text-dark">
-                                                                                <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
-                                                                                <div className="text-capitalize"><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_location ? null : 'Location is Not Available'}</div>
-                                                                            </Col>
-                                                                            <Col md={3} className="my-auto text-dark">
-                                                                                <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
-                                                                                <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
-                                                                            </Col>
-                                                                            <Col md={2} className="my-auto">
-                                                                                <div className={`card text-center 
-                                                                                py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
-                                                                            </Col>
-                                                                            <Col md={2} className="my-auto text-dark text-center">
-                                                                                <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
-                                                                                <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
-                                                                                <div className="mtn-5">Equipment</div>
-                                                                            </Col>
-                                                                        </Row>
-                                                                    </Container>
-                                                                </Link>
-                                                            </Col>
-                                                        </Row>
-                                                    </Container>
-                                                )
-                                            })
-                                        }
-                                    </div>
+                                this.state.isApiCallSuccessful === false ?
+                                    <DefaultCard md={5}>Fetching {this.state.leadType} Leads Information ....</DefaultCard> :
+                                    this.state.leadsInformation.length === 0 ?
+                                        <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard> :
+                                        <div>
+                                            {
+                                                this.state.leadsInformation.map((prop, key) => {
+                                                    return (
+                                                        <Container key={key}>
+                                                            <Row>
+                                                                <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
+                                                                    {getDateFormat_4(prop.lead_date)}
+                                                                </Col>
+                                                                <Col md={10} className="pr-0">
+                                                                    <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
+                                                                        <Container fluid className="card p-3 mb-4">
+                                                                            <Row>
+                                                                                <Col md={5} className="my-auto text-dark">
+                                                                                    <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
+                                                                                    <div className="text-capitalize"><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_location ? null : 'Location is Not Available'}</div>
+                                                                                </Col>
+                                                                                <Col md={3} className="my-auto text-dark">
+                                                                                    <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
+                                                                                    <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto">
+                                                                                    <div className={`card text-center 
+                                                                                    py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto text-dark text-center">
+                                                                                    <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
+                                                                                    <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
+                                                                                    <div className="mtn-5">Equipment</div>
+                                                                                </Col>
+                                                                            </Row>
+                                                                        </Container>
+                                                                    </Link>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                             }
                         </div>
                     </Container>

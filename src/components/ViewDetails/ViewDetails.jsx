@@ -13,10 +13,12 @@ class ViewDetails extends Component {
             "isApiCallSuccessful": false,
         }
     }
+
     componentDidMount () {
         this.getLeadInformation();
         this.props.sidebarViewAction(true);
     }
+
     getLeadInformation = async () => {
         let url = window.location.href.split('/');
         let finalPayload = url[url.length - 1] + '/' + url[url.length - 2];
@@ -27,6 +29,7 @@ class ViewDetails extends Component {
             this.setState({ "isApiCallSuccessful": true })
         }
     }
+
     render () {
         return (
             <React.Fragment>

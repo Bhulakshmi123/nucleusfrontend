@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        // console.log('Add View One', this.props);
+        console.log('Add View One', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token
@@ -58,7 +58,7 @@ class AddViewOne extends Component {
                             <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button>
                         </Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
-                            <h6 className="text-white bg-brickRed text-center p-2 bor-rad-30 text-uppercase">This Lead is Deleted</h6>
+                            <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
                         </Col>
                     </Row>
                     <Row className="mt-4">
@@ -78,7 +78,7 @@ class AddViewOne extends Component {
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="Model">Model</label>
-                                            <input type="email" className="form-control" id="Model" aria-describedby="emailHelp" placeholder={this.props.formData.equipmentName === null ? 'Select Equipment Type' : this.props.formData.equipmentName} value={this.props.formData.equipmentName} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="Model" aria-describedby="emailHelp" placeholder={this.props.formData.equipmentName === null ? 'Select Equipment Type' : this.props.formData.equipmentName} value={this.props.formData.equipmentName} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
@@ -91,25 +91,25 @@ class AddViewOne extends Component {
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="Capacity">Capacity</label>
-                                            <input type="email" className="form-control" id="Capacity" aria-describedby="emailHelp" placeholder="Enter Capacity" value={this.props.formData.leadDet_capacity} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="Capacity" aria-describedby="emailHelp" placeholder="Enter Capacity" value={this.props.formData.leadDet_capacity} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="jobLocation">Job Location</label>
-                                            <input type="email" className="form-control" id="jobLocation" aria-describedby="emailHelp" placeholder="Enter JobLocation" value={this.props.formData.leadDet_location} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="jobLocation" aria-describedby="emailHelp" placeholder="Enter JobLocation" value={this.props.formData.leadDet_location} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="expectedStartDate">Expected Start Date</label>
-                                            <input type="email" className="form-control" id="expectedStartDate" aria-describedby="emailHelp" placeholder="Enter Expected Date" value={this.props.formData.leadDet_startDate} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="expectedStartDate" aria-describedby="emailHelp" placeholder="Enter Expected Date" value={this.props.formData.leadDet_startDate} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="noOfMonths">No Of Months</label>
-                                            <input type="email" className="form-control" id="noOfMonths" aria-describedby="emailHelp" placeholder="Enter No of Months" value={this.props.formData.leadDet_workingTotalCount} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="noOfMonths" aria-describedby="emailHelp" placeholder="Enter No of Months" value={this.props.formData.leadDet_workingTotalCount} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                 </Row>
@@ -123,13 +123,13 @@ class AddViewOne extends Component {
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="stage">Stage</label>
-                                            <input type="email" className="form-control" id="stage" aria-describedby="emailHelp" placeholder="Enter Stage" value={this.props.formData.leadDet_price} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="stage" aria-describedby="emailHelp" placeholder="Enter Stage" value={this.props.formData.leadDet_price} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="operationHoursPerDay">Operation Hours Per Day</label>
-                                            <input type="email" className="form-control" id="operationHoursPerDay" aria-describedby="emailHelp" placeholder="Enter No of H/D" value={this.props.formData.leadDet_workingHoursPerDay} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="operationHoursPerDay" aria-describedby="emailHelp" placeholder="Enter No of H/D" value={this.props.formData.leadDet_workingHoursPerDay} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                 </Row>
@@ -137,25 +137,25 @@ class AddViewOne extends Component {
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="operationDaysPerMonth">Operation Days Per Month</label>
-                                            <input type="email" className="form-control" id="operationDaysPerMonth" aria-describedby="emailHelp" placeholder="Enter No of D/P" value={this.props.formData.leadDet_workingCount} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="operationDaysPerMonth" aria-describedby="emailHelp" placeholder="Enter No of D/P" value={this.props.formData.leadDet_workingCount} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputEmail1">Quantity</label>
-                                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Quantity" value={this.props.formData.leadDet_quantity} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Quantity" value={this.props.formData.leadDet_quantity} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="quantity">Operation Hours Per Month</label>
-                                            <input type="email" className="form-control" id="quantity" aria-describedby="emailHelp" placeholder="Enter No Of H/P" value={this.props.formData.leadDet_workingTotalCount} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="quantity" aria-describedby="emailHelp" placeholder="Enter No Of H/P" value={this.props.formData.leadDet_workingTotalCount} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                     <Col md={3} lg={3} xs={12}>
                                         <div className="form-group">
                                             <label htmlFor="typeOfWork">Type Of Work</label>
-                                            <input type="email" className="form-control" id="typeOfWork" aria-describedby="emailHelp" placeholder="Enter Type of Work" value={this.props.formData.leadDet_operatorFood} onChange={this.onChange}></input>
+                                            <input type="text" className="form-control" id="typeOfWork" aria-describedby="emailHelp" placeholder="Enter Type of Work" value={this.props.formData.leadDet_operatorFood} onChange={this.onChange}></input>
                                         </div>
                                     </Col>
                                 </Row>
