@@ -96,6 +96,10 @@ class BusinessMCard extends Component {
                     let searchValue = item.lead_date.toLowerCase();
                     return searchValue.indexOf(searchQuery) !== -1;
                 }
+                else {
+                    window.alert('Something Went Wrong please Try Again Later');
+                    return 0;
+                }
             })
             this.setState({ leadsInformation: displayedLeads })
         }

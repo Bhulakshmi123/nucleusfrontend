@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
-        // console.log('Finalized Supplier Props',this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -39,6 +38,10 @@ class FinalizedSupplier extends Component {
             if (prop === 'FIELDVISIT') { this.setState({ felidVisitStatus: true }) }
             if (prop === 'AGREEMENT') { this.setState({ agreementStatus: true }) }
             if (prop === 'SIGNEDAGREEMENT') { this.setState({ signedAgreementStatus: true }) }
+            else {
+                window.alert('Something Went Wrong');
+                return 0;
+            }
         })
     }
     serviceChanger = () => {
