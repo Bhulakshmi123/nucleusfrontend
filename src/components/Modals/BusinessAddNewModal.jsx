@@ -14,13 +14,14 @@ var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
-
         let token = localStorage.getItem("tokenId"),
             username = localStorage.getItem("username"),
             supplierUuid = localStorage.getItem("supplierUuid"),
             leadType = window.location.href.split('/');
-
         this.state = {
+            lead_contactNumber: null,
+            lead_date: null,
+            lead_contactPerson: null,
             leadType: leadType[leadType.length - 1],
             supplierPhoneNo: '',
             supplierDetails: '',
@@ -53,9 +54,9 @@ class BusinessAddNewModal extends Component {
                 { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
             ],
             userMobileError: false,
-            renterNameError:false,
+            renterNameError: false,
             errorMessageMobileNo: '',
-            errorMessageRenterName:'',
+            errorMessageRenterName: '',
             startDate: new Date(),
             startDateEquip: new Date(),
             equipmentFormCheck: 0,
@@ -63,12 +64,12 @@ class BusinessAddNewModal extends Component {
             yearDropDown: [],
             statesDropDown: [],
             districtsDropDown: [],
-            requiredFieldInEquipForm: ['lead_equipmentType','lead_startDate']
+            requiredFieldInEquipForm: ['lead_equipmentType', 'lead_startDate']
         }
         this.handleChange = this.handleChange.bind(this)
         this.onChange = this.onChange.bind(this)
     }
-    componentWillMount () {
+    componentWillMount() {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
@@ -90,31 +91,47 @@ class BusinessAddNewModal extends Component {
 
     createNewLead = async (e) => {
         e.preventDefault();
-        console.log('state', this.state.leadForm, this.state);
-        let data = {
-            "lead_companyUuid": this.state.supplierUuid,
-            "lead_date": this.state.leadForm.lead_date,
-            "lead_contactPerson": 'Walt Disney',
-            "lead_contactNumber": this.state.supplierPhoneNo,
-            "lead_createdBy": this.state.supplierUuid,
-            "lead_details": [
-                ...this.state.leadForm.equipmentLead
-            ]
-        }
-        console.log('data', data);
-        // this.handleChange{}
-        let response = await createNewLead(data, this.state.token);
-        if (response) {
-            this.successNotification(response);
-            this.setState({ isEquipmentInfo: false })
-            this.props.modalHider();
-            if (this.state.leadType === 'new') {
-                this.props.getLeadsOnSubmit('new');
-            }
+        console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
+        if (this.state.supplierPhoneNo === null || this.state.leadForm.lead_date === null || this.state.lead_contactPerson === null) {
+            this.setState({
+                'errorMessage_submit': '',
+                // 'errorMessage_submit' : ( (this.state.supplierPhoneNo === '' || this.state.leadForm.lead_date === '' || this.state.lead_contactPerson === '' ) ? <span></span> : 'Please Fill The Required Fields')
+            })
+        } else if(this.state.supplierPhoneNo === 0 || this.state.leadForm.lead_date === 0 || this.state.lead_contactPerson === 0 ){
+            this.setState({
+                'errorMessage_submit': 'Please Fill The Required Fields',
+                // 'errorMessage_submit' : ( (this.state.supplierPhoneNo === '' || this.state.leadForm.lead_date === '' || this.state.lead_contactPerson === '' ) ? <span></span> : 'Please Fill The Required Fields')
+            })
         }
         else {
-            this.failedNotification();
-            this.setState({ isEquipmentInfo: false });
+            // console.log('state', this.state.leadForm, this.state);
+            let data = {
+                "lead_companyUuid": this.state.supplierUuid,
+                "lead_date": this.state.leadForm.lead_date,
+                "lead_contactPerson": 'Walt Disney',
+                "lead_contactNumber": this.state.supplierPhoneNo,
+                "lead_createdBy": this.state.supplierUuid,
+                "lead_details": [
+                    ...this.state.leadForm.equipmentLead
+                ]
+            }
+            console.log('data', data);
+            // this.handleChange{}
+            let response = await createNewLead(data, this.state.token);
+            if (response) {
+                this.successNotification(response);
+                this.setState({ isEquipmentInfo: false 
+                })
+                this.props.modalHider();
+                if (this.state.leadType === 'new') {
+                    this.props.getLeadsOnSubmit('new');
+                }
+            }
+            else {
+                this.failedNotification();
+                this.setState({ isEquipmentInfo: false });
+                
+            }
         }
     }
     successNotification = (response) => {
@@ -130,7 +147,7 @@ class BusinessAddNewModal extends Component {
         });
     };
     // getLeadInformation = async ()
-    handleChange (e) {
+    handleChange(e) {
         if (e.target.type === 'text') {
             if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
                 this.getSupplierDetails(e.target.value)
@@ -153,17 +170,17 @@ class BusinessAddNewModal extends Component {
     }
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        if(e.target.type === 'text'){
-            if(validator.isLength(e.target.value) && e.target.value.length === ''){
-                this.setState({ renterNameError : false, errorMessageRenterName: '' })
-            } else if (e.target.value.length === 0){
+        if (e.target.type === 'text') {
+            if (validator.isLength(e.target.value) && e.target.value.length === '') {
+                this.setState({ renterNameError: false, errorMessageRenterName: '' })
+            } else if (e.target.value.length === 0) {
                 console.log("")
-                this.setState({ renterNameError : true, errorMessageRenterName: 'Invalid Renter Name'})
+                this.setState({ renterNameError: true, errorMessageRenterName: 'Invalid Renter Name' })
             }
             else {
-                this.setState({ renterNameError : true, errorMessageRenterName: ''})
+                this.setState({ renterNameError: true, errorMessageRenterName: '' })
             }
-        }else {
+        } else {
             let leadForm = this.state.leadForm;
             leadForm = {
                 ...leadForm,
@@ -229,7 +246,7 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         });
     }
-    onChange (e) {
+    onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     inputChangeHandlerDate = (date) => {
@@ -373,7 +390,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
@@ -381,12 +398,12 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupPhno">
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber"  placeholder="Phone No." onChange={this.handleChange} />
+                                <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
                                 {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : <span></span>}
                             </Form.Group>
                         </Col>
                         <Col md={3}>
-                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date"  onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
+                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
                         </Col>
                         <Col md={3}>
                             <Form.Group controlId="formGroupRent">
@@ -499,7 +516,8 @@ class BusinessAddNewModal extends Component {
                             />
                             : null
                     }
-                    <Button type="submit"  onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
+                    <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
+                    <div className="text-danger font-size-10"> {this.state.errorMessage_submit}</div>
                 </Form>
             </React.Fragment>
         )
