@@ -93,7 +93,7 @@ class FinalizedSupplier extends Component {
     }
     // openModalHandler = () => this.setState({ "isModalShowing": true })
     // closeModalHandler = () => this.setState({ "isModalShowing": false })
-    render () {
+    render() {
         return (
             <React.Fragment>
                 <Card className="mx-auto p-3 my-3">
@@ -187,23 +187,23 @@ class FinalizedSupplier extends Component {
                         <Button variant="outline-danger" size="sm" block onClick={this.serviceChanger}>Submit</Button>
                     </Modal.Body>
                 </Modal> */}
-                {this.state.isServiceModalShowing ?
-                    <SweetAlert
-                        title={<div className="fontGilroyMedium font-size-15 text-dark text-capitalize mb-2 mt-2">{this.state.titleOfAlert}</div>}
-                        onConfirm={this.closeServiceModalHandler}
-                        onCancel={this.closeServiceModalHandler}
-                        customButtons={
+                {
+                    this.state.isServiceModalShowing ?
+                        <SweetAlert
+                            title={<div className="fontGilroyMedium font-size-15 text-dark text-capitalize mb-2 mt-2">{this.state.titleOfAlert}</div>}
+                            onConfirm={this.closeServiceModalHandler}
+                            onCancel={this.closeServiceModalHandler}
+                            customButtons={
+                                <React.Fragment>
+                                    <Button variant="danger" size="sm" className="w-30 m-2" onClick={this.closeServiceModalHandler}>Close</Button>
+                                    <Button variant="primary" size="sm" className="w-30 m-2" onClick={this.dummyUploadApiCall}>Submit</Button>
+                                </React.Fragment>
+                            }>
                             <React.Fragment>
-                                <Button variant="danger" size="sm" className="w-30 m-2" onClick={this.closeServiceModalHandler}>Close</Button>
-                                <Button variant="primary" size="sm" className="w-30 m-2" onClick={this.dummyUploadApiCall}>Submit</Button>
+                                <input type="file" id="file" className="form-control" />
                             </React.Fragment>
-                        }
-                    >
-                        <React.Fragment>
-                            <input type="file" id="file" className="form-control" />
-                        </React.Fragment>
-                    </SweetAlert>
-                    : null
+                        </SweetAlert>
+                        : null
                 }
             </React.Fragment>
         )

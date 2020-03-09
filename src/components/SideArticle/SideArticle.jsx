@@ -35,13 +35,13 @@ class SideArticle extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
         this.backButtonHandler();
     }
 
-    componentWillReceiveProps (nextProps) {
-        console.log('nextProps',nextProps);
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
         this.setState({
             leadUuid: nextProps.leadinfo[0].lead_uuid,
             leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
@@ -81,7 +81,7 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
+    changeLeadStatus(leadDetId, newStatus, source, supplierName) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (res.message === 'lead status updated.') {
@@ -181,7 +181,7 @@ class SideArticle extends Component {
         }
     }
 
-    handleChange (e) {
+    handleChange(e) {
         let currentList = []
         let displayedContacts, searchQuery;
         if (e.target.value !== "") {
@@ -212,7 +212,7 @@ class SideArticle extends Component {
         });
     };
 
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
