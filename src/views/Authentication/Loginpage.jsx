@@ -43,7 +43,7 @@ export class Loginpage extends Component {
                     this.failedNotification();
                 }
                 else {
-                    console.log(res);
+                    // console.log(res);
                     this.successNotification(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);

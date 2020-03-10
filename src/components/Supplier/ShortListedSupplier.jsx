@@ -51,7 +51,7 @@ class ShortListedSupplier extends Component {
                                         <div>
                                             <FaRegCheckCircle className="text-center font-size-22" onClick={() => { this.props.finalize(this.props.data.leadDet_id, 'FINALIZED', 'ACTIVE', this.props.data.equipmentName); }} />
                                         </div>
-                                        <div className="font-size-07">Finalize</div>
+                                        <div className="font-size-07">Finalise</div>
                                     </Col>
                                     <Col md={9} className="my-auto text-center">
                                         <div>lead_uuid</div>

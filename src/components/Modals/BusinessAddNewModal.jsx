@@ -84,14 +84,14 @@ class BusinessAddNewModal extends Component {
             }
             else {
                 this.setState({ supplierDetails: { "name": null } })
-                console.log('Get Details of Supplier', this.state.supplierDetails)
+                // console.log('Get Details of Supplier', this.state.supplierDetails)
             }
         }
     }
 
     createNewLead = async (e) => {
         e.preventDefault();
-        console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
+        // console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
         if (this.state.supplierPhoneNo === null || this.state.leadForm.lead_date === null || this.state.lead_contactPerson === null) {
             this.setState({
                 'errorMessage_submit': '',

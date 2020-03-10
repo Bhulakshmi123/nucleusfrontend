@@ -428,18 +428,18 @@ search_icon .mrn-18 {margin-right: -18% !important;}
 
 .bg-moodIndigo {background-color: #9c27b0 !important;}
 .bg-bloodIndigo {background-color: #4a148c !important;}
-.bg-bluefuchsia, .moved {background-color: #154D7B !important;}
+.bg-bluefuchsia {background-color: #154D7B !important;}
 .bg-darkbluefuchisa {background-color: #081B2D !important;}
 .bg-lightgray {background-color: #EAE8EC !important;}
 .bg-lightestgray {background-color: #F0F0F0 !important;}
 .bg-tealGreen {background-color:#215763 !important;}
-.bg-brickRed, .rejected {background-color: #d50000 !important;}
-.bg-moodIndigo{background-color: #9c27b0 !important;}
-.bg-primary, .new  {background-color:#007aff !important;}
-.bg-success, .active {background-color:#27a844 !important;}
-.bg-danger, .deleted {background-color:#dd3546 !important;}
+.bg-brickRed {background-color: #d50000 !important;}
+.bg-moodIndigo {background-color: #9c27b0 !important;}
+.bg-primary {background-color:#007aff !important;}
+.bg-success {background-color:#27a844 !important;}
+.bg-danger {background-color:#dd3546 !important;}
 .bg-warning {background-color:#fec107 !important;}
-.bg-dark{background-color: #262626 !important;}
+.bg-dark {background-color: #262626 !important;}
 
 .hovertext-bloodIndigo:hover {color: #4a148c !important;}
 .hovertext-brickRed:hover {color: #d50000 !important;}

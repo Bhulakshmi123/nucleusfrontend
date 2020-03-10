@@ -113,7 +113,7 @@ class FinalizedSupplier extends Component {
                                     <div>
                                         <FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
-                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalized</div>
+                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalised</div>
                                 </Col>
                                 <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="INSPECTION" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Inspection Document')}>
                                     <div>

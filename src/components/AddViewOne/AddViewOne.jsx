@@ -7,7 +7,7 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        console.log('Add View One', this.props);
+        // console.log('Add View One', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -16,15 +16,13 @@ class AddViewOne extends Component {
             propsCommandText: ''
         }
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
-        console.log('Neom', btnTitleValue, propsCommandTextValue);
         this.setState({ isSweetAlertShowing: true });
         this.setState({ btnTitle: btnTitleValue });
         this.setState({ propsCommandText: propsCommandTextValue });
-        console.log('This is Videos', this.state);
     }
     closeSweetAlert = () => {
         this.setState({ isSweetAlertShowing: false });
@@ -44,17 +42,17 @@ class AddViewOne extends Component {
     };
     successNotification = () => {
         toast("Lead Details are Updated", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.BOTTOM_RIGHT,
             className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Updated Lead Details", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.BOTTOM_RIGHT,
             className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
         });
     };
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Container fluid>
@@ -273,7 +271,7 @@ class AddViewOne extends Component {
                             }
                         >
                             Please Click {this.state.btnTitle} to {this.state.btnTitle} the Lead
-                  </SweetAlert>
+                        </SweetAlert>
                         : null
                 }
             </React.Fragment>

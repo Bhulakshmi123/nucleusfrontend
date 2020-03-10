@@ -12,6 +12,8 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SweetAlert from 'react-bootstrap-sweetalert';
+
 class AddViewThree extends Component {
     constructor(props) {
         super(props)
@@ -67,10 +69,24 @@ class AddViewThree extends Component {
             redirectPath: '',
             checkedProjects: [],
             chosenCategory: 0,
-            requestBidsCount: 0
+            requestBidsCount: 0,
+            isSweetAlertShowing: false,
+            btnTitle: '',
+            propsCommandText: ''
         })
     }
     pageRedirectFunction = () => { this.setState({ redirect: true, redirectPath: 'leaduuid' }) }
+
+    openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
+        this.setState({ isSweetAlertShowing: true });
+        this.setState({ btnTitle: btnTitleValue });
+        this.setState({ propsCommandText: propsCommandTextValue });
+    }
+
+    closeSweetAlert = () => {
+        this.setState({ isSweetAlertShowing: false });
+    }
+
     renderRedirect = () => {
         if (this.state.redirect && this.state.redirectPath === 'active') {
             return (<Redirect to="/business/leads/active"></Redirect>)
@@ -108,6 +124,7 @@ class AddViewThree extends Component {
             }
         }
     }
+
     checkBoxHandler = (keyCoin, supplierUuid, Uuid, equipmentType) => {
         let intermediateResult = this.state.checkedProjects.filter((provider) => {
             return provider.key !== keyCoin
@@ -121,18 +138,21 @@ class AddViewThree extends Component {
             this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
         }
     }
+
     requestBidCountNotifier = () => {
         toast("Please Select At Least one Supplier", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05 '
         });
     };
+
     smsStatusDisplay = () => {
         toast("This Feature is Still Under Development", {
             position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-primary text-white fontGilroyBold bor-rad-05 '
+            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05 '
         });
     };
+
     render () {
         return (
             <React.Fragment>
@@ -143,8 +163,10 @@ class AddViewThree extends Component {
                         <Col md={6} className="pr-0 my-auto">
                             <ButtonGroup size="sm" className="float-right my-auto mr-2">
                                 <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
-                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button>
+                                {/* <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button> */}
+                                {/* <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button> */}
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.openSweetAlert('Reject', 'REJECTED')}>Reject</Button>
+                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.openSweetAlert('Move', 'MOVED')}>Move to Projects</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
@@ -239,6 +261,30 @@ class AddViewThree extends Component {
                         <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
+                {
+                    this.state.isSweetAlertShowing ?
+                        <SweetAlert
+                            warning
+                            title="Are You Sure ?"
+                            onConfirm={this.closeSweetAlert}
+                            onCancel={this.closeSweetAlert}
+                            timeout={5000}
+                            customButtons={
+                                <React.Fragment>
+                                    <Button variant="danger" className="w-30 m-2" size="sm" onClick={this.closeSweetAlert}>Close</Button>
+                                    {
+                                        this.state.btnTitle === 'Reject' ?
+                                            <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.statusChanger(this.props.formData.leadDet_id, this.state.propsCommandText, 'ACTIVE', this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                            :
+                                            <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                    }
+                                </React.Fragment>
+                            }
+                        >
+                            Please Click {this.state.btnTitle} Button to {this.state.btnTitle} the Lead
+                        </SweetAlert>
+                        : null
+                }
             </React.Fragment>
         )
     }

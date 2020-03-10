@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        console.log('Side Article', this.props);
+        // console.log('Side Article', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -35,12 +35,12 @@ class SideArticle extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
+    componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
         this.backButtonHandler();
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
         console.log('nextProps', nextProps);
         this.setState({
             leadUuid: nextProps.leadinfo[0].lead_uuid,
@@ -81,7 +81,7 @@ class SideArticle extends Component {
         }
     }
 
-    changeLeadStatus(leadDetId, newStatus, source, supplierName) {
+    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
         let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (res.message === 'lead status updated.') {
@@ -95,6 +95,7 @@ class SideArticle extends Component {
                         this.setRedirect(data.newStatus);
                     }
                 }
+
                 if (data.newStatus === "DELETED") {
                     if (this.state.filtered.length > 1) {
                         this.successNotification(supplierName, leadDetId, 'is Removed');
@@ -105,6 +106,7 @@ class SideArticle extends Component {
                         this.setRedirect(data.newStatus);
                     }
                 }
+
                 if (data.newStatus === "REJECTED") {
                     if (this.state.filtered.length > 1) {
                         this.successNotification(supplierName, leadDetId, 'is Rejected');
@@ -115,6 +117,7 @@ class SideArticle extends Component {
                         this.setRedirect(data.newStatus);
                     }
                 }
+
                 if (data.newStatus === "FINALIZED") {
                     this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
                     this.successNotification(supplierName, leadDetId, 'is Finalized');
@@ -132,7 +135,6 @@ class SideArticle extends Component {
             "leadId": leadId.toString(),
             "leadDetId": [leadDetId.toString()]
         }
-        console.log('Move To Projects Data', data);
         moveToProjects(data, this.state.token).then((res) => {
             if (res) {
                 if (this.state.filtered.length > 1) {
@@ -181,7 +183,7 @@ class SideArticle extends Component {
         }
     }
 
-    handleChange(e) {
+    handleChange (e) {
         let currentList = []
         let displayedContacts, searchQuery;
         if (e.target.value !== "") {
@@ -212,7 +214,7 @@ class SideArticle extends Component {
         });
     };
 
-    render() {
+    render () {
         return (
             <React.Fragment>
                 {this.renderBasedOnRedirect()}
@@ -257,7 +259,7 @@ class SideArticle extends Component {
                 <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
                     {this.state.isApiCallSuccessful === true ?
                         <Switch>
-                            <Route path="/business/leads/lead/active/suppliersList">
+                            <Route path="/business/leads/lead/suppliersList/active/:id">
                                 <AddViewThree
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.specificEquipmentSupplierDetails}
