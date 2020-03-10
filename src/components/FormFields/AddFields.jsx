@@ -106,7 +106,7 @@ class AddFields extends React.Component {
                         <Form.Group controlId="formGroupPhno">
                             <Form.Label className="font_stle">
                                 Model</Form.Label>
-                            <Form.Control type="text" name="lead_modal" placeholder="Equipment Modal" value={this.props.equipmentForm.lead_modal || ''} onChange={this.props.equipInputChangeHandler} />
+                            <Form.Control type="text" name="lead_modal" placeholder="Equipment Model" value={this.props.equipmentForm.lead_modal || ''} onChange={this.props.equipInputChangeHandler} />
                             {/* <span className="lead_modal_error">{this.props.equipmentForm.lead_modal_error}</span> */}
                         </Form.Group>
                     </Col>

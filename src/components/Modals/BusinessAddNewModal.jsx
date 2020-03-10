@@ -94,15 +94,11 @@ class BusinessAddNewModal extends Component {
         // console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
         if (this.state.supplierPhoneNo === null || this.state.leadForm.lead_date === null || this.state.lead_contactPerson === null) {
             this.setState({
-                'errorMessage_submit': '',
-                // 'errorMessage_submit' : ( (this.state.supplierPhoneNo === '' || this.state.leadForm.lead_date === '' || this.state.lead_contactPerson === '' ) ? <span></span> : 'Please Fill The Required Fields')
-            })
-        } else if(this.state.supplierPhoneNo === 0 || this.state.leadForm.lead_date === 0 || this.state.lead_contactPerson === 0 ){
-            this.setState({
                 'errorMessage_submit': 'Please Fill The Required Fields',
                 // 'errorMessage_submit' : ( (this.state.supplierPhoneNo === '' || this.state.leadForm.lead_date === '' || this.state.lead_contactPerson === '' ) ? <span></span> : 'Please Fill The Required Fields')
             })
         }
+        
         else {
             // console.log('state', this.state.leadForm, this.state);
             let data = {
@@ -149,7 +145,7 @@ class BusinessAddNewModal extends Component {
     // getLeadInformation = async ()
     handleChange(e) {
         if (e.target.type === 'text') {
-            if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length == 10) {
                 this.getSupplierDetails(e.target.value)
                 this.setState({ userMobileError: false, errorMessageMobileNo: '' });
             }
@@ -419,7 +415,6 @@ class BusinessAddNewModal extends Component {
                             </Form.Group>
                         </Col>
                     </Form.Row>
-
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
