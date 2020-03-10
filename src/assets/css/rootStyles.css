@@ -594,3 +594,6 @@ a[disabled] {
     list-style-type: none;
     cursor: not-allowed;
 }
+.btn.disabled, .btn:disabled {
+    cursor: not-allowed !important;
+}

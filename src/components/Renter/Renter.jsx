@@ -54,7 +54,7 @@ class Renter extends Component {
                                             <div className="font-size-07 text-muted">Work Order</div>
                                         </Col>
                                         <Col md={2} className="my-auto px-0">
-                                            <Button variant="primary" size="sm" block onClick={this.openModalHandler}><i className="fas fa-edit mx-2"></i>Edit Price</Button>
+                                            <Button variant="primary" size="sm" block onClick={this.openModalHandler} disabled={this.props.btnDisabled}><i className="fas fa-edit mx-2"></i>Edit Price</Button>
                                         </Col>
                                     </React.Fragment> :
                                     null

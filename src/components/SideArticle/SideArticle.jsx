@@ -41,7 +41,7 @@ class SideArticle extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        console.log('nextProps', nextProps);
+        // console.log('nextProps', nextProps);
         this.setState({
             leadUuid: nextProps.leadinfo[0].lead_uuid,
             leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
@@ -136,6 +136,7 @@ class SideArticle extends Component {
             "leadDetId": [leadDetId.toString()]
         }
         moveToProjects(data, this.state.token).then((res) => {
+            console.log('MoveToProjects',res);
             if (res) {
                 if (this.state.filtered.length > 1) {
                     this.successNotification(supplierName, leadDetId, 'is Moved To Projects');
@@ -289,7 +290,9 @@ class SideArticle extends Component {
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     moveToProjects={this.moveToProjects}
                                     labelStatus='d-none'
-                                    buttonStatus='d-visible'>
+                                    labelText= {null}
+                                    buttonStatus='d-visible'
+                                    btnDisabled='false'>
                                 </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/deleted/:id">
@@ -307,14 +310,22 @@ class SideArticle extends Component {
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     moveToProjects={this.moveToProjects}
                                     labelStatus='d-visible'
-                                    buttonStatus='d-none'>
+                                    labelText='this lead was Rejected'
+                                    buttonStatus='d-none'
+                                    btnDisabled='true'>
                                 </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/moved/:id">
-                                <AddViewOne
+                            <AddViewTwo
                                     formData={this.state.specificEquipmentsDetails}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
-                                </AddViewOne>
+                                    supplierData={this.state.supplierData}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-visible'
+                                    labelText='this lead was Moved'
+                                    buttonStatus='d-none'
+                                    btnDisabled='true'>
+                                </AddViewTwo>
                             </Route>
                         </Switch>
                         : null

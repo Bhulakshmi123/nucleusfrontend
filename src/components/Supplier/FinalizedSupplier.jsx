@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
+        // console.log('Finalised Supplier',this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -165,7 +166,7 @@ class FinalizedSupplier extends Component {
                             <div className="text-dark font-size-08 fontGilroyMedium text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                            <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)} disabled={this.props.btnDisabled}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                         </Col>
                     </Row>
                 </Card>
