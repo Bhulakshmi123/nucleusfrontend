@@ -13,7 +13,6 @@ class Projects extends Component {
   }
   deleteThisGoal = () => {
     this.setState({ alert: true });
-    console.log('This is Being Called', this.state.alert);
   }
   hideAlert = () => {
     this.setState({ alert: false });
@@ -22,21 +21,10 @@ class Projects extends Component {
     return (
       <React.Fragment>
         {this.state.alert ? <SweetAlert title="Here's a message!" onConfirm={this.hideAlert} /> : null}
-        {/* <SweetAlert
-          input
-          inputType="password"
-          showCancel
-          cancelBtnBsStyle="default"
-          title="Upload Documents"
-          placeHolder="Upload A Document"
-          onConfirm={(response) => this.onReceiveInput(response)}
-          onCancel={this.onCancel}>Write something interesting:
-          </SweetAlert> */}
-
         <div className="mainContent">
           <h1 className="text-white text-center mt-5">Under Maintenance</h1>
           <div className="w-100 text-center">
-            <Button variant="outline-warning" size="sm" onCslick={this.deleteThisGoal}>Demo Alert Box</Button>
+            <Button variant="outline-warning" size="sm" onClick={this.deleteThisGoal}>Demo Alert Box</Button>
           </div>
         </div>
       </React.Fragment>

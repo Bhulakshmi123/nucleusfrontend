@@ -14,7 +14,6 @@ const Sidebar = (props) => {
   //   return (
   //     <Redirect to="/projects"></Redirect>
   //   )
-  //   console.log('Deo');
   // }
   if (sidebarView === true) {
     return (

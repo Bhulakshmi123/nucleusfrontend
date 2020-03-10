@@ -6,14 +6,10 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 export class ArticleHeader extends Component {
     constructor(props) {
         super(props);
-        console.log('Article Header', this.props);
+        // console.log('Article Header', this.props);
         this.state = {
             isShowing: false,
         }
-    }
-    componentDidMount () {
-        // console.log('Ne,o')
-        // this.props.getLeads('new');
     }
     handleChange = (e) => {
         e.preventDefault();

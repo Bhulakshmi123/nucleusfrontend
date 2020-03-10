@@ -7,6 +7,7 @@ import FinalizedSupplier from '../Supplier/FinalizedSupplier';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import ShortListedSupplier from '../Supplier/ShortListedSupplier';
 import { DefaultCard } from '../DefaultCard/DefaultCard';
+import SweetAlert from 'react-bootstrap-sweetalert';
 class AddViewTwo extends Component {
     constructor(props) {
         super(props)
@@ -16,13 +17,27 @@ class AddViewTwo extends Component {
             isModalShowing: false,
             userUuid: userUuid,
             token: token,
+            isSweetAlertShowing: false,
+            btnTitle: '',
+            propsCommandText: ''
         }
     }
 
-    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
+    openModalHandler = () => {
+        this.setState({ "isModalShowing": true })
+    }
 
-    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
-
+    closeModalHandler = () => {
+        this.setState({ "isModalShowing": false })
+    }
+    openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
+        this.setState({ isSweetAlertShowing: true });
+        this.setState({ btnTitle: btnTitleValue });
+        this.setState({ propsCommandText: propsCommandTextValue });
+    }
+    closeSweetAlert = () => {
+        this.setState({ isSweetAlertShowing: false });
+    }
     render () {
         return (
             <React.Fragment>
@@ -34,11 +49,13 @@ class AddViewTwo extends Component {
                         <Col md={6} className={`my-auto ${this.props.buttonStatus}`}>
                             <ButtonGroup className="float-right my-auto">
                                 <i className="fab fa-gg-circle text-center font-size-20 hovertext-bluefuchisa cursor-pointer mr-3" onClick={this.openModalHandler}></i>
-                                <Link to={`/business/leads/lead/active/suppliersList`}>
+                                <Link to={`/business/leads/lead/suppliersList/active/${this.props.formData.lead_uuid}`}>
                                     <Button variant="primary" className="mx-1 px-3 bor-rad-03" size="sm" >Supplier List</Button>
                                 </Link>
-                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button>
-                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button>
+                                {/* <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button> */}
+                                {/* <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button> */}
+                                <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.openSweetAlert('Reject', 'REJECTED')}>Reject</Button>
+                                <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" name="CLOSED" onClick={() => this.openSweetAlert('Move', 'MOVED')}>Move To Projects</Button>
                             </ButtonGroup>
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.labelStatus}`}></Col>
@@ -46,16 +63,16 @@ class AddViewTwo extends Component {
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Rejected</div>
                         </Col>
                     </Row>
-                    <div className="text-center text-white w-25 bg-moodIndigo  py-1 bor-rad-02 boxShadow-4bpx">RENTER INFORMATION</div>
+                    <div className="text-center text-white w-25 bg-bluefuchsia  py-1 bor-rad-02 boxShadow-4bpx text-uppercase">Renter Information</div>
                     <div className="my-3">
                         <Renter editFunction={this.openModalHandler} formData={this.props.formData}></Renter>
                     </div>
-                    <div className="mt-3 text-center text-white w-25 bg-bloodIndigo py-1 bor-rad-02 boxShadow-4bpx">FINALIZED SUPPLIERS</div>
+                    <div className="mt-3 text-center text-white w-25 bg-bluefuchsia py-1 bor-rad-02 boxShadow-4bpx text-uppercase">Finalised Supplier's</div>
                     <div>
                         {
                             this.props.supplierData.finalized.length === 0 ?
                                 <div>
-                                    <DefaultCard md={12}>No Finalized Suppliers are Available to Display</DefaultCard>
+                                    <DefaultCard md={12}>No Finalised Suppliers are Available to Display</DefaultCard>
                                 </div> :
                                 this.props.supplierData.finalized.map((prop, key) => {
                                     return (
@@ -64,7 +81,7 @@ class AddViewTwo extends Component {
                                 })
                         }
                     </div>
-                    <div className="text-center text-white w-25 bg-brickRed py-1 bor-rad-02 boxShadow-4bpx">SHORTLISTED SUPPLIERS</div>
+                    <div className="text-center text-white w-25 bg-bluefuchsia py-1 bor-rad-02 boxShadow-4bpx text-uppercase">Shortlisted Supplier's</div>
                     <div className="mb-5 pb-5">
                         {
                             this.props.supplierData.shortlisted.length === 0 ?
@@ -85,6 +102,30 @@ class AddViewTwo extends Component {
                         <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
+                {
+                    this.state.isSweetAlertShowing ?
+                        <SweetAlert
+                            warning
+                            title="Are You Sure ?"
+                            onConfirm={this.closeSweetAlert}
+                            onCancel={this.closeSweetAlert}
+                            timeout={5000}
+                            customButtons={
+                                <React.Fragment>
+                                    <Button variant="danger" className="w-30 m-2" size="sm" onClick={this.closeSweetAlert}>Close</Button>
+                                    {
+                                        this.state.btnTitle === 'Reject' ?
+                                            <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.statusChanger(this.props.formData.leadDet_id, this.state.propsCommandText, 'NEW', this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                            :
+                                            <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                    }
+                                </React.Fragment>
+                            }
+                        >
+                            Please Click {this.state.btnTitle} Button to {this.state.btnTitle} the Lead
+                        </SweetAlert>
+                        : null
+                }
             </React.Fragment >
         )
     }

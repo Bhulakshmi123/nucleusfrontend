@@ -109,31 +109,31 @@ class FinalizedSupplier extends Component {
                                 <Col md={1} className="text-center my-auto">
                                     <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="FINALIZED" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Finalized Document')}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa cursor-pointer" data-id="FINALIZED" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Finalized Document')}>
                                     <div>
                                         <FaRegCheckCircle className={this.state.finalizedStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
-                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalized</div>
+                                    <div className={this.state.finalizedStatus ? "text-success font-size-07" : "font-size-07"}>Finalised</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="INSPECTION" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Inspection Document')}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa cursor-pointer" data-id="INSPECTION" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Inspection Document')}>
                                     <div>
                                         <FaRegCheckCircle className={this.state.inspectionStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
                                     <div className={this.state.inspectionStatus ? "text-success font-size-07" : "font-size-07"}>Inspection</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="FIELDVISIT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Field Visit Document')}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa cursor-pointer" data-id="FIELDVISIT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Field Visit Document')}>
                                     <div>
                                         <FaRegCheckCircle className={this.state.felidVisitStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
                                     <div className={this.state.felidVisitStatus ? "text-success font-size-07" : "font-size-07"}>Felid Visit</div>
                                 </Col>
-                                <Col md={2} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="AGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Agreement Document')}>
+                                <Col md={2} className="text-center my-auto  hovertext-bluefuchisa cursor-pointer" data-id="AGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Agreement Document')}>
                                     <div>
                                         <FaRegCheckCircle className={this.state.agreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
                                     <div className={this.state.agreementStatus ? "text-success font-size-07" : "font-size-07"}>Agreement</div>
                                 </Col>
-                                <Col md={3} className="text-center my-auto  hovertext-bloodIndigo cursor-pointer" data-id="SIGNEDAGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Signed Agreement Document')}>
+                                <Col md={3} className="text-center my-auto  hovertext-bluefuchisa cursor-pointer" data-id="SIGNEDAGREEMENT" onClick={(newStatus) => this.getServiceData(this.props.data.lead_id, this.props.data.leadDet_id, this.props.data.leadDet_uuid, newStatus, this.props.data.leadDet_createdBy, 'Upload Signed Agreement Document')}>
                                     <div>
                                         <FaRegCheckCircle className={this.state.signedAgreementStatus ? "text-success text-center font-size-22" : "text-center font-size-22"} />
                                     </div>
@@ -179,31 +179,23 @@ class FinalizedSupplier extends Component {
                         <AddFieldsPro leadUuid={this.state.leadUuid} leadDetUuid={this.state.leadDetUuid}></AddFieldsPro>
                     </Modal.Body>
                 </Modal>
-                {/* <Modal show={this.state.isServiceModalShowing} onHide={this.closeServiceModalHandler} size="md">
-                    <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
-                        <Modal.Title id="contained-modal-title-lg">Upload Documents</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body >
-                        <Button variant="outline-danger" size="sm" block onClick={this.serviceChanger}>Submit</Button>
-                    </Modal.Body>
-                </Modal> */}
-                {this.state.isServiceModalShowing ?
-                    <SweetAlert
-                        title={<div className="fontGilroyMedium font-size-15 text-dark text-capitalize mb-2 mt-2">{this.state.titleOfAlert}</div>}
-                        onConfirm={this.closeServiceModalHandler}
-                        onCancel={this.closeServiceModalHandler}
-                        customButtons={
+                {
+                    this.state.isServiceModalShowing ?
+                        <SweetAlert
+                            title={<div className="fontGilroyMedium font-size-15 text-dark text-capitalize mb-2 mt-2">{this.state.titleOfAlert}</div>}
+                            onConfirm={this.closeServiceModalHandler}
+                            onCancel={this.closeServiceModalHandler}
+                            customButtons={
+                                <React.Fragment>
+                                    <Button variant="danger" size="sm" className="w-30 m-2" onClick={this.closeServiceModalHandler}>Close</Button>
+                                    <Button variant="primary" size="sm" className="w-30 m-2" onClick={this.dummyUploadApiCall}>Submit</Button>
+                                </React.Fragment>
+                            }>
                             <React.Fragment>
-                                <Button variant="danger" size="sm" className="w-30 m-2" onClick={this.closeServiceModalHandler}>Close</Button>
-                                <Button variant="primary" size="sm" className="w-30 m-2" onClick={this.dummyUploadApiCall}>Submit</Button>
+                                <input type="file" id="file" className="form-control" />
                             </React.Fragment>
-                        }
-                    >
-                        <React.Fragment>
-                            <input type="file" id="file" className="form-control" />
-                        </React.Fragment>
-                    </SweetAlert>
-                    : null
+                        </SweetAlert>
+                        : null
                 }
             </React.Fragment>
         )

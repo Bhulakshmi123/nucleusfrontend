@@ -165,15 +165,20 @@ class BusinessMCard extends Component {
                                                                             <Row>
                                                                                 <Col md={5} className="my-auto text-dark">
                                                                                     <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
-                                                                                    <div className="text-capitalize"><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_location ? null : 'Location is Not Available'}</div>
+                                                                                    <div className="text-capitalize">
+                                                                                        <FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_location ? null : 'Location is Not Available'}
+                                                                                    </div>
                                                                                 </Col>
                                                                                 <Col md={3} className="my-auto text-dark">
-                                                                                    <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
-                                                                                    <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
+                                                                                    <div className="text-capitalize font-size-10">
+                                                                                        <i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}
+                                                                                    </div>
                                                                                 </Col>
                                                                                 <Col md={2} className="my-auto">
-                                                                                    <div className={`card text-center 
-                                                                                    py-1 mx-2 text-white text-uppercase ${this.state.leadType}`}>{this.state.leadType}</div>
+                                                                                    <div className="card text-center py-1 mx-2 text-white text-uppercase bg-bluefuchsia">{this.state.leadType}</div>
                                                                                 </Col>
                                                                                 <Col md={2} className="my-auto text-dark text-center">
                                                                                     <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>

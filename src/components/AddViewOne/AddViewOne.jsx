@@ -3,20 +3,29 @@ import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SweetAlert from 'react-bootstrap-sweetalert';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
-        console.log('Add View One', this.props);
+        // console.log('Add View One', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
-            token: token
+            token: token,
+            isSweetAlertShowing: false,
+            btnTitle: '',
+            propsCommandText: ''
         }
-    }
-    componentWillReceiveProps () {
-
     }
     onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
+    }
+    openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
+        this.setState({ isSweetAlertShowing: true });
+        this.setState({ btnTitle: btnTitleValue });
+        this.setState({ propsCommandText: propsCommandTextValue });
+    }
+    closeSweetAlert = () => {
+        this.setState({ isSweetAlertShowing: false });
     }
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
@@ -33,13 +42,13 @@ class AddViewOne extends Component {
     };
     successNotification = () => {
         toast("Lead Details are Updated", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.BOTTOM_RIGHT,
             className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
         });
     };
     failedNotification = () => {
         toast("Failed to Updated Lead Details", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.BOTTOM_RIGHT,
             className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
         });
     };
@@ -52,10 +61,12 @@ class AddViewOne extends Component {
                             <h3 className="mb-0 my-auto text-capitalize">{this.props.formData.equipmentName}</h3>
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
-                            <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW', this.props.formData.equipmentName)}>Remove</Button>
+                            <Button variant="danger" size="sm" block onClick={() => this.openSweetAlert('Remove', 'DELETED')}>Remove</Button>
+                            {/* <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW', this.props.formData.equipmentName)}>Remove</Button> */}
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
-                            <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button>
+                            <Button variant="success" size="sm" block onClick={() => this.openSweetAlert('Activate', 'ACTIVATED')}>Activate Lead</Button>
+                            {/* <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button> */}
                         </Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
@@ -244,6 +255,25 @@ class AddViewOne extends Component {
                         </Col>
                     </Row>
                 </Container>
+                {
+                    this.state.isSweetAlertShowing ?
+                        <SweetAlert
+                            warning
+                            title="Are You Sure ?"
+                            onConfirm={this.closeSweetAlert}
+                            onCancel={this.closeSweetAlert}
+                            timeout={5000}
+                            customButtons={
+                                <React.Fragment>
+                                    <Button variant="danger" className="w-30 m-2" size="sm" onClick={this.closeSweetAlert}>Close</Button>
+                                    <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.statusChanger(this.props.formData.leadDet_id, this.state.propsCommandText, 'NEW', this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                </React.Fragment>
+                            }
+                        >
+                            Please Click {this.state.btnTitle} to {this.state.btnTitle} the Lead
+                        </SweetAlert>
+                        : null
+                }
             </React.Fragment>
         )
     }

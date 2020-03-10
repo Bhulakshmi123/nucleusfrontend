@@ -23,8 +23,8 @@ class ViewDetails extends Component {
         let url = window.location.href.split('/');
         let finalPayload = url[url.length - 1] + '/' + url[url.length - 2];
         let response = await getLeadInformation(finalPayload, this.state.token);
+        console.log('getLeadInformation API is Called', response);
         if (response) {
-            console.log('getLeadInformation API is Called');
             this.setState({ "leadInformation": response.data })
             this.setState({ "isApiCallSuccessful": true })
         }

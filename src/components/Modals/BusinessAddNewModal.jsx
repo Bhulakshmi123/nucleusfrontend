@@ -86,7 +86,7 @@ class BusinessAddNewModal extends Component {
             }
             else {
                 this.setState({ supplierDetails: { "name": null } })
-                console.log('Get Details of Supplier', this.state.supplierDetails)
+                // console.log('Get Details of Supplier', this.state.supplierDetails)
             }
         }
     }
