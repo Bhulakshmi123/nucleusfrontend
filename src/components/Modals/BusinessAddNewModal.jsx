@@ -145,7 +145,7 @@ class BusinessAddNewModal extends Component {
     // getLeadInformation = async ()
     handleChange(e) {
         if (e.target.type === 'text') {
-            if (validator.isMobilePhone(e.target.value) && e.target.value.length == 10) {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
                 this.getSupplierDetails(e.target.value)
                 this.setState({ userMobileError: false, errorMessageMobileNo: '' });
             }
