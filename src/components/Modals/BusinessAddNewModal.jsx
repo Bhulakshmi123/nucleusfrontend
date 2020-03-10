@@ -54,9 +54,11 @@ class BusinessAddNewModal extends Component {
                 { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
             ],
             userMobileError: false,
+            newFromError: false,
             renterNameError: false,
             errorMessageMobileNo: '',
             errorMessageRenterName: '',
+            errorMessageNewFrom: '',
             startDate: new Date(),
             startDateEquip: new Date(),
             equipmentFormCheck: 0,
@@ -91,16 +93,10 @@ class BusinessAddNewModal extends Component {
 
     createNewLead = async (e) => {
         e.preventDefault();
-        // console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
-        if (this.state.supplierPhoneNo === null || this.state.leadForm.lead_date === null || this.state.lead_contactPerson === null) {
-            this.setState({
-                'errorMessage_submit': 'Please Fill The Required Fields',
-                // 'errorMessage_submit' : ( (this.state.supplierPhoneNo === '' || this.state.leadForm.lead_date === '' || this.state.lead_contactPerson === '' ) ? <span></span> : 'Please Fill The Required Fields')
-            })
-        }
-        
-        else {
-            // console.log('state', this.state.leadForm, this.state);
+        if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null) {
+            this.setState({newFromError :false, errorMessageNewFrom: 'Please Fill The Required Fields'})
+        } else {
+            this.setState({newFromError : false, errorMessageNewFrom: ''})
             let data = {
                 "lead_companyUuid": this.state.supplierUuid,
                 "lead_date": this.state.leadForm.lead_date,
@@ -126,23 +122,9 @@ class BusinessAddNewModal extends Component {
             else {
                 this.failedNotification();
                 this.setState({ isEquipmentInfo: false });
-                
             }
         }
     }
-    successNotification = (response) => {
-        toast(response.message + ' Id: [' + response.data[0] + ']', {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
-        });
-    };
-    failedNotification = () => {
-        toast("Failed to Create a New Lead", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
-        });
-    };
-    // getLeadInformation = async ()
     handleChange(e) {
         if (e.target.type === 'text') {
             if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
@@ -164,6 +146,20 @@ class BusinessAddNewModal extends Component {
         //     console.log("Wrong Number")
         // }
     }
+    successNotification = (response) => {
+        toast(response.message + ' Id: [' + response.data[0] + ']', {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
+        });
+    };
+    failedNotification = () => {
+        toast("Failed to Create a New Lead", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+        });
+    };
+    // getLeadInformation = async ()
+    
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
@@ -512,7 +508,8 @@ class BusinessAddNewModal extends Component {
                             : null
                     }
                     <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
-                    <div className="text-danger font-size-10"> {this.state.errorMessage_submit}</div>
+                    {this.state.newFromError ? <span></span> : <div className="text-danger font-size-10">{this.state.errorMessageNewFrom}</div>}
+                    {/* <div className="text-danger font-size-10"> {this.state.errorMessage_submit}</div> */}
                 </Form>
             </React.Fragment>
         )
