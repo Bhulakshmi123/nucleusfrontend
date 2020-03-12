@@ -4,6 +4,7 @@ import SelectInputSearch from '../FormFields/SelectInputSearch';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
@@ -62,17 +63,16 @@ class AddViewOne extends Component {
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
                             <Button variant="danger" size="sm" block onClick={() => this.openSweetAlert('Remove', 'DELETED')}>Remove</Button>
-                            {/* <Button variant="danger" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'DELETED', 'NEW', this.props.formData.equipmentName)}>Remove</Button> */}
                         </Col>
                         <Col md={2} className={`my-auto ${this.props.buttonStatus}`}>
                             <Button variant="success" size="sm" block onClick={() => this.openSweetAlert('Activate', 'ACTIVATED')}>Activate Lead</Button>
-                            {/* <Button variant="success" size="sm" block onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'ACTIVATED', 'NEW', this.props.formData.equipmentName)}>Activate Lead</Button> */}
                         </Col>
                         <Col md={4} className={`my-auto ${this.props.labelStatus}`}>
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
                         </Col>
                     </Row>
-                    <Row className="mt-4">
+                    <AddFieldsPro formData={this.props.formData}></AddFieldsPro>
+                    {/* <Row className="mt-4">
                         <Col md={12}>
                             <React.Fragment>
                                 <Row>
@@ -253,7 +253,7 @@ class AddViewOne extends Component {
                                 </Form.Row>
                             </React.Fragment>
                         </Col>
-                    </Row>
+                    </Row> */}
                 </Container>
                 {
                     this.state.isSweetAlertShowing ?

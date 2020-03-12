@@ -1,9 +1,9 @@
 import { getIPAddress } from './config.js';
 const env = getIPAddress();
 const Service = {
-    fetchGet: async (url, token = null) => {
+    fetchGet: async(url, token = null) => {
         url = env + url;
-        console.log('Final Url', url);
+        // console.log('Final Url', url);
         const headers = {};
         headers['source'] = 'lms';
         if (token) {
@@ -29,9 +29,9 @@ const Service = {
         }
     },
 
-    fetchPost: async (url, body, token = null) => {
+    fetchPost: async(url, body, token = null) => {
         url = env + url;
-        console.log(url);
+        // console.log(url);
         const headers = { 'Content-Type': 'application/json' };
         headers['source'] = 'website';
         if (token) {

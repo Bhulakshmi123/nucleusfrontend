@@ -93,14 +93,19 @@ class BusinessAddNewModal extends Component {
 
     createNewLead = async (e) => {
         e.preventDefault();
-        if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null) {
+        console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
+        if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null || this.state.leadForm.lead_date === null) {
             this.setState({newFromError :false, errorMessageNewFrom: 'Please Fill The Required Fields'})
-        } else {
-            this.setState({newFromError : false, errorMessageNewFrom: ''})
+        }
+        //  else if (this.state.supplierPhoneNo === '' || this.state.lead_contactPerson === '' || this.state.leadForm.lead_date === '' ) {
+        //     this.setState({newFromError : true, errorMessageNewFrom: ''})
+        // }
+        else {
+            // this.setState({newFromError : false, errorMessageNewFrom: ''})
             let data = {
                 "lead_companyUuid": this.state.supplierUuid,
                 "lead_date": this.state.leadForm.lead_date,
-                "lead_contactPerson": 'Walt Disney',
+                "lead_contactPerson": this.state.lead_contactPerson,
                 "lead_contactNumber": this.state.supplierPhoneNo,
                 "lead_createdBy": this.state.supplierUuid,
                 "lead_details": [
@@ -127,12 +132,12 @@ class BusinessAddNewModal extends Component {
     }
     handleChange(e) {
         if (e.target.type === 'text') {
-            if (validator.isMobilePhone(e.target.value) && e.target.value.length == 10) {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
                 this.getSupplierDetails(e.target.value)
                 this.setState({ userMobileError: false, errorMessageMobileNo: '' });
             }
             else if (e.target.value.length === 0) {
-                this.setState({ userMobileError: false, errorMessageMobileNo: 'Invalid Phone Number' });
+                this.setState({ userMobileError: true, errorMessageMobileNo: 'Invalid Phone Number' });
             }
             else {
                 this.setState({ userMobileError: true, errorMessageMobileNo: 'Invalid Phone Number' });
