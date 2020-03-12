@@ -7,6 +7,7 @@ import AddFields from '../FormFields/AddFields';
 import { getSupplierDetails, createNewLead, computeStatesDropDownInForm } from '../../views/Business/actions'
 import * as moment from 'moment';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
@@ -71,7 +72,8 @@ class BusinessAddNewModal extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.onChange = this.onChange.bind(this)
     }
-    componentWillMount() {
+
+    componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
@@ -94,13 +96,13 @@ class BusinessAddNewModal extends Component {
     createNewLead = async (e) => {
         e.preventDefault();
         if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null) {
-            this.setState({newFromError :false, errorMessageNewFrom: 'Please Fill The Required Fields'})
+            this.setState({ newFromError: false, errorMessageNewFrom: 'Please Fill The Required Fields' })
         } else {
-            this.setState({newFromError : false, errorMessageNewFrom: ''})
+            this.setState({ newFromError: false, errorMessageNewFrom: '' })
             let data = {
                 "lead_companyUuid": this.state.supplierUuid,
                 "lead_date": this.state.leadForm.lead_date,
-                "lead_contactPerson": 'Walt Disney',
+                "lead_contactPerson": this.state.lead_contactPerson,
                 "lead_contactNumber": this.state.supplierPhoneNo,
                 "lead_createdBy": this.state.supplierUuid,
                 "lead_details": [
@@ -111,8 +113,9 @@ class BusinessAddNewModal extends Component {
             // this.handleChange{}
             let response = await createNewLead(data, this.state.token);
             if (response) {
-                this.successNotification(response);
-                this.setState({ isEquipmentInfo: false 
+                toastNotification(`${response.message} Id:[${response.data[0]}]`, toast.POSITION.TOP_RIGHT, 'text-success');
+                this.setState({
+                    isEquipmentInfo: false
                 })
                 this.props.modalHider();
                 if (this.state.leadType === 'new') {
@@ -120,12 +123,13 @@ class BusinessAddNewModal extends Component {
                 }
             }
             else {
-                this.failedNotification();
+                toastNotification('Failed to Create a New Lead', toast.POSITION.TOP_RIGHT, 'text-success');
                 this.setState({ isEquipmentInfo: false });
             }
         }
     }
-    handleChange(e) {
+
+    handleChange (e) {
         if (e.target.type === 'text') {
             if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
                 this.getSupplierDetails(e.target.value)
@@ -146,20 +150,8 @@ class BusinessAddNewModal extends Component {
         //     console.log("Wrong Number")
         // }
     }
-    successNotification = (response) => {
-        toast(response.message + ' Id: [' + response.data[0] + ']', {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
-        });
-    };
-    failedNotification = () => {
-        toast("Failed to Create a New Lead", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
-        });
-    };
-    // getLeadInformation = async ()
-    
+
+
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
@@ -238,7 +230,7 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         });
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     inputChangeHandlerDate = (date) => {
@@ -382,7 +374,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >

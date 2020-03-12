@@ -23,7 +23,7 @@ const Service = {
                 return false;
             }
         } catch (e) {
-            console.log(e);
+            console.log('Server Failur Error',e);
             onFailure('network');
             return false;
         }
@@ -50,7 +50,7 @@ const Service = {
                 return false;
             }
         } catch (e) {
-            console.log(e);
+            console.log('Server Failur Error',e);
             return false;
         }
     },

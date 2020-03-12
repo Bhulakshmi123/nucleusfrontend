@@ -7,6 +7,7 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 class FinalizedSupplier extends Component {
     constructor(props) {
@@ -57,6 +58,7 @@ class FinalizedSupplier extends Component {
             this.closeServiceModalHandler();
         })
     }
+
     getServiceData = (leadId, leadDetId, leadDetUuid, newStatus, createdBy, titleOfAlert) => {
         this.setState({
             leadId: leadId.toString(),
@@ -66,8 +68,9 @@ class FinalizedSupplier extends Component {
             createdBy: createdBy,
             titleOfAlert: titleOfAlert
         })
-        this.isServiceModalShowing()
+        this.isServiceModalShowing();
     }
+
     isFinalizedOpen = (bidId, editBid) => {
         this.setState({ "isEditBidShowing": true });
         this.setState({
@@ -75,25 +78,25 @@ class FinalizedSupplier extends Component {
             leadDetUuid: editBid
         })
     }
+
     isFinalizedClose = () => {
-        this.setState({
-            "isEditBidShowing": false
-        })
+        this.setState({ isEditBidShowing: false });
     }
-    successNotification = () => {
-        toast("Document is Uploaded", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
-        });
-    };
-    isServiceModalShowing = () => this.setState({ "isServiceModalShowing": true })
-    closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
+
+
+    isServiceModalShowing = () => {
+        this.setState({ isServiceModalShowing: true });
+    }
+
+    closeServiceModalHandler = () => {
+        this.setState({ isServiceModalShowing: false });
+    }
+
     dummyUploadApiCall = () => {
-        this.setState({ "isServiceModalShowing": false });
-        this.successNotification();
+        this.setState({ isServiceModalShowing: false });
+        toastNotification('Document is Uploaded', toast.POSITION.TOP_RIGHT, 'text-success');
     }
-    // openModalHandler = () => this.setState({ "isModalShowing": true })
-    // closeModalHandler = () => this.setState({ "isModalShowing": false })
+
     render () {
         return (
             <React.Fragment>

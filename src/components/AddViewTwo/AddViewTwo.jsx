@@ -26,12 +26,12 @@ class AddViewTwo extends Component {
     }
 
     componentDidMount() {
-        if(this.props.btnDisabled === 'false') {
-            this.setState({btnDisabledStatus:false});
-        }
-        else {
-            this.setState({btnDisabledStatus:'true'});
-        }
+        this.btnStatusChecker();
+    }
+
+    btnStatusChecker = () => {
+        if(this.props.btnDisabled === 'false') {this.setState({btnDisabledStatus:false})}
+        else {this.setState({btnDisabledStatus:true})}
     }
 
     openModalHandler = () => {

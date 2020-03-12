@@ -3,8 +3,10 @@ import { Button, Col, Form, Card } from 'react-bootstrap';
 import { getClientInfo } from './actions';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 var validator = require('validator');
+
 export class Loginpage extends Component {
     constructor(props) {
         super(props)
@@ -40,16 +42,18 @@ export class Loginpage extends Component {
             };
             getClientInfo(data).then((res) => {
                 if (res === false) {
-                    this.failedNotification();
+                    toastNotification('Unable to Login Please Check your Credentials', toast.POSITION.TOP_RIGHT, 'text-danger');
                 }
                 else {
-                    // console.log(res);
-                    this.successNotification(res);
+                    toastNotification(`Welcome Back ${res.data.name}`, toast.POSITION.TOP_RIGHT, 'text-success');
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
                     localStorage.setItem("username", res.data.name);
                     localStorage.setItem("supplierUuid", res.data.supplierUuid);
-                    this.setState({ tokenId: res.data.token, loginStatus: true });
+                    this.setState({
+                        tokenId: res.data.token,
+                        loginStatus: true
+                    });
                 }
             });
         }
@@ -69,20 +73,6 @@ export class Loginpage extends Component {
             }
         }
     }
-
-    successNotification = (res) => {
-        toast("Welcome Back " + res.data.name, {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
-        });
-    };
-
-    failedNotification = () => {
-        toast("Unable to Login Please Check your Credentials", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
-        });
-    };
 
     render () {
         if (this.state.loginStatus === true) {

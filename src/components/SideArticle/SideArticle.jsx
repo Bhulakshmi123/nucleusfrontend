@@ -8,6 +8,7 @@ import AddViewThree from '../AddViewThree/AddViewThree';
 import AddFields3 from '../../components/FormFields/AddFields3';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
@@ -46,8 +47,7 @@ class SideArticle extends Component {
             leadUuid: nextProps.leadinfo[0].lead_uuid,
             leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
             filtered: nextProps.leadinfo
-        });
-        this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+        }, () => { this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token); });
     }
 
     backButtonHandler = () => {
@@ -82,49 +82,50 @@ class SideArticle extends Component {
     }
 
     changeLeadStatus (leadDetId, newStatus, source, supplierName) {
-        let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
+        let data = {
+            "leadDetId": leadDetId.toString(),
+            "newStatus": newStatus
+        }
         changeLeadStatus(data, this.state.token).then((res) => {
             if (res.message === 'lead status updated.') {
                 if (data.newStatus === "ACTIVATED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Activated`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
                     if (this.state.filtered.length > 1) {
-                        this.successNotification(supplierName, leadDetId, 'is Activated');
                         this.props.getLeadInformation();
                     }
                     else {
-                        this.successNotification(supplierName, leadDetId, 'is Activated');
                         this.setRedirect(data.newStatus);
                     }
                 }
 
                 if (data.newStatus === "DELETED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Removed`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
                     if (this.state.filtered.length > 1) {
-                        this.successNotification(supplierName, leadDetId, 'is Removed');
                         this.props.getLeadInformation();
                     }
                     else {
-                        this.successNotification(supplierName, leadDetId, 'is Removed');
                         this.setRedirect(data.newStatus);
                     }
                 }
 
                 if (data.newStatus === "REJECTED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Rejected`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
                     if (this.state.filtered.length > 1) {
-                        this.successNotification(supplierName, leadDetId, 'is Rejected');
                         this.props.getLeadInformation();
                     }
                     else {
-                        this.successNotification(supplierName, leadDetId, 'is Rejected');
                         this.setRedirect(data.newStatus);
                     }
                 }
 
                 if (data.newStatus === "FINALIZED") {
                     this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
-                    this.successNotification(supplierName, leadDetId, 'is Finalized');
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Finalised`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
                 }
+
             }
             else {
-                this.failedNotification(supplierName);
+                toastNotification(`${supplierName.toLowerCase()} is Failed to ${data.newStatus.toLowerCase()}`, toast.POSITION.BOTTOM_RIGHT, 'text-warning');
             }
         });
     }
@@ -136,16 +137,18 @@ class SideArticle extends Component {
             "leadDetId": [leadDetId.toString()]
         }
         moveToProjects(data, this.state.token).then((res) => {
-            console.log('MoveToProjects',res);
+            console.log('MoveToProjects', res);
             if (res) {
+                toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Moved To Projects`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
                 if (this.state.filtered.length > 1) {
-                    this.successNotification(supplierName, leadDetId, 'is Moved To Projects');
                     this.props.getLeadInformation();
                 }
                 else {
-                    this.successNotification(supplierName, leadDetId, 'is Moved To Projects');
                     this.setRedirect("MOVEDTOPROJECTS");
                 }
+            }
+            else {
+                toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Failed to Moved To Projects`, toast.POSITION.BOTTOM_RIGHT, 'text-warning');
             }
         })
     }
@@ -201,19 +204,6 @@ class SideArticle extends Component {
         }
     }
 
-    successNotification = (supplierName, idOfEquipment, contextOfNotification) => {
-        toast(supplierName.toLowerCase() + ' [' + idOfEquipment + '] ' + contextOfNotification, {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            className: ' text-capitalize text-center bg-dark text-success fontGilroyBold bor-rad-05'
-        });
-    };
-
-    failedNotification = (supplierName) => {
-        toast(supplierName + " is Failed to Finalize", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05 '
-        });
-    };
 
     render () {
         return (
@@ -280,7 +270,7 @@ class SideArticle extends Component {
                                     formData={this.state.specificEquipmentsDetails}
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     buttonStatus='d-visible'
-                                    labelStatus='d-none'>>
+                                    labelStatus='d-none'>
                                 </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
@@ -290,7 +280,7 @@ class SideArticle extends Component {
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     moveToProjects={this.moveToProjects}
                                     labelStatus='d-none'
-                                    labelText= {null}
+                                    labelText={null}
                                     buttonStatus='d-visible'
                                     btnDisabled='false'>
                                 </AddViewTwo>
@@ -300,7 +290,8 @@ class SideArticle extends Component {
                                     formData={this.state.specificEquipmentsDetails}
                                     statusChanger={this.changeLeadStatus.bind(this)}
                                     buttonStatus='d-none'
-                                    labelStatus='d-visible'>
+                                    labelStatus='d-visible'
+                                    disableData='true'>
                                 </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/rejected/:id">
@@ -316,7 +307,7 @@ class SideArticle extends Component {
                                 </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/moved/:id">
-                            <AddViewTwo
+                                <AddViewTwo
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.supplierData}
                                     statusChanger={this.changeLeadStatus.bind(this)}
