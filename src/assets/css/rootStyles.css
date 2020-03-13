@@ -326,6 +326,17 @@ search_icon .mrn-18 {margin-right: -18% !important;}
 .font-size-38 {font-size: 3.8rem !important;}
 .font-size-39 {font-size: 3.9rem !important;}
 .font-size-40 {font-size: 4.0rem !important;}
+.font-size-41 {font-size: 4.1rem !important;}
+.font-size-42 {font-size: 4.2rem !important;}
+.font-size-43 {font-size: 4.3rem !important;}
+.font-size-44 {font-size: 4.4rem !important;}
+.font-size-45 {font-size: 4.5rem !important;}
+.font-size-46 {font-size: 4.6rem !important;}
+.font-size-47 {font-size: 4.7rem !important;}
+.font-size-48 {font-size: 4.8rem !important;}
+.font-size-49 {font-size: 4.9rem !important;}
+.font-size-50 {font-size: 5.0rem !important;}
+
 
 .cursor-pointer {cursor: pointer;}
 .cursor-progress {cursor: progress;}
@@ -586,14 +597,6 @@ select {
 .Toastify__toast-container--top-center {top:4.5em !important;}
 .Toastify__toast-container--top-right {top:4.5em !important;}
 
-a[disabled] {
-    color: white  !important;
-    opacity: 0.8 !important;
-}
-.sideBar ul li {
-    list-style-type: none;
-    cursor: not-allowed;
-}
 .btn.disabled, .btn:disabled {
     cursor: not-allowed !important;
 }
@@ -607,3 +610,9 @@ a[disabled] {
     background-color: #f8f9fa;
     border-color: #cccccc;
 }
+
+.rotateCog{animation: mymove 3s infinite;}
+@keyframes mymove {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
