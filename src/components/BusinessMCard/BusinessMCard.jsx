@@ -12,8 +12,8 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
-        let token = localStorage.getItem("tokenId");
-        let leadType = window.location.href.split('/');
+        let token = localStorage.getItem("tokenId"),
+            leadType = window.location.href.split('/');
         this.state = {
             isApiCallSuccessful: false,
             token: token,
@@ -57,12 +57,16 @@ class BusinessMCard extends Component {
     }
 
     selectHandler (e) {
-        this.setState({ 'selectedState': e.target.value })
+        this.setState({
+            selectedState: e.target.value
+        });
     }
 
     dataChangeHandler = (e) => {
         this.getLeads(e.target.name)
-        this.setState({ 'leadType': e.target.name })
+        this.setState({
+            leadType: e.target.name
+        });
     }
 
     searchBoxHandler (e) {
@@ -106,10 +110,14 @@ class BusinessMCard extends Component {
                     return 0;
                 }
             })
-            this.setState({ leadsInformation: displayedLeads });
+            this.setState({
+                leadsInformation: displayedLeads
+            });
         }
         else {
-            this.setState({ leadsInformation: this.state.dummyDataHolder });
+            this.setState({
+                leadsInformation: this.state.dummyDataHolder
+            });
         }
     }
 

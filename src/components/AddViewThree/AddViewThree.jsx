@@ -40,8 +40,13 @@ class AddViewThree extends Component {
         }
         this.searchDataHandler = this.searchDataHandler.bind(this)
     }
-    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
-    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+
+    modalHandler = (modalStatus) => {
+        this.setState({
+            isModalShowing: modalStatus
+        });
+    }
+
     searchDataHandler (e) {
         let currentList = [];
         let displayedLeads, searchQuery;
@@ -52,10 +57,14 @@ class AddViewThree extends Component {
                 let searchValue = item.name.toLowerCase();
                 return searchValue.indexOf(searchQuery) !== -1;
             })
-            this.setState({ dataToRender: displayedLeads })
+            this.setState({
+                dataToRender: displayedLeads
+            });
         }
         else {
-            this.setState({ dataToRender: this.state.dummyDataHolder })
+            this.setState({
+                dataToRender: this.state.dummyDataHolder
+            });
         }
     }
 
@@ -94,7 +103,9 @@ class AddViewThree extends Component {
     }
 
     closeSweetAlert = () => {
-        this.setState({ isSweetAlertShowing: false });
+        this.setState({
+            isSweetAlertShowing: false
+        });
     }
 
     renderRedirect = () => {
@@ -108,9 +119,14 @@ class AddViewThree extends Component {
             }
         }
     }
+
     supplierCategoryChangeHandler = (categoryName, chosenKey) => {
-        this.setState({ chosenCategory: chosenKey, dataToRender: this.state.response[categoryName] })
+        this.setState({
+            chosenCategory: chosenKey,
+            dataToRender: this.state.response[categoryName]
+        });
     }
+
     letsMakeaRequestBid = async () => {
         if (this.state.checkedProjects.length === 0) {
             toastNotification('Please Select At Least one Supplier', toast.POSITION.BOTTOM_RIGHT, 'text-danger');
@@ -141,12 +157,12 @@ class AddViewThree extends Component {
             return provider.key !== keyCoin
         })
         if (intermediateResult.length < this.state.checkedProjects.length) {
-            this.setState({ checkedProjects: [...intermediateResult] })
-            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 })
+            this.setState({ checkedProjects: [...intermediateResult] });
+            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 });
         }
         else {
-            this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] })
-            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
+            this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] });
+            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 });
         }
     }
 
@@ -160,7 +176,7 @@ class AddViewThree extends Component {
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={6} className="pr-0 my-auto">
                             <ButtonGroup size="sm" className="float-right my-auto mr-2">
-                                <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
+                                <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={() => this.modalHandler(true)}></i>
                                 {/* <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button> */}
                                 {/* <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button> */}
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.openSweetAlert('Reject', 'REJECTED')}>Reject</Button>
@@ -251,12 +267,15 @@ class AddViewThree extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="xl">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
+                        <AddFieldsPro
+                            leadUuid={this.props.formData.lead_uuid}
+                            leadDetUuid={this.props.formData.leadDet_uuid}>
+                        </AddFieldsPro>
                     </Modal.Body>
                 </Modal>
                 {

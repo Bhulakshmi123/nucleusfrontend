@@ -33,6 +33,7 @@ class FinalizedSupplier extends Component {
             leadUuid: ''
         }
     }
+
     statusSorter = () => {
         this.props.data.transactions.map((prop) => {
             if (prop === 'FINALIZED') { this.setState({ finalizedStatus: true }) }
@@ -46,6 +47,7 @@ class FinalizedSupplier extends Component {
             }
         })
     }
+
     serviceChanger = () => {
         let data = {
             "leadId": this.state.leadId,
@@ -80,20 +82,28 @@ class FinalizedSupplier extends Component {
     }
 
     isFinalizedClose = () => {
-        this.setState({ isEditBidShowing: false });
+        this.setState({
+            isEditBidShowing: false
+        });
     }
 
 
     isServiceModalShowing = () => {
-        this.setState({ isServiceModalShowing: true });
+        this.setState({
+            isServiceModalShowing: true
+        });
     }
 
     closeServiceModalHandler = () => {
-        this.setState({ isServiceModalShowing: false });
+        this.setState({
+            isServiceModalShowing: false
+        });
     }
 
     dummyUploadApiCall = () => {
-        this.setState({ isServiceModalShowing: false });
+        this.setState({
+            isServiceModalShowing: false
+        });
         toastNotification('Document is Uploaded', toast.POSITION.TOP_RIGHT, 'text-success');
     }
 

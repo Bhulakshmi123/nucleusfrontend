@@ -117,7 +117,7 @@ class BusinessAddNewModal extends Component {
                 this.setState({
                     isEquipmentInfo: false
                 })
-                this.props.modalHider();
+                this.props.modalHider(false);
                 if (this.state.leadType === 'new') {
                     this.props.getLeadsOnSubmit('new');
                 }

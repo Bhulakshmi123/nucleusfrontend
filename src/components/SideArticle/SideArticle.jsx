@@ -153,9 +153,11 @@ class SideArticle extends Component {
         })
     }
 
-    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
-
-    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+    modalHandler = (modalStatus) => {
+        this.setState({
+            isModalShowing: modalStatus
+        });
+    }
 
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
@@ -215,7 +217,7 @@ class SideArticle extends Component {
                             <Link to={`/business/leads/${this.state.goBackUrl}`} className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
                             <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
-                            <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
+                            <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={() => this.modalHandler(true)}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>
                         <div className="px-3 mx-0">
                             <InputGroup className="searchBarStyle">
@@ -322,7 +324,7 @@ class SideArticle extends Component {
                         : null
                     }
                 </Col>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="md">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>

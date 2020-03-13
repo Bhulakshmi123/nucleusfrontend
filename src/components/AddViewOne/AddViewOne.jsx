@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button, Form } from 'react-bootstrap';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
-import AddFieldsPro from '../../components/FormFields/AddFieldsPro';
-import LeadFormPart2 from '../../components/FormFields/LeadFormPart2'
 import { toast } from 'react-toastify';
 import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,24 +18,44 @@ class AddViewOne extends Component {
             disableData: 0
         }
     }
+
     componentDidMount () {
         this.dataDisabilityStatusChecker();
     }
+
     dataDisabilityStatusChecker = () => {
-        if (this.props.disableData === 'true') { this.setState({ disableData: true }, () => { console.log('Add View One Component Did Mount', this.state); }) }
-        else { this.setState({ disableData: false }, () => { console.log('Add View One Component Did Mount', this.state); }) }
+        if (this.props.disableData === 'true') {
+            this.setState({
+                disableData: true
+            });
+        }
+        else {
+            this.setState({
+                disableData: false
+            });
+        }
     }
+
     onChange (e) {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
+
     openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
-        this.setState({ isSweetAlertShowing: true });
-        this.setState({ btnTitle: btnTitleValue });
-        this.setState({ propsCommandText: propsCommandTextValue });
+        this.setState({
+            isSweetAlertShowing: true,
+            btnTitle: btnTitleValue,
+            propsCommandText: propsCommandTextValue
+        });
     }
+
     closeSweetAlert = () => {
-        this.setState({ isSweetAlertShowing: false });
+        this.setState({
+            isSweetAlertShowing: false
+        });
     }
+
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';
@@ -72,8 +90,7 @@ class AddViewOne extends Component {
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
                         </Col>
                     </Row>
-                    <LeadFormPart2></LeadFormPart2>
-                    {/* <Row className="mt-4">
+                    <Row className="mt-4">
                         <Col md={12}>
                             <React.Fragment>
                                 <Row>
@@ -243,12 +260,12 @@ class AddViewOne extends Component {
                                 </Form.Row>
                                 <Form.Row className="mt-3 mb-5 form-modal">
                                     <Col md={12} className="mb-5">
-                                        <Button variant="primary" size="sm" className={`fontGilroyBold float-right ${this.props.buttonStatus}`} onClick={()=>{toastNotification('Lead Details are Updated',toast.POSITION.TOP_RIGHT,'text-success')}}>Update Details</Button>
+                                        <Button variant="primary" size="sm" className={`fontGilroyBold float-right ${this.props.buttonStatus}`} onClick={() => { toastNotification('Lead Details are Updated', toast.POSITION.TOP_RIGHT, 'text-success') }}>Update Details</Button>
                                     </Col>
                                 </Form.Row>
                             </React.Fragment>
                         </Col>
-                    </Row> */}
+                    </Row>
                 </Container>
                 {
                     this.state.isSweetAlertShowing ?
