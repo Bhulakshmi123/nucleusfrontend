@@ -71,7 +71,7 @@ class BusinessAddNewModal extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.onChange = this.onChange.bind(this)
     }
-    componentWillMount() {
+    componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
     }
@@ -95,7 +95,7 @@ class BusinessAddNewModal extends Component {
         e.preventDefault();
         console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
         if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null || this.state.leadForm.lead_date === null) {
-            this.setState({newFromError :false, errorMessageNewFrom: 'Please Fill The Required Fields'})
+            this.setState({ newFromError: false, errorMessageNewFrom: 'Please Fill The Required Fields' })
         }
         //  else if (this.state.supplierPhoneNo === '' || this.state.lead_contactPerson === '' || this.state.leadForm.lead_date === '' ) {
         //     this.setState({newFromError : true, errorMessageNewFrom: ''})
@@ -117,7 +117,8 @@ class BusinessAddNewModal extends Component {
             let response = await createNewLead(data, this.state.token);
             if (response) {
                 this.successNotification(response);
-                this.setState({ isEquipmentInfo: false 
+                this.setState({
+                    isEquipmentInfo: false
                 })
                 this.props.modalHider();
                 if (this.state.leadType === 'new') {
@@ -130,7 +131,7 @@ class BusinessAddNewModal extends Component {
             }
         }
     }
-    handleChange(e) {
+    handleChange (e) {
         if (e.target.type === 'text') {
             if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
                 this.getSupplierDetails(e.target.value)
@@ -151,12 +152,14 @@ class BusinessAddNewModal extends Component {
         //     console.log("Wrong Number")
         // }
     }
+    
     successNotification = (response) => {
         toast(response.message + ' Id: [' + response.data[0] + ']', {
             position: toast.POSITION.TOP_RIGHT,
             className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
         });
     };
+
     failedNotification = () => {
         toast("Failed to Create a New Lead", {
             position: toast.POSITION.TOP_RIGHT,
@@ -164,7 +167,7 @@ class BusinessAddNewModal extends Component {
         });
     };
     // getLeadInformation = async ()
-    
+
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
         if (e.target.type === 'text') {
@@ -243,7 +246,7 @@ class BusinessAddNewModal extends Component {
             equipmentForm: equipmentForm
         });
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     inputChangeHandlerDate = (date) => {
@@ -387,7 +390,7 @@ class BusinessAddNewModal extends Component {
             this.setState({ leadForm });
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >

@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
@@ -89,8 +88,7 @@ class AddViewOne extends Component {
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
                         </Col>
                     </Row>
-                    <AddFieldsPro formData={this.props.formData}></AddFieldsPro>
-                    {/* <Row className="mt-4">
+                    <Row className="mt-4">
                         <Col md={12}>
                             <React.Fragment>
                                 <Row>
@@ -265,7 +263,7 @@ class AddViewOne extends Component {
                                 </Form.Row>
                             </React.Fragment>
                         </Col>
-                    </Row> */}
+                    </Row>
                 </Container>
                 {
                     this.state.isSweetAlertShowing ?
