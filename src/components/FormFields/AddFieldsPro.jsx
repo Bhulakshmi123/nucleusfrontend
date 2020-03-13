@@ -15,7 +15,12 @@ class AddFieldsPro extends Component {
         }
     }
     componentDidMount(){
-        this.getLeadEquipmentDetails(this.props.leadUuid, this.props.leadDetUuid, this.state.token)
+        if(this.props.formData !== null) {
+            this.setState({formData:this.props.formData})
+        }
+        else {
+            this.getLeadEquipmentDetails(this.props.leadUuid, this.props.leadDetUuid, this.state.token);
+        }
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
@@ -193,7 +198,7 @@ class AddFieldsPro extends Component {
                     </Col>
                 </Form.Row>
                 <Modal.Footer className="px-0">
-                    <Button variant="primary" size="sm" className="px-4">Add</Button>
+                    <Button onClick={this.createNewLead} variant="primary" size="sm" className="px-4">Add</Button>
                 </Modal.Footer>
             </React.Fragment>
         )
