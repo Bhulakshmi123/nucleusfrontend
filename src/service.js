@@ -3,7 +3,11 @@ const env = getIPAddress();
 const Service = {
     fetchGet: async(url, token = null) => {
         url = env + url;
+<<<<<<< HEAD
         // console.log('Final Url', url);
+=======
+        // console.log('Final URL Type:GET', url);
+>>>>>>> 1e54069a057ea6d5f68a27e15602a4301026bc56
         const headers = {};
         headers['source'] = 'lms';
         if (token) {
@@ -23,7 +27,7 @@ const Service = {
                 return false;
             }
         } catch (e) {
-            console.log(e);
+            console.log('Server Failur Error',e);
             onFailure('network');
             return false;
         }
@@ -31,7 +35,11 @@ const Service = {
 
     fetchPost: async(url, body, token = null) => {
         url = env + url;
+<<<<<<< HEAD
         // console.log(url);
+=======
+        // console.log('Final URL Type:POST',url);
+>>>>>>> 1e54069a057ea6d5f68a27e15602a4301026bc56
         const headers = { 'Content-Type': 'application/json' };
         headers['source'] = 'website';
         if (token) {
@@ -50,7 +58,7 @@ const Service = {
                 return false;
             }
         } catch (e) {
-            console.log(e);
+            console.log('Server Failur Error',e);
             return false;
         }
     },

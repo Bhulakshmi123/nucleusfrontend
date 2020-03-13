@@ -7,10 +7,12 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 class FinalizedSupplier extends Component {
     constructor(props) {
         super(props)
+        // console.log('Finalised Supplier',this.props)
         let token = localStorage.getItem("tokenId");
         this.state = {
             token: token,
@@ -31,6 +33,7 @@ class FinalizedSupplier extends Component {
             leadUuid: ''
         }
     }
+
     statusSorter = () => {
         this.props.data.transactions.map((prop) => {
             if (prop === 'FINALIZED') { this.setState({ finalizedStatus: true }) }
@@ -44,6 +47,7 @@ class FinalizedSupplier extends Component {
             }
         })
     }
+
     serviceChanger = () => {
         let data = {
             "leadId": this.state.leadId,
@@ -56,6 +60,7 @@ class FinalizedSupplier extends Component {
             this.closeServiceModalHandler();
         })
     }
+
     getServiceData = (leadId, leadDetId, leadDetUuid, newStatus, createdBy, titleOfAlert) => {
         this.setState({
             leadId: leadId.toString(),
@@ -65,8 +70,9 @@ class FinalizedSupplier extends Component {
             createdBy: createdBy,
             titleOfAlert: titleOfAlert
         })
-        this.isServiceModalShowing()
+        this.isServiceModalShowing();
     }
+
     isFinalizedOpen = (bidId, editBid) => {
         this.setState({ "isEditBidShowing": true });
         this.setState({
@@ -74,25 +80,33 @@ class FinalizedSupplier extends Component {
             leadDetUuid: editBid
         })
     }
+
     isFinalizedClose = () => {
         this.setState({
-            "isEditBidShowing": false
-        })
-    }
-    successNotification = () => {
-        toast("Document is Uploaded", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05'
+            isEditBidShowing: false
         });
-    };
-    isServiceModalShowing = () => this.setState({ "isServiceModalShowing": true })
-    closeServiceModalHandler = () => this.setState({ "isServiceModalShowing": false })
-    dummyUploadApiCall = () => {
-        this.setState({ "isServiceModalShowing": false });
-        this.successNotification();
     }
-    // openModalHandler = () => this.setState({ "isModalShowing": true })
-    // closeModalHandler = () => this.setState({ "isModalShowing": false })
+
+
+    isServiceModalShowing = () => {
+        this.setState({
+            isServiceModalShowing: true
+        });
+    }
+
+    closeServiceModalHandler = () => {
+        this.setState({
+            isServiceModalShowing: false
+        });
+    }
+
+    dummyUploadApiCall = () => {
+        this.setState({
+            isServiceModalShowing: false
+        });
+        toastNotification('Document is Uploaded', toast.POSITION.TOP_RIGHT, 'text-success');
+    }
+
     render () {
         return (
             <React.Fragment>
@@ -165,7 +179,7 @@ class FinalizedSupplier extends Component {
                             <div className="text-dark font-size-08 fontGilroyMedium text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                         </Col>
                         <Col md={2} className="my-auto">
-                            <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                            <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)} disabled={this.props.btnDisabled}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                         </Col>
                     </Row>
                 </Card>

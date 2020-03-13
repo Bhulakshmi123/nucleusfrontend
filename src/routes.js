@@ -35,7 +35,7 @@ const dashboardRoutes = [
         icon: < FiBriefcase />,
         component: Projects,
         layout: "/nucleus",
-        linkStatus: false
+        linkStatus: true
     },
     {
         path: "/rmp-users",

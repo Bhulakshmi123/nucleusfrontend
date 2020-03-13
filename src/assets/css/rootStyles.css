@@ -594,3 +594,16 @@ a[disabled] {
     list-style-type: none;
     cursor: not-allowed;
 }
+.btn.disabled, .btn:disabled {
+    cursor: not-allowed !important;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #f8f9fa;
+    opacity: 1;
+    cursor: not-allowed;
+}
+.btn-light.disabled, .btn-light:disabled {
+    color: #000000 !important;
+    background-color: #f8f9fa;
+    border-color: #cccccc;
+}

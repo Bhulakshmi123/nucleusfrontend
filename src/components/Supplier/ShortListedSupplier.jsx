@@ -8,7 +8,7 @@ class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
-        // console.log('ShortListed Supplier',this.props)
+        console.log('ShortListed Supplier',this.props)
         this.state = {
             token: token,
             leadUuid: '',
@@ -83,7 +83,7 @@ class ShortListedSupplier extends Component {
                                 <div className="text-dark font-size-08 fontGilroyMedium text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                                <Button variant="primary" size="sm" block disabled={this.props.btnDisabled} onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>

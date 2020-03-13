@@ -12,8 +12,8 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
-        let token = localStorage.getItem("tokenId");
-        let leadType = window.location.href.split('/');
+        let token = localStorage.getItem("tokenId"),
+            leadType = window.location.href.split('/');
         this.state = {
             isApiCallSuccessful: false,
             token: token,
@@ -27,10 +27,12 @@ class BusinessMCard extends Component {
         this.searchBoxHandler = this.searchBoxHandler.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
+
     componentDidMount () {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType);
     }
+
     getLeads = async (leadType) => {
         if (leadType === 'moved') {
             let response = await getProjectsOfNucleus(this.state.token);
@@ -39,7 +41,7 @@ class BusinessMCard extends Component {
                     leadsInformation: response.data,
                     dummyDataHolder: response.data,
                     isApiCallSuccessful: true
-                })
+                });
             }
         }
         else {
@@ -49,17 +51,24 @@ class BusinessMCard extends Component {
                     leadsInformation: response.data,
                     dummyDataHolder: response.data,
                     isApiCallSuccessful: true
-                })
+                });
             }
         }
     }
+
     selectHandler (e) {
-        this.setState({ 'selectedState': e.target.value })
+        this.setState({
+            selectedState: e.target.value
+        });
     }
+
     dataChangeHandler = (e) => {
         this.getLeads(e.target.name)
-        this.setState({ 'leadType': e.target.name })
+        this.setState({
+            leadType: e.target.name
+        });
     }
+
     searchBoxHandler (e) {
         let currentList, displayedLeads;
         if (e.target.value !== '') {
@@ -101,12 +110,17 @@ class BusinessMCard extends Component {
                     return 0;
                 }
             })
-            this.setState({ leadsInformation: displayedLeads })
+            this.setState({
+                leadsInformation: displayedLeads
+            });
         }
         else {
-            this.setState({ leadsInformation: this.state.dummyDataHolder })
+            this.setState({
+                leadsInformation: this.state.dummyDataHolder
+            });
         }
     }
+
     render () {
         return (
             <React.Fragment>
@@ -203,16 +217,19 @@ class BusinessMCard extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         sidebarView: state.sidebarView
     }
 }
+
 const mapDispatchToProps = () => {
     return {
         sidebarViewAction
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps())(BusinessMCard);
 
 

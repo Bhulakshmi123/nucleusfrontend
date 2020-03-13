@@ -11,6 +11,7 @@ import '../../assets/css/form.css';
 import { DefaultCard } from '../DefaultCard/DefaultCard';
 import AddFieldsPro from '../FormFields/AddFieldsPro';
 import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
@@ -18,8 +19,8 @@ class AddViewThree extends Component {
     constructor(props) {
         super(props)
         // console.log('Add View Three Passed Props', this.props);
-        let token = localStorage.getItem("tokenId");
-        let userUuid = localStorage.getItem("uuid");
+        let token = localStorage.getItem("tokenId"),
+            userUuid = localStorage.getItem("uuid");
         this.state = {
             token: token,
             userUuid: userUuid,
@@ -39,8 +40,13 @@ class AddViewThree extends Component {
         }
         this.searchDataHandler = this.searchDataHandler.bind(this)
     }
-    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
-    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+
+    modalHandler = (modalStatus) => {
+        this.setState({
+            isModalShowing: modalStatus
+        });
+    }
+
     searchDataHandler (e) {
         let currentList = [];
         let displayedLeads, searchQuery;
@@ -51,12 +57,17 @@ class AddViewThree extends Component {
                 let searchValue = item.name.toLowerCase();
                 return searchValue.indexOf(searchQuery) !== -1;
             })
-            this.setState({ dataToRender: displayedLeads })
+            this.setState({
+                dataToRender: displayedLeads
+            });
         }
         else {
-            this.setState({ dataToRender: this.state.dummyDataHolder })
+            this.setState({
+                dataToRender: this.state.dummyDataHolder
+            });
         }
     }
+
     componentWillReceiveProps (newProps) {
         this.setState({
             response: newProps.supplierData,
@@ -75,16 +86,26 @@ class AddViewThree extends Component {
             propsCommandText: ''
         })
     }
-    pageRedirectFunction = () => { this.setState({ redirect: true, redirectPath: 'leaduuid' }) }
+
+    pageRedirectFunction = () => {
+        this.setState({
+            redirect: true,
+            redirectPath: 'leaduuid'
+        });
+    }
 
     openSweetAlert = (btnTitleValue, propsCommandTextValue) => {
-        this.setState({ isSweetAlertShowing: true });
-        this.setState({ btnTitle: btnTitleValue });
-        this.setState({ propsCommandText: propsCommandTextValue });
+        this.setState({
+            isSweetAlertShowing: true,
+            btnTitle: btnTitleValue,
+            propsCommandText: propsCommandTextValue
+        });
     }
 
     closeSweetAlert = () => {
-        this.setState({ isSweetAlertShowing: false });
+        this.setState({
+            isSweetAlertShowing: false
+        });
     }
 
     renderRedirect = () => {
@@ -98,12 +119,17 @@ class AddViewThree extends Component {
             }
         }
     }
+
     supplierCategoryChangeHandler = (categoryName, chosenKey) => {
-        this.setState({ chosenCategory: chosenKey, dataToRender: this.state.response[categoryName] })
+        this.setState({
+            chosenCategory: chosenKey,
+            dataToRender: this.state.response[categoryName]
+        });
     }
+
     letsMakeaRequestBid = async () => {
         if (this.state.checkedProjects.length === 0) {
-            this.requestBidCountNotifier()
+            toastNotification('Please Select At Least one Supplier', toast.POSITION.BOTTOM_RIGHT, 'text-danger');
         }
         else {
             let intermediateData = this.state.checkedProjects.map((supplier) => {
@@ -120,6 +146,7 @@ class AddViewThree extends Component {
             let urlPayload = this.props.leadUuid + '/' + this.props.leadDetUuid;
             let response = await makeRequestBid(urlPayload, data, this.state.token);
             if (response) {
+                toastNotification('Suppliers are Successfully Shortlisted', toast.POSITION.BOTTOM_RIGHT, 'text-success');
                 this.pageRedirectFunction();
             }
         }
@@ -130,28 +157,15 @@ class AddViewThree extends Component {
             return provider.key !== keyCoin
         })
         if (intermediateResult.length < this.state.checkedProjects.length) {
-            this.setState({ checkedProjects: [...intermediateResult] })
-            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 })
+            this.setState({ checkedProjects: [...intermediateResult] });
+            this.setState({ requestBidsCount: this.state.checkedProjects.length - 1 });
         }
         else {
-            this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] })
-            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 })
+            this.setState({ checkedProjects: [...this.state.checkedProjects, { key: keyCoin, supplierUuid: supplierUuid, Uuid: Uuid, equipmentType: equipmentType }] });
+            this.setState({ requestBidsCount: this.state.checkedProjects.length + 1 });
         }
     }
 
-    requestBidCountNotifier = () => {
-        toast("Please Select At Least one Supplier", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05 '
-        });
-    };
-
-    smsStatusDisplay = () => {
-        toast("This Feature is Still Under Development", {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'text-center bg-dark text-white fontGilroyBold bor-rad-05 '
-        });
-    };
 
     render () {
         return (
@@ -162,7 +176,7 @@ class AddViewThree extends Component {
                         <Col md={6} className="my-auto"><h3 className="my-auto">{this.props.formData.equipmentName}</h3></Col>
                         <Col md={6} className="pr-0 my-auto">
                             <ButtonGroup size="sm" className="float-right my-auto mr-2">
-                                <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={this.openModalHandler}></i>
+                                <i className="fab fa-gg-circle text-center hovertext-bluefuchisa cursor-pointer font-size-20 mr-3" onClick={() => this.modalHandler(true)}></i>
                                 {/* <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.statusChanger(this.props.formData.leadDet_id, 'REJECTED', 'ACTIVE', this.props.formData.equipmentName)}>Reject</Button> */}
                                 {/* <Button variant="info" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.props.moveToProjects(this.state.userUuid, this.props.formData.lead_id, this.props.formData.leadDet_id, this.props.formData.equipmentName)}>Move to Projects</Button> */}
                                 <Button variant="danger" className="mx-1 px-3 bor-rad-03" size="sm" onClick={() => this.openSweetAlert('Reject', 'REJECTED')}>Reject</Button>
@@ -193,7 +207,7 @@ class AddViewThree extends Component {
                         <Col md={4}>
                             <ButtonGroup size="sm" className="float-right my-auto">
                                 <Button variant="primary" className="mr-1 bor-rad-03 px-3" onClick={this.letsMakeaRequestBid}>Request Bids <span className="badge badge-pill badge-light bor-rad-03 ml-1 text-primary">{this.state.requestBidsCount}</span></Button>
-                                <Button variant="success" className="ml-1 bor-rad-03 px-3" onClick={this.smsStatusDisplay}><MdTextsms className="mr-1" />SMS</Button>
+                                <Button variant="success" className="ml-1 bor-rad-03 px-3" onClick={() => { toastNotification('This Feature is Under Development', toast.POSITION.BOTTOM_RIGHT, 'text-primary') }}><MdTextsms className="mr-1" />SMS</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
@@ -253,12 +267,15 @@ class AddViewThree extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="xl">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="xl">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFieldsPro leadUuid={this.props.formData.lead_uuid} leadDetUuid={this.props.formData.leadDet_uuid}></AddFieldsPro>
+                        <AddFieldsPro
+                            leadUuid={this.props.formData.lead_uuid}
+                            leadDetUuid={this.props.formData.leadDet_uuid}>
+                        </AddFieldsPro>
                     </Modal.Body>
                 </Modal>
                 {

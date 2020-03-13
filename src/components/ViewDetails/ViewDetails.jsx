@@ -8,9 +8,9 @@ class ViewDetails extends Component {
         super(props)
         let token = localStorage.getItem("tokenId");
         this.state = {
-            "token": token,
-            "leadInformation": [],
-            "isApiCallSuccessful": false,
+            token: token,
+            leadInformation: [],
+            isApiCallSuccessful: false
         }
     }
 
@@ -20,13 +20,15 @@ class ViewDetails extends Component {
     }
 
     getLeadInformation = async () => {
-        let url = window.location.href.split('/');
-        let finalPayload = url[url.length - 1] + '/' + url[url.length - 2];
-        let response = await getLeadInformation(finalPayload, this.state.token);
-        // console.log('getLeadInformation API is Called', response);
+        let browserUrl = window.location.href.split('/'),
+            joinedUrlPayload = browserUrl[browserUrl.length - 1] + '/' + browserUrl[browserUrl.length - 2],
+            response = await getLeadInformation(joinedUrlPayload, this.state.token);
+        console.log('getLeadInformation', response);
         if (response) {
-            this.setState({ "leadInformation": response.data })
-            this.setState({ "isApiCallSuccessful": true })
+            this.setState({
+                leadInformation: response.data,
+                isApiCallSuccessful: true
+            })
         }
     }
 
@@ -34,17 +36,26 @@ class ViewDetails extends Component {
         return (
             <React.Fragment>
                 <div className={this.props.sidebarView ? "mainContent mainContentMini d-flex" : "mainContent"}>
-                    {this.state.isApiCallSuccessful === true ? <SideArticle leadinfo={this.state.leadInformation} getLeadInformation={this.getLeadInformation.bind(this)}></SideArticle> : null}
+                    {
+                        this.state.isApiCallSuccessful === true ?
+                            <SideArticle
+                                leadinfo={this.state.leadInformation}
+                                getLeadInformation={this.getLeadInformation.bind(this)}>
+                            </SideArticle>
+                            : null
+                    }
                 </div>
             </React.Fragment>
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         sidebarView: state.sidebarView
     }
 }
+
 const mapDispatchToProps = () => {
     return {
         sidebarViewAction

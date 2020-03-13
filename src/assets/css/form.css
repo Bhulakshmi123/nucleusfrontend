@@ -40,12 +40,13 @@
 }
 
 .select_palceholder {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400 !important;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    color: dimgray;
+    color: black;
+    text-transform: capitalize;
     font-family: GilroyBold !important;
     vertical-align: super;
 }
