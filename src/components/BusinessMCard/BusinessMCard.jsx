@@ -164,7 +164,7 @@ class BusinessMCard extends Component {
                                         <div className="text-center">
                                             <i className="fas fa-cog font-size-50 rotateCog mb-2 text-white"></i>
                                         </div>
-                                        <DefaultCard md={5}>Fetching {this.state.leadType} Leads Information ....</DefaultCard>
+                                        <DefaultCard md={5}>Fetching <span className="fontGilroyBold">{this.state.leadType}</span> Leads Information ....</DefaultCard>
                                     </div>
                                     :
                                     this.state.leadsInformation.length === 0 ?
@@ -172,7 +172,7 @@ class BusinessMCard extends Component {
                                             <div className="text-center">
                                                 <i className="fas fa-tractor font-size-50 mb-2 text-white"></i>
                                             </div>
-                                            <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard>
+                                            <DefaultCard md={5}>No <span className="fontGilroyBold">{this.state.leadType}</span> Leads Available to Display</DefaultCard>
                                         </div>
                                         :
                                         <div>
