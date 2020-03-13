@@ -1,4 +1,5 @@
 gitCommit = $1
+echo $gitCommit
 git status
 git add -A
 git commit -m "$(date +"%D %T") by $(whoami) $gitCommit"
