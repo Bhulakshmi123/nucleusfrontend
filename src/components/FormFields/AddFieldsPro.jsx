@@ -7,31 +7,31 @@ class AddFieldsPro extends Component {
     constructor(props) {
         let token = localStorage.getItem("tokenId");
         super(props)
-        // console.log('Add Feilds Pro', this.props)
+        console.log('Add Feilds Pro', this.props);
         this.state = {
             token: token,
             equip_modal: '',
-            formData:''
+            formData: ''
         }
     }
-    componentDidMount(){
-        if(this.props.formData !== null) {
-            this.setState({formData:this.props.formData})
-        }
-        else {
-            this.getLeadEquipmentDetails(this.props.leadUuid, this.props.leadDetUuid, this.state.token);
-        }
+    componentDidMount () {
+        // if (this.props.formData !== null) {
+        //     this.setState({ formData: this.props.formData })
+        // }
+        // else {
+        this.getLeadEquipmentDetails(this.props.leadUuid, this.props.leadDetUuid, this.state.token);
+        // }
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
         let response = await getLeadEquipmentDetails(leadUuid + "/" + leadDetUuid, token);
         if (response) {
-            this.setState({formData:response.data[0]})
+            this.setState({ formData: response.data[0] })
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form.Row className="mt-3">
@@ -184,7 +184,7 @@ class AddFieldsPro extends Component {
                     <Col md={12}>
                         <Form.Group>
                             <Form.Label className="ml-1">Payment Terms</Form.Label>
-                            
+
                             <Form.Control as="textarea" rows="4" name="Payment Terms" placeholder="Payment Terms" defaultValue={`${this.state.formData.leadDet_paymentTerms}, ${this.state.formData.leadDet_companyUuid},${this.state.formData.leadDet_operatorAccommodation},${this.state.formData.leadDet_companyUuid}`} />
                         </Form.Group>
                     </Col>

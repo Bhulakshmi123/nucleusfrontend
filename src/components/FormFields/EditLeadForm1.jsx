@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Col, Row, Form, Table } from 'react-bootstrap';
+import { Button, Container, Col, Row, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { editLeadDetails } from '../../views/Business/actions'
 import SelectInput from './SelectInput';
@@ -13,7 +13,7 @@ class EditLeadForm1 extends Component {
         let token = localStorage.getItem("tokenId"),
             userUuid = localStorage.getItem("uuid");
         super(props)
-        console.log('Nemo', this.props);
+        // console.log('Nemo', this.props);
         this.state = {
             token: token,
             lead_companyUuid: userUuid,
@@ -72,7 +72,7 @@ class EditLeadForm1 extends Component {
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name"  value={this.props.data.leadinfo[0].leadDet_operatorFood}/>
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" value={this.props.data.leadinfo[0].leadDet_operatorFood} />
                             </Form.Group>
                         </Col>
                     </Form.Row>
