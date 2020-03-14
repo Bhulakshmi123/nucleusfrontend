@@ -324,7 +324,7 @@ class SideArticle extends Component {
                         : null
                     }
                 </Col>
-                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="xl">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="md">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>

@@ -58,16 +58,16 @@ class EditLeadForm1 extends Component {
             <Container fluid className="p-0">
                 <Form onSubmit={this.submitForm}>
                     <Form.Row>
-                        <Col md={4}>
+                        <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
                                 <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." />
                             </Form.Group>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                             <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
                                 <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" />
