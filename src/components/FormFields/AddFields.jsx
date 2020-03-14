@@ -4,7 +4,7 @@ import SelectInputSearch from './SelectInputSearch';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
 // import { fromUnixTime } from 'date-fns';
-import { computeDistrictsDropDownInForm } from '../../views/Business/actions'
+import { computeDistrictsDropDownInForm} from '../../views/Business/actions'
 class AddFields extends React.Component {
     constructor(props) {
         super(props);
@@ -57,6 +57,17 @@ class AddFields extends React.Component {
         }
 
     }
+
+    // equipmentTypeDropDownList = async () => {
+    //     let response = await equipmentTypeDropDownList(this.state.token, this.state.equipmentForm.lead_equipmentType);
+    //     console.log('equipmentTypeDropDownList API', response);
+    //     this.setState({
+    //         equipmentTypeDropDownList: response.data
+    //     }, () => {
+    //         // console.log(this.state.equipmentTypeDropDownList)
+    //     });
+        
+    // }
     componentWillReceiveProps (nextProps) {
         if (nextProps.equipmentForm !== this.props.equipmentForm) {
             this.setState({ equipmentForm: nextProps.equipmentForm }, () => {
@@ -65,6 +76,13 @@ class AddFields extends React.Component {
                 }
             });
         }
+        // if (nextProps.equipmentForm !== this.props.equipmentForm) {
+        //     this.setState({ equipmentForm: nextProps.equipmentForm }, () => {
+        //         if (this.state.equipmentForm.lead_equipmentType) {
+        //             this.equipmentTypeDropDownList();
+        //         }
+        //     });
+        // }
     }
 
     computeDistrictsDropDownInForm = async (e) => {
@@ -86,7 +104,7 @@ class AddFields extends React.Component {
                 <Button variant="danger" size="sm" className="px-4 mr-4" onClick={this.props.closeEquipmentForm}>Close Equipment Form</Button> */}
                 <Form.Row className="mt-3">
                     <Col md={3}>
-                        <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentTypeDropDownList}></SelectInputSearch>
+                        <SelectInputSearch name="lead_equipmentType" cStyle="widthone" label="Equipment Type *" placeholder="Select Equipment Type" value={this.props.equipmentForm.lead_equipmentType_name || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.props.equipmentDropdown.map(t => ({ value: t.id, label: t.name, name: 'lead_equipmentType' }))}></SelectInputSearch>
                         <span className="lead_equipmentType_error text-danger font-size-10">{this.props.equipmentForm.lead_equipmentType_error}</span>
                     </Col>
                     <Col md={3}>

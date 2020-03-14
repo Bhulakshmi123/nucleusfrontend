@@ -43,6 +43,6 @@ export const computeDistrictsDropDownInForm = async (token, urlPayload) => {
 export const editLeadDetails = async (urlPayload, payload, token) => {
     return (await service.fetchPost(EDIT_LEAD_DETAILS.url + urlPayload, payload, token));
 }
-export const getEquipmentTypes = async (token) => {
+export const equipmentTypeDropDownList = async (token) => {
     return (await service.fetchGet(GET_EQUIPMENT_TYPES.url, token));
 }
