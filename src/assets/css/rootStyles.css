@@ -139,6 +139,8 @@ input::placeholder, textarea::placeholder { font-family: GilroyBold !important; 
     color: white;
 }
 
+.mt-25 {margin-top: 25% !important;}
+
 .opct-01 {opacity: 0.1 !important;}
 .opct-02 {opacity: 0.2 !important;}
 .opct-03 {opacity: 0.3 !important;}
@@ -149,6 +151,7 @@ input::placeholder, textarea::placeholder { font-family: GilroyBold !important; 
 .opct-08 {opacity: 0.8 !important;}
 .opct-09 {opacity: 0.9 !important;}
 .opct-10 {opacity: 1.0 !important;}
+
 
 .mtn-1 {margin-top: -1% !important;}
 .mtn-2 {margin-top: -2% !important;}

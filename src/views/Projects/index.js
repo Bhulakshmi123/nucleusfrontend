@@ -10,8 +10,9 @@ class Projects extends Component {
     return (
       <React.Fragment>
         <div className="mainContent">
-          <div>
-            <h1 className="text-white text-center mt-5">Under Maintenance</h1>
+          <div className="text-center mt-25">
+          <i class="fas fa-car-crash text-center text-white font-size-50"></i>
+            <h1 className="text-white text-center">Under Maintenance</h1>
           </div>
         </div>
       </React.Fragment>
