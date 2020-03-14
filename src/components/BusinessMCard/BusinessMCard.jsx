@@ -63,9 +63,10 @@ class BusinessMCard extends Component {
     }
 
     dataChangeHandler = (e) => {
-        this.getLeads(e.target.name)
+        this.getLeads(e.target.name);
         this.setState({
-            leadType: e.target.name
+            leadType: e.target.name,
+            isApiCallSuccessful: false
         });
     }
 
@@ -146,8 +147,6 @@ class BusinessMCard extends Component {
                                     <select className="customSelect w-35" value={this.state.selectedState} onChange={this.selectHandler}>
                                         <option value="searchBy">Search by</option>
                                         <option value="clientName">Client Name</option>
-                                        {/* <option value="phoneNumber">Phone Number</option> */}
-                                        {/* <option value="equipmentCount">Equipment Count</option> */}
                                         <option value="location">lead_uuid</option>
                                         <option value="companyName">Company Name</option>
                                         <option value="leadStatus">Lead Date</option>
@@ -161,9 +160,25 @@ class BusinessMCard extends Component {
                         <div>
                             {
                                 this.state.isApiCallSuccessful === false ?
-                                    <DefaultCard md={5}>Fetching {this.state.leadType} Leads Information ....</DefaultCard> :
+                                    <div className="my-5 pt-3">
+                                        <div className="text-center">
+                                            <i className="fas fa-cog font-size-50 rotateCog mb-2 text-white"></i>
+                                        </div>
+                                        <DefaultCard md={5}>
+                                            Fetching <span className="fontGilroyBold">{this.state.leadType}</span> Leads Information ....
+                                        </DefaultCard>
+                                    </div>
+                                    :
                                     this.state.leadsInformation.length === 0 ?
-                                        <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard> :
+                                        <div className="my-5 pt-3">
+                                            <div className="text-center">
+                                                <i className="fas fa-tractor font-size-50 mb-2 text-white"></i>
+                                            </div>
+                                            <DefaultCard md={5}>
+                                                No <span className="fontGilroyBold">{this.state.leadType}</span> Leads Available to Display
+                                            </DefaultCard>
+                                        </div>
+                                        :
                                         <div>
                                             {
                                                 this.state.leadsInformation.map((prop, key) => {

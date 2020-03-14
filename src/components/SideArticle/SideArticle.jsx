@@ -5,7 +5,7 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFields3 from '../../components/FormFields/AddFields3';
+import AddFields3 from '../FormFields/EditLeadForm1';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 import { toast } from 'react-toastify';
 import { toastNotification } from '../../commonFunctions/toastAlert';
@@ -324,7 +324,7 @@ class SideArticle extends Component {
                         : null
                     }
                 </Col>
-                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="md">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="xl">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>

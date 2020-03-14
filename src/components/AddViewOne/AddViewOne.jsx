@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { toastNotification } from '../../commonFunctions/toastAlert';
 import 'react-toastify/dist/ReactToastify.css';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import AddFieldsPro from '../FormFields/AddFieldsPro';
 class AddViewOne extends Component {
     constructor(props) {
         super(props)
@@ -89,8 +88,7 @@ class AddViewOne extends Component {
                             <div className="text-white bg-brickRed text-center p-1 bor-rad-30 text-uppercase">This Lead Was Deleted</div>
                         </Col>
                     </Row>
-                    <AddFieldsPro formData={this.props.formData}></AddFieldsPro>
-                    {/* <Row className="mt-4">
+                    <Row className="mt-4">
                         <Col md={12}>
                             <React.Fragment>
                                 <Row>
@@ -265,23 +263,23 @@ class AddViewOne extends Component {
                                 </Form.Row>
                             </React.Fragment>
                         </Col>
-                    </Row> */}
+                    </Row>
                 </Container>
                 {
                     this.state.isSweetAlertShowing ?
                         <SweetAlert
-                            warning
-                            title="Are You Sure ?"
+                            info
+                            title={<span className="text-dark fontGilroyMedium">Are You Sure ?</span>}
                             onConfirm={this.closeSweetAlert}
                             onCancel={this.closeSweetAlert}
                             timeout={5000}
                             customButtons={
                                 <React.Fragment>
-                                    <Button variant="danger" className="w-30 m-2" size="sm" onClick={this.closeSweetAlert}>Close</Button>
-                                    <Button variant="primary" className="w-30 m-2" size="sm" onClick={() => { this.props.statusChanger(this.props.formData.leadDet_id, this.state.propsCommandText, 'NEW', this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
+                                    <Button variant="danger" className="w-30 m-2" onClick={this.closeSweetAlert}>Close</Button>
+                                    <Button variant="primary" className="w-30 m-2" onClick={() => { this.props.statusChanger(this.props.formData.leadDet_id, this.state.propsCommandText, 'NEW', this.props.formData.equipmentName); this.closeSweetAlert() }}>{this.state.btnTitle}</Button>
                                 </React.Fragment>
                             }>
-                            Please Click {this.state.btnTitle} to {this.state.btnTitle} the Lead
+                                <span className="fontGilroyMedium font-size-09">Please Click {this.state.btnTitle} to {this.state.btnTitle} the Lead</span>
                         </SweetAlert>
                         : null
                 }

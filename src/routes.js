@@ -26,64 +26,56 @@ const dashboardRoutes = [
         name: "Business",
         icon: < AiOutlineDollar />,
         component: Business,
-        layout: "/nucleus",
-        linkStatus: false
+        layout: "/nucleus"
     },
     {
         path: "/projects",
         name: "Projects",
         icon: < FiBriefcase />,
         component: Projects,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/rmp-users",
         name: "RMP Users",
         icon: < AiOutlineUser />,
         component: RMPUsers,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/suppliers",
         name: "Suppliers",
         icon: < FaRegArrowAltCircleRight />,
         component: Suppliers,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/contractors",
         name: "Contractors",
         icon: < FaRegArrowAltCircleLeft />,
         component: Contractors,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/equipment",
         name: "Equipment",
         icon: < FaTruckMonster />,
         component: Equipment,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/man-power",
         name: "Man Power",
         icon: < FaRegUserCircle />,
         component: ManPower,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     },
     {
         path: "/subscriptions",
         name: "Subscriptions",
         icon: < MdExitToApp />,
         component: Subscriptions,
-        layout: "/nucleus",
-        linkStatus: true
+        layout: "/nucleus"
     }
 ];
 
