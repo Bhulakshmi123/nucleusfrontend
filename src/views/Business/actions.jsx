@@ -1,4 +1,4 @@
-import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS, GET_EQUIPMENT_SUPPLIER_DETAILS, CREATE_LEAD, GET_STATES, GET_CITIES, EDIT_LEAD_DETAILS, GET_EQUIPMENT_TYPES, EDIT_EQUIPMENT_LEAD_DETAILS } from './actionTypes';
+import { GET_LEADS, GET_EQUIPMENT_SUPPLIER_LIST, GET_LEAD_INFORMATION, GET_LEAD_EQUIPMENT_DETAILS, CHANGE_LEAD_STATUS, CHANGE_SERVICE_STATUS, MAKE_A_REQUEST_BID, MOVE_TO_PROJECTS, PROJECT_LIST_NUCLEUS, GET_EQUIPMENT_SUPPLIER_DETAILS, CREATE_LEAD, GET_STATES, GET_CITIES, EDIT_LEAD_DETAILS, GET_EQUIPMENT_TYPES, EDIT_EQUIPMENT_LEAD_DETAILS, GET_LEAD_DETAILS } from './actionTypes';
 import service from '../../service';
 
 export const getSupplierList = async (payload, token) => {
@@ -48,4 +48,7 @@ export const equipmentTypeDropDownList = async (token) => {
 }
 export const editEquipmentLeadeDetails = async (urlPayload, payload, token) => {
     return (await service.fetchPost(EDIT_EQUIPMENT_LEAD_DETAILS.url + urlPayload, payload, token));
+}
+export const getLeadDetails = async (urlPayload, token) => {
+    return (await service.fetchGet(GET_LEAD_DETAILS.url + urlPayload, token));
 }

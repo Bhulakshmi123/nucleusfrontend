@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Container, Col, Row, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { editLeadDetails } from '../../views/Business/actions'
+import { editLeadDetails, getLeadDetails } from '../../views/Business/actions'
 import SelectInput from './SelectInput';
 import SelectInputSearch from './SelectInputSearch';
 import CalenderInput from './CalenderInput'
@@ -24,6 +24,7 @@ class EditLeadForm1 extends Component {
     }
     componentDidMount () {
         this.propSorter();
+        this.getLeadDetails('d788e26b-65c9-11ea-87ef-7054d27b26a6');
     }
 
     propSorter = () => {
@@ -61,6 +62,13 @@ class EditLeadForm1 extends Component {
         }, () => { console.log(this.state.leadForm) });
     }
 
+    getLeadDetails = async (leadUuid) => {
+        let response = await getLeadDetails(leadUuid, this.state.token);
+        if (response) {
+            console.log('New Response',response);
+        }
+    }
+
 
     editLeadDetails = async (e) => {
         let data = {
@@ -93,7 +101,7 @@ class EditLeadForm1 extends Component {
                             </Form.Group>
                         </Col>
                         <Col md={6}>
-                            {/* <CalenderInput name="lead_date" label="Lead Date*" onChange={e => this.onTodoChange(e)} placeholder={this.props.data.leadinfo[0].leadDet_startDate} startDate={this.state.startDate} minDate={new Date()} /> */}
+                            <CalenderInput name="lead_date" label="Lead Date*" onChange={e => this.onTodoChange(e)} placeholder={this.props.leadDet_startDate} startDate={this.state.startDate} minDate={new Date()} />
                         </Col>
                     </Form.Row>
                     <Form.Row>

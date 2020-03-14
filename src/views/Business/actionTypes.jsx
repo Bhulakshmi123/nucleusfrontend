@@ -13,4 +13,5 @@ export const GET_STATES = { type: "GET_STATES", url: '/lms/getStates' }
 export const GET_CITIES = { type: "GET_CITIES", url: '/lms/getCities/' }
 export const EDIT_LEAD_DETAILS = { type: "EDIT_LEAD_DETAILS", url: '/lms/lead/' }
 export const GET_EQUIPMENT_TYPES = { type: "GET_EQUIPMENT_TYPES", url: '/lms/getEquipmentTypes' }
-export const EDIT_EQUIPMENT_LEAD_DETAILS = {type:"EDIT_EQUIPMENT_LEAD_DETAILS", url:'/lead/'}
+export const EDIT_EQUIPMENT_LEAD_DETAILS = { type: "EDIT_EQUIPMENT_LEAD_DETAILS", url: '/lead/' }
+export const GET_LEAD_DETAILS = { type: "GET_LEAD_DETAILS", url: '/lms/getLead/' }
