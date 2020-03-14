@@ -324,12 +324,12 @@ class SideArticle extends Component {
                         : null
                     }
                 </Col>
-                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="xl">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="md">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <EditLeadForm1 data={this.props}></EditLeadForm1>
+                        <EditLeadForm1 data={this.props} modalHider={this.modalHandler.bind(this)}></EditLeadForm1>
                     </Modal.Body>
                 </Modal>
             </React.Fragment >

@@ -24,7 +24,7 @@ class ViewDetails extends Component {
         let browserUrl = window.location.href.split('/'),
             joinedUrlPayload = browserUrl[browserUrl.length - 1] + '/' + browserUrl[browserUrl.length - 2],
             response = await getLeadInformation(joinedUrlPayload, this.state.token);
-            console.log('getLeadInformation',joinedUrlPayload);
+        console.log('getLeadInformation', joinedUrlPayload);
         console.log('getLeadInformation', response);
         if (response) {
             this.setState({
