@@ -10,12 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toastNotification } from '../../commonFunctions/toastAlert';
 class EditLeadForm1 extends Component {
     constructor(props) {
-        let token = localStorage.getItem("tokenId");
+        let token = localStorage.getItem("tokenId"),
+            userUuid = localStorage.getItem("uuid");
         super(props)
         console.log('Nemo', this.props);
         this.state = {
-            isShowing: false,
             token: token,
+            lead_companyUuid: userUuid,
             lead_contactNumber: '',
             lead_date: moment().format('YYYY-MM-DD'),
             lead_contactPerson: ''
@@ -37,21 +38,19 @@ class EditLeadForm1 extends Component {
     }
 
     editLeadDetails = async (e) => {
-        console.log("hello ", this.state.lead_date, this.state.lead_contactPerson, this.state.lead_contactNumber)
         let data = {
-            "lead_companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+            "lead_companyUuid": this.state.lead_companyUuid,
             "lead_date": this.state.lead_date,
             "lead_contactPerson": this.state.lead_contactPerson,
             "lead_contactNumber": "8686224141",
-            "lead_updatedBy": "1a8abc1c-8c11-11e8-86bd-7054d27b259a",
+            "lead_updatedBy": this.state.lead_companyUuid,
         };
         let response = await editLeadDetails(this.props.data.leadinfo[0].lead_uuid, data, this.state.token);
-        console.log("Edit details", response);
         if (response) {
             toastNotification('Lead Details are Successfully Updated', toast.POSITION.BOTTOM_RIGHT, 'text-success');
+            this.props.modalHider(false);
         }
         else {
-            console.log("Edit details", response);
             toastNotification('Failed To Update Lead Details', toast.POSITION.BOTTOM_RIGHT, 'text-danger');
         }
     }
@@ -89,7 +88,7 @@ class EditLeadForm1 extends Component {
                         {/* <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" />
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name"  value={this.props.data.leadinfo[0].leadDet_operatorFood}/>
                             </Form.Group>
                         </Col> */}
                         {/* <Col md={6}>
@@ -130,9 +129,13 @@ class EditLeadForm1 extends Component {
                         {/* <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" ></SelectInputSearch> */}
                     </Col>
                     </Form.Row>
+<<<<<<< HEAD
                     <Form.Row>
                     <Button variant="primary" size="sm" className="px-4" onClick={this.editLeadDetails}>Update Lead Details</Button>
                     </Form.Row>
+=======
+                    <Button variant="primary" size="sm" className="px-4 float-right" onClick={this.editLeadDetails}>Update Details</Button>
+>>>>>>> a1dd068350beee1e3c6c895a0fe242a5bf7769c3
                 </Form>
             </Container>
         );
