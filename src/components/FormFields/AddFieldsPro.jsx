@@ -67,7 +67,7 @@ class AddFieldsPro extends Component {
     componentDidMount() {
         this.getLeadEquipmentDetails(this.props.leadUuid, this.props.leadDetUuid, this.state.token);
     }
-    onChange(e) {
+    onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     getLeadEquipmentDetails = async (leadUuid, leadDetUuid, token) => {
@@ -76,7 +76,7 @@ class AddFieldsPro extends Component {
             this.setState({ formData: response.data[0] })
         }
     }
-    render() {
+    render () {
         return (
             <React.Fragment>
                 <Form.Row className="mt-3">

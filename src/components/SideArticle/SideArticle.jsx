@@ -215,7 +215,7 @@ class SideArticle extends Component {
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-3 mb-4">
                             <Link to={`/business/leads/${this.state.goBackUrl}`} className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
-                            <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
+                            <h6 className="pl-1 text-white opct-05 mb-1 mt-3">Lead Info</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
                             <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={() => this.modalHandler(true)}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>

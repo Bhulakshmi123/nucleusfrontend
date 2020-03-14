@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Container, Col, Row, Form, Table } from 'react-bootstrap';
+import { Button, Container, Col, Row, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { editLeadDetails } from '../../views/Business/actions'
+import { editLeadDetails, getLeadDetails } from '../../views/Business/actions'
+import SelectInput from './SelectInput';
 import SelectInputSearch from './SelectInputSearch';
 import CalenderInput from './CalenderInput'
 import * as moment from 'moment';
@@ -21,9 +22,34 @@ class EditLeadForm1 extends Component {
             lead_contactPerson: ''
         }
     }
-    editOnchange (e) {
-        this.setState({ [e.target.name]: e.target.value })
+    componentDidMount () {
+        this.propSorter();
+        this.getLeadDetails('d788e26b-65c9-11ea-87ef-7054d27b26a6');
     }
+
+    propSorter = () => {
+        this.setState({
+            lead_contactNumber: this.props.data.leadinfo[0].leadDet_capacity || '',
+            lead_contactPerson: this.props.data.leadinfo[0].leadDet_operatorFood || ''
+        })
+    }
+
+    onTodoChange (e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        console.log('State', this.state);
+    }
+
+
+    editOnchange (e) {
+        console.log([e.target.name], e.target.value);
+        this.setState({
+            [e.target.name]: null
+        });
+    }
+
+
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
         leadForm = {
@@ -36,6 +62,14 @@ class EditLeadForm1 extends Component {
         }, () => { console.log(this.state.leadForm) });
     }
 
+    getLeadDetails = async (leadUuid) => {
+        let response = await getLeadDetails(leadUuid, this.state.token);
+        if (response) {
+            console.log('New Response',response);
+        }
+    }
+
+
     editLeadDetails = async (e) => {
         let data = {
             "lead_companyUuid": this.state.lead_companyUuid,
@@ -44,6 +78,7 @@ class EditLeadForm1 extends Component {
             "lead_contactNumber": "8686224141",
             "lead_updatedBy": this.state.lead_companyUuid,
         };
+        console.log('editLeadDetails', data);
         let response = await editLeadDetails(this.props.data.leadinfo[0].lead_uuid, data, this.state.token);
         if (response) {
             toastNotification('Lead Details are Successfully Updated', toast.POSITION.BOTTOM_RIGHT, 'text-success');
@@ -62,34 +97,20 @@ class EditLeadForm1 extends Component {
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber"  onChange={this.editOnchange}  placeholder="Phone No." />
+                                <Form.Control type="text" name="lead_contactNumber" onChange={e => this.onTodoChange(e)} placeholder="Phone No." value={this.state.lead_contactNumber} />
                             </Form.Group>
                         </Col>
                         <Col md={6}>
-                            <CalenderInput name="lead_date" label="Lead Date*"  onChange={this.editOnchange}  placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
+                            <CalenderInput name="lead_date" label="Lead Date*" onChange={e => this.onTodoChange(e)} placeholder={this.props.leadDet_startDate} startDate={this.state.startDate} minDate={new Date()} />
                         </Col>
                     </Form.Row>
-                    <Form.Row>    
+                    <Form.Row>
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson"  onChange={this.editOnchange}  label="Renter Name*" placeholder="Renter Name" />
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" onChange={e => this.onTodoChange(e)} value={this.state.lead_contactPerson} />
                             </Form.Group>
                         </Col>
-                        {/* <Col md={6}>
-                            <Form.Group controlId="formGroupRenterEmail">
-                                <Form.Label className="font_stle">Renter Email</Form.Label>
-                                <Form.Control type="text" name="renter_emil"  label="Renter Email" placeholder="Renter Email" />
-                            </Form.Group>
-                        </Col> */}
-                    </Form.Row>
-                    <Form.Row>    
-                        {/* <Col md={6}>
-                            <Form.Group>
-                                <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name"  value={this.props.data.leadinfo[0].leadDet_operatorFood}/>
-                            </Form.Group>
-                        </Col> */}
                         {/* <Col md={6}>
                             <Form.Group controlId="formGroupRenterEmail">
                                 <Form.Label className="font_stle">Renter Email</Form.Label>
@@ -124,11 +145,13 @@ class EditLeadForm1 extends Component {
                         </Col> */}
                     </Form.Row>
                     <Form.Row>
-                    <Col md={6}>
-                        {/* <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" ></SelectInputSearch> */}
-                    </Col>
+                        <Col md={6}>
+                            {/* <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" ></SelectInputSearch> */}
+                        </Col>
                     </Form.Row>
-                    <Button variant="primary" size="sm" className="px-4 float-right" onClick={this.editLeadDetails}>Update Details</Button>
+                    <Form.Row className="float-right">
+                        <Button variant="primary" size="sm" className="px-4" onClick={this.editLeadDetails}>Update Details</Button>
+                    </Form.Row>
                 </Form>
             </Container>
         );

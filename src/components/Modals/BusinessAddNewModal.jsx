@@ -110,6 +110,12 @@ class BusinessAddNewModal extends Component {
                 "lead_contactPerson": this.state.lead_contactPerson,
                 "lead_contactNumber": this.state.supplierPhoneNo,
                 "lead_createdBy": this.state.supplierUuid,
+                "lead_email": this.state.lead_email,
+                "lead_designation":this.state.lead_designation,
+                "lead_alternativeNumber": this.state.lead_alternativeNumber,
+                // "lead_email": this.state.lead_email,
+                // "lead_designation": this.state.lead_designation,
+                // "lead_alternativeNumber": this.state.lead_alternativeNumber,
                 "lead_details": [
                     ...this.state.leadForm.equipmentLead
                 ]
@@ -423,7 +429,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupRenterEmail">
                                 <Form.Label className="font_stle">Renter Email</Form.Label>
-                                <Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" />
+                                <Form.Control type="text" name="lead_email" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" />
                             </Form.Group>
                         </Col>
                     </Form.Row>
@@ -435,7 +441,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupaltPhno">
                                 <Form.Label className="font_stle">Alternate Phone no.</Form.Label>
-                                <Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} />
+                                <Form.Control type="text" name="lead_alternativeNumber" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} />
                             </Form.Group>
                         </Col>
                         <Col md={3}>
@@ -447,7 +453,7 @@ class BusinessAddNewModal extends Component {
                         <Col md={3}>
                             <Form.Group controlId="formGroupDesig">
                                 <Form.Label className="font_stle">Designation</Form.Label>
-                                <Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} />
+                                <Form.Control type="text" name="lead_designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} />
                             </Form.Group>
                         </Col>
                     </Form.Row>

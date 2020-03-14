@@ -4,7 +4,7 @@ import SelectInputSearch from './SelectInputSearch';
 import '../../assets/css/form.css';
 import CalenderInput from './CalenderInput';
 // import { fromUnixTime } from 'date-fns';
-import { computeDistrictsDropDownInForm} from '../../views/Business/actions'
+import { computeDistrictsDropDownInForm } from '../../views/Business/actions'
 class AddFields extends React.Component {
     constructor(props) {
         super(props);
@@ -66,7 +66,7 @@ class AddFields extends React.Component {
     //     }, () => {
     //         // console.log(this.state.equipmentTypeDropDownList)
     //     });
-        
+
     // }
     componentWillReceiveProps (nextProps) {
         if (nextProps.equipmentForm !== this.props.equipmentForm) {
