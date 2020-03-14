@@ -219,7 +219,7 @@ class AddFields extends React.Component {
                     </Col>
                     <Col md={3}>
                         <Form.Group>
-                            <SelectInputSearch name="lead_transportation" cStyle="widthone" label="Shift Type" placeholder="Select Transportation" value={this.props.equipmentForm.lead_transportation || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.transportationDropDown}></SelectInputSearch>
+                            <SelectInputSearch name="lead_transportation" cStyle="widthone" label="Transportation" placeholder="Select Transportation" value={this.props.equipmentForm.lead_transportation || ''} onChange={this.props.equipInputChangeHandlerSelect} isopen={this.props.isOpenD} options={this.state.transportationDropDown}></SelectInputSearch>
                             {/* <span className="lead_transportation_error">{this.props.equipmentForm.lead_transportation_error}</span> */}
                         </Form.Group>
                     </Col>

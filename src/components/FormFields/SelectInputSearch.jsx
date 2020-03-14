@@ -71,6 +71,7 @@ class SelectInput extends Component {
               placeholder="Search..."
               styles={selectStyles}
               tabSelectsValue={false}
+              defaultValue={this.state.props}
               value={this.props.value}
             />
           </Form.Group>

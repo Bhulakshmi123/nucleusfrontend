@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Container, Col, Row, Form, Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { editLeadDetails } from '../../views/Business/actions'
-import SelectInput from './SelectInput';
 import SelectInputSearch from './SelectInputSearch';
 import CalenderInput from './CalenderInput'
 import * as moment from 'moment';
@@ -129,13 +128,7 @@ class EditLeadForm1 extends Component {
                         {/* <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" ></SelectInputSearch> */}
                     </Col>
                     </Form.Row>
-<<<<<<< HEAD
-                    <Form.Row>
-                    <Button variant="primary" size="sm" className="px-4" onClick={this.editLeadDetails}>Update Lead Details</Button>
-                    </Form.Row>
-=======
                     <Button variant="primary" size="sm" className="px-4 float-right" onClick={this.editLeadDetails}>Update Details</Button>
->>>>>>> a1dd068350beee1e3c6c895a0fe242a5bf7769c3
                 </Form>
             </Container>
         );
