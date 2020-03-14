@@ -5,7 +5,7 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFields3 from '../FormFields/EditLeadForm1';
+import EditLeadForm1 from '../FormFields/EditLeadForm1';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
 import { toast } from 'react-toastify';
 import { toastNotification } from '../../commonFunctions/toastAlert';
@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        // console.log('Side Article', this.props);
+        console.log('Side Article', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -329,7 +329,7 @@ class SideArticle extends Component {
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields3></AddFields3>
+                        <EditLeadForm1 data={this.props}></EditLeadForm1>
                     </Modal.Body>
                 </Modal>
             </React.Fragment >

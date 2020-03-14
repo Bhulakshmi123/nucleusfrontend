@@ -194,8 +194,6 @@ class BusinessAddNewModal extends Component {
         }
     }
 
-  
-
     computeYearDropDownInForm = () => {
         let currentYear = moment().format('YYYY');
         let yearDropDown = this.state.yearDropDown;
@@ -210,11 +208,13 @@ class BusinessAddNewModal extends Component {
         let statesDropDown = response.data;
         this.setState({ statesDropDown });
     }
+
     equipmentTypeDropDownList = async (e) => {
         let response = await equipmentTypeDropDownList(this.state.token);
         let equipmentDropdown = response.data;
         this.setState({ equipmentDropdown });
     }
+
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';

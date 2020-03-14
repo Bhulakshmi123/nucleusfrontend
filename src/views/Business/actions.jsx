@@ -40,8 +40,8 @@ export const computeStatesDropDownInForm = async (token) => {
 export const computeDistrictsDropDownInForm = async (token, urlPayload) => {
     return (await service.fetchGet(GET_CITIES.url + urlPayload, token));
 }
-export const editLeadDetails = async (payload, token) => {
-    return (await service.fetchPost(EDIT_LEAD_DETAILS.url, payload, token));
+export const editLeadDetails = async (urlPayload, payload, token) => {
+    return (await service.fetchPost(EDIT_LEAD_DETAILS.url + urlPayload, payload, token));
 }
 export const equipmentTypeDropDownList = async (token) => {
     return (await service.fetchGet(GET_EQUIPMENT_TYPES.url, token));
