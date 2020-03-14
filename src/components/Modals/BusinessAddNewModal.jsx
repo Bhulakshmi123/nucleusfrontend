@@ -48,12 +48,12 @@ class BusinessAddNewModal extends Component {
                 { value: 'pizza', label: 'Pizza', name: 'lead_source' },
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
             ],
-            // equipmentTypeDropDownList: [
-            //     { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
-            //     { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
-            //     { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
-            // ],
-            equipmentTypeDropDownList: [],
+            equipmentTypeDropDownList: [
+                { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
+                { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
+                { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
+            ],
+            // equipmentTypeDropDownList: [],
             userMobileError: false,
             newFromError: false,
             renterNameError: false,
@@ -197,9 +197,9 @@ class BusinessAddNewModal extends Component {
     getEquipmentTypes = async () => {
         let response = await getEquipmentTypes(this.state.token);
         console.log('getEquipmentTypes API', response);
-        this.setState({
-            equipmentTypeDropDownList: response.data
-        }, () => console.log(this.state.equipmentTypeDropDownList));
+        // this.setState({
+        //     equipmentTypeDropDownList: response.data
+        // }, () => console.log(this.state.equipmentTypeDropDownList));
     }
 
     computeYearDropDownInForm = () => {

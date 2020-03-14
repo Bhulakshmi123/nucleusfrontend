@@ -12,6 +12,7 @@ class EditLeadForm1 extends Component {
     constructor(props) {
         let token = localStorage.getItem("tokenId");
         super(props)
+        console.log('Nemo', this.props);
         this.state = {
             isShowing: false,
             token: token,
@@ -39,10 +40,10 @@ class EditLeadForm1 extends Component {
             "lead_companyUuid": "1a8abc1c-8c11-11e8-86bd-7054d27b259a",
             "lead_date": this.state.lead_date,
             "lead_contactPerson": this.state.lead_contactPerson,
-            "lead_contactNumber": this.state.lead_contactNumber,
+            "lead_contactNumber": "8686224141",
             "lead_updatedBy": "1a8abc1c-8c11-11e8-86bd-7054d27b259a",
         };
-        let response = await editLeadDetails(data, this.state.token);
+        let response = await editLeadDetails(this.props.data.leadinfo[0].lead_uuid, data, this.state.token);
         console.log("Edit details", response);
         if (response) {
             toastNotification('Lead Details are Successfully Updated', toast.POSITION.BOTTOM_RIGHT, 'text-success');

@@ -107,9 +107,9 @@ export class Loginpage extends Component {
                                                 We'll never share your email with anyone else.
                                             </Form.Text>
                                             <Form.Text className="mt-2">
-                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-danger')}}>Back To Company ID</Button>
+                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-primary')}}>Back To Company ID</Button>
                                                 <span className="text-dark">|</span>
-                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-danger')}}>Forgot Password ?</Button>
+                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-primary')}}>Forgot Password ?</Button>
                                             </Form.Text>
                                         </Form.Group>
                                     </Form>
