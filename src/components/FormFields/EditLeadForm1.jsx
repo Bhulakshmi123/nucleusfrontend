@@ -28,16 +28,23 @@ class EditLeadForm1 extends Component {
 
     propSorter = () => {
         this.setState({
-            lead_contactNumber: this.props.data.leadinfo[0].leadDet_capacity,
-            lead_contactPerson: this.props.data.leadinfo[0].leadDet_operatorFood
+            lead_contactNumber: this.props.data.leadinfo[0].leadDet_capacity || '',
+            lead_contactPerson: this.props.data.leadinfo[0].leadDet_operatorFood || ''
         })
+    }
+
+    onTodoChange (e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        console.log('State', this.state);
     }
 
 
     editOnchange (e) {
         console.log([e.target.name], e.target.value);
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: null
         });
     }
 
@@ -63,6 +70,7 @@ class EditLeadForm1 extends Component {
             "lead_contactNumber": "8686224141",
             "lead_updatedBy": this.state.lead_companyUuid,
         };
+        console.log('editLeadDetails', data);
         let response = await editLeadDetails(this.props.data.leadinfo[0].lead_uuid, data, this.state.token);
         if (response) {
             toastNotification('Lead Details are Successfully Updated', toast.POSITION.BOTTOM_RIGHT, 'text-success');
@@ -81,18 +89,18 @@ class EditLeadForm1 extends Component {
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber" onChange={this.editOnchange} placeholder="Phone No." value={this.state.lead_contactNumber} />
+                                <Form.Control type="text" name="lead_contactNumber" onChange={e => this.onTodoChange(e)} placeholder="Phone No." value={this.state.lead_contactNumber} />
                             </Form.Group>
                         </Col>
-                        {/* <Col md={6}>
-                            <CalenderInput name="lead_date" label="Lead Date*" onChange={this.editOnchange} placeholder="Lead Date" startDate={this.state.startDate} minDate={new Date()} />
-                        </Col> */}
+                        <Col md={6}>
+                            {/* <CalenderInput name="lead_date" label="Lead Date*" onChange={e => this.onTodoChange(e)} placeholder={this.props.data.leadinfo[0].leadDet_startDate} startDate={this.state.startDate} minDate={new Date()} /> */}
+                        </Col>
                     </Form.Row>
                     <Form.Row>
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" onChange={this.editOnchange} value={this.state.lead_contactPerson} />
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" onChange={e => this.onTodoChange(e)} value={this.state.lead_contactPerson} />
                             </Form.Group>
                         </Col>
                         {/* <Col md={6}>
