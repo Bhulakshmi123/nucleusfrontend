@@ -13,7 +13,7 @@ class EditLeadForm1 extends Component {
         let token = localStorage.getItem("tokenId"),
             userUuid = localStorage.getItem("uuid");
         super(props)
-        // console.log('Nemo', this.props);
+        console.log('Nemo', this.props);
         this.state = {
             token: token,
             lead_companyUuid: userUuid,
@@ -22,6 +22,25 @@ class EditLeadForm1 extends Component {
             lead_contactPerson: ''
         }
     }
+    componentDidMount () {
+        this.propSorter();
+    }
+
+    propSorter = () => {
+        this.setState({
+            lead_contactNumber: this.props.data.leadinfo[0].leadDet_capacity,
+            lead_contactPerson: this.props.data.leadinfo[0].leadDet_operatorFood
+        })
+    }
+
+
+    editOnchange (e) {
+        console.log([e.target.name], e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
 
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
@@ -34,6 +53,7 @@ class EditLeadForm1 extends Component {
             startDate: date
         }, () => { console.log(this.state.leadForm) });
     }
+
 
     editLeadDetails = async (e) => {
         let data = {
@@ -61,22 +81,61 @@ class EditLeadForm1 extends Component {
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Phone No.*</Form.Label>
-                                <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." value={this.props.data.leadinfo[0].lead_uuid} />
+                                <Form.Control type="text" name="lead_contactNumber" onChange={this.editOnchange} placeholder="Phone No." value={this.state.lead_contactNumber} />
                             </Form.Group>
                         </Col>
-                        <Col md={6}>
-                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
-                        </Col>
+                        {/* <Col md={6}>
+                            <CalenderInput name="lead_date" label="Lead Date*" onChange={this.editOnchange} placeholder="Lead Date" startDate={this.state.startDate} minDate={new Date()} />
+                        </Col> */}
                     </Form.Row>
                     <Form.Row>
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label className="font_stle">Renter Name*</Form.Label>
-                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" value={this.props.data.leadinfo[0].leadDet_operatorFood} />
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" onChange={this.editOnchange} value={this.state.lead_contactPerson} />
                             </Form.Group>
                         </Col>
+                        {/* <Col md={6}>
+                            <Form.Group controlId="formGroupRenterEmail">
+                                <Form.Label className="font_stle">Renter Email</Form.Label>
+                                <Form.Control type="text" name="renter_emil"  label="Renter Email" placeholder="Renter Email" />
+                            </Form.Group>
+                        </Col> */}
                     </Form.Row>
-                    <Button variant="primary" size="sm" className="px-4 float-right" onClick={this.editLeadDetails}>Update Details</Button>
+                    <Form.Row>
+                        {/* <Col md={6} className="form-modal">
+                            <label>Lead Executive</label>
+                            <div className="my-auto py-1 px-0 text-primary text-uppercase">Hello</div>
+                        </Col>
+                        <Col md={6}>
+                            <Form.Group controlId="formGroupaltPhno">
+                                <Form.Label className="font_stle">Alternate Phone no.</Form.Label>
+                                <Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." />
+                            </Form.Group>
+                        </Col> */}
+                    </Form.Row>
+                    <Form.Row>
+                        {/* <Col md={6}>
+                            <Form.Group controlId="formGroupCom_name">
+                                <Form.Label className="font_stle">Company Name</Form.Label>
+                                <Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name"  />
+                            </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                            <Form.Group controlId="formGroupDesig">
+                                <Form.Label className="font_stle">Designation</Form.Label>
+                                <Form.Control type="text" name="designation" label="Designation" placeholder="Designation"  />
+                            </Form.Group>
+                        </Col> */}
+                    </Form.Row>
+                    <Form.Row>
+                        <Col md={6}>
+                            {/* <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" ></SelectInputSearch> */}
+                        </Col>
+                    </Form.Row>
+                    <Form.Row className="float-right">
+                        <Button variant="primary" size="sm" className="px-4" onClick={this.editLeadDetails}>Update Details</Button>
+                    </Form.Row>
                 </Form>
             </Container>
         );
