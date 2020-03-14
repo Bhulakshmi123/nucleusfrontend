@@ -79,12 +79,6 @@ class AddFields extends React.Component {
 
     }
 
-    // componentWillReceiveProps(newProps) {
-    //     this.setState({
-    //         districtsDropDown: newProps.districtsDropDown
-    //     }, () => { console.log('Templars vs Assassins', this.state.districtsDropDown) });
-    // }
-
     render () {
         return (
             <React.Fragment>

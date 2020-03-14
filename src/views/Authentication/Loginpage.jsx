@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, Card } from 'react-bootstrap';
+import { NavLink, Link } from 'react-router-dom';
 import { getClientInfo } from './actions';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -105,10 +106,10 @@ export class Loginpage extends Component {
                                             <Form.Text className="text-muted">
                                                 We'll never share your email with anyone else.
                                             </Form.Text>
-                                            <Form.Text className="mt-4">
-                                                <span className="text-primary p-1 font-size-08 cursor-pointer">Back to Company ID</span>
+                                            <Form.Text className="mt-2">
+                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-danger')}}>Back To Company ID</Button>
                                                 <span className="text-dark">|</span>
-                                                <span className="text-primary p-1 font-size-08 cursor-pointer">Forgot Password ?</span>
+                                                <Button variant="link" size="sm" onClick={()=>{toastNotification('This Feature is Under Development', toast.POSITION.TOP_RIGHT, 'text-danger')}}>Forgot Password ?</Button>
                                             </Form.Text>
                                         </Form.Group>
                                     </Form>

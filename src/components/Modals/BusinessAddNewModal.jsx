@@ -4,7 +4,7 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { getSupplierDetails, createNewLead, computeStatesDropDownInForm } from '../../views/Business/actions'
+import { getSupplierDetails, createNewLead, computeStatesDropDownInForm, getEquipmentTypes } from '../../views/Business/actions'
 import * as moment from 'moment';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -48,11 +48,12 @@ class BusinessAddNewModal extends Component {
                 { value: 'pizza', label: 'Pizza', name: 'lead_source' },
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
             ],
-            equipmentTypeDropDownList: [
-                { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
-                { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
-                { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
-            ],
+            // equipmentTypeDropDownList: [
+            //     { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
+            //     { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
+            //     { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
+            // ],
+            equipmentTypeDropDownList: [],
             userMobileError: false,
             newFromError: false,
             renterNameError: false,
@@ -74,6 +75,7 @@ class BusinessAddNewModal extends Component {
     componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
+        this.getEquipmentTypes();
     }
 
     getSupplierDetails = async (phoneNumber) => {
@@ -152,7 +154,7 @@ class BusinessAddNewModal extends Component {
         //     console.log("Wrong Number")
         // }
     }
-    
+
     successNotification = (response) => {
         toast(response.message + ' Id: [' + response.data[0] + ']', {
             position: toast.POSITION.TOP_RIGHT,
@@ -190,6 +192,14 @@ class BusinessAddNewModal extends Component {
                 leadForm: leadForm
             }, () => { console.log(this.state.leadForm) });
         }
+    }
+
+    getEquipmentTypes = async () => {
+        let response = await getEquipmentTypes(this.state.token);
+        console.log('getEquipmentTypes API', response);
+        this.setState({
+            equipmentTypeDropDownList: response.data
+        }, () => console.log(this.state.equipmentTypeDropDownList));
     }
 
     computeYearDropDownInForm = () => {
