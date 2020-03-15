@@ -16,10 +16,10 @@ export class Loginpage extends Component {
         this.onChange = this.onChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
-    onChange (e) {
+    onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    submitForm (e) {
+    submitForm(e) {
         e.preventDefault();
         if (this.state.username === null || this.state.password === null) {
             this.setState({
@@ -39,14 +39,14 @@ export class Loginpage extends Component {
                     // console.log(res);
                     localStorage.setItem("tokenId", res.data.token);
                     localStorage.setItem("uuid", res.data.uuid);
-                    localStorage.setItem("username",res.data.name);
-                    localStorage.setItem("supplierUuid",res.data.supplierUuid);
+                    localStorage.setItem("username", res.data.name);
+                    localStorage.setItem("supplierUuid", res.data.supplierUuid);
                     this.setState({ tokenId: res.data.token, loginStatus: true })
                 }
             });
         }
     }
-    handleChange (e) {
+    handleChange(e) {
         let error = 'errorMessage_' + [e.target.name];
         if (e.target.type === 'text') {
             // console.log(error);
@@ -63,7 +63,7 @@ export class Loginpage extends Component {
         }
     }
 
-    render () {
+    render() {
         if (this.state.loginStatus === true) {
             return (<Redirect to="/dashboard"></Redirect>)
         }
