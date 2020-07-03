@@ -1,18 +1,22 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../redux/actions/index';
-const Projects = () => {
-  const counter = useSelector(state => state.counter);
-  const isLogged = useSelector(state => state.isLogged);
-  const dispatch = useDispatch();
-  return (
-    <div className="mt-5">
-      <h1>Counter {counter}</h1>
-      <button onClick={() => dispatch(increment(5))}>+</button>
-      <button onClick={() => dispatch(decrement(5))}>-</button>
-      {isLogged ? <h3>React Sucks</h3> : ''}
-    </div>
-  )
-}
 
+import React, { Component } from 'react';
+class Projects extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
+  render () {
+    return (
+      <React.Fragment>
+        <div className="mainContent">
+          <div className="text-center mt-25">
+          <i className="fas fa-car-crash text-center text-white font-size-50"></i>
+            <h1 className="text-white text-center">Under Maintenance</h1>
+          </div>
+        </div>
+      </React.Fragment>
+    )
+  }
+}
 export default Projects;

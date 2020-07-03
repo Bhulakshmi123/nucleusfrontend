@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaHome, FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaTruckMonster, FaRegUserCircle } from 'react-icons/fa';
+import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft, FaTruckMonster, FaRegUserCircle } from 'react-icons/fa';
 import { AiOutlineDollar, AiOutlineUser } from "react-icons/ai";
 import { MdExitToApp } from "react-icons/md";
 import { FiBriefcase } from "react-icons/fi";
-import Dashboard from "views/Dashboard/";
+// import Dashboard from "views/Dashboard/";
 import Business from "views/Business/";
 import Projects from "views/Projects/";
 import RMPUsers from "views/RMPUsers/";
@@ -14,66 +14,66 @@ import ManPower from "views/ManPower/";
 import Subscriptions from "views/Subscriptions/";
 
 const dashboardRoutes = [
-    {
-        path: "/dashboard",
-        name: "Dashboard",
-        icon: <FaHome />,
-        component: Dashboard,
-        layout: "/nucleus"
-    },
+    // {
+    //     path: "/dashboard",
+    //     name: "Dashboard",
+    //     icon: <FaHome />,
+    //     component: Dashboard,
+    //     layout: "/nucleus"
+    // },
     {
         path: "/business/leads/new",
         name: "Business",
-        icon: <AiOutlineDollar />,
+        icon: < AiOutlineDollar />,
         component: Business,
         layout: "/nucleus"
     },
     {
         path: "/projects",
         name: "Projects",
-        icon: <FiBriefcase />,
+        icon: < FiBriefcase />,
         component: Projects,
         layout: "/nucleus"
     },
     {
         path: "/rmp-users",
         name: "RMP Users",
-        icon: <AiOutlineUser />,
+        icon: < AiOutlineUser />,
         component: RMPUsers,
         layout: "/nucleus"
     },
     {
         path: "/suppliers",
         name: "Suppliers",
-        icon: <FaRegArrowAltCircleRight />,
+        icon: < FaRegArrowAltCircleRight />,
         component: Suppliers,
         layout: "/nucleus"
     },
     {
         path: "/contractors",
         name: "Contractors",
-        icon: <FaRegArrowAltCircleLeft />,
+        icon: < FaRegArrowAltCircleLeft />,
         component: Contractors,
         layout: "/nucleus"
     },
     {
         path: "/equipment",
         name: "Equipment",
-        icon: <FaTruckMonster />,
+        icon: < FaTruckMonster />,
         component: Equipment,
         layout: "/nucleus"
     },
     {
         path: "/man-power",
         name: "Man Power",
-        icon: <FaRegUserCircle />,
+        icon: < FaRegUserCircle />,
         component: ManPower,
         layout: "/nucleus"
     },
     {
         path: "/subscriptions",
         name: "Subscriptions",
-        icon: <MdExitToApp />,
+        icon: < MdExitToApp />,
         component: Subscriptions,
         layout: "/nucleus"
     }

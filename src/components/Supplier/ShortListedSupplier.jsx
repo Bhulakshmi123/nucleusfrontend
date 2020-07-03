@@ -8,7 +8,7 @@ class ShortListedSupplier extends Component {
     constructor(props) {
         super(props)
         let token = localStorage.getItem("tokenId");
-        // console.log('ShortListed Supplier',this.props)
+        console.log('ShortListed Supplier',this.props)
         this.state = {
             token: token,
             leadUuid: '',
@@ -47,9 +47,11 @@ class ShortListedSupplier extends Component {
                                     <Col md={1} className="text-center my-auto">
                                         <div><AiOutlineMenu className="font-size-16 text-dark" /></div>
                                     </Col>
-                                    <Col md={2} className="text-center my-auto hovertext-brickRed cursor-pointer">
-                                        <div><FaRegCheckCircle className="text-center font-size-22" onClick={() => this.props.finalize(this.props.data.leadDet_id, 'FINALIZED', 'ACTIVE')} /></div>
-                                        <div className="font-size-07">Finalize</div>
+                                    <Col md={2} className="text-center my-auto hovertext-bluefuchisa cursor-pointer">
+                                        <div>
+                                            <FaRegCheckCircle className="text-center font-size-22" onClick={() => { this.props.finalize(this.props.data.leadDet_id, 'FINALIZED', 'ACTIVE', this.props.data.equipmentName); }} />
+                                        </div>
+                                        <div className="font-size-07">Finalise</div>
                                     </Col>
                                     <Col md={9} className="my-auto text-center">
                                         <div>lead_uuid</div>
@@ -81,7 +83,7 @@ class ShortListedSupplier extends Component {
                                 <div className="text-dark font-size-08 fontGilroyMedium text-capitalize">{this.props.data.leadDet_remarks === null ? '-NA-' : this.props.data.leadDet_remarks}</div>
                             </Col>
                             <Col md={2} className="my-auto">
-                                <Button variant="primary" size="sm" block onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
+                                <Button variant="primary" size="sm" block disabled={this.props.btnDisabled} onClick={() => this.isFinalizedOpen(this.props.data.lead_uuid, this.props.data.leadDet_uuid)}><i className="fas fa-edit mr-2"></i>Edit Bid</Button>
                             </Col>
                         </Row>
                     </small>

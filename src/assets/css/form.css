@@ -15,6 +15,11 @@
     border: solid 1px rgba(37, 37, 37, 0.3);
 }
 
+.disable_add {
+    display: none;
+    /* background-color: red; */
+}
+
 .form-modal input {
     padding-left: 10px;
 }
@@ -35,12 +40,13 @@
 }
 
 .select_palceholder {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400 !important;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    color:dimgray;
+    color: black;
+    text-transform: capitalize;
     font-family: GilroyBold !important;
     vertical-align: super;
 }
@@ -189,9 +195,10 @@ input[name="e_pe_shift"] {
     z-index: 2;
 }
 
-.ant-time-picker-panel-placement-bottomLeft {
+
+/* .ant-time-picker-panel-placement-bottomLeft {
     top: 386px !important;
-}
+} */
 
 .table>thead>tr>th {
     font-weight: 600 !important;

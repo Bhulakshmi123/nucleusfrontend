@@ -8,8 +8,11 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       {dataFromUrl()}
-      <div className={sidebarView ? "mainContent mainContentMini" : "mainContent"}>
-        <h1 className="text-white text-center mt-5">Dashboard</h1>
+      <div className="mainContent">
+        <div className="text-center mt-25">
+          <i className="fas fa-car-crash text-center text-white font-size-50"></i>
+          <h1 className="text-white text-center">Under Maintenance</h1>
+        </div>
       </div>
     </React.Fragment>
   )

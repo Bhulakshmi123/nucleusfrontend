@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Navbar, Button, Form } from "react-bootstrap";
 import logo from "assets/img/fav-ico.png";
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
+import 'react-toastify/dist/ReactToastify.css';
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +26,8 @@ class Header extends Component {
   logoutHandler (e) {
     e.preventDefault();
     localStorage.removeItem("tokenId");
-    this.setState({ loggedIn: false })
+    this.setState({ loggedIn: false });
+    toastNotification(`${this.state.name} Succesfully Logged Out`, toast.POSITION.TOP_RIGHT, 'text-success');
   }
   mobileSidebarToggle (e) {
     if (this.state.sidebarExists === false) {

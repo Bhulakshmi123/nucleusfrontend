@@ -12,8 +12,8 @@ import { DefaultCard } from '../DefaultCard/DefaultCard';
 class BusinessMCard extends Component {
     constructor(props) {
         super(props)
-        let token = localStorage.getItem("tokenId");
-        let leadType = window.location.href.split('/');
+        let token = localStorage.getItem("tokenId"),
+            leadType = window.location.href.split('/');
         this.state = {
             isApiCallSuccessful: false,
             token: token,
@@ -27,33 +27,49 @@ class BusinessMCard extends Component {
         this.searchBoxHandler = this.searchBoxHandler.bind(this)
         this.selectHandler = this.selectHandler.bind(this)
     }
+
     componentDidMount () {
         this.props.sidebarViewAction(false);
         this.getLeads(this.state.leadType);
     }
+
     getLeads = async (leadType) => {
         if (leadType === 'moved') {
             let response = await getProjectsOfNucleus(this.state.token);
             if (response) {
-                this.setState({ leadsInformation: response.data })
-                this.setState({ dummyDataHolder: response.data })
+                this.setState({
+                    leadsInformation: response.data,
+                    dummyDataHolder: response.data,
+                    isApiCallSuccessful: true
+                });
             }
         }
         else {
             let response = await getLeads(leadType, this.state.token);
             if (response) {
-                this.setState({ leadsInformation: response.data })
-                this.setState({ dummyDataHolder: response.data })
+                this.setState({
+                    leadsInformation: response.data,
+                    dummyDataHolder: response.data,
+                    isApiCallSuccessful: true
+                });
             }
         }
     }
+
     selectHandler (e) {
-        this.setState({ 'selectedState': e.target.value })
+        this.setState({
+            selectedState: e.target.value
+        });
     }
+
     dataChangeHandler = (e) => {
-        this.getLeads(e.target.name)
-        this.setState({ 'leadType': e.target.name })
+        this.getLeads(e.target.name);
+        this.setState({
+            leadType: e.target.name,
+            isApiCallSuccessful: false
+        });
     }
+
     searchBoxHandler (e) {
         let currentList, displayedLeads;
         if (e.target.value !== '') {
@@ -90,13 +106,22 @@ class BusinessMCard extends Component {
                     let searchValue = item.lead_date.toLowerCase();
                     return searchValue.indexOf(searchQuery) !== -1;
                 }
+                else {
+                    window.alert('Something Went Wrong please Try Again Later');
+                    return 0;
+                }
             })
-            this.setState({ leadsInformation: displayedLeads })
+            this.setState({
+                leadsInformation: displayedLeads
+            });
         }
         else {
-            this.setState({ leadsInformation: this.state.dummyDataHolder })
+            this.setState({
+                leadsInformation: this.state.dummyDataHolder
+            });
         }
     }
+
     render () {
         return (
             <React.Fragment>
@@ -104,7 +129,7 @@ class BusinessMCard extends Component {
                     <Container className="my-5 pb-5">
                         <Row>
                             <Col md={12}>
-                                <ArticleHeader heading='Leads' buttonName='Add New'></ArticleHeader>
+                                <ArticleHeader heading='Leads' buttonName='Add New' getLeads={this.getLeads.bind(this)}></ArticleHeader>
                             </Col>
                         </Row>
                         <Row className="mb-3 mt-2">
@@ -122,8 +147,6 @@ class BusinessMCard extends Component {
                                     <select className="customSelect w-35" value={this.state.selectedState} onChange={this.selectHandler}>
                                         <option value="searchBy">Search by</option>
                                         <option value="clientName">Client Name</option>
-                                        {/* <option value="phoneNumber">Phone Number</option> */}
-                                        {/* <option value="equipmentCount">Equipment Count</option> */}
                                         <option value="location">lead_uuid</option>
                                         <option value="companyName">Company Name</option>
                                         <option value="leadStatus">Lead Date</option>
@@ -136,47 +159,71 @@ class BusinessMCard extends Component {
                         </Row>
                         <div>
                             {
-                                this.state.leadsInformation.length === 0 ?
-                                    <DefaultCard md={5}>No {this.state.leadType} Leads Available to Display</DefaultCard> :
-                                    <div>
-                                        {
-                                            this.state.leadsInformation.map((prop, key) => {
-                                                return (
-                                                    <Container key={key}>
-                                                        <Row>
-                                                            <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
-                                                                {getDateFormat_4(prop.lead_date)}
-                                                            </Col>
-                                                            <Col md={10} className="pr-0">
-                                                                <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
-                                                                    <Container fluid className="card p-3 mb-4">
-                                                                        <Row>
-                                                                            <Col md={5} className="my-auto text-dark">
-                                                                                <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
-                                                                                <div className="text-capitalize"><FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_uuid}</div>
-                                                                            </Col>
-                                                                            <Col md={3} className="my-auto text-dark">
-                                                                                <div className="text-capitalize font-size-10"><i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}</div>
-                                                                                <div><FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}</div>
-                                                                            </Col>
-                                                                            <Col md={2} className="my-auto">
-                                                                                {prop.lead_isActive === "1" ? <div className="card text-center bg-success py-1 mx-4 text-white text-uppercase">ACTIVE</div> : <div className="card text-center bg-danger py-1 mx-4 text-white text-uppercase" value={prop.lead_uuid}>OFFLINE</div>}
-                                                                            </Col>
-                                                                            <Col md={2} className="my-auto text-dark text-center">
-                                                                                <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
-                                                                                <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
-                                                                                <div className="mtn-5">Equipment</div>
-                                                                            </Col>
-                                                                        </Row>
-                                                                    </Container>
-                                                                </Link>
-                                                            </Col>
-                                                        </Row>
-                                                    </Container>
-                                                )
-                                            })
-                                        }
+                                this.state.isApiCallSuccessful === false ?
+                                    <div className="my-5 pt-3">
+                                        <div className="text-center">
+                                            <i className="fas fa-cog font-size-50 rotateCog mb-2 text-white"></i>
+                                        </div>
+                                        <DefaultCard md={5}>
+                                            Fetching <span className="fontGilroyBold">{this.state.leadType}</span> Leads Information ....
+                                        </DefaultCard>
                                     </div>
+                                    :
+                                    this.state.leadsInformation.length === 0 ?
+                                        <div className="my-5 pt-3">
+                                            <div className="text-center">
+                                                <i className="fas fa-tractor font-size-50 mb-2 text-white"></i>
+                                            </div>
+                                            <DefaultCard md={5}>
+                                                No <span className="fontGilroyBold">{this.state.leadType}</span> Leads Available to Display
+                                            </DefaultCard>
+                                        </div>
+                                        :
+                                        <div>
+                                            {
+                                                this.state.leadsInformation.map((prop, key) => {
+                                                    return (
+                                                        <Container key={key}>
+                                                            <Row>
+                                                                <Col md={2} className="card text-center py-2 mb-auto whiteOpaque">
+                                                                    {getDateFormat_4(prop.lead_date)}
+                                                                </Col>
+                                                                <Col md={10} className="pr-0">
+                                                                    <Link to={`/business/leads/lead/${this.state.leadType}/${prop.lead_uuid}`} >
+                                                                        <Container fluid className="card p-3 mb-4">
+                                                                            <Row>
+                                                                                <Col md={5} className="my-auto text-dark">
+                                                                                    <div className="font-size-12 text-capitalize">{prop.companyName} <small className="text-danger font-size-08">[{prop.lead_id}]</small> </div>
+                                                                                    <div className="text-capitalize">
+                                                                                        <FaMapMarkedAlt className="mr-2 text-primary" />{prop.lead_location ? null : 'Location is Not Available'}
+                                                                                    </div>
+                                                                                </Col>
+                                                                                <Col md={3} className="my-auto text-dark">
+                                                                                    <div className="text-capitalize font-size-10">
+                                                                                        <i className="fas fa-user-alt mr-2 text-primary"></i>{prop.lead_contactPerson}
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <FaPhoneSquare className="mr-2 text-primary" />{prop.lead_contactNumber}
+                                                                                    </div>
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto">
+                                                                                    <div className="card text-center py-1 mx-2 text-white text-uppercase bg-bluefuchsia">{this.state.leadType}</div>
+                                                                                </Col>
+                                                                                <Col md={2} className="my-auto text-dark text-center">
+                                                                                    <h1 className="mb-0 text-primary">{prop.totalEquipment}</h1>
+                                                                                    <h1 className="mb-0 text-primary">{prop.equipmentCount}</h1>
+                                                                                    <div className="mtn-5">Equipment</div>
+                                                                                </Col>
+                                                                            </Row>
+                                                                        </Container>
+                                                                    </Link>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                             }
                         </div>
                     </Container>
@@ -185,16 +232,19 @@ class BusinessMCard extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         sidebarView: state.sidebarView
     }
 }
+
 const mapDispatchToProps = () => {
     return {
         sidebarViewAction
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps())(BusinessMCard);
 
 

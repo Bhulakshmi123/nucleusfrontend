@@ -11,7 +11,12 @@ import { Loginpage } from './views/Authentication/Loginpage'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+<<<<<<< HEAD
 const store = createStore(allReducers, compose(applyMiddleware(thunk)))
+=======
+import { ToastContainer} from 'react-toastify';
+const store = createStore(allReducers, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+>>>>>>> b6dea65ba1567f439a9b73e1a970aa44a5ba3311
 export default class Index extends Component {
 	render () {
 		return (
@@ -24,6 +29,7 @@ export default class Index extends Component {
 							<Route path="/" render={(props) => <AdminLayout {...props}></AdminLayout>}></Route>
 						</Switch>
 					</BrowserRouter>
+					<ToastContainer></ToastContainer>
 				</Provider >
 			</React.Fragment>
 		)

@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-class RMPUsers extends Component {
-  render() {
-    return (
-      <div>
-        RMP Users
+import React from 'react';
+const RMPUsers = () => {
+  return (
+    <React.Fragment>
+      <div className="mainContent">
+        <div className="text-center mt-25">
+          <i className="fas fa-car-crash text-center text-white font-size-50"></i>
+          <h1 className="text-white text-center">Under Maintenance</h1>
+        </div>
       </div>
-    )
-  }
-}
+    </React.Fragment>
 
+  )
+}
 export default RMPUsers;

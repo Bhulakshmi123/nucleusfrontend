@@ -4,20 +4,29 @@ import SelectInput from '../FormFields/SelectInput';
 import SelectInputSearch from '../FormFields/SelectInputSearch';
 import CalenderInput from '../FormFields/CalenderInput'
 import AddFields from '../FormFields/AddFields';
-import { getSupplierDetails, createNewLead } from '../../views/Business/actions'
+import { getSupplierDetails, createNewLead, computeStatesDropDownInForm, equipmentTypeDropDownList } from '../../views/Business/actions'
 import * as moment from 'moment';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import _ from 'lodash';
 // import { thisExpression } from '@babel/types';
-// var validator = require('validator');
+var validator = require('validator');
 class BusinessAddNewModal extends Component {
     constructor(props) {
         super(props);
-        let token = localStorage.getItem("tokenId");
-        let supplierUuid = localStorage.getItem("supplierUuid");
+        let token = localStorage.getItem("tokenId"),
+            username = localStorage.getItem("username"),
+            supplierUuid = localStorage.getItem("supplierUuid"),
+            leadType = window.location.href.split('/');
         this.state = {
+            lead_contactNumber: null,
+            lead_date: null,
+            lead_contactPerson: null,
+            leadType: leadType[leadType.length - 1],
             supplierPhoneNo: '',
             supplierDetails: '',
             token: token,
+            username: username,
             supplierUuid: supplierUuid,
             activeLeadNo: null,
             isEquipmentInfo: false,
@@ -35,15 +44,22 @@ class BusinessAddNewModal extends Component {
                 { value: '3', label: 'Vanilla', name: 'lead_priority' },
             ],
             leadSourceDropDown: [
-                { value: 'icecream', label: 'Icecream', name: 'lead_source' },
+                { value: 'iceCream', label: 'IceCream', name: 'lead_source' },
                 { value: 'pizza', label: 'Pizza', name: 'lead_source' },
                 { value: 'burger', label: 'Burger', name: 'lead_source' },
             ],
-            equipmentTypeDropDownList: [
-                { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
-                { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
-                { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
-            ],
+            // equipmentTypeDropDownList: [
+            //     { value: '1', label: 'Chocolate', name: 'lead_equipmentType' },
+            //     { value: 'strawberry', label: 'Strawberry', name: 'lead_equipmentType' },
+            //     { value: '3', label: 'Vanilla', name: 'lead_equipmentType' },
+            // ],
+            equipmentDropdown: [],
+            userMobileError: false,
+            newFromError: false,
+            renterNameError: false,
+            errorMessageMobileNo: '',
+            errorMessageRenterName: '',
+            errorMessageNewFrom: '',
             startDate: new Date(),
             startDateEquip: new Date(),
             equipmentFormCheck: 0,
@@ -51,15 +67,17 @@ class BusinessAddNewModal extends Component {
             yearDropDown: [],
             statesDropDown: [],
             districtsDropDown: [],
-            requiredFieldInEquipForm: ['lead_equipmentType', 'lead_safetyMeasures', 'lead_startDate']
+            requiredFieldInEquipForm: ['lead_equipmentType', 'lead_startDate']
         }
         this.handleChange = this.handleChange.bind(this)
+        this.onChange = this.onChange.bind(this)
     }
     componentWillMount () {
         this.computeYearDropDownInForm();
         this.computeStatesDropDownInForm();
-        this.computeDistrictsDropDownInForm();
+        this.equipmentTypeDropDownList();
     }
+
     getSupplierDetails = async (phoneNumber) => {
         let data = { "phoneNumber": phoneNumber.toString() }
         this.setState({ supplierPhoneNo: phoneNumber.toString() })
@@ -70,53 +88,116 @@ class BusinessAddNewModal extends Component {
             }
             else {
                 this.setState({ supplierDetails: { "name": null } })
-                console.log('Get Details of Supplier', this.state.supplierDetails)
+                // console.log('Get Details of Supplier', this.state.supplierDetails)
             }
         }
     }
+
     createNewLead = async (e) => {
         e.preventDefault();
-        console.log('state', this.state.leadForm, this.state);
-        let data = {
-            "lead_companyUuid": this.state.supplierUuid,
-            "lead_date": this.state.leadForm.lead_date,
-            "lead_contactPerson": 'Walt Disney',
-            "lead_contactNumber": this.state.supplierPhoneNo,
-            "lead_createdBy": this.state.supplierUuid,
-            "lead_details": [
-                ...this.state.leadForm.equipmentLead
-            ]
+        console.log('Dori', this.state.supplierPhoneNo, this.state.leadForm.lead_date, this.state.lead_contactPerson)
+        if (this.state.supplierPhoneNo === null || this.state.lead_contactPerson === null || this.state.leadForm.lead_date === null) {
+            this.setState({ newFromError: false, errorMessageNewFrom: 'Please Fill The Required Fields' })
         }
-        console.log('data', data);
-        let response = await createNewLead(data, this.state.token);
-        if (response) {
-            window.alert("Response of API1: Lead Successfully Created", response);
-        }
+        //  else if (this.state.supplierPhoneNo === '' || this.state.lead_contactPerson === '' || this.state.leadForm.lead_date === '' ) {
+        //     this.setState({newFromError : true, errorMessageNewFrom: ''})
+        // }
         else {
-            window.alert("Response of API2: Lead Creation Failed", response);
-            this.setState({ isEquipmentInfo: false })
+            // this.setState({newFromError : false, errorMessageNewFrom: ''})
+            let data = {
+                "lead_companyUuid": this.state.supplierUuid,
+                "lead_date": this.state.leadForm.lead_date,
+                "lead_contactPerson": this.state.lead_contactPerson,
+                "lead_contactNumber": this.state.supplierPhoneNo,
+                "lead_createdBy": this.state.supplierUuid,
+                "lead_email": this.state.lead_email,
+                "lead_designation":this.state.lead_designation,
+                "lead_alternativeNumber": this.state.lead_alternativeNumber,
+                // "lead_email": this.state.lead_email,
+                // "lead_designation": this.state.lead_designation,
+                // "lead_alternativeNumber": this.state.lead_alternativeNumber,
+                "lead_details": [
+                    ...this.state.leadForm.equipmentLead
+                ]
+            }
+            console.log('data', data);
+            // this.handleChange{}
+            let response = await createNewLead(data, this.state.token);
+            if (response) {
+                this.successNotification(response);
+                this.setState({
+                    isEquipmentInfo: false
+                })
+                this.props.modalHider();
+                if (this.state.leadType === 'new') {
+                    this.props.getLeadsOnSubmit('new');
+                }
+            }
+            else {
+                this.failedNotification();
+                this.setState({ isEquipmentInfo: false });
+            }
         }
     }
-    // getLeadInformation = async ()
     handleChange (e) {
-        console.log(e.target.value)
-        if (e.target.value.length === 10) {
-            this.getSupplierDetails(e.target.value)
+        if (e.target.type === 'text') {
+            if (validator.isMobilePhone(e.target.value) && e.target.value.length === 10) {
+                this.getSupplierDetails(e.target.value)
+                this.setState({ userMobileError: false, errorMessageMobileNo: '' });
+            }
+            else if (e.target.value.length === 0) {
+                this.setState({ userMobileError: true, errorMessageMobileNo: 'Invalid Phone Number' });
+            }
+            else {
+                this.setState({ userMobileError: true, errorMessageMobileNo: 'Invalid Phone Number' });
+            }
         }
-        else {
-            console.log("Wrong Number")
-        }
+        // console.log(e.target.value)
+        // if (e.target.value.length === 10) {
+        //     this.getSupplierDetails(e.target.value)
+        // }
+        // else {
+        //     console.log("Wrong Number")
+        // }
     }
+
+    successNotification = (response) => {
+        toast(response.message + ' Id: [' + response.data[0] + ']', {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-success fontGilroyBold bor-rad-05'
+        });
+    };
+
+    failedNotification = () => {
+        toast("Failed to Create a New Lead", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'text-center bg-dark text-danger fontGilroyBold bor-rad-05'
+        });
+    };
+    // getLeadInformation = async ()
+
     inputChangeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        let leadForm = this.state.leadForm;
-        leadForm = {
-            ...leadForm,
-            [e.target.name]: e.target.value
+        if (e.target.type === 'text') {
+            if (validator.isLength(e.target.value) && e.target.value.length === '') {
+                this.setState({ renterNameError: false, errorMessageRenterName: '' })
+            } else if (e.target.value.length === 0) {
+                console.log("")
+                this.setState({ renterNameError: true, errorMessageRenterName: 'Invalid Renter Name' })
+            }
+            else {
+                this.setState({ renterNameError: true, errorMessageRenterName: '' })
+            }
+        } else {
+            let leadForm = this.state.leadForm;
+            leadForm = {
+                ...leadForm,
+                [e.target.name]: e.target.value
+            }
+            this.setState({
+                leadForm: leadForm
+            }, () => { console.log(this.state.leadForm) });
         }
-        this.setState({
-            leadForm: leadForm
-        }, () => { console.log(this.state.leadForm) });
     }
 
     computeYearDropDownInForm = () => {
@@ -128,23 +209,18 @@ class BusinessAddNewModal extends Component {
         this.setState({ yearDropDown });
     }
 
-    computeStatesDropDownInForm = () => {
-        let statesDropDown = [
-            { value: '1', label: 'Andhra Pradesh', name: 'lead_state' },
-            { value: 'strawberry', label: 'Strawberry', name: 'lead_state' },
-            { value: 'vanilla', label: 'Vanilla', name: 'lead_state' }
-        ];
+    computeStatesDropDownInForm = async (e) => {
+        let response = await computeStatesDropDownInForm(this.state.token);
+        let statesDropDown = response.data;
         this.setState({ statesDropDown });
     }
 
-    computeDistrictsDropDownInForm = () => {
-        let districtsDropDown = [
-            { value: '1', label: 'Some District', name: 'lead_district' },
-            { value: 'strawberry', label: 'Strawberry', name: 'lead_district' },
-            { value: 'vanilla', label: 'Vanilla', name: 'lead_district' }
-        ];
-        this.setState({ districtsDropDown });
+    equipmentTypeDropDownList = async (e) => {
+        let response = await equipmentTypeDropDownList(this.state.token);
+        let equipmentDropdown = response.data;
+        this.setState({ equipmentDropdown });
     }
+
     inputChangeHandlerForSelect = (e) => {
         let leadForm = this.state.leadForm;
         let placeHolder = e.name + '_name';
@@ -164,10 +240,10 @@ class BusinessAddNewModal extends Component {
         let placeHolder = e.name + '_name';
         let error = e.name + '_error';
         let equipmentFormCheck = this.state.equipmentFormCheck;
-        if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value == null || e.value == '')) {
+        if (this.state.requiredFieldInEquipForm.indexOf(e.name) >= 0 && (e.value === null || e.value === '')) {
             equipmentForm = {
                 ...equipmentForm,
-                [error]: "Please check this Input",
+                [error]: "Please Select This Input",
             };
             equipmentFormCheck++;
         }
@@ -182,10 +258,11 @@ class BusinessAddNewModal extends Component {
         }
         this.setState({
             equipmentForm: equipmentForm
-        }, () => { console.log(this.state.equipmentForm) });
+        });
     }
-
-
+    onChange (e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
     inputChangeHandlerDate = (date) => {
         let leadForm = this.state.leadForm;
         leadForm = {
@@ -197,9 +274,7 @@ class BusinessAddNewModal extends Component {
             startDate: date
         }, () => { console.log(this.state.leadForm) });
     }
-    openCloseHandler = () => {
 
-    }
     openInputHandler = () => {
         this.setState({
             isEquipmentInfo: true,
@@ -209,7 +284,7 @@ class BusinessAddNewModal extends Component {
             startDateEquip: new Date(),
             equipmentKey: null
         }, () => {
-            console.log(this.state.equipmentForm);
+            // console.log(this.state.equipmentForm);
         });
     }
 
@@ -240,7 +315,7 @@ class BusinessAddNewModal extends Component {
         let equipmentForm = this.state.equipmentForm;
         let equipmentFormCheck = this.state.equipmentFormCheck;
         let error = e.target.name + '_error';
-        if ((e.target.name == 'lead_workingCount' || e.target.name == 'lead_workingTotalCount' || e.target.name == 'operation_d_m' || e.target.name == 'lead_quantity' || e.target.name == 'lead_workingHoursPerDay' || e.target.name == 'lead_operatorBatha') && e.target.value <= 0 && e.target.value != null && e.target.value != '') {
+        if ((e.target.name === 'lead_workingCount' || e.target.name === 'lead_workingTotalCount' || e.target.name === 'operation_d_m' || e.target.name === 'lead_quantity' || e.target.name === 'lead_workingHoursPerDay' || e.target.name === 'lead_operatorBatha') && e.target.value <= 0 && e.target.value !== null && e.target.value !== '') {
             equipmentForm = {
                 ...equipmentForm,
                 [error]: "Please check this Input",
@@ -248,7 +323,7 @@ class BusinessAddNewModal extends Component {
             };
             equipmentFormCheck++;
         } else {
-            if (this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value == null || e.target.value == '')) {
+            if (this.state.requiredFieldInEquipForm.indexOf(e.target.name) >= 0 && (e.target.value === null || e.target.value === '')) {
                 equipmentForm = {
                     ...equipmentForm,
                     [error]: "Please check this Input",
@@ -279,15 +354,15 @@ class BusinessAddNewModal extends Component {
                 let error = value + '_error'
                 equipmentForm = {
                     ...equipmentForm,
-                    [error]: "Please check this Input",
+                    [error]: "Please Select This Input",
                 };
             }
         });
         this.setState({ equipmentForm });
-        if (this.state.equipmentFormCheck != 0) {
+        if (this.state.equipmentFormCheck !== 0) {
             //form validation and reset the equipmentFormCheck  to 0
         }
-        if (errorCheck == 0) { // add the equipmentFormCheck variable here for complete form checking.
+        if (errorCheck === 0) { // add the equipmentFormCheck variable here for complete form checking.
             if (this.state.equipmentKey != null) {
                 let leadForm = this.state.leadForm;
                 let equipmentLead = leadForm.equipmentLead;
@@ -334,32 +409,76 @@ class BusinessAddNewModal extends Component {
             <React.Fragment>
                 <Form name="displayComponent" onSubmit={this.onSubmit} >
                     <Form.Row>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Phone No.*</Form.Label><Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
-                            {/* <div className="error_msg">{this.state.errorMessage_email}</div> */}
-                        </Form.Group></Col>
-                        <Col md={3}><CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} /></Col>
-                        <Col md={3}><Form.Group controlId="formGroupRent"><Form.Label className="font_stle">Renter Name*</Form.Label><Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupPhno"><Form.Label className="font_stle">Renter Email</Form.Label><Form.Control type="text" name="renter_emil" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" /></Form.Group></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupPhno">
+                                <Form.Label className="font_stle">Phone No.*</Form.Label>
+                                <Form.Control type="text" name="lead_contactNumber" placeholder="Phone No." onChange={this.handleChange} />
+                                {this.state.userMobileError ? <div className="text-danger font-size-10">{this.state.errorMessageMobileNo}</div> : <span></span>}
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <CalenderInput name="lead_date" label="Lead Date*" placeholder="Lead Date" onChange={this.inputChangeHandlerDate} startDate={this.state.startDate} minDate={new Date()} />
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRent">
+                                <Form.Label className="font_stle">Renter Name*</Form.Label>
+                                <Form.Control type="text" name="lead_contactPerson" label="Renter Name*" placeholder="Renter Name" defaultValue={this.state.supplierDetails.name} onChange={this.inputChangeHandler} />
+                                {this.state.renterNameError ? <div className="text-danger font-size-10">{this.state.errorMessageRenterName}</div> : <span></span>}
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupRenterEmail">
+                                <Form.Label className="font_stle">Renter Email</Form.Label>
+                                <Form.Control type="text" name="lead_email" defaultValue={this.state.supplierDetails.emailId} onChange={this.inputChangeHandler} label="Renter Email" placeholder="Renter Email" />
+                            </Form.Group>
+                        </Col>
                     </Form.Row>
                     <Form.Row className="mt-3">
                         <Col md={3} className="form-modal">
                             <label>Lead Executive</label>
-                            <div className="my-auto py-1 px-0 text-primary text-uppercase">Albus Dumbledore </div>
+                            <div className="my-auto py-1 px-0 text-primary text-uppercase">{this.state.username}</div>
                         </Col>
-                        <Col md={3}><Form.Group controlId="formGroupaltPhno"><Form.Label className="font_stle">Alternate Phone no.</Form.Label><Form.Control type="text" name="altPhoneNo" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupCom_name"><Form.Label className="font_stle">Company Name</Form.Label><Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} /></Form.Group></Col>
-                        <Col md={3}><Form.Group controlId="formGroupDesig"><Form.Label className="font_stle">Designation</Form.Label><Form.Control type="text" name="designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} /></Form.Group></Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupaltPhno">
+                                <Form.Label className="font_stle">Alternate Phone no.</Form.Label>
+                                <Form.Control type="text" name="lead_alternativeNumber" label="Alternate Phone no." placeholder="Alternate Phone no." onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupCom_name">
+                                <Form.Label className="font_stle">Company Name</Form.Label>
+                                <Form.Control type="text" name="com_name" label="Company Name" placeholder="Company Name" defaultValue={this.state.supplierDetails.companyName} onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Group controlId="formGroupDesig">
+                                <Form.Label className="font_stle">Designation</Form.Label>
+                                <Form.Control type="text" name="lead_designation" label="Designation" placeholder="Designation" onChange={this.inputChangeHandler} />
+                            </Form.Group>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row className="mt-3">
-                        {/* <Col md={3}><SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder = {this.state.leadForm.lead_priority? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput></Col>
-                        <Col md={3}><SelectInput name="lead_source" cStyle="widthone" label="Lead Source" 
-                        placeholder = {this.state.leadForm.lead_source? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2} /></Col> */}
-                        {/* <Col md={3}><SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch></Col> */}
-                        <Col md={3}><SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch></Col>
+                        {/* <Col md={3}>
+                            <SelectInput name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder={this.state.leadForm.lead_priority ? this.state.leadForm.lead_priority_name : "Lead Priority"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm1}></SelectInput>
+                        </Col> */}
+                        {/* <Col md={3}>
+                            <SelectInput name="lead_source" cStyle="widthone" label="Lead Source" placeholder={this.state.leadForm.lead_source ? this.state.leadForm.lead_source_name : "Lead Source"} onChange={this.inputChangeHandlerForSelect} options={this.state.optionsForm2}></SelectInput>
+                        </Col> */}
+                        {/* <Col md={3}>
+                            <SelectInputSearch name="lead_priority" cStyle="widthone" label="Lead Priority" placeholder="Lead Priority" value={this.state.leadForm.lead_priority_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.optionsForm1}></SelectInputSearch>
+                        </Col> */}
+                        <Col md={3}>
+                            <SelectInputSearch name="lead_source" cStyle="widthone" label="Lead Source" placeholder="Lead Priority" value={this.state.leadForm.lead_source_name} onChange={this.inputChangeHandlerForSelect} isOpenD={this.state.isOpenFormDropDown} options={this.state.leadSourceDropDown}></SelectInputSearch>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row>
-                        <Col className="my-3" md={3}><Button className="float-right px-4" variant="primary" size="sm" onClick={this.openInputHandler}>Add Equipment</Button></Col>
+                        <Col className="my-3">
+                            <Button className={`float-right px-4 ${this.state.isEquipmentInfo ? "disable_add" : "primary"}`} size="sm" onClick={this.openInputHandler}>Add Equipment</Button>
+                        </Col>
                     </Form.Row>
+
                     <Form.Row>
                         <Col md={12}>
                             <Table hover className="text-center">
@@ -392,6 +511,7 @@ class BusinessAddNewModal extends Component {
                             </Table>
                         </Col>
                     </Form.Row>
+
                     {
                         this.state.isEquipmentInfo ?
                             <AddFields
@@ -405,11 +525,14 @@ class BusinessAddNewModal extends Component {
                                 equipmentTypeDropDownList={this.state.equipmentTypeDropDownList}
                                 yearDropDown={this.state.yearDropDown}
                                 statesDropDown={this.state.statesDropDown}
-                                districtsDropDown={this.state.districtsDropDown}
+                                equipmentDropdown={this.state.equipmentDropdown}
+                                token={this.state.token}
                             />
                             : null
                     }
                     <Button type="submit" onClick={this.createNewLead} variant="success" size="sm" className="px-4 float-right" >Submit Lead</Button>
+                    {this.state.newFromError ? <span></span> : <div className="text-danger font-size-10">{this.state.errorMessageNewFrom}</div>}
+                    {/* <div className="text-danger font-size-10"> {this.state.errorMessage_submit}</div> */}
                 </Form>
             </React.Fragment>
         )

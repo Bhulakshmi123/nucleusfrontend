@@ -17,32 +17,40 @@ const selectStyles = {
 
 class SelectInput extends Component {
   state = {
-    options:this.props.options,
-    isOpen : this.props.isOpen,
+    options: this.props.options,
+    isOpen: this.props.isOpen,
   };
-
-  componentWillReceiveProps(nextProps) {
+  componentDidMount () {
+    // console.log ('Select Input Search', this.props);
+  }
+  componentWillReceiveProps (nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
+    // console.log('Select Input Box options',nextProps);
     if (nextProps.isOpen !== this.state.isOpen) {
       this.setState({ isOpen: nextProps.isOpen });
+    }
+
+    if (nextProps.options !== this.state.options) {
+      this.setState({ options: nextProps.options });
     }
   }
 
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
-  };    
+  };
 
 
-  render() {
-    const isOpen= this.state.isOpen;
+  render () {
+    const isOpen = this.state.isOpen;
     return (
       <div>
+        {/* {console.log('Select Input Box',this.state.options)} */}
         <InputName label={this.props.label} />
         <Dropdown
           isOpen={this.state.isOpen}
           onClose={this.toggleOpen}
           target={
-            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen ? 1 : 0} >
+            <Button variant="light" className="red" style={{ width: '100%', height: '34px', padding: '6px 16px !important' }} onClick={this.toggleOpen} isselected={isOpen ? 1 : 0} disabled={this.props.disabled} >
               <img className="down_arrow" src={require('assets/img/downarrow.svg')} alt="Arrow"></img>
               {this.props.value ? `${this.props.value}` : <Placeholder className="place_txt" placeholder={this.props.placeholder}></Placeholder>}
             </Button>
@@ -63,6 +71,7 @@ class SelectInput extends Component {
               placeholder="Search..."
               styles={selectStyles}
               tabSelectsValue={false}
+              defaultValue={this.state.props}
               value={this.props.value}
             />
           </Form.Group>
@@ -119,12 +128,12 @@ const Blanket = props => (
   />
 );
 const Dropdown = ({ children, isOpen, target, onClose }) => (
-    <div css={{ position: 'relative' }}>
-      {target}
-      {isOpen ? <Menu>{children}</Menu> : null}
-      {isOpen ? <Blanket onClick={onClose} /> : null}
-    </div>
-  );
+  <div css={{ position: 'relative' }}>
+    {target}
+    {isOpen ? <Menu>{children}</Menu> : null}
+    {isOpen ? <Blanket onClick={onClose} /> : null}
+  </div>
+);
 const Svg = p => (
   <svg
     width="24"
@@ -155,7 +164,3 @@ const DropdownIndicator = () => (
 //     />
 //   </Svg>)
 export default SelectInput;
-
-
-
-

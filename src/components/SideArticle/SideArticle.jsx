@@ -5,12 +5,15 @@ import { randomHeaderColorGenerator } from '../../commonFunctions/randomColorGen
 import AddViewOne from '../AddViewOne/AddViewOne';
 import AddViewTwo from '../AddViewTwo/AddViewTwo';
 import AddViewThree from '../AddViewThree/AddViewThree';
-import AddFields3 from '../../components/FormFields/AddFields3';
+import EditLeadForm1 from '../FormFields/EditLeadForm1';
 import { getLeadEquipmentDetails, getSupplierList, changeLeadStatus, moveToProjects } from '../../views/Business/actions';
+import { toast } from 'react-toastify';
+import { toastNotification } from '../../commonFunctions/toastAlert';
+import 'react-toastify/dist/ReactToastify.css';
 class SideArticle extends Component {
     constructor(props) {
         super(props)
-        // console.log('Side Article', this.props)
+        console.log('Side Article', this.props);
         let token = localStorage.getItem("tokenId");
         this.state = {
             isApiCallSuccessful: false,
@@ -32,74 +35,129 @@ class SideArticle extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
+
     componentDidMount () {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
-        this.backButtonHandler()
+        this.backButtonHandler();
     }
+
     componentWillReceiveProps (nextProps) {
-        this.setState({ filtered: nextProps.leadinfo });
+        // console.log('nextProps', nextProps);
+        this.setState({
+            leadUuid: nextProps.leadinfo[0].lead_uuid,
+            leadEquipmentUid: nextProps.leadinfo[0].leadDet_uuid,
+            filtered: nextProps.leadinfo
+        }, () => { this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token); });
     }
+
     backButtonHandler = () => {
         let url = window.location.pathname.split('/');
-        // console.log('New Url', url);
         this.setState({ goBackUrl: url[url.length - 2] })
     }
+
     testAddViewThree = () => {
         this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
     }
+
     setRedirect = (action) => {
         this.setState({
             redirect: true,
             placeOfAction: action
         })
     }
+
     renderBasedOnRedirect = () => {
         if (this.state.redirect && this.state.placeOfAction === 'ACTIVATED') {
-            return (<Redirect to="/business/leads/active"></Redirect>)
-        }
-        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDNEW') {
             return (<Redirect to="/business/leads/new"></Redirect>)
         }
-        if (this.state.redirect && this.state.placeOfAction === 'CLOSEDACTIVE') {
-            return (<Redirect to="/business/leads/active"></Redirect>)
-        } if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
-            return (<Redirect to="/business/leads/moved"></Redirect>)
+        if (this.state.redirect && this.state.placeOfAction === 'DELETED') {
+            return (<Redirect to="/business/leads/new"></Redirect>)
         }
-
+        if (this.state.redirect && this.state.placeOfAction === 'REJECTED') {
+            return (<Redirect to="/business/leads/active"></Redirect>)
+        }
+        if (this.state.redirect && this.state.placeOfAction === 'MOVEDTOPROJECTS') {
+            return (<Redirect to="/business/leads/active"></Redirect>)
+        }
     }
 
-    changeLeadStatus (leadDetId, newStatus, source) {
-        let data = { "leadDetId": leadDetId.toString(), "newStatus": newStatus }
+    changeLeadStatus (leadDetId, newStatus, source, supplierName) {
+        let data = {
+            "leadDetId": leadDetId.toString(),
+            "newStatus": newStatus
+        }
         changeLeadStatus(data, this.state.token).then((res) => {
-            if (data.newStatus === "CLOSED") { //! Change Later to CLOSED
-                this.setRedirect(data.newStatus + source)
+            if (res.message === 'lead status updated.') {
+                if (data.newStatus === "ACTIVATED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Activated`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
+                    if (this.state.filtered.length > 1) {
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.setRedirect(data.newStatus);
+                    }
+                }
+
+                if (data.newStatus === "DELETED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Removed`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
+                    if (this.state.filtered.length > 1) {
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.setRedirect(data.newStatus);
+                    }
+                }
+
+                if (data.newStatus === "REJECTED") {
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Rejected`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
+                    if (this.state.filtered.length > 1) {
+                        this.props.getLeadInformation();
+                    }
+                    else {
+                        this.setRedirect(data.newStatus);
+                    }
+                }
+
+                if (data.newStatus === "FINALIZED") {
+                    this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+                    toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Finalised`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
+                }
+
             }
-            if (data.newStatus === "ACTIVATED") {
-                this.setRedirect(data.newStatus)
-            }
-            if (data.newStatus === "FINALIZED") {
-                this.getLeadEquipmentDetails(this.state.leadUuid, this.state.leadEquipmentUid, this.state.token);
+            else {
+                toastNotification(`${supplierName.toLowerCase()} is Failed to ${data.newStatus.toLowerCase()}`, toast.POSITION.BOTTOM_RIGHT, 'text-warning');
             }
         });
     }
-    moveToProjects = async (userUuid, leadId, leadDetId) => {
+
+    moveToProjects = async (userUuid, leadId, leadDetId, supplierName) => {
         let data = {
             "userUuid": userUuid,
             "leadId": leadId.toString(),
             "leadDetId": [leadDetId.toString()]
         }
-        // let response = await moveToProjects(data, this.state.token);
-        // if (response) { alert('Project Moved to New') }
-        // else { alert('Failed to Move Project to Move') }
         moveToProjects(data, this.state.token).then((res) => {
+            console.log('MoveToProjects', res);
             if (res) {
-                // console.log('Ne', res);
-                this.setRedirect("MOVEDTOPROJECTS")
+                toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Moved To Projects`, toast.POSITION.BOTTOM_RIGHT, 'text-success');
+                if (this.state.filtered.length > 1) {
+                    this.props.getLeadInformation();
+                }
+                else {
+                    this.setRedirect("MOVEDTOPROJECTS");
+                }
+            }
+            else {
+                toastNotification(`${supplierName.toLowerCase()} [${leadDetId}] is Failed to Moved To Projects`, toast.POSITION.BOTTOM_RIGHT, 'text-warning');
             }
         })
     }
-    openModalHandler = () => { this.setState({ "isModalShowing": true }) }
-    closeModalHandler = () => { this.setState({ "isModalShowing": false }) }
+
+    modalHandler = (modalStatus) => {
+        this.setState({
+            isModalShowing: modalStatus
+        });
+    }
 
     equipmentDataChangeHandler = (leadId, leadDetUuid, key) => {
         this.setState({ leadUuid: leadId, leadEquipmentUid: leadDetUuid })
@@ -116,6 +174,7 @@ class SideArticle extends Component {
             this.setState({ "isApiCallSuccessful": true })
         }
     }
+
     getSupplierList = async (equipmentType) => {
         let data = { "equipmentType": equipmentType.toString() }
         let response = await getSupplierList(data, this.state.token);
@@ -129,6 +188,7 @@ class SideArticle extends Component {
             this.setState({ "dataToRender": response.data[this.state.selectedCategory] });
         }
     }
+
     handleChange (e) {
         let currentList = []
         let displayedContacts, searchQuery;
@@ -145,6 +205,8 @@ class SideArticle extends Component {
             this.setState({ filtered: this.props.leadinfo })
         }
     }
+
+
     render () {
         return (
             <React.Fragment>
@@ -153,9 +215,9 @@ class SideArticle extends Component {
                     <div className="mb-5 pb-5">
                         <div className="mt-4 px-3 mb-4">
                             <Link to={`/business/leads/${this.state.goBackUrl}`} className="text-white mln-2"><i className="far fa-arrow-alt-circle-left mr-1"></i><u>Go Back</u></Link>
-                            <h6 className="pl-1 text-white opct-05 mb-1 mt-3">New Lead</h6>
+                            <h6 className="pl-1 text-white opct-05 mb-1 mt-3">Lead Info</h6>
                             <h3 className="text-white pl-1">{this.props.leadinfo[0].companyName}</h3>
-                            <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={this.openModalHandler}><i className="far fa-edit mr-1"></i>Edit</Button>
+                            <Button variant="light" size="sm" className="px-3 ml-1 text-primary" onClick={() => this.modalHandler(true)}><i className="far fa-edit mr-1"></i>Edit</Button>
                         </div>
                         <div className="px-3 mx-0">
                             <InputGroup className="searchBarStyle">
@@ -174,7 +236,7 @@ class SideArticle extends Component {
                                             key={key}
                                             onClick={() => this.equipmentDataChangeHandler(prop.lead_uuid, prop.leadDet_uuid, key)}>
                                             <Col md={9} className="pl-3">
-                                                <div className="pl-1 text-capitalize">{prop.equipmentName}</div>
+                                                <div className="pl-1 text-capitalize">{prop.equipmentName.toLowerCase()}</div>
                                                 <div className="pl-1 font-size-07">{prop.leadDet_year}</div>
                                             </Col>
                                             <Col md={3} className="my-auto">
@@ -190,7 +252,7 @@ class SideArticle extends Component {
                 <Col md={9} className="vh-100 bg-light overflow-auto mx-0">
                     {this.state.isApiCallSuccessful === true ?
                         <Switch>
-                            <Route path="/business/leads/lead/active/suppliersList">
+                            <Route path="/business/leads/lead/suppliersList/active/:id">
                                 <AddViewThree
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.specificEquipmentSupplierDetails}
@@ -208,7 +270,9 @@ class SideArticle extends Component {
                             <Route path="/business/leads/lead/new/:id">
                                 <AddViewOne
                                     formData={this.state.specificEquipmentsDetails}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    buttonStatus='d-visible'
+                                    labelStatus='d-none'>
                                 </AddViewOne>
                             </Route>
                             <Route path="/business/leads/lead/active/:id">
@@ -216,25 +280,56 @@ class SideArticle extends Component {
                                     formData={this.state.specificEquipmentsDetails}
                                     supplierData={this.state.supplierData}
                                     statusChanger={this.changeLeadStatus.bind(this)}
-                                    moveToProjects={this.moveToProjects}>
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-none'
+                                    labelText={null}
+                                    buttonStatus='d-visible'
+                                    btnDisabled='false'>
+                                </AddViewTwo>
+                            </Route>
+                            <Route path="/business/leads/lead/deleted/:id">
+                                <AddViewOne
+                                    formData={this.state.specificEquipmentsDetails}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    buttonStatus='d-none'
+                                    labelStatus='d-visible'
+                                    disableData='true'>
+                                </AddViewOne>
+                            </Route>
+                            <Route path="/business/leads/lead/rejected/:id">
+                                <AddViewTwo
+                                    formData={this.state.specificEquipmentsDetails}
+                                    supplierData={this.state.supplierData}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-visible'
+                                    labelText='this lead was Rejected'
+                                    buttonStatus='d-none'
+                                    btnDisabled='true'>
                                 </AddViewTwo>
                             </Route>
                             <Route path="/business/leads/lead/moved/:id">
-                                <AddViewOne
+                                <AddViewTwo
                                     formData={this.state.specificEquipmentsDetails}
-                                    statusChanger={this.changeLeadStatus.bind(this)}>
-                                </AddViewOne>
+                                    supplierData={this.state.supplierData}
+                                    statusChanger={this.changeLeadStatus.bind(this)}
+                                    moveToProjects={this.moveToProjects}
+                                    labelStatus='d-visible'
+                                    labelText='this lead was Moved'
+                                    buttonStatus='d-none'
+                                    btnDisabled='true'>
+                                </AddViewTwo>
                             </Route>
                         </Switch>
                         : null
                     }
                 </Col>
-                <Modal show={this.state.isModalShowing} onHide={this.closeModalHandler} size="md">
+                <Modal show={this.state.isModalShowing} onHide={() => this.modalHandler(false)} size="md">
                     <Modal.Header closeButton className={`text-white ${randomHeaderColorGenerator()}`}>
                         <Modal.Title id="contained-modal-title-lg">Lead Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <AddFields3></AddFields3>
+                        <EditLeadForm1 data={this.props} modalHider={this.modalHandler.bind(this)}></EditLeadForm1>
                     </Modal.Body>
                 </Modal>
             </React.Fragment >
